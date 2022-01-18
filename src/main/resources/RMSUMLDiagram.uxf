@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>248</x>
+      <y>600</y>
+      <w>216</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Singleton&gt;&gt;
+*RMS::DatabaseController*
+Handles the connection
+to the SQL Database.
+--
+*Attributes*
+«volatile» -instance: DatabaseController
+--
+*Responsibilities*
+&lt;&lt;constructor&gt;&gt; -DatabaseController()
+-getInstance(): DatabaseController
+-executeQuery(): ResultSet
+-getTables(): String[]
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>96</x>
+      <y>392</y>
+      <w>216</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>*RMS::KitchenDatabaseController*
+Handles the SQL queries
+needed for the menu.
+--
+*Attributes*
+-databaseController: DatabaseController
+--
+*Responsibilities*
++addItem(MenuItem menuItem): void
++removeItem(int itemId): void 
+                     {Exception: MenuException}
++getItem(): MenuItem
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>408</x>
+      <y>424</y>
+      <w>280</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>*RMS::CustomerDatabaseController*
+Handles the SQL queries
+needed for the menu by the customer.
+--
+*Attributes*
+-databaseController: DatabaseController
+--
+*Responsibilities*
++getItem(int id): MenuItem {Exception: MenuException}
++getMenu(): MenuItem[]
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>256</x>
+      <y>104</y>
+      <w>216</w>
+      <h>192</h>
+    </coordinates>
+    <panel_attributes>*RMS::MenuItem*
+Handles the SQL queries
+needed for the menu by the customer.
+--
+*Attributes*
+-itemId: int
+-itemName: String
+-itemDescription: String
+-itemImageLocation: String
+--
+*Responsibilities*
++getName(): String
++getId: int
++getItemDescription(): String
++getItemImageLocation(): String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>184</x>
+      <y>536</y>
+      <w>184</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;210.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>344</x>
+      <y>536</y>
+      <w>184</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>210.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+</diagram>
