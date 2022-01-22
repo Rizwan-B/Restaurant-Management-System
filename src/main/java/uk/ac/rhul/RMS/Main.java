@@ -11,13 +11,16 @@ public class Main extends Application {
   // The ID and location for the fxml startScreen. Make sure to follow the id naming standard I have used below. 
   public static String startScreenID = "StartScreen";
   public static String startScreenFile = "/uk/ac/rhul/RMS/WelcomeScreen.fxml";
+  public static String menuScreenID = "MenuScreen";
+  public static String menuScreenFile = "/uk/ac/rhul/RMS/MenuScreen.fxml";
+  
 
   
   @Override
   public void start(Stage primaryStage) throws Exception {
     ScreensController mainScreenController = new ScreensController();
     mainScreenController.loadScreen(startScreenID, startScreenFile);
-    
+    mainScreenController.loadScreen(Main.menuScreenID, Main.menuScreenFile);
     mainScreenController.setScreen(startScreenID);
     
     
