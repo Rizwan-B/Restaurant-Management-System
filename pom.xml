@@ -1,6 +1,117 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>TeamProject2022_20</groupId>
-  <artifactId>TeamProject2022_20</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>uk.ac.rhul</groupId>
+	<artifactId>TeamProject2022_20</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>RestaurantManagementSystem</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+
+	<dependencies>
+		<!-- Dependence 1 -->
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-controls</artifactId>
+			<version>13</version>
+		</dependency>
+		<!-- Dependence 2 -->
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-fxml</artifactId>
+			<version>13</version>
+		</dependency>
+		<!-- Dependence 3 -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.4.0</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+
+	<build>
+		<resources>
+			<!-- Resource 1 -->
+			<resource>
+				<directory>src/main/java</directory>
+			</resource>
+			<!-- Resource 2 -->
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.fxml</include>
+					<include>**/*.css</include>
+					<include>**/*.txt</include>
+					<include>**/*.pdf</include>
+				</includes>
+			</resource>
+		</resources>
+
+		<plugins>
+			<!-- Plugin 1 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-Mf</version>
+			</plugin>
+
+			<!-- Plugin 2 -->
+			<plugin>
+				<groupId>org.openjfx</groupId>
+				<artifactId>javafx-maven-plugin</artifactId>
+				<version>0.0.4</version>
+				<configuration>
+					<mainClass>uk.ac.rhul.RMS.Main</mainClass>
+				</configuration>
+				<executions>
+					<!-- Execution 1 -->
+					<execution>
+						<id>debug</id>
+						<configuration>
+							<options>
+								<option>-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:8001</option>
+							</options>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Plugin 3 -->
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>3.3.0</version>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<mainClass>uk.ac.rhul.RMS.Main</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+				<executions>
+					<!-- Execution 1 -->
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+	</build>
+
+
 </project>
