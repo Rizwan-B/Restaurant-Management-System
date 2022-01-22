@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>248</x>
-      <y>600</y>
+      <x>216</x>
+      <y>560</y>
       <w>216</w>
       <h>160</h>
     </coordinates>
@@ -28,8 +28,8 @@ to the SQL Database.
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>96</x>
-      <y>392</y>
+      <x>64</x>
+      <y>352</y>
       <w>216</w>
       <h>152</h>
     </coordinates>
@@ -51,8 +51,8 @@ needed for the menu.
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>408</x>
-      <y>424</y>
+      <x>376</x>
+      <y>384</y>
       <w>280</w>
       <h>120</h>
     </coordinates>
@@ -72,10 +72,10 @@ needed for the menu by the customer.
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>256</x>
-      <y>104</y>
+      <x>216</x>
+      <y>80</y>
       <w>216</w>
-      <h>192</h>
+      <h>240</h>
     </coordinates>
     <panel_attributes>*RMS::MenuItem*
 Handles the SQL queries
@@ -84,6 +84,8 @@ needed for the menu by the customer.
 *Attributes*
 -itemId: int
 -itemName: String
+-calories: int
+-category: String
 -itemDescription: String
 -itemImageLocation: String
 --
@@ -92,14 +94,16 @@ needed for the menu by the customer.
 +getId: int
 +getItemDescription(): String
 +getItemImageLocation(): String
++getCalories(): int
++getCategory(): String
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>184</x>
-      <y>536</y>
+      <x>152</x>
+      <y>496</y>
       <w>184</w>
       <h>80</h>
     </coordinates>
@@ -109,8 +113,8 @@ needed for the menu by the customer.
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>344</x>
-      <y>536</y>
+      <x>312</x>
+      <y>496</y>
       <w>184</w>
       <h>80</h>
     </coordinates>
