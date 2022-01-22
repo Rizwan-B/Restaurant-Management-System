@@ -18,6 +18,10 @@ import javafx.util.Duration;
  * 
  *         A public screen Controller class used by every screen controller in this application. The
  *         class uses a hashmap to store and remove screen data.
+ * 
+ *         The package code is inspired by the repository in the following link:
+ * 
+ *         https://github.com/alefbt/javafx-template/blob/master/src/main/java/com/korotkin/JavaFxStart/screen/framework
  *
  */
 public class ScreensController extends StackPane {
