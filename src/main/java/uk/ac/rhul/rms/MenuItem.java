@@ -1,4 +1,4 @@
-package uk.ac.rhul.RMS;
+package uk.ac.rhul.rms;
 
 /**
  * A class representing a Menu item entry in the Menu table.
@@ -15,7 +15,7 @@ public class MenuItem {
   private String itemImageLocation;
 
   /**
-   * The constructor for a MenuItem.
+   * The public default constructor for a MenuItem.
    *
    * @param itemId the int used as a primary key.
    * @param itemName the String name of the menu item.

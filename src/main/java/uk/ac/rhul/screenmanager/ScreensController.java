@@ -1,4 +1,4 @@
-package uk.ac.rhul.ScreenManager;
+package uk.ac.rhul.screenmanager;
 
 import java.util.HashMap;
 import javafx.animation.KeyFrame;
@@ -14,15 +14,13 @@ import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
 /**
+ * A public screen Controller class used by every screen controller in this application. The class
+ * uses a hashmap to store and remove screen data. The package code is inspired by the repository in
+ * the following link:s
+ * https://github.com/alefbt/javafx-template/blob/master/src/main/java/com/korotkin/JavaFxStart/screen/framework
+ *
  * @author Mohamed Yusuf
  * 
- *         A public screen Controller class used by every screen controller in this application. The
- *         class uses a hashmap to store and remove screen data.
- * 
- *         The package code is inspired by the repository in the following link:
- * 
- *         https://github.com/alefbt/javafx-template/blob/master/src/main/java/com/korotkin/JavaFxStart/screen/framework
- *
  */
 public class ScreensController extends StackPane {
 
@@ -42,7 +40,7 @@ public class ScreensController extends StackPane {
   /**
    * A private void function that is used to add screens to the hashMap defined. The function is
    * private because it is only going to be called from within this class.
-   * 
+   *
    * @param screenId The ID of the screen to add to the hashMap.
    * @param screen The screen itself that must be added.
    */
@@ -53,7 +51,7 @@ public class ScreensController extends StackPane {
 
   /**
    * A public getter method to get a screen as a Node based on its ID.
-   * 
+   *
    * @param screenId The ID of the screen to get.
    * @return The Node screen that is requested.
    */
@@ -64,7 +62,7 @@ public class ScreensController extends StackPane {
   /**
    * A public loader method that loads screens onto the application based on their screen ID and
    * FXML file location.
-   * 
+   *
    * @param screenId The ID of the screen to load.
    * @param screenLocation The location of the screen that is being loaded.
    * @return True if the loader was successful, false otherwise.
@@ -86,7 +84,7 @@ public class ScreensController extends StackPane {
 
   /**
    * A public setter method to a specific screen to be displayed.
-   * 
+   *
    * @param screenId The ID of the screen to set.
    * @return True if the set operation was successful, false otherwise.
    */
@@ -111,8 +109,8 @@ public class ScreensController extends StackPane {
 
       } else {
         setOpacity(0.0);
-        getChildren().add(screens.get(screenId)); // no one else being displayed, then just show
-                                                  // this.
+        getChildren().add(screens.get(screenId));
+        // no one else being displayed, then just show this.
 
         Timeline fadeIn = new Timeline(new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
             new KeyFrame(new Duration(50), new KeyValue(opacity, 1.0)));
@@ -127,9 +125,8 @@ public class ScreensController extends StackPane {
 
   /**
    * A public unload method, to unload/remove screens from the hashMap.
-   * 
-   * 
-   * @param screenId
+   *
+   * @param screenId The screenId of the screen to unload.
    * @return True if the unload operation was successful, false otherwise.
    */
   public boolean unloadScreen(String screenId) {
