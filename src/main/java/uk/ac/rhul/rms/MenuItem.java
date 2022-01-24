@@ -100,12 +100,12 @@ public class MenuItem {
     return this.itemImageLocation;
   }
 
-  
+
   /**
    * Creates a string representation of the MenuItem, which is formatted for the SQL Menu table (so
    * you can directly INSERT using the string this returns).
    *
-   * @return A string representing the values in the MenuItem 
+   * @return A string representing the values in the MenuItem
    */
   @Override
   public String toString() {
@@ -121,12 +121,18 @@ public class MenuItem {
    *
    * @param menuItemValues A string of all the values a menu item needs.
    * @return A MenuItem representation of the string of values provided.
+   * @throws ToMenuItemFormatException Thrown when the parameter string menuItemValues is in a bad
+   *         format.
    */
-  public static MenuItem toMenuItem(String menuItemValues) {
+  public static MenuItem toMenuItem(String menuItemValues) throws ToMenuItemFormatException {
     String[] splitValues = menuItemValues.split(", ");
-    MenuItem newItem = new MenuItem(Integer.parseInt(splitValues[0]), splitValues[1],
-        Integer.parseInt(splitValues[2]), splitValues[3], Diet.toDiet(splitValues[4]),
-        splitValues[5], splitValues[6]);
-    return newItem;
+    try {
+      MenuItem newItem = new MenuItem(Integer.parseInt(splitValues[0]), splitValues[1],
+          Integer.parseInt(splitValues[2]), splitValues[3], Diet.toDiet(splitValues[4]),
+          splitValues[5], splitValues[6]);
+      return newItem;
+    } catch (Exception e) {
+      throw new ToMenuItemFormatException();
+    }
   }
 }
