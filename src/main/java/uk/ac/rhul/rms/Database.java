@@ -61,10 +61,14 @@ public class Database {
   
   /**
    * Connects to the database server.
+   *
    * @param user
+   *
    * @param password
+   * 
    * @param database
-   * @return
+   * 
+   * @return the connections.
    */
   public static Connection connectToDatabase(String user, String password, String database) {
     System.out.println("------ Testing PostgreSQL JDBC Connection ------");
