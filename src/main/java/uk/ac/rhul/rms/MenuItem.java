@@ -12,7 +12,7 @@ public class MenuItem {
   private int calories;
   private String category;
   private Diet dietType;
-  private String itemDecription;
+  private String itemDescription;
   private String itemImageLocation;
 
   /**
@@ -25,15 +25,15 @@ public class MenuItem {
    * @param itemDescription a String describing the menu item.
    * @param itemImageLocation a String filepath for the image of this menu item.
    */
-  public MenuItem(int itemId, String itemName, int calories, String category,
-      Diet dietType, String itemDescription, String itemImageLocation) {
-      
+  public MenuItem(int itemId, String itemName, int calories, String category, Diet dietType,
+      String itemDescription, String itemImageLocation) {
+
     this.itemId = itemId;
     this.itemName = itemName;
     this.calories = calories;
     this.category = category;
     this.dietType = dietType;
-    this.itemDecription = itemDescription;
+    this.itemDescription = itemDescription;
     this.itemImageLocation = itemImageLocation;
   }
 
@@ -72,9 +72,9 @@ public class MenuItem {
   public String getCategory() {
     return this.category;
   }
-  
+
   /**
-   * Getter for the diet type. 
+   * Getter for the diet type.
    *
    * @return A Diet enum representing the diets the dish is suitable for.
    */
@@ -88,7 +88,7 @@ public class MenuItem {
    * @return A String describing the menu item.
    */
   public String getDescription() {
-    return this.itemDecription;
+    return this.itemDescription;
   }
 
   /**
@@ -98,5 +98,35 @@ public class MenuItem {
    */
   public String getImageLocation() {
     return this.itemImageLocation;
+  }
+
+  
+  /**
+   * Creates a string representation of the MenuItem, which is formatted for the SQL Menu table (so
+   * you can directly INSERT using the string this returns).
+   *
+   * @return A string representing the values in the MenuItem 
+   */
+  @Override
+  public String toString() {
+    String stringForm = this.itemId + ", " + this.itemName + ", " + Integer.toString(this.calories)
+        + ", " + this.itemDescription + ", " + this.category + ", " + this.dietType.toString()
+        + ", " + this.itemDescription + ", " + this.itemImageLocation;
+    return stringForm;
+  }
+
+  /**
+   * Converts a string of values into a menu item. Values follow the same order as the menu
+   * constructor, and are each separated with ", ".
+   *
+   * @param menuItemValues A string of all the values a menu item needs.
+   * @return A MenuItem representation of the string of values provided.
+   */
+  public static MenuItem toMenuItem(String menuItemValues) {
+    String[] splitValues = menuItemValues.split(", ");
+    MenuItem newItem = new MenuItem(Integer.parseInt(splitValues[0]), splitValues[1],
+        Integer.parseInt(splitValues[2]), splitValues[3], Diet.toDiet(splitValues[4]),
+        splitValues[5], splitValues[6]);
+    return newItem;
   }
 }
