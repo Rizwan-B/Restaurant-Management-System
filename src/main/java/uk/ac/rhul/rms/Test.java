@@ -14,6 +14,6 @@ public class Test {
    * @param args The default parameter for public static void main functions.
    */
   public static void main(String[] args) {
-    System.out.println("Hello Lucas.");
+    System.out.println("Hello Lucas. ");
   }
 }
