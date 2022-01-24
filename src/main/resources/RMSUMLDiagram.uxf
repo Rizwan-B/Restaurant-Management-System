@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>7</zoom_level>
+  <zoom_level>8</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>168</x>
-      <y>434</y>
-      <w>189</w>
-      <h>140</h>
+      <x>152</x>
+      <y>600</y>
+      <w>216</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Singleton&gt;&gt;
 *RMS::DatabaseController*
@@ -28,10 +28,10 @@ to the SQL Database.
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>35</x>
-      <y>252</y>
-      <w>189</w>
-      <h>133</h>
+      <x>0</x>
+      <y>392</y>
+      <w>216</w>
+      <h>152</h>
     </coordinates>
     <panel_attributes>*RMS::KitchenDatabaseController*
 Handles the SQL queries
@@ -51,10 +51,10 @@ needed for the menu.
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>308</x>
-      <y>280</y>
-      <w>245</w>
-      <h>105</h>
+      <x>312</x>
+      <y>424</y>
+      <w>280</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>*RMS::CustomerDatabaseController*
 Handles the SQL queries
@@ -72,10 +72,10 @@ needed for the menu by the customer.
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>175</x>
-      <y>0</y>
-      <w>189</w>
-      <h>168</h>
+      <x>160</x>
+      <y>104</y>
+      <w>216</w>
+      <h>192</h>
     </coordinates>
     <panel_attributes>*RMS::MenuItem*
 Handles the SQL queries
@@ -98,10 +98,10 @@ needed for the menu by the customer.
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>112</x>
-      <y>378</y>
-      <w>161</w>
-      <h>70</h>
+      <x>88</x>
+      <y>536</y>
+      <w>184</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;210.0;80.0</additional_attributes>
@@ -109,10 +109,10 @@ needed for the menu by the customer.
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>252</x>
-      <y>378</y>
-      <w>161</w>
-      <h>70</h>
+      <x>248</x>
+      <y>536</y>
+      <w>184</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>210.0;10.0;10.0;80.0</additional_attributes>
@@ -120,10 +120,10 @@ needed for the menu by the customer.
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>623</x>
-      <y>441</y>
-      <w>280</w>
-      <h>147</h>
+      <x>672</x>
+      <y>608</y>
+      <w>320</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes>*ScreenManager::ScreensController*
 Controls and manages different 
@@ -146,10 +146,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>623</x>
-      <y>623</y>
-      <w>280</w>
-      <h>70</h>
+      <x>672</x>
+      <y>816</y>
+      <w>320</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Interface&gt;&gt;
 *ScreenManager::ControlledScreen*
@@ -164,12 +164,34 @@ bg=yellow</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>756</x>
-      <y>581</y>
-      <w>21</w>
-      <h>56</h>
+      <x>824</x>
+      <y>768</y>
+      <w>24</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>472</x>
+      <y>104</y>
+      <w>224</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>*RMS:: Order*
+An object class that holds the 
+entire order of the customer.
+--
+*Attributes*
+-menuItem: ArrayList
+--
+*Responsibilities*
++addMenuItem()
++RemoveMenuItem()
++getMenu(): String
++toString(): String</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
