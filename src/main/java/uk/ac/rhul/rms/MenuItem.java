@@ -11,6 +11,7 @@ public class MenuItem {
   private String itemName;
   private int calories;
   private String category;
+  private Diet dietType;
   private String itemDecription;
   private String itemImageLocation;
 
@@ -25,12 +26,13 @@ public class MenuItem {
    * @param itemImageLocation a String filepath for the image of this menu item.
    */
   public MenuItem(int itemId, String itemName, int calories, String category,
-      String itemDescription, String itemImageLocation) {
+      Diet dietType, String itemDescription, String itemImageLocation) {
       
     this.itemId = itemId;
     this.itemName = itemName;
     this.calories = calories;
     this.category = category;
+    this.dietType = dietType;
     this.itemDecription = itemDescription;
     this.itemImageLocation = itemImageLocation;
   }
@@ -38,7 +40,7 @@ public class MenuItem {
   /**
    * Getter for the primary key of the Menu Item.
    *
-   * @return - the int used as a primary key.
+   * @return The int used as a primary key.
    */
   public int getId() {
     return this.itemId;
@@ -47,7 +49,7 @@ public class MenuItem {
   /**
    * Getter for the name of the dish.
    *
-   * @return - the String name of the menu item.
+   * @return The String name of the menu item.
    */
   public String getName() {
     return this.itemName;
@@ -56,7 +58,7 @@ public class MenuItem {
   /**
    * Getter for the number of calories.
    *
-   * @return - an int representing the number of calories it has.
+   * @return An int representing the number of calories it has.
    */
   public int getCalories() {
     return this.calories;
@@ -65,16 +67,25 @@ public class MenuItem {
   /**
    * Getter for the category.
    *
-   * @return - the String category the item belongs to.
+   * @return The String category the item belongs to.
    */
   public String getCategory() {
     return this.category;
+  }
+  
+  /**
+   * Getter for the diet type. 
+   *
+   * @return A Diet enum representing the diets the dish is suitable for.
+   */
+  public Diet getDietType() {
+    return this.dietType;
   }
 
   /**
    * Getter for the description.
    *
-   * @return - a String describing the menu item.
+   * @return A String describing the menu item.
    */
   public String getDescription() {
     return this.itemDecription;
@@ -83,7 +94,7 @@ public class MenuItem {
   /**
    * Getter for the image path.
    *
-   * @return - a String filepath for the image of this menu item.
+   * @return A String filepath for the image of this menu item.
    */
   public String getImageLocation() {
     return this.itemImageLocation;
