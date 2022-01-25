@@ -135,4 +135,33 @@ public class MenuItem {
       throw new ToMenuItemFormatException();
     }
   }
+
+  /**
+   * Checks the equality of this MenuItem with another based on its ID.
+   *
+   * @return A boolean indicating if the passed object is equal or not.
+   */
+  @Override
+  public boolean equals(Object other) {
+    if (other instanceof MenuItem) {
+
+      MenuItem otherItem = (MenuItem) other;
+
+      if (otherItem.getId() == this.getId()) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Hashcode returns the id of the MenuItem as it is a primary key, and hence a completely unique
+   * representation.
+   *
+   * @return The unique hash of this object, which is its primary key.
+   */
+  @Override
+  public int hashCode() {
+    return this.getId();
+  }
 }
