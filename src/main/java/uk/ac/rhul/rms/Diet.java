@@ -26,7 +26,7 @@ public enum Diet {
   }
 
   /**
-   * Returns a Diet corrosponding to the string representation given. 
+   * Returns a Diet corresponding to the string representation given. 
    *
    * @param diet the string representation of the diet.
    * @return A diet corresponding to the string representation.
