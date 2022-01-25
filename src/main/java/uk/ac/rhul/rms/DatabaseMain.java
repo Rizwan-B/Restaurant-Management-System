@@ -71,7 +71,7 @@ public class DatabaseMain {
       Statement st = connection.createStatement();
       CSVReader reader = new CSVReader(new FileReader(
                                    "C:\\Users\\Muqdas\\eclipse-workspace\\TeamProject2022_20\\src\\"
-                                      + "main\\resources\\menu.csv"));
+                                      + "main\\resources\\uk\\ac\\rhul\\rms\\menu.csv"));
       String[] values;
       while ((values = reader.readNext()) != null) {
         String composedLine = "INSERT INTO " + table + " VALUES (";
@@ -114,6 +114,7 @@ public class DatabaseMain {
             + "food_description varchar(1000) NOT NULL,"
             + "PRIMARY KEY (food_id)"
             + ");");
+        insertFromFile(connect, "menu");
  
         System.out.println(db.getTables(connect));
       }
