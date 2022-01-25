@@ -18,6 +18,9 @@ import java.sql.Statement;
  */
 public class DatabaseMain {
     
+  /**
+   * A public default constructor for the DatabaseMain class.
+   */
   public DatabaseMain() {
     
   }
