@@ -115,6 +115,7 @@ public class DatabaseMain {
             + "food_course varchatr(100) NOT NULL,"
             + "calories varchar(200) NOT NULL,"
             + "food_description varchar(1000) NOT NULL,"
+            + "Allergens varchar(1000) NOT NULL,"
             + "PRIMARY KEY (food_id)"
             + ");");
         insertFromFile(connect, "menu");
