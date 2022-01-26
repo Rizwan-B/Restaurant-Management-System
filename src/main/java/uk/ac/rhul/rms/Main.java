@@ -19,7 +19,7 @@ public class Main extends Application {
   // used below.
   public static String startScreenID = "StartScreen";
   public static String startScreenFile =
-      "/uk/ac/rhul/rms/WelcomeScreen.fxml";
+      "/uk/ac/rhul/rms/StartScreen.fxml";
   public static String menuScreenID = "MenuScreen";
   public static String menuScreenFile = "/uk/ac/rhul/rms/MenuScreen.fxml";
 
@@ -35,7 +35,7 @@ public class Main extends Application {
 
     Group root = new Group();
     root.getChildren().addAll(mainScreenController);
-    Scene scene = new Scene(root, 600, 800);
+    Scene scene = new Scene(root, 960, 540);
 
     primaryStage.setScene(scene);
     primaryStage.show();
