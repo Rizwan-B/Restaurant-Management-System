@@ -1,36 +1,36 @@
-Pesto pasta, 123p12d, Vegan,Main,311kcal, boiled pasta with pesto sauce,ALLERGENS
-Tacos, 1234l12, Non-Vegeterian,Main,430kcal, fish filling with guac,ALLERGENS
-mushroom risotto,9023ad23,Vegeterian,Main,340kcal,"made with risotto rice, Parmesan cheese, brandy, and mushrooms.",ALLERGENS
-Slow roast tomatoes with beans and pasta,459gd23,Vegan,Main,560kcal,roast tomatoes with pasta,ALLERGENS
-Quorn lasagne,120las45,Vegeterian,Main,323kcal,Plant based lasagne,ALLERGENS
-Garlic mushroom pasta bake,290fgh45,Vegeterian ,Main,466kcal,mushroom suace with pasta and chedder cheese,ALLERGENS
-"Pesto, asparagus and potato salad",cd233asd,Vegan,Starters,211kcal,fresh vegetable salad,ALLERGENS
-Burrate bruschetta,232ads21,Vegeterian ,Starters,341kcal,"bruschetta, topped with burrata, broad beans, sugar snap peas, radish, mint and chilli",ALLERGENS
-broccoli and potato croquettes,123ads34,Vegeterian,Starters,250kcal,potatoes broccolli fried balls,ALLERGENS
-"cholocate, peanut butter and avocado pudding",564jkh09,Vegeterian,Dessert,300kcal,Creamy pudding,ALLERGENS
-lemon cheesecake,dsa312,Vegeterian,Dessert,120kcal,creamy lemon cheesecake,ALLERGENS
-toffee pear pudding,hg123klj,Vegeterian,Dessert,320kcal,pear pudding with toffee filling,ALLERGENS
-Graham Sandwiches,klj432k,Non-Vegeterian,Starters,130kcal,"chicken sandwiches with tomatoes, mayo and cheese.",ALLERGENS
-Roasted Red Pepper and Tomato Soup,l32bn,Vegeterian,Starters,96kcal,creamy soup with tomatoes and basil,ALLERGENS
-prawn tacos,lkfj432,Non-Vegeterian,Starters,230kcal,tacos with prawns ,ALLERGENS
-Flatout Pizza,sd09kjhfs,Non-Vegeterian,Main,280kcal,chicken pizza with mozeralla and fresh vegetables,ALLERGENS
-Easy Chicken and Broccoli Alfredo,12mdhls9,Non-Vegeterian,Main,428kcal,chicken with broccoli,ALLERGENS
-Easy Meatballs,2sl0avb,Non-Vegeterian,Main,350kcal,mince meat metballs in tomatoe sauce,ALLERGENS
-Honey Dijon Chicken Salad,1zjal03ll,Non-Vegeterian,Main,180kcal,honey chicken with fresh salad drizzled with dressing,ALLERGENS
-Shaking beef noodle salad,einm823,Non-Vegeterian,Main,650kcal,beef noodles with fresh salad,ALLERGENS
-Sweet and sour crunchy pork salad,09fdl,Non-Vegeterian,Main,500kcal,fried pork with sweet and sour sauce with salad,ALLERGENS
-Pineapple Cheesecake Bars,lkj23,Non-Vegeterian,Dessert,130kcal,pineapple cheesecake with egg base,ALLERGENS
-Fudgy Paleo Brownies,po21nm,Non-Vegeterian,Dessert,340kcal,chocolcate fugdy brownies,ALLERGENS
-Cookie Dough,zxsd321,Non-Vegeterian,Dessert,480kcal,dark choclate cookie dough with whippsed cream,ALLERGENS
-Ice cream sundae with whipped cream,bs81j,Non-Vegeterian,Dessert,365kcal,vanilla ice cream with whipped cream,ALLERGENS
-guacamole chopped salad,gfh09nm,Vegan,Starters,90kcal,avacado guac with salad ,ALLERGENS
-garlic hummus,wla12oo,Vegan,Starters,120kcal,hummus with garlic,ALLERGENS
-mushroom pate,09zc00a,Vegan,Starters,130kcal,sautee mushrooms,ALLERGENS
-Broccoli and peanut soba noodles,12lm,Vegan,Main,430kcal,soba noodles with peanuts and Broccoli,ALLERGENS
-"Spinach, chickpea and potato curry",dhsg239,Vegan,Main,210kcal,curry with tomatoes base and vegetables,ALLERGENS
-Moroccan veggie soup,pasl123,Vegan,Main,120kcal,"blended vegetables, morrocon style",ALLERGENS
-Vegan chilli tofu ramen,xca123,Vegan,Main,400kcal,ramen bowl with vegan chilli,ALLERGENS
-Vegan quinoa and black bean chilli,zgfr234,Vegan,Main,420kcal,quinoa with black bean chilli,ALLERGENS
-peanut butter pie,7887djkjh,Vegan,Dessert,62kcal,peanutbutter pies,ALLERGENS
-red velvet brownies,201lkan,Vegan,Dessert,73kcal,vegan redvelvet brownies ,ALLERGENS
-peanutbutter cake bars,2012kjb,Vegan,Dessert,66kcal,vegan peanut butter cake bars,ALLERGENS
+123445,Pesto pasta,311kcal,Main,"Ve,G", boiled pasta with pesto sauce,
+234091,Tacos,430kcal,Main,NV, fish filling with guac,src/main/resources/uk/ac/rhul/rms/media/tacos.jpg
+12039,mushroom risotto,340kcal,Main,V,"made with risotto rice, Parmesan cheese, brandy, and mushrooms.",
+120773,Slow roast tomatoes with beans and pasta,560kcal,Main,"Ve,G",roast tomatoes with pasta,
+9235,Quorn lasagne,323kcal,Main,Ve,Plant based lasagne,
+2341,Garlic mushroom pasta bake,466kcal,Main,V ,mushroom suace with pasta and chedder cheese,
+12453,"Pesto, asparagus and potato salad",211kcal,Starters,Ve,fresh vegetable salad,
+135286,Burrate bruschetta,341kcal,Starters,V,"bruschetta, topped with burrata, broad beans, sugar snap peas, radish, mint and chilli",
+12365,broccoli and potato croquettes,250kcal,Starters,V,potatoes broccolli fried balls,
+123,"cholocate, peanut butter and avocado pudding",300kcal,Dessert,V,Creamy pudding,
+456,lemon cheesecake,120kcal,Dessert,V,creamy lemon cheesecake,
+235,toffee pear pudding,320kcal,Dessert,V,pear pudding with toffee filling,
+908,Graham Sandwiches,130kcal,Starters,"N-V,D","chicken sandwiches with tomatoes, mayo and cheese.",
+234,Roasted Red Pepper and Tomato Soup,96kcal,Starters,V,creamy soup with tomatoes and basil,
+654,prawn tacos,230kcal,Starters,N-V,tacos with prawns ,
+7654,Flatout Pizza,280kcal,Main,N-V,chicken pizza with mozeralla and fresh vegetables,src/main/resources/uk/ac/rhul/rms/media/pizza.jpg
+8423,Easy Chicken and Broccoli Alfredo,428kcal,Main,N-V,chicken with broccoli,
+1234,Easy Meatballs,350kcal,Main,N-V,mince meat metballs in tomatoe sauce,
+3467,Honey Dijon Chicken Salad,180kcal,Main,N-V,honey chicken with fresh salad drizzled with dressing,
+12345678,Shaking beef noodle salad,650kcal,Main,N-V,beef noodles with fresh salad,
+450345,Sweet and sour crunchy pork salad,500kcal,Main,N-V,fried pork with sweet and sour sauce with salad,
+5670348,Pineapple Cheesecake Bars,130kcal,Dessert,N-V,pineapple cheesecake with egg base,
+19284,Fudgy Paleo Brownies,340kcal,Dessert,N-V,chocolcate fugdy brownies,
+30912,Cookie Dough,480kcal,Dessert,N-V,dark choclate cookie dough with whippsed cream,
+454132,Ice cream sundae with whipped cream,365kcal,Dessert,N-V,vanilla ice cream with whipped cream,
+15632937,guacamole chopped salad,90kcal,Starters,Ve,avacado guac with salad ,src/main/resources/uk/ac/rhul/rms/media/guac_salad.jpg
+72839,garlic hummus,120kcal,Starters,Ve,hummus with garlic,
+1206,mushroom pate,130kcal,Starters,Ve,sautee mushrooms,
+2000012,Broccoli and peanut soba noodles,430kcal,Main,Ve,soba noodles with peanuts and Broccoli,
+2012203,"Spinach, chickpea and potato curry",210kcal,Main,Ve,curry with tomatoes base and vegetables,
+1129993,Moroccan veggie soup,120kcal,Main,Ve,"blended vegetables, morrocon style",
+1200983,Vegan chilli tofu ramen,400kcal,Main,Ve,ramen bowl with vegan chilli,
+123001,Vegan quinoa and black bean chilli,420kcal,Main,Ve,quinoa with black bean chilli,
+23440,peanut butter pie,62kcal,Dessert,Ve,peanutbutter pies,
+5683000,red velvet brownies,73kcal,Dessert,Ve,vegan redvelvet brownies ,src/main/resources/uk/ac/rhul/rms/media/rvc.jpg
+9230,peanutbutter cake bars,66kcal,Dessert,"Ve,P",vegan peanut butter cake bars,

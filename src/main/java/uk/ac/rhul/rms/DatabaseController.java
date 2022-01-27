@@ -24,8 +24,8 @@ public class DatabaseController {
    *@return Connection to run the queries.
    */
   public static Connection connection() {
-    String protocol = "jdbc:sqlite://C:\\Users\\Muqdas\\eclipse-workspace\\TeamProject2022_20"
-        + "\\src\\main\\resources\\SQLite\\sqlite-tools-win32-x86-3370200\\menudb.db";
+    String protocol = "jdbc:sqlite:src\\main\\resources\\SQLite\\"
+        + "sqlite-tools-win32-x86-3370200\\menudb.db";
     Connection connect = null;
     try {
       connect = DriverManager.getConnection(protocol);

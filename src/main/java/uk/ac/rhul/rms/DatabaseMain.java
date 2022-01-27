@@ -73,9 +73,8 @@ public class DatabaseMain {
 
     try {
       Statement st = connection.createStatement();
-      CSVReader reader = new CSVReader(new FileReader(
-                                   "C:\\Users\\Muqdas\\eclipse-workspace\\TeamProject2022_20\\src\\"
-                                      + "main\\resources\\uk\\ac\\rhul\\rms\\menu.csv"));
+      CSVReader reader = new CSVReader(new FileReader("src\\main\\resources\\uk\\ac"
+              + "\\rhul\\rms\\menu.csv"));
       String[] values;
       while ((values = reader.readNext()) != null) {
         String composedLine = "INSERT INTO " + table + " VALUES (";
@@ -109,40 +108,40 @@ public class DatabaseMain {
   @SuppressWarnings("static-access")
   
   public static void queries(Connection connect, DatabaseController db) {
-    ResultSet query1 = db.executeQuery(connect, "SELECT food_item FROM menu "
-        + "WHERE food_course = 'Starters';");
+    ResultSet query1 = db.executeQuery(connect, "SELECT item_name FROM menu "
+        + "WHERE category = 'Starters';");
     try {
       while ((query1.next())) {
         System.out.println(query1.getString(1));
       }
       System.out.println("---Main---");
-      ResultSet query2 = db.executeQuery(connect, "SELECT food_item FROM menu "
-          + "WHERE food_course = 'Main';");
+      ResultSet query2 = db.executeQuery(connect, "SELECT item_name FROM menu "
+          + "WHERE category = 'Main';");
       while ((query2.next())) {
         System.out.println(query2.getString(1));
       }
       System.out.println("---Dessert---");
-      ResultSet query3 = db.executeQuery(connect, "SELECT food_item FROM menu "
-          + "WHERE food_course = 'Dessert';");
+      ResultSet query3 = db.executeQuery(connect, "SELECT item_name FROM menu "
+          + "WHERE category = 'Dessert';");
       while ((query3.next())) {
         System.out.println(query3.getString(1));
       }
       
       System.out.println("---VEGAN Starters---");
-      ResultSet query4 = db.executeQuery(connect, "SELECT food_item FROM menu "
-          + "WHERE food_course = 'Starters' AND food_category = 'Vegan';");
+      ResultSet query4 = db.executeQuery(connect, "SELECT item_name FROM menu "
+          + "WHERE category = 'Starters' AND diet_type = 'V';");
       while ((query4.next())) {
         System.out.println(query4.getString(1));
       }
       System.out.println("---VEGAN Main---");
-      ResultSet query5 = db.executeQuery(connect, "SELECT food_item FROM menu "
-          + "WHERE food_course = 'Main' AND food_category = 'Vegan';");
+      ResultSet query5 = db.executeQuery(connect, "SELECT item_name FROM menu "
+          + "WHERE category = 'Main' AND diet_type = 'V';");
       while ((query5.next())) {
         System.out.println(query5.getString(1));
       }
       System.out.println("---VEGAN Dessert---");
-      ResultSet query6 = db.executeQuery(connect, "SELECT food_item FROM menu "
-          + "WHERE food_course = 'Dessert' AND food_category = 'Vegan' ;");
+      ResultSet query6 = db.executeQuery(connect, "SELECT item_name FROM menu "
+          + "WHERE category = 'Dessert' AND diet_type = 'V' ;");
       while ((query6.next())) {
         System.out.println(query6.getString(1));
       }
@@ -172,8 +171,7 @@ public class DatabaseMain {
             + "diet_type varchar(200) NOT NULL,"
             + "item_description varchar(1000) NOT NULL,"
             + "item_image_location varchar(1000),"
-            + "PRIMARY KEY (Item_ID)"
-           
+            + "PRIMARY KEY (ItemID)"
             + ");");
         insertFromFile(connect, "menu");
         System.out.println("---Starters---");

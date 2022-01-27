@@ -8,7 +8,8 @@ package uk.ac.rhul.rms;
  */
 public enum Diet {
 
-  VEGAN("Ve"), VEGETARIAN("V");
+  VEGAN("Ve"), VEGETARIAN("V"), NON_VEGETERIAN("N-V"), PEANUT("P"),
+  SHELLFISH("S"), WHEAT("G"), DAIRY("D");
 
   private String dietSymbol;
 
@@ -37,6 +38,16 @@ public enum Diet {
         return Diet.VEGETARIAN;
       case "Ve":
         return Diet.VEGAN;
+      case "N-V":
+        return Diet.NON_VEGETERIAN;
+      case "P":
+        return Diet.PEANUT;
+      case "S":
+        return Diet.SHELLFISH;
+      case "G":
+        return Diet.WHEAT;
+      case "D":
+        return Diet.DAIRY;
       default:
         return null;
     }
