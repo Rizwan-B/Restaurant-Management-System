@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.MenuScreenController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.MenuScreenController">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="540.0" prefWidth="960.0">
          <children>
@@ -29,6 +30,7 @@
                   <Font size="36.0" />
                </font>
             </Label>
+            <ListView id="starterList" fx:id="starterList" layoutX="14.0" layoutY="140.0" prefHeight="346.0" prefWidth="910.0" />
          </children></AnchorPane>
   </content>
 </ScrollPane>
