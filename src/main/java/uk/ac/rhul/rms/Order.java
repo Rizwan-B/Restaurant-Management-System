@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class Order {
 
   private ArrayList<MenuItem> orderList;
+  private boolean orderCompletedStatus = false;
 
   /**
    * A public default constructor for the order object.
@@ -26,6 +27,26 @@ public class Order {
    */
   public ArrayList<MenuItem> getOrder() {
     return this.orderList;
+  }
+  
+  /**
+   * A public getter method to return the status of a customer's order.
+   *
+   * @return The status of the order as a boolean.
+   */
+  public boolean getOrderStatus() {
+    return this.orderCompletedStatus;
+  }
+  
+  /**
+   * A public method to change the status of a customer's order.
+   */
+  public void changeOrderStatus() {
+    if (this.orderCompletedStatus == false) {
+      this.orderCompletedStatus = true;
+    } else {
+      this.orderCompletedStatus = false;
+    }
   }
 
   /**
