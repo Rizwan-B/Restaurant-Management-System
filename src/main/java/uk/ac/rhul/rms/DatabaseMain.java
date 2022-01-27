@@ -165,14 +165,15 @@ public class DatabaseMain {
       DatabaseController db = DatabaseController.getInstance();
       try (Connection connect = db.connection()) {
         dropTables(connect, "menu;");
-        createsTable(connect, "menu (food_item varchar(200) NOT NULL,"
-            + "food_id varchar(100) NOT NULL,"
-            + "food_category varchar(50) NOT NULL,"
-            + "food_course varchar(100) NOT NULL,"
-            + "calories varchar(200) NOT NULL,"
-            + "food_description varchar(1000) NOT NULL,"
-            + "Allergens varchar(1000) NOT NULL,"
-            + "PRIMARY KEY (food_id)"
+        createsTable(connect, "menu (itemID int NOT NULL,"
+            + "item_name varchar(200) NOT NULL,"
+            + "calories varchar(100) NOT NULL,"
+            + "category varchar(100) NOT NULL,"
+            + "diet_type varchar(200) NOT NULL,"
+            + "item_description varchar(1000) NOT NULL,"
+            + "item_image_location varchar(1000),"
+            + "PRIMARY KEY (Item_ID)"
+           
             + ");");
         insertFromFile(connect, "menu");
         System.out.println("---Starters---");
