@@ -29,7 +29,6 @@ public class Main extends Application {
   public void start(Stage primaryStage) throws Exception {
     ScreensController mainScreenController = new ScreensController();
     mainScreenController.loadScreen(startScreenID, startScreenFile);
-    mainScreenController.loadScreen(Main.menuScreenID, Main.menuScreenFile);
     mainScreenController.setScreen(startScreenID);
     
 

@@ -15,6 +15,8 @@ import java.sql.Statement;
  * Database to store the data. 
  *
  *@author Muqdas
+ *@author Mohamed Yusuf
+ *@author Lucas Kimber
  *
  */
 public class DatabaseMain {

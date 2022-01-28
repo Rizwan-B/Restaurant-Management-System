@@ -1,7 +1,12 @@
 package uk.ac.rhul.rms;
 
+import java.net.URL;
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
@@ -12,22 +17,37 @@ import uk.ac.rhul.screenmanager.ScreensController;
  * @author Lucas Kimber
  *
  */
-public class MenuScreenController implements ControlledScreen {
+public class MenuScreenController implements ControlledScreen, Initializable {
 
   ScreensController screensController;
-  private Connection connection;
-  
+
   @Override
   public void setScreenParent(ScreensController screenParent) {
     this.screensController = screenParent;
     this.connection = DatabaseController.connection();
   }
-  
+
   @FXML
   private ListView<String> starterList = new ListView<String>();
-  
+
   @FXML
-  public void addItems() {
-    starterList.getItems().add("Hey");
+  private void addStarterItems() throws SQLException {
+
+  }
+
+
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    try {
+      ArrayList<MenuItem> menuStarters = DatabaseController.getMenuStarters();
+      for (MenuItem starter : menuStarters) {
+        // starterList.getItems().add(starter.toString());
+        System.out.println(starter.toString());
+      }
+    } catch (Exception e) {
+      // hehah
+    }
+
+
   }
 }
