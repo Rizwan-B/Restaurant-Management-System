@@ -36,6 +36,7 @@ public class StartScreenController implements ControlledScreen {
   @FXML
   void changeToMenu(ActionEvent event) {
     this.screenController.setScreen(Main.menuScreenID);
+    // call from here.
   }
 
 
