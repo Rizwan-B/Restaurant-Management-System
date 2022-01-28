@@ -31,6 +31,7 @@ public class Main extends Application {
     mainScreenController.loadScreen(startScreenID, startScreenFile);
     mainScreenController.loadScreen(Main.menuScreenID, Main.menuScreenFile);
     mainScreenController.setScreen(startScreenID);
+    
 
 
     Group root = new Group();
