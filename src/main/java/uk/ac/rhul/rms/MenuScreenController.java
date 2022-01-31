@@ -28,7 +28,6 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     this.screensController = screenParent;
 
     this.connection = DatabaseController.connection();
-=======
   }
   
   @FXML
