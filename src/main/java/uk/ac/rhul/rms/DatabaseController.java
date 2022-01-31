@@ -16,32 +16,8 @@ import java.util.ArrayList;
 public class DatabaseController {
 
   private static DatabaseController instance = null;
-  private Connection connection;
 
   private DatabaseController() {}
-
-  /**
-   * This methods creates a database connection from sqlite server.
-   *
-   * @return Connection to run the queries.
-   */
-  public static Connection connection() {
-    String protocol =
-        "jdbc:sqlite:src\\main\\resources\\SQLite\\" + "sqlite-tools-win32-x86-3370200\\menudb.db";
-    Connection connect = null;
-    try {
-      connect = DriverManager.getConnection(protocol);
-    } catch (SQLException e) { // catches SQL Exception
-      String errorMsg = e.getMessage();
-      if (errorMsg.contains("authentication failed")) {
-        System.out.println("-----ERROR-----");
-      } else {
-        System.out.println("Connection failed!");
-        e.printStackTrace();
-      }
-    }
-    return connect;
-  }
 
   /**
    * Gets the object for the class DatabaseController.
@@ -108,8 +84,7 @@ public class DatabaseController {
    *
    * @throws SQLException dfjsfad.
    */
-  public static ArrayList<MenuItem> getMenuStarters() throws SQLException {
-    Connection connection = connection();
+  public static ArrayList<MenuItem> getMenuStarters(Connection connection) throws SQLException {
     ResultSet result = executeQuery(connection, "select * from menu where category='Starters'");
     ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
     int itemId;

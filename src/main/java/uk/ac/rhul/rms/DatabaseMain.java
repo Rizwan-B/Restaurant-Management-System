@@ -165,7 +165,7 @@ public class DatabaseMain {
   public static void main(String[] args) {
     try {
       DatabaseController db = DatabaseController.getInstance();
-      try (Connection connect = db.connection()) {
+      try (Connection connect = DatabaseConnection.getInstance()) {
         dropTables(connect, "menu;");
         createsTable(connect, "menu (itemID int NOT NULL,"
             + "item_name varchar(200) NOT NULL,"

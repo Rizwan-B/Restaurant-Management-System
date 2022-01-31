@@ -2,6 +2,7 @@ package uk.ac.rhul.rms;
 
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -22,13 +23,12 @@ import uk.ac.rhul.screenmanager.ScreensController;
 public class MenuScreenController implements ControlledScreen, Initializable {
 
   ScreensController screensController;
+  private DatabaseController dbController;
+  private Connection dbConnection;
 
   @Override
   public void setScreenParent(ScreensController screenParent) {
     this.screensController = screenParent;
-
-    this.connection = DatabaseController.connection();
-=======
   }
   
   @FXML
@@ -63,15 +63,15 @@ public class MenuScreenController implements ControlledScreen, Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+    dbController = DatabaseController.getInstance();
+    dbConnection = DatabaseConnection.getInstance();
+
     try {
-      ArrayList<MenuItem> menuStarters = DatabaseController.getMenuStarters();
-      for (MenuItem starter : menuStarters) {
-        // starterList.getItems().add(starter.toString());
-        System.out.println(starter.toString());
-      }
+      ArrayList<MenuItem> starters = DatabaseController.getMenuStarters(dbConnection);
     } catch (Exception e) {
-      // hehah
+      System.out.println("error");
     }
+
 
 
   }
