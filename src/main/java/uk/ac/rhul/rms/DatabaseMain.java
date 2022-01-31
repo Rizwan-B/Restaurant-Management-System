@@ -76,7 +76,7 @@ public class DatabaseMain {
     try {
       Statement st = connection.createStatement();
       CSVReader reader = new CSVReader(new FileReader("src\\main\\resources\\uk\\ac"
-              + "\\rhul\\rms\\menu.csv"));
+              + "\\rhul\\rms\\" + table + ".csv"));
       String[] values;
       while ((values = reader.readNext()) != null) {
         String composedLine = "INSERT INTO " + table + " VALUES (";
