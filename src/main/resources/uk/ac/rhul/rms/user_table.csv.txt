@@ -1,0 +1,3 @@
+12345	admin_01	1234admin	ADMIN
+67890	waiter_02	678waiter	WAITER
+48530	staff_03	485staff	STAFF

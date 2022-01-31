@@ -24,7 +24,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
   @Override
   public void setScreenParent(ScreensController screenParent) {
     this.screensController = screenParent;
-    this.connection = DatabaseController.connection();
+    //this.connection = DatabaseController.connection();
   }
 
   @FXML
