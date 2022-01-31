@@ -26,6 +26,9 @@ public class MenuScreenController implements ControlledScreen, Initializable {
   @Override
   public void setScreenParent(ScreensController screenParent) {
     this.screensController = screenParent;
+
+    this.connection = DatabaseController.connection();
+=======
   }
   
   @FXML
@@ -39,6 +42,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
   void backToStart(ActionEvent event) {
     this.screensController.loadScreen(Main.startScreenID, Main.startScreenFile);
     this.screensController.setScreen(Main.startScreenID);
+
   }
 
   @FXML
