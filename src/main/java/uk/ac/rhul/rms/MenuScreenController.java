@@ -5,8 +5,10 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
@@ -24,7 +26,15 @@ public class MenuScreenController implements ControlledScreen, Initializable {
   @Override
   public void setScreenParent(ScreensController screenParent) {
     this.screensController = screenParent;
-    this.connection = DatabaseController.connection();
+  }
+  
+  @FXML
+  private Button backBtn;
+  
+  @FXML
+  void backToStart(ActionEvent event) {
+    this.screensController.loadScreen(Main.startScreenID, Main.startScreenFile);
+    this.screensController.setScreen(Main.startScreenID);
   }
 
   @FXML
@@ -34,6 +44,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
   private void addStarterItems() throws SQLException {
 
   }
+  
 
 
   @Override
