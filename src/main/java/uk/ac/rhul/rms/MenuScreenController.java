@@ -26,15 +26,23 @@ public class MenuScreenController implements ControlledScreen, Initializable {
   @Override
   public void setScreenParent(ScreensController screenParent) {
     this.screensController = screenParent;
+
+    this.connection = DatabaseController.connection();
+=======
   }
   
   @FXML
   private Button backBtn;
+  @FXML
+  private Button callWaitor;
+  @FXML
+  private Button basket;
   
   @FXML
   void backToStart(ActionEvent event) {
     this.screensController.loadScreen(Main.startScreenID, Main.startScreenFile);
     this.screensController.setScreen(Main.startScreenID);
+
   }
 
   @FXML
@@ -45,7 +53,13 @@ public class MenuScreenController implements ControlledScreen, Initializable {
 
   }
   
-
+  void goToBasket(ActionEvent event) {
+    //For whoever to add to
+  }
+  
+  void callTheWaitor(ActionEvent event) {
+    
+  }
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {

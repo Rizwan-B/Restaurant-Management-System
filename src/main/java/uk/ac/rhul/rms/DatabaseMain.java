@@ -76,7 +76,7 @@ public class DatabaseMain {
     try {
       Statement st = connection.createStatement();
       CSVReader reader = new CSVReader(new FileReader("src\\main\\resources\\uk\\ac"
-              + "\\rhul\\rms\\menu.csv"));
+              + "\\rhul\\rms\\" + table + ".csv"));
       String[] values;
       while ((values = reader.readNext()) != null) {
         String composedLine = "INSERT INTO " + table + " VALUES (";
@@ -110,6 +110,7 @@ public class DatabaseMain {
   @SuppressWarnings("static-access")
   
   public static void queries(Connection connect, DatabaseController db) {
+    System.out.println("---Starters---");
     ResultSet query1 = db.executeQuery(connect, "SELECT item_name FROM menu "
         + "WHERE category = 'Starters';");
     try {
@@ -175,8 +176,18 @@ public class DatabaseMain {
             + "item_image_location varchar(1000),"
             + "PRIMARY KEY (ItemID)"
             + ");");
+        dropTables(connect, "user_table;");
+        createsTable(connect, "user_table(user_id int NOT NULL,"
+                              + "user_name varchar(1000) NOT NULL,"
+                              + "password varchar(1000) NOT NULL,"
+                              + "user_role varchar(1000) NOT NULL,"
+                              + "PRIMARY KEY(user_id));");
+        
+        
         insertFromFile(connect, "menu");
-        System.out.println("---Starters---");
+        insertFromFile(connect, "user_table");
+
+      
         queries(connect, db);
       
       }
