@@ -30,6 +30,10 @@ public class MenuScreenController implements ControlledScreen, Initializable {
   
   @FXML
   private Button backBtn;
+  @FXML
+  private Button callWaitor;
+  @FXML
+  private Button basket;
   
   @FXML
   void backToStart(ActionEvent event) {
@@ -45,7 +49,13 @@ public class MenuScreenController implements ControlledScreen, Initializable {
 
   }
   
-
+  void goToBasket(ActionEvent event) {
+    //For whoever to add to
+  }
+  
+  void callTheWaitor(ActionEvent event) {
+    
+  }
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
