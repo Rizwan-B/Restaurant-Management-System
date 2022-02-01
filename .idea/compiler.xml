@@ -9,8 +9,5 @@
         <module name="TeamProject2022_20" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="TeamProject2022_20" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
