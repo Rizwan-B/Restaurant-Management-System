@@ -106,7 +106,6 @@ public class DatabaseController {
           itemDescription, itemImageLocation);
       menuItems.add(menuItem);
     }
-    
     return menuItems;
   }
 
