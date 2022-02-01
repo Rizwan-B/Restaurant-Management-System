@@ -10,7 +10,7 @@ public class DatabaseConnection {
     private static Connection instance = null;
 
     private static Connection connection(){
-      //  Class.forName("org.sqlite.JDBC");
+
         String protocol =
                 "jdbc:sqlite:src/main/resources/SQLite/sqlite-tools-win32-x86-3370200/menudb.db";
         Connection connect = null;

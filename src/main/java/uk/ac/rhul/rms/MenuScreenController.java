@@ -2,6 +2,7 @@ package uk.ac.rhul.rms;
 
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -20,85 +21,57 @@ import uk.ac.rhul.screenmanager.ScreensController;
  */
 public class MenuScreenController implements ControlledScreen, Initializable {
 
-  private ScreensController screensController;
-  private Connection connection;
+  ScreensController screensController;
+  private DatabaseController dbController;
+  private Connection dbConnection;
 
   @Override
   public void setScreenParent(ScreensController screenParent) {
     this.screensController = screenParent;
   }
-
-  @FXML
-  private ListView<String> starterList;
-
-  @FXML
-  private ListView<String> mainList;
-
-  @FXML
-  private ListView<String> dessertList;
-
+  
   @FXML
   private Button backBtn;
-
   @FXML
-  private Button basketBtn;
-
+  private Button callWaitor;
   @FXML
-  void backBtnPressed(ActionEvent event) {
-    this.connection = null; // Garbage collector should remove this value but idk just to be safe.
+  private Button basket;
+  
+  @FXML
+  void backToStart(ActionEvent event) {
+    this.screensController.loadScreen(Main.startScreenID, Main.startScreenFile);
     this.screensController.setScreen(Main.startScreenID);
+
   }
 
   @FXML
-  void basketBtnPressed(ActionEvent event) {
-    this.screensController.loadScreen(Main.basketScreenID, Main.basketScreenFile);
-    this.screensController.setScreen(Main.basketScreenID);
+  private ListView<String> starterList = new ListView<String>();
+
+  @FXML
+  private void addStarterItems() throws SQLException {
+
   }
-
-
-
-  private void addStarters() {
-    try {
-      ArrayList<MenuItem> starters = DatabaseController.getMenuItems(this.connection, "Starters");
-      for (MenuItem starter : starters) {
-        System.out.println(starter.getName());
-        this.starterList.getItems().add(starter.getName());
-      }
-    } catch(Exception e) {
-      System.out.println("oops");
-    }
+  
+  void goToBasket(ActionEvent event) {
+    //For whoever to add to
   }
-
-  private void addMainCourse() {
-    try {
-      ArrayList<MenuItem> mains = DatabaseController.getMenuItems(this.connection, "Main");
-      for (MenuItem main : mains) {
-        System.out.println(main.getName());
-        this.mainList.getItems().add(main.getName());
-      }
-    } catch(Exception e) {
-      System.out.println("oops");
-    }
-  }
-
-  private void addDessert() {
-    try {
-      ArrayList<MenuItem> desserts = DatabaseController.getMenuItems(this.connection, "Dessert");
-      for (MenuItem dessert : desserts) {
-        System.out.println(dessert.getName());
-        this.dessertList.getItems().add(dessert.getName());
-      }
-    } catch(Exception e) {
-      System.out.println("oops");
-    }
+  
+  void callTheWaitor(ActionEvent event) {
+    
   }
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    this.connection = DatabaseConnection.getInstance();
-    this.addStarters();
-    this.addMainCourse();
-    this.addDessert();
-  }
+    dbController = DatabaseController.getInstance();
+    dbConnection = DatabaseConnection.getInstance();
 
+    try {
+      ArrayList<MenuItem> starters = DatabaseController.getMenuItems(dbConnection,"Starters");
+    } catch (Exception e) {
+      System.out.println("error");
+    }
+
+
+
+  }
 }
