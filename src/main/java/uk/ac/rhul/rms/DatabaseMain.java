@@ -182,6 +182,12 @@ public class DatabaseMain {
                               + "password varchar(1000) NOT NULL,"
                               + "user_role varchar(1000) NOT NULL,"
                               + "PRIMARY KEY(user_id));");
+        dropTables(connect, "reservations;");
+        createsTable(connect, "reservations (reservation_id int NOT NULL,"
+                                            + "customer_name varchar(1000) NOT NULL,"
+                                            + "table_number int NOT NULL,"
+                                            + "PRIMARY KEY(reservation_id)"
+                                            + ");");
         
         
         insertFromFile(connect, "menu");
