@@ -20,21 +20,22 @@ import uk.ac.rhul.screenmanager.ScreensController;
  */
 public class MenuScreenController implements ControlledScreen, Initializable {
 
-  ScreensController screensController;
+  private ScreensController screensController;
+  private Connection connection;
 
   @Override
   public void setScreenParent(ScreensController screenParent) {
     this.screensController = screenParent;
   }
 
-  @Override
-  public void initialize(URL location, ResourceBundle resources) {
-    System.out.println("hello");
-  }
-
-
   @FXML
   private ListView<String> starterList;
+
+  @FXML
+  private ListView<String> mainList;
+
+  @FXML
+  private ListView<String> dessertList;
 
   @FXML
   private Button backBtn;
@@ -44,6 +45,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
 
   @FXML
   void backBtnPressed(ActionEvent event) {
+    this.connection = null; // Garbage collector should remove this value but idk just to be safe.
     this.screensController.setScreen(Main.startScreenID);
   }
 
@@ -54,5 +56,49 @@ public class MenuScreenController implements ControlledScreen, Initializable {
   }
 
 
+
+  private void addStarters() {
+    try {
+      ArrayList<MenuItem> starters = DatabaseController.getMenuItems(this.connection, "Starters");
+      for (MenuItem starter : starters) {
+        System.out.println(starter.getName());
+        this.starterList.getItems().add(starter.getName());
+      }
+    } catch(Exception e) {
+      System.out.println("oops");
+    }
+  }
+
+  private void addMainCourse() {
+    try {
+      ArrayList<MenuItem> mains = DatabaseController.getMenuItems(this.connection, "Main");
+      for (MenuItem main : mains) {
+        System.out.println(main.getName());
+        this.mainList.getItems().add(main.getName());
+      }
+    } catch(Exception e) {
+      System.out.println("oops");
+    }
+  }
+
+  private void addDessert() {
+    try {
+      ArrayList<MenuItem> desserts = DatabaseController.getMenuItems(this.connection, "Dessert");
+      for (MenuItem dessert : desserts) {
+        System.out.println(dessert.getName());
+        this.dessertList.getItems().add(dessert.getName());
+      }
+    } catch(Exception e) {
+      System.out.println("oops");
+    }
+  }
+
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    this.connection = DatabaseConnection.getInstance();
+    this.addStarters();
+    this.addMainCourse();
+    this.addDessert();
+  }
 
 }

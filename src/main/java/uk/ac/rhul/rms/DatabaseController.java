@@ -84,8 +84,8 @@ public class DatabaseController {
    *
    * @throws SQLException dfjsfad.
    */
-  public static ArrayList<MenuItem> getMenuStarters(Connection connection) throws SQLException {
-    ResultSet result = executeQuery(connection, "select * from menu where category='Starters'");
+  public static ArrayList<MenuItem> getMenuItems(Connection connection, String categoryType) throws SQLException {
+    ResultSet result = executeQuery(connection, "select * from menu where category='" + categoryType + "'");
     ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
     int itemId;
     String itemName;
