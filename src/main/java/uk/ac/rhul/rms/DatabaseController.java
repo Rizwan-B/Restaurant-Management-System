@@ -109,4 +109,8 @@ public class DatabaseController {
     return menuItems;
   }
 
+  public static void callWaiterOnTable(Connection connection, int tableNumber) throws SQLException{
+    Statement st = connection.createStatement();
+    st.execute("insert into waiter_call values(NULL, " + tableNumber + ", 0)");
+  }
 }
