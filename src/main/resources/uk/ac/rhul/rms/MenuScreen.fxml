@@ -9,7 +9,7 @@
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.MenuScreenController">
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="786.0" prefWidth="960.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2000.0" prefWidth="960.0">
          <children>
             <Label alignment="CENTER" layoutX="-5.0" layoutY="7.0" prefHeight="57.0" prefWidth="947.0" text="Menu">
                <font>
@@ -26,7 +26,7 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <Label layoutX="7.0" layoutY="619.0" prefHeight="57.0" prefWidth="266.0" text="Dessert">
+            <Label layoutX="7.0" layoutY="912.0" prefHeight="57.0" prefWidth="266.0" text="Dessert">
                <font>
                   <Font size="36.0" />
                </font>
@@ -42,6 +42,8 @@
                   <Font size="29.0" />
                </font>
             </Button>
+            <ListView id="starterList" fx:id="mainList" layoutX="13.0" layoutY="546.0" prefHeight="346.0" prefWidth="910.0" />
+            <ListView id="starterList" fx:id="dessertList" layoutX="13.0" layoutY="969.0" prefHeight="346.0" prefWidth="910.0" />
          </children></AnchorPane>
   </content>
 </ScrollPane>
