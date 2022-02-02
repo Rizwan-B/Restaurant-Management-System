@@ -32,8 +32,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
   
   @FXML
   private Button backBtn;
-  @FXML
-  private Button callWaitor;
+
   @FXML
   private Button basket;
   
