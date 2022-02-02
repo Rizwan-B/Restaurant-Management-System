@@ -188,6 +188,12 @@ public class DatabaseMain {
                                             + "table_number int NOT NULL,"
                                             + "PRIMARY KEY(reservation_id)"
                                             + ");");
+        dropTables(connect, "waiter_call;");
+        createsTable(connect, "waiter_call (waiter_id int NOT NULL,"
+                + "table_no int NOT NULL,"
+                + "PRIMARY KEY(table_no)"
+                + ");");
+
         
         
         insertFromFile(connect, "menu");
