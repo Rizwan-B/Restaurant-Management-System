@@ -2,4 +2,6 @@
 /src/main/resources/uk/ac/rhul/RMSUMLDiagram.uxf
 /.idea/
 /.settings/
+.classpath
+.project
 
