@@ -26,7 +26,8 @@ public class Main extends Application {
   public static String basketScreenID = "basketScreen";
   public static String basketScreenFile = "/uk/ac/rhul/rms/BasketScreen.fxml";
 
-
+  public static String callWaiterScreenID = "callWaiterScreen";
+  public static String callWaiterScreenFile = "/uk/ac/rhul/rms/CallWaiterScreen.fxml";
 
 
   @Override
