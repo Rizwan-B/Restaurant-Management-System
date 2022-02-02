@@ -97,5 +97,4 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         this.addMainCourse();
         this.addDessert();
     }
-
 }
