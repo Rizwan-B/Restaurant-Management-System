@@ -189,8 +189,9 @@ public class DatabaseMain {
                                             + "PRIMARY KEY(reservation_id)"
                                             + ");");
         dropTables(connect, "waiter_call;");
-        createsTable(connect, "waiter_call (waiter_id int NOT NULL,"
+        createsTable(connect, "waiter_call (waiter_id int,"
                 + "table_no int NOT NULL,"
+                + "served int NOT NULL,"
                 + "PRIMARY KEY(table_no)"
                 + ");");
 

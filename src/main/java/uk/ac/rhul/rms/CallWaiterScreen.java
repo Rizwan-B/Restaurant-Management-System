@@ -17,14 +17,22 @@ public class CallWaiterScreen implements ControlledScreen {
         this.screensController = screenParent;
     }
 
-    @FXML
-    private Button callWaiterButton;
 
     @FXML
-    private TextField tableNumber;
+    private TextField tableNumberField;
 
     @FXML
-    void callWaiter(ActionEvent event) {
-        System.out.println("Hello!");
+    private Button callWaiterBtn;
+
+    @FXML
+    void callWaiterBtnPressed(ActionEvent event) {
+        try {
+            String tableNumberString = this.tableNumberField.getText();
+            int tableNumber = Integer.parseInt(tableNumberString);
+
+            System.out.println(tableNumber);
+        } catch (Exception e) {
+            System.out.println("number format exception.");
+        }
     }
 }

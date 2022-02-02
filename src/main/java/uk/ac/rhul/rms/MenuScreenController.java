@@ -59,6 +59,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     @FXML
     void callWaiterBtnPressed(ActionEvent event) {
         this.screensController.loadScreen(Main.callWaiterScreenID, Main.callWaiterScreenFile);
+        this.screensController.setScreen(Main.callWaiterScreenID);
     }
 
 
