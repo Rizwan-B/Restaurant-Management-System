@@ -16,62 +16,86 @@ import uk.ac.rhul.screenmanager.ScreensController;
 /**
  * The screen controller for the menu screen implementing the ControlledScreen Interface.
  *
- * @author Lucas Kimber
+ * @author Mohamed Yusuf
  *
  */
 public class MenuScreenController implements ControlledScreen, Initializable {
 
-  ScreensController screensController;
-  private DatabaseController dbController;
-  private Connection dbConnection;
+    private ScreensController screensController;
+    private Connection connection;
 
-  @Override
-  public void setScreenParent(ScreensController screenParent) {
-    this.screensController = screenParent;
-  }
-  
-  @FXML
-  private Button backBtn;
-  @FXML
-  private Button callWaitor;
-  @FXML
-  private Button basket;
-  
-  @FXML
-  void backToStart(ActionEvent event) {
-    this.screensController.loadScreen(Main.startScreenID, Main.startScreenFile);
-    this.screensController.setScreen(Main.startScreenID);
+    @Override
+    public void setScreenParent(ScreensController screenParent) {
+        this.screensController = screenParent;
+    }
 
-  }
+    @FXML
+    private ListView<String> starterList;
 
-  @FXML
-  private ListView<String> starterList = new ListView<String>();
+    @FXML
+    private ListView<String> mainList;
 
-  @FXML
-  private void addStarterItems() throws SQLException {
+    @FXML
+    private ListView<String> dessertList;
 
-  }
-  
-  void goToBasket(ActionEvent event) {
-    //For whoever to add to
-  }
-  
-  void callTheWaitor(ActionEvent event) {
-    
-  }
+    @FXML
+    private Button backBtn;
 
-  @Override
-  public void initialize(URL location, ResourceBundle resources) {
-    dbController = DatabaseController.getInstance();
-    dbConnection = DatabaseConnection.getInstance();
+    @FXML
+    void backBtnPressed(ActionEvent event) {
+        this.connection = null; // Garbage collector should remove this value but idk just to be safe.
+        this.screensController.setScreen(Main.startScreenID);
+    }
 
-    try {
-      ArrayList<MenuItem> starters = DatabaseController.getMenuItems(dbConnection,"Starters");
-    } catch (Exception e) {
-      System.out.println("error");
+    @FXML
+    void basketBtnPressed(ActionEvent event) {
+        this.screensController.loadScreen(Main.basketScreenID, Main.basketScreenFile);
+        this.screensController.setScreen(Main.basketScreenID);
     }
 
 
+    private void addStarters() {
+        try {
+            ArrayList<MenuItem> starters = DatabaseController.getMenuItems(this.connection, "Starters");
+            for (MenuItem starter : starters) {
+                System.out.println(starter.getName());
+                this.starterList.getItems().add(starter.getName());
+            }
+        } catch(Exception e) {
+            System.out.println("oops");
+        }
+    }
 
-  }
+    private void addMainCourse() {
+        try {
+            ArrayList<MenuItem> mains = DatabaseController.getMenuItems(this.connection, "Main");
+            for (MenuItem main : mains) {
+                System.out.println(main.getName());
+                this.mainList.getItems().add(main.getName());
+            }
+        } catch(Exception e) {
+            System.out.println("oops");
+        }
+    }
+
+    private void addDessert() {
+        try {
+            ArrayList<MenuItem> desserts = DatabaseController.getMenuItems(this.connection, "Dessert");
+            for (MenuItem dessert : desserts) {
+                System.out.println(dessert.getName());
+                this.dessertList.getItems().add(dessert.getName());
+            }
+        } catch(Exception e) {
+            System.out.println("oops");
+        }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        this.connection = DatabaseConnection.getInstance();
+        this.addStarters();
+        this.addMainCourse();
+        this.addDessert();
+    }
+
 }
