@@ -6,6 +6,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
+/**
+ * The screen controller for the login screen implementing the ControlledScreen Interface.
+ *
+ * @author Virginia Litta
+ *
+ */
+
 public class LoginScreenController implements ControlledScreen {
 
     ScreensController screensController;
