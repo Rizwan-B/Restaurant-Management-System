@@ -42,11 +42,13 @@ public class StartScreenController implements ControlledScreen {
 
   @FXML
   void changeToKitchenStaffLogin(ActionEvent event) {
-    System.out.println("kitchen staff login.");
+    this.screenController.loadScreen(Main.loginScreenID, Main.loginScreenFile);
+    this.screenController.setScreen(Main.loginScreenID);
   }
 
   @FXML
   void changeToWaiterLogin(ActionEvent event) {
-    System.out.println("waiter login.");
+    this.screenController.loadScreen(Main.loginScreenID, Main.loginScreenFile);
+    this.screenController.setScreen(Main.loginScreenID);
   }
 }

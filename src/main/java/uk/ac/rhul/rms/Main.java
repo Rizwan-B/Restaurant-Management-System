@@ -29,6 +29,9 @@ public class Main extends Application {
   public static String callWaiterScreenID = "callWaiterScreen";
   public static String callWaiterScreenFile = "/uk/ac/rhul/rms/CallWaiterScreen.fxml";
 
+  public static String loginScreenID = "loginScreen";
+  public static String loginScreenFile = "/uk/ac/rhul/rms/LoginScreen.fxml";
+
 
   @Override
   public void start(Stage primaryStage) throws Exception {
