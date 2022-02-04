@@ -39,6 +39,11 @@ public class StartScreenController implements ControlledScreen {
     this.screenController.setScreen(Main.menuScreenID);
   }
 
+  @FXML
+  void changeToReservation(ActionEvent event) {
+    this.screenController.loadScreen(Main.reservationScreenID, Main.reservationScreenFile);
+    this.screenController.setScreen(Main.reservationScreenID);
+  }
 
   @FXML
   void changeToKitchenStaffLogin(ActionEvent event) {
