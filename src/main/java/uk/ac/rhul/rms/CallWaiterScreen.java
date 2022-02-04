@@ -45,6 +45,12 @@ public class CallWaiterScreen implements ControlledScreen {
     }
 
     @FXML
+    void backBtnPressed(ActionEvent event) {
+        this.screensController.loadScreen(Main.menuScreenID, Main.menuScreenFile);
+        this.screensController.setScreen(Main.menuScreenID);
+    }
+
+    @FXML
     void justNothing(ActionEvent event) {
         ResultSet test = DatabaseController.executeQuery(DatabaseConnection.getInstance(), "select * from waiter_call");
         try{
