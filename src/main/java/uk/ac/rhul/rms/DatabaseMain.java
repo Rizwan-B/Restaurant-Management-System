@@ -148,6 +148,13 @@ public class DatabaseMain {
       while ((query6.next())) {
         System.out.println(query6.getString(1));
       }
+
+      System.out.println("\n\n USERS");
+      ResultSet query7 = db.executeQuery(connect, "SELECT * FROM user_table");
+      while(query7.next()) {
+        System.out.println(query7.getString(1) + ", " + query7.getString(2) + ", "
+                + query7.getString(3) + ", " + query7.getString(4));
+      }
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -194,13 +201,10 @@ public class DatabaseMain {
                 + "served int NOT NULL,"
                 + "PRIMARY KEY(table_no)"
                 + ");");
-
-        
         
         insertFromFile(connect, "menu");
         insertFromFile(connect, "user_table");
 
-      
         queries(connect, db);
       
       }

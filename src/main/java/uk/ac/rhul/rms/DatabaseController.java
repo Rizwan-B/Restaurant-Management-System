@@ -113,4 +113,15 @@ public class DatabaseController {
     Statement st = connection.createStatement();
     st.execute("insert into waiter_call values(NULL, " + tableNumber + ", 0)");
   }
+
+  public static String loginTest(Connection connection, String username, String password) throws SQLException {
+    Statement st = connection.createStatement();
+    ResultSet role = st.executeQuery("SELECT user_role FROM user_table WHERE user_name='"
+            + username + "' AND password='" + password + "'");
+    String user_role = "";
+    while (role.next()) {
+      user_role = role.getString(1);
+    }
+    return user_role;
+  }
 }
