@@ -1,16 +1,21 @@
 package uk.ac.rhul.rms;
 
-import uk.ac.rhul.screenmanager.ControlledScreen;
-import uk.ac.rhul.screenmanager.ScreensController;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import uk.ac.rhul.screenmanager.ControlledScreen;
+import uk.ac.rhul.screenmanager.ScreensController;
 
-import javax.xml.crypto.Data;
 
+/**
+ * The screen controller for the call waiter screen interface.
+ *
+ * @author Rizwan Bagdadi
+ *
+ */
 public class CallWaiterScreen implements ControlledScreen {
 
 
@@ -20,7 +25,6 @@ public class CallWaiterScreen implements ControlledScreen {
     public void setScreenParent(ScreensController screenParent) {
         this.screensController = screenParent;
     }
-
 
     @FXML
     private TextField tableNumberField;
