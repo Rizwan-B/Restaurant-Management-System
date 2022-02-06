@@ -201,7 +201,14 @@ public class DatabaseMain {
                 + "served int NOT NULL,"
                 + "PRIMARY KEY(table_no)"
                 + ");");
-        
+
+        dropTables(connect, "orders_table");
+        createsTable(connect, "orders_table (order_id int," +
+                "table_no int NOT NULL," +
+                "orders_list varchar(100)," +
+                "canceled number(1)," +
+                "PRIMARY KEY(order_id));");
+
         insertFromFile(connect, "menu");
         insertFromFile(connect, "user_table");
 

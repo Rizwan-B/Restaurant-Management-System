@@ -1,11 +1,14 @@
 package uk.ac.rhul.rms;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
  * An object class that holds the entire order of the customer.
  *
  * @author Rizwan Bagdadi
+ * @author Lucas Kimber
  */
 public class Order {
 
@@ -42,11 +45,7 @@ public class Order {
    * A public method to change the status of a customer's order.
    */
   public void changeOrderStatus() {
-    if (this.orderCompletedStatus == false) {
-      this.orderCompletedStatus = true;
-    } else {
-      this.orderCompletedStatus = false;
-    }
+    this.orderCompletedStatus = !this.orderCompletedStatus;
   }
 
   /**
@@ -69,5 +68,16 @@ public class Order {
         this.orderList.remove(i);
       }
     }
+  }
+
+  private ArrayList<MenuItem> parseOrderList(String itemListString) throws SQLException {
+    String[] itemIDs = itemListString.split(",");
+    ArrayList<MenuItem> menuItems = new ArrayList<>();
+    Connection connection = DatabaseConnection.getInstance();
+
+    for(String itemID : itemIDs){
+      menuItems.add(DatabaseController.getMenuItem(itemID, connection));
+    }
+    return menuItems;
   }
 }
