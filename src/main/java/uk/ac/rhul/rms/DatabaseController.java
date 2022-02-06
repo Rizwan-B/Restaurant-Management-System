@@ -11,13 +11,13 @@ import java.util.ArrayList;
  * This class handles the connection to database.
  *
  * @author Muqdas
- *
  */
 public class DatabaseController {
 
   private static DatabaseController instance = null;
 
-  private DatabaseController() {}
+  private DatabaseController() {
+  }
 
   /**
    * Gets the object for the class DatabaseController.
@@ -36,7 +36,7 @@ public class DatabaseController {
    * Executes queries through sqlite.
    *
    * @param connect to database.
-   * @param query is the query passed into sqlite.
+   * @param query   is the query passed into sqlite.
    * @return the result from the query as ResultSet type.
    */
   public static ResultSet executeQuery(Connection connect, String query) {
@@ -109,7 +109,33 @@ public class DatabaseController {
     return menuItems;
   }
 
-  public static void callWaiterOnTable(Connection connection, int tableNumber) throws SQLException{
+  public static MenuItem getMenuItem(String itemPrimaryKey, Connection connection) throws SQLException {
+    int itemId;
+    String itemName;
+    int calories;
+    String category;
+    Diet dietType;
+    String itemDescription;
+    String itemImageLocation;
+
+    ResultSet result = executeQuery(connection, "select * from menu where id = '" + itemPrimaryKey + "'");
+
+    itemId = result.getInt("itemID");
+    itemName = result.getString("item_name");
+    calories = result.getInt("calories");
+    category = result.getString("category");
+    dietType = Diet.toDiet(result.getString("diet_type"));
+    itemDescription = result.getString("item_description");
+    itemImageLocation = result.getString("item_image_location");
+    MenuItem menuItem = new MenuItem(itemId, itemName, calories, category, dietType,
+        itemDescription, itemImageLocation);
+
+    //TODO: Add try / catch and custom exception
+
+    return menuItem;
+  }
+
+  public static void callWaiterOnTable(Connection connection, int tableNumber) throws SQLException {
     Statement st = connection.createStatement();
     st.execute("insert into waiter_call values(NULL, " + tableNumber + ", 0)");
   }
@@ -117,7 +143,7 @@ public class DatabaseController {
   public static String loginTest(Connection connection, String username, String password) throws SQLException {
     Statement st = connection.createStatement();
     ResultSet role = st.executeQuery("SELECT user_role FROM user_table WHERE user_name='"
-            + username + "' AND password='" + password + "'");
+        + username + "' AND password='" + password + "'");
     String user_role = "";
     while (role.next()) {
       user_role = role.getString(1);
