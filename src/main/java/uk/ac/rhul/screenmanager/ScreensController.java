@@ -30,6 +30,8 @@ public class ScreensController extends StackPane {
    */
   private HashMap<String, Node> screens = new HashMap<>();
 
+  private String userController;
+
   /**
    * A public default constructor for ScreensController.
    */
@@ -136,6 +138,14 @@ public class ScreensController extends StackPane {
     } else {
       return true;
     }
+  }
+
+  public void setUserController(String username) {
+    this.userController = username;
+  }
+
+  public String getUserController() {
+    return this.userController;
   }
 
 }

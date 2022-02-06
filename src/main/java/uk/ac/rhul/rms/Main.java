@@ -35,13 +35,22 @@ public class Main extends Application {
   public static String loginScreenID = "loginScreen";
   public static String loginScreenFile = "/uk/ac/rhul/rms/LoginScreen.fxml";
 
+  public static String staffPortalScreenID = "staffPortal";
+  public static String staffPortalScreenFile = "/uk/ac/rhul/rms/StaffPortalScreen.fxml";
+
+  public static String waiterPortalScreenID = "waiterPortal";
+  public static String WaiterPortalScreenFile = "/uk/ac/rhul/rms/WaiterPortalScreen.fxml";
+
 
   @Override
   public void start(Stage primaryStage) throws Exception {
     ScreensController mainScreenController = new ScreensController();
+    mainScreenController.loadScreen(waiterPortalScreenID, WaiterPortalScreenFile);
+    mainScreenController.loadScreen(staffPortalScreenID, staffPortalScreenFile);
+    // ^ added this here cause of the login bypass functionality.
     mainScreenController.loadScreen(startScreenID, startScreenFile);
     mainScreenController.setScreen(startScreenID);
-    
+
 
 
     Group root = new Group();
