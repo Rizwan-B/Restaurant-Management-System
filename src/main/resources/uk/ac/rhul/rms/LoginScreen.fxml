@@ -1,20 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.LoginScreenController">
    <children>
-      <TextField fx:id="usernameField" layoutX="385.0" layoutY="216.0" promptText="Username" />
-      <Button fx:id="loginBtn" layoutX="436.0" layoutY="300.0" mnemonicParsing="false" onAction="#login" text="Login" />
-      <PasswordField fx:id="passwordField" layoutX="385.0" layoutY="258.0" promptText="Password" />
-      <Button fx:id="backBtn" layoutX="697.0" layoutY="16.0" mnemonicParsing="false" onAction="#backBtnPressed" prefHeight="53.0" prefWidth="227.0" text="Back">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="354.0" layoutX="343.0" layoutY="131.0" stroke="BLACK" strokeType="INSIDE" width="297.0" />
+      <TextField fx:id="usernameField" layoutX="385.0" layoutY="219.0" prefHeight="39.0" prefWidth="194.0" promptText="Username">
          <font>
-            <Font size="29.0" />
+            <Font size="18.0" />
+         </font></TextField>
+      <Button fx:id="loginBtn" layoutX="362.0" layoutY="375.0" mnemonicParsing="false" onAction="#login" prefHeight="63.0" prefWidth="255.0" text="Login">
+         <font>
+            <Font size="36.0" />
+         </font></Button>
+      <PasswordField fx:id="passwordField" layoutX="385.0" layoutY="270.0" prefHeight="39.0" prefWidth="194.0" promptText="Password">
+         <font>
+            <Font size="18.0" />
+         </font></PasswordField>
+      <Button fx:id="backBtn" layoutX="6.0" layoutY="14.0" mnemonicParsing="false" onAction="#backBtnPressed" prefHeight="46.0" prefWidth="101.0" text="Back">
+         <font>
+            <Font size="22.0" />
          </font>
       </Button>
+      <Label layoutX="381.0" layoutY="14.0" text="Log In">
+         <font>
+            <Font size="80.0" />
+         </font>
+      </Label>
+      <Label fx:id="resultLabel" alignment="CENTER" layoutX="347.0" layoutY="131.0" prefHeight="68.0" prefWidth="290.0" style="-fx-text-fill: red;" textAlignment="CENTER" textFill="RED" wrapText="true">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="790.0" layoutY="37.0" text="Bypass:">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="796.0" layoutY="123.0" text="Waiters:">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button fx:id="ahmed" layoutX="796.0" layoutY="174.0" mnemonicParsing="false" onAction="#bypass" text="Ahmed" />
+      <Button fx:id="rizwan" layoutX="796.0" layoutY="207.0" mnemonicParsing="false" onAction="#bypass" text="Rizwan" />
+      <Button fx:id="virginia" layoutX="796.0" layoutY="239.0" mnemonicParsing="false" onAction="#bypass" text="Virginia" />
+      <Label layoutX="796.0" layoutY="290.0" prefHeight="27.0" prefWidth="113.0" text="Kitchen Staff:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="mo" layoutX="797.0" layoutY="326.0" mnemonicParsing="false" onAction="#bypass" text="Mo" />
+      <Button fx:id="lucas" layoutX="797.0" layoutY="363.0" mnemonicParsing="false" onAction="#bypass" text="Lucas" />
+      <Button fx:id="muqdas" layoutX="797.0" layoutY="401.0" mnemonicParsing="false" onAction="#bypass" text="Muqdas" />
+      <Label layoutX="793.0" layoutY="439.0" prefHeight="27.0" prefWidth="113.0" text="Admin:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="admin" layoutX="797.0" layoutY="473.0" mnemonicParsing="false" onAction="#bypass" text="Admin" />
    </children>
 </Pane>

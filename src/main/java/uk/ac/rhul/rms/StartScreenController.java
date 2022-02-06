@@ -28,10 +28,10 @@ public class StartScreenController implements ControlledScreen {
   private Button menuBtn;
   
   @FXML
-  private Button waiterLoginBtn;
+  private Button loginBtn;
 
   @FXML
-  private Button kitchenStaffLoginBtn;
+  private Button reservationBtn;
 
   @FXML
   void changeToMenu(ActionEvent event) {
@@ -46,13 +46,7 @@ public class StartScreenController implements ControlledScreen {
   }
 
   @FXML
-  void changeToKitchenStaffLogin(ActionEvent event) {
-    this.screenController.loadScreen(Main.loginScreenID, Main.loginScreenFile);
-    this.screenController.setScreen(Main.loginScreenID);
-  }
-
-  @FXML
-  void changeToWaiterLogin(ActionEvent event) {
+  void loginBtnPressed(ActionEvent event) {
     this.screenController.loadScreen(Main.loginScreenID, Main.loginScreenFile);
     this.screenController.setScreen(Main.loginScreenID);
   }
