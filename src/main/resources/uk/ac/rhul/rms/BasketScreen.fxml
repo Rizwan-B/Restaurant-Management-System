@@ -5,8 +5,9 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.BasketScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.BasketScreenController">
    <children>
+      <Button fx:id="backBtn" layoutX="65.0" layoutY="37.0" mnemonicParsing="false" onAction="#backBtnPressed" text="Back" />
       <AnchorPane layoutX="168.0" prefHeight="400.0" prefWidth="265.0">
          <children>
             <Button layoutX="68.0" layoutY="347.0" mnemonicParsing="false" text="Continue to payment" />

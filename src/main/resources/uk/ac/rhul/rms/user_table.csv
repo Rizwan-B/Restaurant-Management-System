@@ -1,3 +1,7 @@
-12345,admin_01,1234admin,ADMIN
-67890,waiter_02,678waiter,WAITER
-48530,staff_03,485staff,STAFF
+1,admin,1234admin,ADMIN
+2,Ahmed,waiter1,WAITER
+3,Rizwan,waiter2,WAITER
+4,Virginia,waiter3,WAITER
+5,Mo,staff1,STAFF
+6,Lucas,staff2,STAFF
+7,Muqdas,staff3,STAFF

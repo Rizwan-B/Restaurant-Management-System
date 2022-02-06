@@ -42,6 +42,9 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     private Button backBtn;
 
     @FXML
+    private Button callWaiterBtn;
+
+    @FXML
     void backBtnPressed(ActionEvent event) {
         this.connection = null; // Garbage collector should remove this value but idk just to be safe.
         this.screensController.setScreen(Main.startScreenID);
@@ -51,6 +54,12 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     void basketBtnPressed(ActionEvent event) {
         this.screensController.loadScreen(Main.basketScreenID, Main.basketScreenFile);
         this.screensController.setScreen(Main.basketScreenID);
+    }
+
+    @FXML
+    void callWaiterBtnPressed(ActionEvent event) {
+        this.screensController.loadScreen(Main.callWaiterScreenID, Main.callWaiterScreenFile);
+        this.screensController.setScreen(Main.callWaiterScreenID);
     }
 
 
