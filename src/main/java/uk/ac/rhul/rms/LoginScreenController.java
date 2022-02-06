@@ -15,6 +15,7 @@ import java.sql.SQLException;
  * The screen controller for the login screen implementing the ControlledScreen Interface.
  *
  * @author Virginia Litta
+ * @author Mohamed Yusuf
  *
  */
 
