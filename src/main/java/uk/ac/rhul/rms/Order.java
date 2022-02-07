@@ -74,9 +74,9 @@ public class Order {
    *
    * @param itemListString A string containing the item IDs of an order.
    * @return An ArrayList containing all the MenuItems of the order.
-   * @throws SQLException
+   * @throws InvalidMenuIdException Thrown if one of the menu items in the order doesn't exist.
    */
-  private ArrayList<MenuItem> parseOrderList(String itemListString) throws SQLException {
+  private ArrayList<MenuItem> parseOrderList(String itemListString) throws InvalidMenuIdException {
     String[] itemIds = itemListString.split(",");
     ArrayList<MenuItem> menuItems = new ArrayList<>();
     Connection connection = DatabaseConnection.getInstance();
