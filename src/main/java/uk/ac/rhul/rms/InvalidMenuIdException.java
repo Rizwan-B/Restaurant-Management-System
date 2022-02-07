@@ -2,6 +2,8 @@ package uk.ac.rhul.rms;
 
 /**
  * An exception that is thrown when an attempt is made to get a menu item using a non-existent primary key.
+ *
+ * @author Lucas Kimber
  */
 public class InvalidMenuIdException extends Exception {
 
