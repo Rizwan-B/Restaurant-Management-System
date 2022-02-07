@@ -109,7 +109,14 @@ public class DatabaseController {
     return menuItems;
   }
 
-  public static MenuItem getMenuItem(String itemPrimaryKey, Connection connection) throws SQLException {
+  /**
+   *
+   * @param itemPrimaryKey The primary key of the menu item to be returned from the database.
+   * @param connection The connection to the database.
+   * @return A menuItem with the values corresponding to the item with the corresponding primary key.
+   * @throws InvalidMenuIdException Thrown if the menu item doesn't exist.
+   */
+  public static MenuItem getMenuItem(String itemPrimaryKey, Connection connection) throws InvalidMenuIdException {
     int itemId;
     String itemName;
     int calories;
@@ -117,20 +124,25 @@ public class DatabaseController {
     Diet dietType;
     String itemDescription;
     String itemImageLocation;
+    MenuItem menuItem;
 
-    ResultSet result = executeQuery(connection, "select * from menu where id = '" + itemPrimaryKey + "'");
+    try {
 
-    itemId = result.getInt("itemID");
-    itemName = result.getString("item_name");
-    calories = result.getInt("calories");
-    category = result.getString("category");
-    dietType = Diet.toDiet(result.getString("diet_type"));
-    itemDescription = result.getString("item_description");
-    itemImageLocation = result.getString("item_image_location");
-    MenuItem menuItem = new MenuItem(itemId, itemName, calories, category, dietType,
-        itemDescription, itemImageLocation);
+      ResultSet result = executeQuery(connection, "select * from menu where id = '" + itemPrimaryKey + "'");
 
-    //TODO: Add try / catch and custom exception
+      itemId = result.getInt("itemID");
+      itemName = result.getString("item_name");
+      calories = result.getInt("calories");
+      category = result.getString("category");
+      dietType = Diet.toDiet(result.getString("diet_type"));
+      itemDescription = result.getString("item_description");
+      itemImageLocation = result.getString("item_image_location");
+      menuItem = new MenuItem(itemId, itemName, calories, category, dietType,
+          itemDescription, itemImageLocation);
+
+    } catch (SQLException e) {
+      throw new InvalidMenuIdException();
+    }
 
     return menuItem;
   }

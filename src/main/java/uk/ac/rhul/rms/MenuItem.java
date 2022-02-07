@@ -127,10 +127,9 @@ public class MenuItem {
   public static MenuItem toMenuItem(String menuItemValues) throws ToMenuItemFormatException {
     String[] splitValues = menuItemValues.split(", ");
     try {
-      MenuItem newItem = new MenuItem(Integer.parseInt(splitValues[0]), splitValues[1],
+      return new MenuItem(Integer.parseInt(splitValues[0]), splitValues[1],
           Integer.parseInt(splitValues[2]), splitValues[3], Diet.toDiet(splitValues[4]),
           splitValues[5], splitValues[6]);
-      return newItem;
     } catch (Exception e) {
       throw new ToMenuItemFormatException();
     }
@@ -147,9 +146,7 @@ public class MenuItem {
 
       MenuItem otherItem = (MenuItem) other;
 
-      if (otherItem.getId() == this.getId()) {
-        return true;
-      }
+      return otherItem.getId() == this.getId();
     }
     return false;
   }

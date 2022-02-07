@@ -1,7 +1,6 @@
 package uk.ac.rhul.rms;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -20,7 +19,7 @@ public class Order {
    *
    */
   public Order() {
-    this.orderList = new ArrayList<MenuItem>();
+    this.orderList = new ArrayList<>();
   }
 
   /**
@@ -70,13 +69,20 @@ public class Order {
     }
   }
 
-  private ArrayList<MenuItem> parseOrderList(String itemListString) throws SQLException {
-    String[] itemIDs = itemListString.split(",");
+  /**
+   * Takes a list of menu item IDs and returns an ArrayList of MenuItem objects.
+   *
+   * @param itemListString A string containing the item IDs of an order.
+   * @return An ArrayList containing all the MenuItems of the order.
+   * @throws InvalidMenuIdException Thrown if one of the menu items in the order doesn't exist.
+   */
+  private ArrayList<MenuItem> parseOrderList(String itemListString) throws InvalidMenuIdException {
+    String[] itemIds = itemListString.split(",");
     ArrayList<MenuItem> menuItems = new ArrayList<>();
     Connection connection = DatabaseConnection.getInstance();
 
-    for(String itemID : itemIDs){
-      menuItems.add(DatabaseController.getMenuItem(itemID, connection));
+    for (String itemId : itemIds) {
+      menuItems.add(DatabaseController.getMenuItem(itemId, connection));
     }
     return menuItems;
   }
