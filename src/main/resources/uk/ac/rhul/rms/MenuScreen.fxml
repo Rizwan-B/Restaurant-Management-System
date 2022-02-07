@@ -47,7 +47,6 @@
             <ListView id="starterList" fx:id="dessertList" layoutX="13.0" layoutY="969.0" prefHeight="346.0" prefWidth="910.0" />
             <Button fx:id="callWaiterBtn" layoutX="442.0" layoutY="99.0" mnemonicParsing="false" onAction="#callWaiterBtnPressed" text="Call Waiter" />
             <ComboBox fx:id="filterBox" layoutX="133.0" layoutY="99.0" onAction="#filterSelect" prefWidth="150.0" promptText="Diet type" />
-            <ComboBox layoutX="214.0" layoutY="504.0" prefWidth="150.0" promptText="Diet type" />
          </children></AnchorPane>
   </content>
 </ScrollPane>
