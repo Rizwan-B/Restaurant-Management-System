@@ -47,8 +47,8 @@ public class Main extends Application {
   @Override
   public void start(Stage primaryStage) throws Exception {
     ScreensController mainScreenController = new ScreensController();
-    mainScreenController.loadScreen(staffPortalScreenID, staffPortalScreenFile);
-    // ^ added this here cause of the login bypass functionality.
+
+
     mainScreenController.loadScreen(startScreenID, startScreenFile);
     mainScreenController.setScreen(startScreenID);
 
