@@ -64,14 +64,18 @@ public class LoginScreenController implements ControlledScreen {
             this.screensController.loadScreen(Main.waiterPortalScreenID, Main.WaiterPortalScreenFile);
             this.screensController.setScreen(Main.waiterPortalScreenID);
         } else if (id.equals("Mo")) {
-            this.screensController.setScreen(Main.staffPortalScreenID);
             Main.currentLoggedInUser = 5;
+            this.screensController.loadScreen(Main.staffPortalScreenID, Main.staffPortalScreenFile);
+            this.screensController.setScreen(Main.staffPortalScreenID);
+
         } else if (id.equals("Lucas")) {
-            this.screensController.setScreen(Main.staffPortalScreenID);
             Main.currentLoggedInUser = 6;
-        } else if (id.equals("Muqdas")) {
+            this.screensController.loadScreen(Main.staffPortalScreenID, Main.staffPortalScreenFile);
             this.screensController.setScreen(Main.staffPortalScreenID);
+        } else if (id.equals("Muqdas")) {
             Main.currentLoggedInUser = 7;
+            this.screensController.loadScreen(Main.staffPortalScreenID, Main.staffPortalScreenFile);
+            this.screensController.setScreen(Main.staffPortalScreenID);
         } else {
             System.out.println("admin pressed");
         }
