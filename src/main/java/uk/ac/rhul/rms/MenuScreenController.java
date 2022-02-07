@@ -5,11 +5,16 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ComboBox;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 
@@ -45,6 +50,9 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     private Button callWaiterBtn;
 
     @FXML
+    private ComboBox filterBox;
+
+    @FXML
     void backBtnPressed(ActionEvent event) {
         this.connection = null; // Garbage collector should remove this value but idk just to be safe.
         this.screensController.setScreen(Main.startScreenID);
@@ -60,6 +68,11 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     void callWaiterBtnPressed(ActionEvent event) {
         this.screensController.loadScreen(Main.callWaiterScreenID, Main.callWaiterScreenFile);
         this.screensController.setScreen(Main.callWaiterScreenID);
+    }
+
+    @FXML
+    void filterSelect(ActionEvent event) {
+
     }
 
 
@@ -105,5 +118,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         this.addStarters();
         this.addMainCourse();
         this.addDessert();
+        ObservableList<String> list = FXCollections.observableArrayList("Vegan", "Vegetarian", "Non Vegetarian");
+        filterBox.setItems(list);
     }
 }
