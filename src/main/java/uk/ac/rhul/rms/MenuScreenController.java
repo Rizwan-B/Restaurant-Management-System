@@ -74,7 +74,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     void filterSelect(ActionEvent event) {
         String s = filterBox.getSelectionModel().getSelectedItem().toString();
         if (s.equals("Vegan")) {
-            veganStarter();
+            veganMenu();
         }
     }
 
@@ -115,7 +115,10 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         }
     }
 
-    public void veganStarter() {
+    /**
+     * This filters the menu to show only vegan options.
+     */
+    public void veganMenu() {
         try {
             ArrayList<MenuItem> vegan = DatabaseController.getDietType(this.connection, Diet.VEGAN, "Starters");
             this.starterList.getItems().clear();
@@ -146,7 +149,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         this.addStarters();
         this.addMainCourse();
         this.addDessert();
-        ObservableList<String> list = FXCollections.observableArrayList("Vegan", "Vegetarian", "Non Vegetarian");
-        filterBox.setItems(list);
+        ObservableList<String> list = FXCollections.observableArrayList("Vegan", "Vegetarian", "Non-Vegetarian");
+        filterBox.setItems(list); //This initialises the drop down menu with 3 diet options.
     }
 }
