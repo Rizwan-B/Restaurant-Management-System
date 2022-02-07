@@ -209,6 +209,11 @@ public class DatabaseMain {
                 "canceled number(1)," +
                 "PRIMARY KEY(order_id));");
 
+        dropTables(connect, "seat_no");
+        createsTable(connect, "seat_no (table_no int NOT NULL," +
+                "seat_number int NOT NULL," +
+                "PRIMARY KEY(table_no));");
+
         insertFromFile(connect, "menu");
         insertFromFile(connect, "user_table");
 
