@@ -70,13 +70,19 @@ public class Order {
     }
   }
 
+  /**
+   *
+   * @param itemListString A string containing the item IDs of an order.
+   * @return An ArrayList containing all the MenuItems of the order.
+   * @throws SQLException
+   */
   private ArrayList<MenuItem> parseOrderList(String itemListString) throws SQLException {
-    String[] itemIDs = itemListString.split(",");
+    String[] itemIds = itemListString.split(",");
     ArrayList<MenuItem> menuItems = new ArrayList<>();
     Connection connection = DatabaseConnection.getInstance();
 
-    for(String itemID : itemIDs){
-      menuItems.add(DatabaseController.getMenuItem(itemID, connection));
+    for (String itemId : itemIds) {
+      menuItems.add(DatabaseController.getMenuItem(itemId, connection));
     }
     return menuItems;
   }
