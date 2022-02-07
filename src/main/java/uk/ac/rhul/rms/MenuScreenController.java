@@ -5,11 +5,16 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ComboBox;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 
@@ -45,6 +50,9 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     private Button callWaiterBtn;
 
     @FXML
+    private ComboBox filterBox;
+
+    @FXML
     void backBtnPressed(ActionEvent event) {
         this.connection = null; // Garbage collector should remove this value but idk just to be safe.
         this.screensController.setScreen(Main.startScreenID);
@@ -60,6 +68,14 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     void callWaiterBtnPressed(ActionEvent event) {
         this.screensController.loadScreen(Main.callWaiterScreenID, Main.callWaiterScreenFile);
         this.screensController.setScreen(Main.callWaiterScreenID);
+    }
+
+    @FXML
+    void filterSelect(ActionEvent event) {
+        String s = filterBox.getSelectionModel().getSelectedItem().toString();
+        if (s.equals("Vegan")) {
+            veganMenu();
+        }
     }
 
 
@@ -99,11 +115,41 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         }
     }
 
+    /**
+     * This filters the menu to show only vegan options.
+     */
+    public void veganMenu() {
+        try {
+            ArrayList<MenuItem> vegan = DatabaseController.getDietType(this.connection, Diet.VEGAN, "Starters");
+            this.starterList.getItems().clear();
+            for (MenuItem v : vegan) {
+                System.out.println(v.getName());
+                this.starterList.getItems().add(v.getName());
+            }
+            ArrayList<MenuItem> veganMain = DatabaseController.getDietType(this.connection, Diet.VEGAN, "Main");
+            this.mainList.getItems().clear();
+            for (MenuItem v : veganMain) {
+                System.out.println(v.getName());
+                this.mainList.getItems().add(v.getName());
+            }
+            ArrayList<MenuItem> dessertMain = DatabaseController.getDietType(this.connection, Diet.VEGAN, "Dessert");
+            this.dessertList.getItems().clear();
+            for (MenuItem v : dessertMain) {
+                System.out.println(v.getName());
+                this.dessertList.getItems().add(v.getName());
+            }
+        } catch(Exception e) {
+            System.out.println("oops");
+        }
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.connection = DatabaseConnection.getInstance();
         this.addStarters();
         this.addMainCourse();
         this.addDessert();
+        ObservableList<String> list = FXCollections.observableArrayList("Vegan", "Vegetarian", "Non-Vegetarian");
+        filterBox.setItems(list); //This initialises the drop down menu with 3 diet options.
     }
 }
