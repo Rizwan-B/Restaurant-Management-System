@@ -16,7 +16,6 @@ public class Order {
 
   /**
    * A public default constructor for the order object.
-   *
    */
   public Order() {
     this.orderList = new ArrayList<>();

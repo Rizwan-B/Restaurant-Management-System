@@ -4,7 +4,6 @@ package uk.ac.rhul.rms;
  * A class representing a Menu item entry in the Menu table.
  *
  * @author Lucas Kimber
- *
  */
 public class MenuItem {
   private int itemId;
@@ -18,15 +17,15 @@ public class MenuItem {
   /**
    * The public default constructor for a MenuItem.
    *
-   * @param itemId the int used as a primary key.
-   * @param itemName the String name of the menu item.
-   * @param calories an int representing the number of calories it has.
-   * @param category the String category the item belongs to.
-   * @param itemDescription a String describing the menu item.
+   * @param itemId            the int used as a primary key.
+   * @param itemName          the String name of the menu item.
+   * @param calories          an int representing the number of calories it has.
+   * @param category          the String category the item belongs to.
+   * @param itemDescription   a String describing the menu item.
    * @param itemImageLocation a String filepath for the image of this menu item.
    */
   public MenuItem(int itemId, String itemName, int calories, String category, Diet dietType,
-      String itemDescription, String itemImageLocation) {
+                  String itemDescription, String itemImageLocation) {
 
     this.itemId = itemId;
     this.itemName = itemName;
@@ -122,7 +121,7 @@ public class MenuItem {
    * @param menuItemValues A string of all the values a menu item needs.
    * @return A MenuItem representation of the string of values provided.
    * @throws ToMenuItemFormatException Thrown when the parameter string menuItemValues is in a bad
-   *         format.
+   *                                   format.
    */
   public static MenuItem toMenuItem(String menuItemValues) throws ToMenuItemFormatException {
     String[] splitValues = menuItemValues.split(", ");
