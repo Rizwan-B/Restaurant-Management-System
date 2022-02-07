@@ -45,33 +45,33 @@ public class LoginScreenController implements ControlledScreen {
 
     @FXML
     void backBtnPressed(ActionEvent event) {
-        this.screensController.loadScreen(Main.startScreenID, Main.startScreenFile);
         this.screensController.setScreen(Main.startScreenID);
     }
 
     @FXML
     void bypass(ActionEvent event) {
-        System.out.println("bypasss button pressed");
         String id = event.getSource().toString().split(",")[1].split("'")[1].split("'")[0];
-        System.out.println(id);
         if (id.equals("Ahmed")) {
+            Main.currentLoggedInUser = 2;
+            this.screensController.loadScreen(Main.waiterPortalScreenID, Main.WaiterPortalScreenFile);
             this.screensController.setScreen(Main.waiterPortalScreenID);
-            this.screensController.setUserController("Ahmed");
         } else if (id.equals("Rizwan")){
+            Main.currentLoggedInUser = 3;
+            this.screensController.loadScreen(Main.waiterPortalScreenID, Main.WaiterPortalScreenFile);
             this.screensController.setScreen(Main.waiterPortalScreenID);
-            this.screensController.setUserController("Rizwan");
         } else if (id.equals("Virginia")){
+            Main.currentLoggedInUser = 4;
+            this.screensController.loadScreen(Main.waiterPortalScreenID, Main.WaiterPortalScreenFile);
             this.screensController.setScreen(Main.waiterPortalScreenID);
-            this.screensController.setUserController("Virginia");
         } else if (id.equals("Mo")) {
             this.screensController.setScreen(Main.staffPortalScreenID);
-            this.screensController.setUserController("Mo");
+            Main.currentLoggedInUser = 5;
         } else if (id.equals("Lucas")) {
             this.screensController.setScreen(Main.staffPortalScreenID);
-            this.screensController.setUserController("Lucas");
+            Main.currentLoggedInUser = 6;
         } else if (id.equals("Muqdas")) {
             this.screensController.setScreen(Main.staffPortalScreenID);
-            this.screensController.setUserController("Muqdas");
+            Main.currentLoggedInUser = 7;
         } else {
             System.out.println("admin pressed");
         }
@@ -89,7 +89,9 @@ public class LoginScreenController implements ControlledScreen {
                 System.out.println("You are a staff member.");
                 this.screensController.setScreen(Main.staffPortalScreenID);
             } else if (role.equals("WAITER")) {
+                this.screensController.loadScreen(Main.waiterPortalScreenID, Main.WaiterPortalScreenFile);
                 System.out.println("You are a waiter");
+                this.screensController.setScreen(Main.waiterPortalScreenID);
             } else if (role.equals("ADMIN")) {
                 System.out.println("You are an admin.");
             } else {

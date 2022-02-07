@@ -12,11 +12,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
+import uk.ac.rhul.rms.Main;
 
 /**
  * A public screen Controller class used by every screen controller in this application. The class
  * uses a hashmap to store and remove screen data. The package code is inspired by the repository in
- * the following link:s
+ * the following link
  * https://github.com/alefbt/javafx-template/blob/master/src/main/java/com/korotkin/JavaFxStart/screen/framework
  *
  * @author Mohamed Yusuf
@@ -29,8 +30,6 @@ public class ScreensController extends StackPane {
    * hashMap because searching through it can be done at god speed.
    */
   private HashMap<String, Node> screens = new HashMap<>();
-
-  private String userController;
 
   /**
    * A public default constructor for ScreensController.
@@ -138,14 +137,6 @@ public class ScreensController extends StackPane {
     } else {
       return true;
     }
-  }
-
-  public void setUserController(String username) {
-    this.userController = username;
-  }
-
-  public String getUserController() {
-    return this.userController;
   }
 
 }

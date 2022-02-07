@@ -55,16 +55,14 @@ public class CallWaiterScreen implements ControlledScreen {
     }
 
     @FXML
-    void justNothing(ActionEvent event) {
+    void justNothing(ActionEvent event) throws SQLException{
         ResultSet test = DatabaseController.executeQuery(DatabaseConnection.getInstance(), "select * from waiter_call");
-        try{
-            while (test.next()) {
-                System.out.println(test.getString(1));
-                System.out.println(test.getString(2));
-            }
-        } catch (SQLException e){
-            System.out.println(e.toString());
+        System.out.println("-----------------------------");
+        System.out.println("waiter_id | table_no | served");
+        System.out.println("-----------------------------");
+        while (test.next()) {
+            System.out.println(test.getString(1) + " | " + test.getString(2) + " | " + test.getString(3) + " |");
         }
-
+        System.out.println("-----------------------------");
     }
 }

@@ -41,11 +41,12 @@ public class Main extends Application {
   public static String waiterPortalScreenID = "waiterPortal";
   public static String WaiterPortalScreenFile = "/uk/ac/rhul/rms/WaiterPortalScreen.fxml";
 
+  public static int currentLoggedInUser = 0;
+
 
   @Override
   public void start(Stage primaryStage) throws Exception {
     ScreensController mainScreenController = new ScreensController();
-    mainScreenController.loadScreen(waiterPortalScreenID, WaiterPortalScreenFile);
     mainScreenController.loadScreen(staffPortalScreenID, staffPortalScreenFile);
     // ^ added this here cause of the login bypass functionality.
     mainScreenController.loadScreen(startScreenID, startScreenFile);
