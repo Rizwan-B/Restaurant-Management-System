@@ -150,4 +150,30 @@ public class DatabaseController {
     }
     return user_role;
   }
+
+  public static ArrayList<MenuItem> getDietType(Connection connection, Diet diet) throws SQLException {
+    ResultSet result = executeQuery(connection, "select * from menu where diet_type= '" + diet.toString() + "' AND category = 'Starters';");
+    ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
+    int itemId;
+    String itemName;
+    int calories;
+    String category;
+    Diet dietType;
+    String itemDescription;
+    String itemImageLocation;
+    while (result.next()) {
+      itemId = result.getInt("itemID");
+      itemName = result.getString("item_name");
+      calories = result.getInt("calories");
+      category = result.getString("category");
+      dietType = Diet.toDiet(result.getString("diet_type"));
+      itemDescription = result.getString("item_description");
+      itemImageLocation = result.getString("item_image_location");
+      MenuItem menuItem = new MenuItem(itemId, itemName, calories, category, dietType,
+              itemDescription, itemImageLocation);
+      menuItems.add(menuItem);
+    }
+    return menuItems;
+  }
+
 }

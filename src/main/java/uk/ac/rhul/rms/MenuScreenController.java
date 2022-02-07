@@ -72,7 +72,10 @@ public class MenuScreenController implements ControlledScreen, Initializable {
 
     @FXML
     void filterSelect(ActionEvent event) {
-
+        String s = filterBox.getSelectionModel().getSelectedItem().toString();
+        if (s.equals("Vegan")) {
+            veganStarter();
+        }
     }
 
 
@@ -106,6 +109,19 @@ public class MenuScreenController implements ControlledScreen, Initializable {
             for (MenuItem dessert : desserts) {
                 System.out.println(dessert.getName());
                 this.dessertList.getItems().add(dessert.getName());
+            }
+        } catch(Exception e) {
+            System.out.println("oops");
+        }
+    }
+
+    public void veganStarter() {
+        try {
+            ArrayList<MenuItem> vegan = DatabaseController.getDietType(this.connection, Diet.VEGAN);
+            this.starterList.getItems().clear();
+            for (MenuItem v : vegan) {
+                System.out.println(v.getName());
+                this.starterList.getItems().add(v.getName());
             }
         } catch(Exception e) {
             System.out.println("oops");
