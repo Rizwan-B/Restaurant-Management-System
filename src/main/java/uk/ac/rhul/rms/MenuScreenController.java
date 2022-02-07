@@ -117,11 +117,23 @@ public class MenuScreenController implements ControlledScreen, Initializable {
 
     public void veganStarter() {
         try {
-            ArrayList<MenuItem> vegan = DatabaseController.getDietType(this.connection, Diet.VEGAN);
+            ArrayList<MenuItem> vegan = DatabaseController.getDietType(this.connection, Diet.VEGAN, "Starters");
             this.starterList.getItems().clear();
             for (MenuItem v : vegan) {
                 System.out.println(v.getName());
                 this.starterList.getItems().add(v.getName());
+            }
+            ArrayList<MenuItem> veganMain = DatabaseController.getDietType(this.connection, Diet.VEGAN, "Main");
+            this.mainList.getItems().clear();
+            for (MenuItem v : veganMain) {
+                System.out.println(v.getName());
+                this.mainList.getItems().add(v.getName());
+            }
+            ArrayList<MenuItem> dessertMain = DatabaseController.getDietType(this.connection, Diet.VEGAN, "Dessert");
+            this.dessertList.getItems().clear();
+            for (MenuItem v : dessertMain) {
+                System.out.println(v.getName());
+                this.dessertList.getItems().add(v.getName());
             }
         } catch(Exception e) {
             System.out.println("oops");

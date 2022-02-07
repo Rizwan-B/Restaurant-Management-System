@@ -151,8 +151,8 @@ public class DatabaseController {
     return user_role;
   }
 
-  public static ArrayList<MenuItem> getDietType(Connection connection, Diet diet) throws SQLException {
-    ResultSet result = executeQuery(connection, "select * from menu where diet_type= '" + diet.toString() + "' AND category = 'Starters';");
+  public static ArrayList<MenuItem> getDietType(Connection connection, Diet diet, String cat) throws SQLException {
+    ResultSet result = executeQuery(connection, "select * from menu where diet_type= '" + diet.toString() + "' AND category = '" + cat + "';");
     ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
     int itemId;
     String itemName;
