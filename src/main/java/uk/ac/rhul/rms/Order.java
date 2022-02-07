@@ -1,7 +1,6 @@
 package uk.ac.rhul.rms;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -20,7 +19,7 @@ public class Order {
    *
    */
   public Order() {
-    this.orderList = new ArrayList<MenuItem>();
+    this.orderList = new ArrayList<>();
   }
 
   /**
@@ -71,6 +70,7 @@ public class Order {
   }
 
   /**
+   * Takes a list of menu item IDs and returns an ArrayList of MenuItem objects.
    *
    * @param itemListString A string containing the item IDs of an order.
    * @return An ArrayList containing all the MenuItems of the order.
