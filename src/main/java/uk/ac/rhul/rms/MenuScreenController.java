@@ -74,7 +74,24 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     void filterSelect(ActionEvent event) {
         String s = filterBox.getSelectionModel().getSelectedItem().toString();
         if (s.equals("Vegan")) {
+            this.starterList.getItems().clear();
+            this.mainList.getItems().clear();
+            this.dessertList.getItems().clear();
             veganMenu();
+        }
+        else if (s.equals("Vegetarian")) {
+            this.starterList.getItems().clear();
+            this.mainList.getItems().clear();
+            this.dessertList.getItems().clear();
+            vegetarianMenu();
+            veganMenu();
+        } else {
+            this.starterList.getItems().clear();
+            this.mainList.getItems().clear();
+            this.dessertList.getItems().clear();
+            addStarters();
+            addMainCourse();
+            addDessert();
         }
     }
 
@@ -121,20 +138,45 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     public void veganMenu() {
         try {
             ArrayList<MenuItem> vegan = DatabaseController.getDietType(this.connection, Diet.VEGAN, "Starters");
-            this.starterList.getItems().clear();
+//            this.starterList.getItems().clear();
             for (MenuItem v : vegan) {
                 System.out.println(v.getName());
                 this.starterList.getItems().add(v.getName());
             }
             ArrayList<MenuItem> veganMain = DatabaseController.getDietType(this.connection, Diet.VEGAN, "Main");
-            this.mainList.getItems().clear();
+//            this.mainList.getItems().clear();
             for (MenuItem v : veganMain) {
                 System.out.println(v.getName());
                 this.mainList.getItems().add(v.getName());
             }
             ArrayList<MenuItem> dessertMain = DatabaseController.getDietType(this.connection, Diet.VEGAN, "Dessert");
-            this.dessertList.getItems().clear();
+//            this.dessertList.getItems().clear();
             for (MenuItem v : dessertMain) {
+                System.out.println(v.getName());
+                this.dessertList.getItems().add(v.getName());
+            }
+        } catch(Exception e) {
+            System.out.println("oops");
+        }
+    }
+
+    public void vegetarianMenu() {
+        try {
+            ArrayList<MenuItem> vegStarters = DatabaseController.getDietType(this.connection, Diet.VEGETARIAN, "Starters");
+            this.starterList.getItems().clear();
+            for (MenuItem v : vegStarters) {
+                System.out.println(v.getName());
+                this.starterList.getItems().add(v.getName());
+            }
+            ArrayList<MenuItem> vegMain = DatabaseController.getDietType(this.connection, Diet.VEGETARIAN, "Main");
+            this.mainList.getItems().clear();
+            for (MenuItem v : vegMain) {
+                System.out.println(v.getName());
+                this.mainList.getItems().add(v.getName());
+            }
+            ArrayList<MenuItem> vegDessert = DatabaseController.getDietType(this.connection, Diet.VEGETARIAN, "Dessert");
+            this.dessertList.getItems().clear();
+            for (MenuItem v : vegDessert) {
                 System.out.println(v.getName());
                 this.dessertList.getItems().add(v.getName());
             }
