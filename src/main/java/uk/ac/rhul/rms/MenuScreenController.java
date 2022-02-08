@@ -72,23 +72,17 @@ public class MenuScreenController implements ControlledScreen, Initializable {
 
     @FXML
     void filterSelect(ActionEvent event) {
+        this.starterList.getItems().clear();
+        this.mainList.getItems().clear();
+        this.dessertList.getItems().clear();
         String s = filterBox.getSelectionModel().getSelectedItem().toString();
         if (s.equals("Vegan")) {
-            this.starterList.getItems().clear();
-            this.mainList.getItems().clear();
-            this.dessertList.getItems().clear();
             veganMenu();
         }
         else if (s.equals("Vegetarian")) {
-            this.starterList.getItems().clear();
-            this.mainList.getItems().clear();
-            this.dessertList.getItems().clear();
             vegetarianMenu();
-            veganMenu();
-        } else {
-            this.starterList.getItems().clear();
-            this.mainList.getItems().clear();
-            this.dessertList.getItems().clear();
+            veganMenu(); //Vegetarian menu includes vegan options.
+        } else { //Non-Vegetarian menu includes vegetarian and vegan options.
             addStarters();
             addMainCourse();
             addDessert();
@@ -138,19 +132,16 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     public void veganMenu() {
         try {
             ArrayList<MenuItem> vegan = DatabaseController.getDietType(this.connection, Diet.VEGAN, "Starters");
-//            this.starterList.getItems().clear();
             for (MenuItem v : vegan) {
                 System.out.println(v.getName());
                 this.starterList.getItems().add(v.getName());
             }
             ArrayList<MenuItem> veganMain = DatabaseController.getDietType(this.connection, Diet.VEGAN, "Main");
-//            this.mainList.getItems().clear();
             for (MenuItem v : veganMain) {
                 System.out.println(v.getName());
                 this.mainList.getItems().add(v.getName());
             }
             ArrayList<MenuItem> dessertMain = DatabaseController.getDietType(this.connection, Diet.VEGAN, "Dessert");
-//            this.dessertList.getItems().clear();
             for (MenuItem v : dessertMain) {
                 System.out.println(v.getName());
                 this.dessertList.getItems().add(v.getName());
@@ -160,6 +151,9 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         }
     }
 
+    /**
+     * This filters the menu to show vegetarian options.
+     */
     public void vegetarianMenu() {
         try {
             ArrayList<MenuItem> vegStarters = DatabaseController.getDietType(this.connection, Diet.VEGETARIAN, "Starters");
@@ -191,7 +185,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         this.addStarters();
         this.addMainCourse();
         this.addDessert();
-        ObservableList<String> list = FXCollections.observableArrayList("Vegan", "Vegetarian", "Non-Vegetarian");
-        filterBox.setItems(list); //This initialises the drop down menu with 3 diet options.
+        ObservableList<String> list = FXCollections.observableArrayList("Non-Vegetarian", "Vegetarian", "Vegan");
+        filterBox.setItems(list); //This initialises the drop-down menu with 3 diet options.
     }
 }
