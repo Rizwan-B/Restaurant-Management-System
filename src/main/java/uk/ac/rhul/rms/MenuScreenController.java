@@ -50,11 +50,11 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     private Button callWaiterBtn;
 
     @FXML
-    private ComboBox filterBox;
+    private ComboBox<String> filterBox;
 
     @FXML
     void backBtnPressed(ActionEvent event) {
-        this.connection = null; // Garbage collector should remove this value but idk just to be safe.
+        this.connection = null; // Garbage collector should remove this value but just to be safe.
         this.screensController.setScreen(Main.startScreenID);
     }
 
@@ -75,7 +75,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         this.starterList.getItems().clear();
         this.mainList.getItems().clear();
         this.dessertList.getItems().clear();
-        String s = filterBox.getSelectionModel().getSelectedItem().toString();
+        String s = filterBox.getSelectionModel().getSelectedItem();
         if (s.equals("Vegan")) {
             veganMenu();
         }
