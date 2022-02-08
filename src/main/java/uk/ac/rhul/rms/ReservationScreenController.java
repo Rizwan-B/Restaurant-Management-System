@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 
+import java.util.ArrayList;
+
 /**
  * The screen controller for the reservation screen implementing the ControlledScreen Interface.
  *
@@ -25,4 +27,6 @@ public class ReservationScreenController implements ControlledScreen {
         this.screensController.loadScreen(Main.startScreenID, Main.startScreenFile);
         this.screensController.setScreen(Main.startScreenID);
     }
+
+
 }
