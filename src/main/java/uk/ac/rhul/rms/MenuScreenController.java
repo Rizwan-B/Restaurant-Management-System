@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
@@ -51,6 +52,18 @@ public class MenuScreenController implements ControlledScreen, Initializable {
 
     @FXML
     private ComboBox<String> filterBox;
+
+    @FXML
+    private CheckBox dairy;
+
+    @FXML
+    private CheckBox peanut;
+
+    @FXML
+    private CheckBox shellfish;
+
+    @FXML
+    private CheckBox wheat;
 
     @FXML
     void backBtnPressed(ActionEvent event) {
@@ -178,6 +191,38 @@ public class MenuScreenController implements ControlledScreen, Initializable {
             System.out.println("oops");
         }
     }
+
+    // Action methods below need to be completed once allergies are
+    // added to the database.
+    @FXML
+    void dairyFilter(ActionEvent event) {
+        if (dairy.isSelected()) {
+
+        }
+    }
+
+    @FXML
+    void peanutFilter(ActionEvent event) {
+        if (peanut.isSelected()) {
+
+        }
+    }
+
+    @FXML
+    void shellfishFilter(ActionEvent event) {
+        if (shellfish.isSelected()) {
+
+        }
+    }
+
+    @FXML
+    void wheatFilter(ActionEvent event) {
+        if (wheat.isSelected()) {
+
+        }
+    }
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
