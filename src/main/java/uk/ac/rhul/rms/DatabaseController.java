@@ -151,15 +151,13 @@ public class DatabaseController {
     int seatNumber;
     ArrayList<SeatNumber> seat = new ArrayList<SeatNumber>();
     try {
-      System.out.println("Hello");
-      ResultSet result = executeQuery(connection, "select table_no from seat_no;");
-      System.out.println("Hello");
+      ResultSet result = executeQuery(connection, "select * from seat_no;");
       while (result.next()) {
         tableNumber = result.getInt("table_no");
-        System.out.println(tableNumber);
-       // seatNumber = result.getInt("seat_number")
-        SeatNumber st = new SeatNumber(tableNumber,2);
+        seatNumber = result.getInt("seat_number");
+        SeatNumber st = new SeatNumber(tableNumber,seatNumber);
         seat.add(st);
+
       }
 
     } catch(SQLException e){
