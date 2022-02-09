@@ -216,6 +216,7 @@ public class DatabaseMain {
 
         insertFromFile(connect, "menu");
         insertFromFile(connect, "user_table");
+        insertFromFile(connect, "seat_no");
 
         queries(connect, db);
       

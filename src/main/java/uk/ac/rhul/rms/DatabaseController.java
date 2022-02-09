@@ -1,7 +1,6 @@
 package uk.ac.rhul.rms;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -145,6 +144,26 @@ public class DatabaseController {
     }
 
     return menuItem;
+  }
+
+  public static ArrayList<SeatNumber> getSeatNumber( Connection connection) throws InvalidMenuIdException {
+    int tableNumber;
+    int seatNumber;
+    ArrayList<SeatNumber> seat = new ArrayList<SeatNumber>();
+    try {
+      ResultSet result = executeQuery(connection, "select table_no from seat_no;");
+      while (result.next()) {
+        tableNumber = result.getInt("table_no");
+        seatNumber = result.getInt("seatNumber");
+        SeatNumber st = new SeatNumber(tableNumber,seatNumber);
+        seat.add(st);
+      }
+
+    } catch(SQLException e){
+      System.out.println("This table doesn't exist");
+    }
+
+      return seat;
   }
 
   public static void callWaiterOnTable(Connection connection, int tableNumber) throws SQLException {

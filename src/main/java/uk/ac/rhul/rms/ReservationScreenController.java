@@ -7,6 +7,7 @@ import javafx.scene.control.ListView;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 
 /**
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 public class ReservationScreenController implements ControlledScreen {
 
     ScreensController screensController;
+    private Connection connection;
 
     @Override
     public void setScreenParent(ScreensController screenParent) {
@@ -40,6 +42,20 @@ public class ReservationScreenController implements ControlledScreen {
 
     @FXML
     private ListView<Integer> table_no;
+
+
+    public void tableSeat() {
+        try {
+            ArrayList<SeatNumber> st = DatabaseController.getSeatNumber(this.connection);
+            for (SeatNumber v : st) {
+                System.out.println(v.getTableNumber());
+               // this.tableNo.getItems().ass(v.getTableNumber());
+
+            }
+        } catch(Exception e) {
+            System.out.println("oops");
+        }
+    }
 
 
 }
