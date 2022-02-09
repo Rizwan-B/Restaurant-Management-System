@@ -41,8 +41,8 @@ public class Main extends Application {
   public static String waiterPortalScreenID = "waiterPortal";
   public static String WaiterPortalScreenFile = "/uk/ac/rhul/rms/WaiterPortalScreen.fxml";
 
-  public static String cancelOrderScreenID = "CancelOrderScreen";
-  public static String cancelOrderScreenFile = "/uk/ac/rhul/rms/CancelOrderScreen.fxml";
+  public static String manageOrderScreenID = "ManageOrderScreen";
+  public static String manageOrderScreenFile = "/uk/ac/rhul/rms/ManageOrderScreen.fxml";
 
   public static int currentLoggedInUser = 0;
 

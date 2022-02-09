@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 
-public class CancelOrderScreenController implements ControlledScreen {
+public class ManageOrderScreenController implements ControlledScreen {
 
     ScreensController screensController;
 
@@ -22,13 +22,21 @@ public class CancelOrderScreenController implements ControlledScreen {
     private Button cancelBtn;
 
     @FXML
+    private Button orderCompleteBtn;
+
+    @FXML
     void backBtnPressed(ActionEvent event) {
         this.screensController.setScreen(Main.waiterPortalScreenID);
-        this.screensController.unloadScreen(Main.cancelOrderScreenID);
+        this.screensController.unloadScreen(Main.manageOrderScreenID);
     }
 
     @FXML
     void cancelBtnPressed(ActionEvent event) {
         System.out.println("Order cancelled.");
+    }
+
+    @FXML
+    void orderCompleteBtnPressed(ActionEvent event) {
+        System.out.println("Order completed.");
     }
 }

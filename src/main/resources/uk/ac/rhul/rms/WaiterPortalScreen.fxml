@@ -56,9 +56,9 @@
             <Font size="26.0" />
          </font>
       </Button>
-      <Button fx:id="cancelOrderBtn" layoutX="666.0" layoutY="17.0" mnemonicParsing="false" onAction="#cancelOrderBtnPressed" prefHeight="60.0" prefWidth="350.0" text="Cancel Order">
+      <Button fx:id="manageOrderBtn" layoutX="5.0" layoutY="190.0" mnemonicParsing="false" onAction="#manageOrderBtnPressed" prefHeight="30.0" prefWidth="200.0" text="Manage Orders">
          <font>
-            <Font size="30.0" />
+            <Font size="15.0" />
          </font>
       </Button>
       <ListView fx:id="waiterCalls" accessibleRole="BUTTON" layoutX="267.0" layoutY="139.0" prefHeight="325.0" prefWidth="427.0" />
