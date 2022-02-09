@@ -2,11 +2,11 @@ package uk.ac.rhul.rms;
 
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.SQLException;
+//import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import javafx.beans.Observable;
+//import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,7 +22,7 @@ import uk.ac.rhul.screenmanager.ScreensController;
 /**
  * The screen controller for the menu screen implementing the ControlledScreen Interface.
  *
- * @author Mohamed Yusuf
+ * @author Mohamed Yusuf, RIzwan Bagdadi
  *
  */
 public class MenuScreenController implements ControlledScreen, Initializable {
@@ -96,66 +96,27 @@ public class MenuScreenController implements ControlledScreen, Initializable {
             vegetarianMenu();
             veganMenu(); //Vegetarian menu includes vegan options.
         } else { //Non-Vegetarian menu includes vegetarian and vegan options.
-            addStarters();
-            addMainCourse();
-            addDessert();
-        }
-    }
-
-
-    private void addStarters() {
-        try {
-            ArrayList<MenuItem> starters = DatabaseController.getMenuItems(this.connection, "Starters");
-            for (MenuItem starter : starters) {
-                System.out.println(starter.getName());
-                this.starterList.getItems().add(starter.getName());
-            }
-        } catch(Exception e) {
-            System.out.println("oops");
-        }
-    }
-
-    private void addMainCourse() {
-        try {
-            ArrayList<MenuItem> mains = DatabaseController.getMenuItems(this.connection, "Main");
-            for (MenuItem main : mains) {
-                System.out.println(main.getName());
-                this.mainList.getItems().add(main.getName());
-            }
-        } catch(Exception e) {
-            System.out.println("oops");
-        }
-    }
-
-    private void addDessert() {
-        try {
-            ArrayList<MenuItem> desserts = DatabaseController.getMenuItems(this.connection, "Dessert");
-            for (MenuItem dessert : desserts) {
-                System.out.println(dessert.getName());
-                this.dessertList.getItems().add(dessert.getName());
-            }
-        } catch(Exception e) {
-            System.out.println("oops");
+            nonVegMenu();
         }
     }
 
     /**
-     * This filters the menu to show only vegan options.
+     * This filters the menu to show the Non-Vegetarian menu.
      */
-    public void veganMenu() {
+    public void nonVegMenu() {
         try {
-            ArrayList<MenuItem> vegan = DatabaseController.getDietType(this.connection, Diet.VEGAN, "Starters");
-            for (MenuItem v : vegan) {
+            ArrayList<MenuItem> nonVegStarter = DatabaseController.getMenuItems(this.connection, "Starters");
+            for (MenuItem v : nonVegStarter) {
                 System.out.println(v.getName());
                 this.starterList.getItems().add(v.getName());
             }
-            ArrayList<MenuItem> veganMain = DatabaseController.getDietType(this.connection, Diet.VEGAN, "Main");
-            for (MenuItem v : veganMain) {
+            ArrayList<MenuItem> nonVegMain = DatabaseController.getMenuItems(this.connection, "Main");
+            for (MenuItem v : nonVegMain) {
                 System.out.println(v.getName());
                 this.mainList.getItems().add(v.getName());
             }
-            ArrayList<MenuItem> dessertMain = DatabaseController.getDietType(this.connection, Diet.VEGAN, "Dessert");
-            for (MenuItem v : dessertMain) {
+            ArrayList<MenuItem> nonVegDessert = DatabaseController.getMenuItems(this.connection, "Dessert");
+            for (MenuItem v : nonVegDessert) {
                 System.out.println(v.getName());
                 this.dessertList.getItems().add(v.getName());
             }
@@ -165,7 +126,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     }
 
     /**
-     * This filters the menu to show vegetarian options.
+     * This filters the menu to show the suitable for vegetarian menu.
      */
     public void vegetarianMenu() {
         try {
@@ -184,6 +145,31 @@ public class MenuScreenController implements ControlledScreen, Initializable {
             ArrayList<MenuItem> vegDessert = DatabaseController.getDietType(this.connection, Diet.VEGETARIAN, "Dessert");
             this.dessertList.getItems().clear();
             for (MenuItem v : vegDessert) {
+                System.out.println(v.getName());
+                this.dessertList.getItems().add(v.getName());
+            }
+        } catch(Exception e) {
+            System.out.println("oops");
+        }
+    }
+
+    /**
+     * This filters the menu to show only vegan options.
+     */
+    public void veganMenu() {
+        try {
+            ArrayList<MenuItem> veganStarter = DatabaseController.getDietType(this.connection, Diet.VEGAN, "Starters");
+            for (MenuItem v : veganStarter) {
+                System.out.println(v.getName());
+                this.starterList.getItems().add(v.getName());
+            }
+            ArrayList<MenuItem> veganMain = DatabaseController.getDietType(this.connection, Diet.VEGAN, "Main");
+            for (MenuItem v : veganMain) {
+                System.out.println(v.getName());
+                this.mainList.getItems().add(v.getName());
+            }
+            ArrayList<MenuItem> veganDessert = DatabaseController.getDietType(this.connection, Diet.VEGAN, "Dessert");
+            for (MenuItem v : veganDessert) {
                 System.out.println(v.getName());
                 this.dessertList.getItems().add(v.getName());
             }
@@ -227,9 +213,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.connection = DatabaseConnection.getInstance();
-        this.addStarters();
-        this.addMainCourse();
-        this.addDessert();
+        nonVegMenu();
         ObservableList<String> list = FXCollections.observableArrayList("Non-Vegetarian", "Vegetarian", "Vegan");
         filterBox.setItems(list); //This initialises the drop-down menu with 3 diet options.
     }
