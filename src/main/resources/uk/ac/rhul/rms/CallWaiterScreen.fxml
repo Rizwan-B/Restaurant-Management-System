@@ -5,8 +5,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.CallWaiterScreen">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.CallWaiterScreen">
    <children>
       <Label layoutX="297.0" layoutY="45.0" text="Call The Waiter">
          <font>
@@ -22,5 +23,10 @@
       <Button fx:id="callWaiterBtn" layoutX="549.0" layoutY="275.0" mnemonicParsing="false" onAction="#callWaiterBtnPressed" prefHeight="25.0" prefWidth="247.0" text="Call The Waiter" />
       <Button fx:id="run" layoutX="135.0" layoutY="361.0" mnemonicParsing="false" onAction="#justNothing" text="run" />
       <Button fx:id="backBtn" layoutX="65.0" layoutY="37.0" mnemonicParsing="false" onAction="#backBtnPressed" text="Back" />
+      <Text fx:id="textConfirm" fill="#ef0000" layoutX="223.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="282.9367218017578">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
    </children>
 </Pane>

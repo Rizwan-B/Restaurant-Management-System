@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 
@@ -36,6 +37,9 @@ public class CallWaiterScreen implements ControlledScreen {
     private Button run;
 
     @FXML
+    private Text textConfirm;
+
+    @FXML
     void callWaiterBtnPressed(ActionEvent event) {
         try {
             String tableNumberString = this.tableNumberField.getText();
@@ -43,6 +47,7 @@ public class CallWaiterScreen implements ControlledScreen {
             System.out.println(tableNumber);
             DatabaseController.callWaiterOnTable(DatabaseConnection.getInstance(), tableNumber);
             System.out.println("done");
+            textConfirm.setText("A waiter has been called.");
         } catch (Exception e) {
             System.out.println("oops");
         }
