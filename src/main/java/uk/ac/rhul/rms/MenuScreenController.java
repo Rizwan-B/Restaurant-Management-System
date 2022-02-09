@@ -2,20 +2,17 @@ package uk.ac.rhul.rms;
 
 import java.net.URL;
 import java.sql.Connection;
-//import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
-//import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 
@@ -94,8 +91,8 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         }
         else if (s.equals("Vegetarian")) {
             vegetarianMenu();
-            veganMenu(); //Vegetarian menu includes vegan options.
-        } else { //Non-Vegetarian menu includes vegetarian and vegan options.
+            veganMenu(); // Vegetarian menu includes vegan options.
+        } else { // Non-Vegetarian menu includes vegetarian and vegan options.
             nonVegMenu();
         }
     }
@@ -213,8 +210,8 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.connection = DatabaseConnection.getInstance();
-        nonVegMenu();
+        nonVegMenu(); // Sets default menu as Non-Vegetarian.
         ObservableList<String> list = FXCollections.observableArrayList("Non-Vegetarian", "Vegetarian", "Vegan");
-        filterBox.setItems(list); //This initialises the drop-down menu with 3 diet options.
+        filterBox.setItems(list); // This initialises the drop-down menu with 3 diet options.
     }
 }
