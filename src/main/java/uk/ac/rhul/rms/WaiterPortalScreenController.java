@@ -53,7 +53,8 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
 
     @FXML
     void cancelOrderBtnPressed(ActionEvent event) {
-
+        this.screensController.loadScreen(Main.cancelOrderScreenID, Main.cancelOrderScreenFile);
+        this.screensController.setScreen(Main.cancelOrderScreenID);
     }
 
     @FXML
