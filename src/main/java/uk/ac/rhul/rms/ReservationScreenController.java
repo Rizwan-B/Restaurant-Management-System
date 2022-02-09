@@ -3,6 +3,7 @@ package uk.ac.rhul.rms;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 
@@ -34,6 +35,11 @@ public class ReservationScreenController implements ControlledScreen {
 
     @FXML
     private Label tableNo;
+    @FXML
+    private ListView<Integer> seat_no;
+
+    @FXML
+    private ListView<Integer> table_no;
 
 
 }
