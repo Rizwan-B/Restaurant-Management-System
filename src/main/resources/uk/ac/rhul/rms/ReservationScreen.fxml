@@ -10,7 +10,7 @@
       <Label fx:id="tableNo" layoutX="30.0" layoutY="48.0" prefHeight="18.0" prefWidth="78.0" text="Table Number" />
       <Button fx:id="backBtn" mnemonicParsing="false" onAction="#backBtnPressed" text="Back" />
       <Label fx:id="seatNo" layoutX="173.0" layoutY="48.0" prefHeight="18.0" prefWidth="78.0" text="Seat Number" />
-      <ListView fx:id="table_no" layoutX="20.0" layoutY="75.0" prefHeight="307.0" prefWidth="92.0" />
+      <ListView id="table_no" fx:id="table_no" layoutX="20.0" layoutY="75.0" prefHeight="307.0" prefWidth="92.0" />
       <ListView fx:id="seat_no" layoutX="154.0" layoutY="75.0" prefHeight="307.0" prefWidth="117.0" />
    </children>
 </AnchorPane>

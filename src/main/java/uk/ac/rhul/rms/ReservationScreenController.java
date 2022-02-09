@@ -1,14 +1,19 @@
 package uk.ac.rhul.rms;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 
+import java.net.URL;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 /**
  * The screen controller for the reservation screen implementing the ControlledScreen Interface.
@@ -17,7 +22,7 @@ import java.util.ArrayList;
  * @author Muqdas Sheikh
  *
  */
-public class ReservationScreenController implements ControlledScreen {
+public class ReservationScreenController implements ControlledScreen, Initializable {
 
     ScreensController screensController;
     private Connection connection;
@@ -48,9 +53,9 @@ public class ReservationScreenController implements ControlledScreen {
         try {
             ArrayList<SeatNumber> st = DatabaseController.getSeatNumber(this.connection);
             for (SeatNumber v : st) {
+                System.out.println("hello");
                 System.out.println(v.getTableNumber());
-               // this.tableNo.getItems().ass(v.getTableNumber());
-
+                this.table_no.getItems().add(v.getTableNumber());
             }
         } catch(Exception e) {
             System.out.println("oops");
@@ -58,4 +63,11 @@ public class ReservationScreenController implements ControlledScreen {
     }
 
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        this.connection = DatabaseConnection.getInstance();
+        tableSeat();
+        ObservableList<String> list = FXCollections.observableArrayList("Non-Vegetarian", "Vegetarian", "Vegan");
+
+    }
 }

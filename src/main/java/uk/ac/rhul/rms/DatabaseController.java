@@ -151,11 +151,14 @@ public class DatabaseController {
     int seatNumber;
     ArrayList<SeatNumber> seat = new ArrayList<SeatNumber>();
     try {
+      System.out.println("Hello");
       ResultSet result = executeQuery(connection, "select table_no from seat_no;");
+      System.out.println("Hello");
       while (result.next()) {
         tableNumber = result.getInt("table_no");
-        seatNumber = result.getInt("seatNumber");
-        SeatNumber st = new SeatNumber(tableNumber,seatNumber);
+        System.out.println(tableNumber);
+       // seatNumber = result.getInt("seat_number")
+        SeatNumber st = new SeatNumber(tableNumber,2);
         seat.add(st);
       }
 
