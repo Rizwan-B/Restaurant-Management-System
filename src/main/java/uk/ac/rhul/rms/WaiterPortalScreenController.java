@@ -40,12 +40,20 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
     private Button backBtn;
 
     @FXML
+    private Button cancelOrderBtn;
+
+    @FXML
     private ListView<String> waiterCalls;
 
     @FXML
     void backBtnPressed(ActionEvent event) {
         this.screensController.setScreen(Main.loginScreenID);
         this.screensController.unloadScreen(Main.waiterPortalScreenID);
+    }
+
+    @FXML
+    void cancelOrderBtnPressed(ActionEvent event) {
+
     }
 
     @FXML
