@@ -184,20 +184,6 @@ public class DatabaseMain {
             + "item_image_location varchar(1000),"
             + "PRIMARY KEY (ItemID)"
             + ");");
-
-        dropTables(connect, "ingredients;");
-        createsTable(connect, " ingredients (ingredientID INT NOT NULL,"
-            + "ingredient_name VARCHAR(200) NOT NULL,"
-            + "is_allergen BIT NOT NULL DEFAULT 0,"
-            + "PRIMARY KEY (ingredientID)"
-            + ");");
-
-        dropTables(connect, "dishingredients;");
-        createsTable(connect, " dishingredients (dishinID INT NOT NULL,"
-            + "dishID INT FOREIGN KEY REFERENCES menu(itemID) NOT NULL,"
-            + "ingredientID INT FOREIGN KEY REFERENCES ingredients(ingredientID) NOT NULL,"
-            + "PRIMARY KEY (dishinID)"
-            + ");");
         
         dropTables(connect, "user_table;");
         createsTable(connect, "user_table(user_id int NOT NULL,"
