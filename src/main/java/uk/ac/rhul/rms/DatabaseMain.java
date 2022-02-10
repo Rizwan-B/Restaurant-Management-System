@@ -193,6 +193,43 @@ public class DatabaseMain {
             + "PRIMARY KEY (ItemID)"
             + ");");
         
+        dropTables(connect, "products;");
+        createsTable(connect, "products (productID int NOT NULL,"
+            + "product_name varchar(200) NOT NULL,"
+            + "product_description varchar(1000) NOT NULL,"
+            + "PRIMARY KEY (productID)"
+            + ");");
+        
+        dropTables(connect, "ingredients;");
+        createsTable(connect, " ingredients (ingredientID INT NOT NULL,"
+            + "ingredient_name VARCHAR(200) NOT NULL,"
+            + "PRIMARY KEY (ingredientID)"
+            + ");");
+
+        dropTables(connect, "allergies;");
+        createsTable(connect, " allergies (allergyID INT NOT NULL,"
+            + "allergy_name VARCHAR(200) NOT NULL,"
+            + "PRIMARY KEY (allergyID)"
+            + ");");
+        
+        dropTables(connect, "dish_ingredients_link;");
+        createsTable(connect, " dish_ingredients_link ("
+            + "productID INT,"
+            + "ingredientID INT,"
+            + "FOREIGN KEY (productID) REFERENCES products(productID),"
+            + "FOREIGN KEY (ingredientID) REFERENCES ingredients(ingredientID),"
+            + "PRIMARY KEY (productID, ingredientID)"
+            + ");");
+        
+        dropTables(connect, "allergy_ingredient_link;");
+        createsTable(connect, " allergy_ingredient_link ("
+            + "allergyID INT,"
+            + "ingredientID INT,"
+            + "FOREIGN KEY (allergyID) REFERENCES allergies(allergyID),"
+            + "FOREIGN KEY (ingredientID) REFERENCES ingredients(ingredientID),"
+            + "PRIMARY KEY (allergyID, ingredientID)"
+            + ");");
+        
         dropTables(connect, "user_table;");
         createsTable(connect, "user_table(user_id int NOT NULL,"
                               + "user_name varchar(1000) NOT NULL,"
