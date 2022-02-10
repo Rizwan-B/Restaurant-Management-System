@@ -189,7 +189,7 @@ public class DatabaseMain {
         createsTable(connect, "products (productID int NOT NULL,"
             + "product_name varchar(200) NOT NULL,"
             + "product_description varchar(1000) NOT NULL,"
-            + "PRIMARY KEY (ItemID)"
+            + "PRIMARY KEY (productID)"
             + ");");
         
         dropTables(connect, "ingredients;");
