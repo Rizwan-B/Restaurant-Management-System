@@ -208,5 +208,10 @@ public class DatabaseController {
     return menuItems;
   }
 
+  public static void cancelOrder(Connection connection, int order_id) throws SQLException{
+    Statement st = connection.createStatement();
+    st.execute("UPDATE orders_table SET cancelled = 1 WHERE order_id=" + order_id);
+  }
+
 
 }

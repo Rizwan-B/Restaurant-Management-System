@@ -69,7 +69,7 @@ public class DatabaseMain {
    * Inserts values in to the table from the csv file. 
    *
    *@param connection connects to the database.
-   * @param table is the name of the table the values are inserted in.
+   * @param table is the name of the table the values are inserted in. Table name must be same as csv file name.
    */
   public static void insertFromFile(Connection connection, String table) {
 
@@ -155,6 +155,14 @@ public class DatabaseMain {
         System.out.println(query7.getString(1) + ", " + query7.getString(2) + ", "
                 + query7.getString(3) + ", " + query7.getString(4));
       }
+
+      System.out.println("\n\nORDERS");
+      ResultSet query8 = db.executeQuery(connect, "SELECT * FROM orders_table");
+      while(query8.next()) {
+        System.out.println(query8.getString(1) + ", " + query8.getString(2) + ", "
+                + query8.getString(3) + ", " + query8.getString(4));
+      }
+
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -208,7 +216,7 @@ public class DatabaseMain {
         createsTable(connect, "orders_table (order_id int," +
                 "table_no int NOT NULL," +
                 "orders_list varchar(100)," +
-                "canceled number(1)," +
+                "cancelled number(1) NOT NULL," +  // 0 means order is not cancelled.
                 "PRIMARY KEY(order_id));");
 
         dropTables(connect, "seat_no");
@@ -219,6 +227,7 @@ public class DatabaseMain {
         insertFromFile(connect, "menu");
         insertFromFile(connect, "user_table");
         insertFromFile(connect, "seat_no");
+        insertFromFile(connect, "orders_table");
 
         queries(connect, db);
       
