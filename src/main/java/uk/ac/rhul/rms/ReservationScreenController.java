@@ -70,7 +70,7 @@ public class ReservationScreenController implements ControlledScreen, Initializa
     public void initialize(URL location, ResourceBundle resources) {
         this.connection = DatabaseConnection.getInstance();
         tableSeat();
-        ObservableList<String> list = FXCollections.observableArrayList("Non-Vegetarian", "Vegetarian", "Vegan");
+
 
     }
 }
