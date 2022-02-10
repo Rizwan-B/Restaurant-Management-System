@@ -59,18 +59,31 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
 
     @FXML
     void waiterStatusBtnPressed(ActionEvent event) {
+        /*
+            1) check if waiter is free...
+            2) while waiter is free -> start a new thread that does a constant db lookup for updates in the waiter_call table.
+            3) If the table is not being served -> show it on the screen for waiter to accept.
+            4) update waiter_call table to say it is being served by this waiter.
+         */
+
+
         if (waiterStatusBtn.getText().equals("FREE")){ // make the waiter free.
             waiterStatusBtn.setText("BUSY");
             this.waiterStatus.setText("free");
             this.busy = false;
             ResultSet waiterCallRecords = DatabaseController.executeQuery(DatabaseConnection.getInstance(), "SELECT * FROM waiter_call");
-            try {
-                while(waiterCallRecords.next()) {
-                    this.waiterCalls.getItems().add(waiterCallRecords.getString(2));
-                }
-            } catch (SQLException e) {
-                System.out.println(e);
-            }
+//            try {
+//                while(waiterCallRecords.next()) {
+//                    this.waiterCalls.getItems().add(waiterCallRecords.getString(2));
+//                }
+//            } catch (SQLException e) {
+//                System.out.println(e);
+//            }
+            Runnable waiterNotifier = new WaiterCallNotifier();
+            ((WaiterCallNotifier) waiterNotifier).setNotificationArea(waiterCalls);
+            Thread waiterNotifierThread = new Thread(waiterNotifier);
+            waiterNotifierThread.start();
+
 
         } else { // make the waiter busy.
             waiterStatusBtn.setText("FREE");

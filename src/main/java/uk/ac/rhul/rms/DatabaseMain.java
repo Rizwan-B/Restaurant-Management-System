@@ -267,7 +267,6 @@ public class DatabaseMain {
         insertFromFile(connect, "orders_table");
 
         queries(connect, db);
-      
       }
      
     } catch (Exception e) {
