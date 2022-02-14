@@ -42,7 +42,7 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
         this.screensController.unloadScreen(Main.manageOrderScreenID);
     }
 
-    private int convertToInt(String arrayString) {
+    public static int convertToInt(String arrayString) {
         StringBuilder sb = new StringBuilder(arrayString);
         sb.deleteCharAt(0);
         sb.deleteCharAt(arrayString.length() - 2);
@@ -53,20 +53,16 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
 
     @FXML
     void cancelBtnPressed(ActionEvent event) {
-        /*
-            2) ask user for confirmation.
-            3) change value to cancelled in the database. (basically asking kitchen staff to delete order.)
-         */
 
-        ObservableList selectedItem = orderList.getSelectionModel().getSelectedIndices();
-
-        int orderId = Integer.parseInt(orderList.getItems().get(this.convertToInt(selectedItem.toString())).split("|")[0].trim());
         try {
+            ObservableList selectedItem = orderList.getSelectionModel().getSelectedIndices();
+            int orderId = Integer.parseInt(orderList.getItems().get(convertToInt(selectedItem.toString())).split("|")[0].trim());
+
             DatabaseController.cancelOrder(DatabaseConnection.getInstance(), orderId);
             this.orderList.getItems().clear();
             this.displayItems();
-        } catch (SQLException e) {
-            System.out.println("SQL exception");
+        } catch (Exception e) {
+            System.out.println("ERROR: SQL connection error, or you did not select an item to delete.");
         }
 
     }

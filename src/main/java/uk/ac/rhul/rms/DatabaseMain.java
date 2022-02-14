@@ -245,10 +245,11 @@ public class DatabaseMain {
                                             + "PRIMARY KEY(reservation_id)"
                                             + ");");
         dropTables(connect, "waiter_call;");
-        createsTable(connect, "waiter_call (table_no int NOT NULL,"
+
+        createsTable(connect, "waiter_call (call_id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + "table_no int NOT NULL UNIQUE,"
                 + "waiter_id int,"
-                + "served number(1) NOT NULL,"
-                + "PRIMARY KEY(table_no)"
+                + "served number(1) NOT NULL" // 1 yes 0 no.
                 + ");");
 
         dropTables(connect, "orders_table");
