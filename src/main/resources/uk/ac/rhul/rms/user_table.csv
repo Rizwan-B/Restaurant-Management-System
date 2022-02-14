@@ -1,7 +1,7 @@
-1,admin,1234admin,ADMIN
-2,Ahmed,waiter1,WAITER
-3,Rizwan,waiter2,WAITER
-4,Virginia,waiter3,WAITER
-5,Mo,staff1,STAFF
-6,Lucas,staff2,STAFF
-7,Muqdas,staff3,STAFF
+1,admin,1234admin,ADMIN,NULL,1
+2,Ahmed,waiter1,WAITER,NULL,1
+3,Rizwan,waiter2,WAITER,NULL,1
+4,Virginia,waiter3,WAITER,NULL,1
+5,Mo,staff1,STAFF,NULL,1
+6,Lucas,staff2,STAFF,NULL,1
+7,Muqdas,staff3,STAFF,NULL,1

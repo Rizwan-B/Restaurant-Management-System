@@ -166,11 +166,7 @@ public class DatabaseController {
 
       return seat;
   }
-
-  public static void callWaiterOnTable(Connection connection, int tableNumber) throws SQLException {
-    Statement st = connection.createStatement();
-    st.execute("insert into waiter_call values(NULL, " + tableNumber + ", 0)");
-  }
+  
 
   public static String loginTest(Connection connection, String username, String password) throws SQLException {
     Statement st = connection.createStatement();

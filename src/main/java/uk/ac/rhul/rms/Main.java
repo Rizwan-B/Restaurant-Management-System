@@ -45,6 +45,7 @@ public class Main extends Application {
   public static String manageOrderScreenFile = "/uk/ac/rhul/rms/ManageOrderScreen.fxml";
 
   public static int currentLoggedInUser = 0;
+  public static String sessionId = null;
 
 
   @Override

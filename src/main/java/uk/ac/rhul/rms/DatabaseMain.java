@@ -235,6 +235,8 @@ public class DatabaseMain {
                               + "user_name varchar(1000) NOT NULL,"
                               + "password varchar(1000) NOT NULL,"
                               + "user_role varchar(1000) NOT NULL,"
+                              + "session_id varchar(1000)," // NULL means not logged it.
+                              + "busy number(1) NOT NULL," // 1 means yes 0 means no.
                               + "PRIMARY KEY(user_id));");
         dropTables(connect, "reservations;");
         createsTable(connect, "reservations (reservation_id int NOT NULL,"
@@ -243,9 +245,9 @@ public class DatabaseMain {
                                             + "PRIMARY KEY(reservation_id)"
                                             + ");");
         dropTables(connect, "waiter_call;");
-        createsTable(connect, "waiter_call (waiter_id int,"
-                + "table_no int NOT NULL,"
-                + "served int NOT NULL,"
+        createsTable(connect, "waiter_call (table_no int NOT NULL,"
+                + "waiter_id int,"
+                + "served number(1) NOT NULL,"
                 + "PRIMARY KEY(table_no)"
                 + ");");
 

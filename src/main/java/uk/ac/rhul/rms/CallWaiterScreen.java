@@ -45,11 +45,11 @@ public class CallWaiterScreen implements ControlledScreen {
             String tableNumberString = this.tableNumberField.getText();
             int tableNumber = Integer.parseInt(tableNumberString);
             System.out.println(tableNumber);
-            DatabaseController.callWaiterOnTable(DatabaseConnection.getInstance(), tableNumber);
+            DatabaseConnection.getInstance().createStatement().execute("insert into waiter_call values(" + tableNumber + ", NULL, 0)");
             System.out.println("done");
             textConfirm.setText("A waiter has been called.");
         } catch (Exception e) {
-            System.out.println("oops");
+            System.out.println(e.toString());
         }
     }
 
@@ -63,7 +63,7 @@ public class CallWaiterScreen implements ControlledScreen {
     void justNothing(ActionEvent event) throws SQLException{
         ResultSet test = DatabaseController.executeQuery(DatabaseConnection.getInstance(), "select * from waiter_call");
         System.out.println("-----------------------------");
-        System.out.println("waiter_id | table_no | served");
+        System.out.println("table_no | waiter_id | served");
         System.out.println("-----------------------------");
         while (test.next()) {
             System.out.println(test.getString(1) + " | " + test.getString(2) + " | " + test.getString(3) + " |");

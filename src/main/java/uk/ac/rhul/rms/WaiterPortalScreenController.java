@@ -72,6 +72,13 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
 
     }
 
+    @FXML
+    void logOut(ActionEvent event) {
+        Main.sessionId = null;
+        Main.currentLoggedInUser = 0;
+        this.screensController.setScreen(Main.startScreenID);
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

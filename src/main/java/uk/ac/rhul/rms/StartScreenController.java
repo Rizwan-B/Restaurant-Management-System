@@ -6,6 +6,9 @@ import javafx.scene.control.Button;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  * The Controller for the Welcome/Start screen implementing the ControlledScreen Interface.
  *
@@ -47,7 +50,27 @@ public class StartScreenController implements ControlledScreen {
 
   @FXML
   void loginBtnPressed(ActionEvent event) {
-    this.screenController.loadScreen(Main.loginScreenID, Main.loginScreenFile);
-    this.screenController.setScreen(Main.loginScreenID);
+    String role = "";
+    if (Main.sessionId != null) {
+      ResultSet loggedUser = DatabaseController.executeQuery(DatabaseConnection.getInstance(), "SELECT user_id, user_role FROM user_table WHERE session_id=" + Main.sessionId);
+      try {
+        while (loggedUser.next()) {
+          if (loggedUser.getString(2).equals("STAFF")) {
+            this.screenController.loadScreen(Main.staffPortalScreenID, Main.staffPortalScreenFile);
+            this.screenController.setScreen(Main.staffPortalScreenID);
+          } else if (loggedUser.getString(2).equals("WAITER")) {
+            this.screenController.loadScreen(Main.waiterPortalScreenID, Main.WaiterPortalScreenFile);
+            this.screenController.setScreen(Main.waiterPortalScreenID);
+          } else {
+            System.out.println("admin.");
+          }
+        }
+      } catch (SQLException e) {
+        System.out.println(e.toString());
+      }
+    } else {
+      this.screenController.loadScreen(Main.loginScreenID, Main.loginScreenFile);
+      this.screenController.setScreen(Main.loginScreenID);
+    }
   }
 }

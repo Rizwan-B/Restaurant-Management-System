@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -88,19 +89,32 @@ public class LoginScreenController implements ControlledScreen {
         System.out.println("username: " + username);
         System.out.println("password: " + password);
         try {
-            String role = DatabaseController.loginTest(DatabaseConnection.getInstance(), username, password);
-            if (role.equals("STAFF")) {
-                System.out.println("You are a staff member.");
-                this.screensController.setScreen(Main.staffPortalScreenID);
-            } else if (role.equals("WAITER")) {
-                this.screensController.loadScreen(Main.waiterPortalScreenID, Main.WaiterPortalScreenFile);
-                System.out.println("You are a waiter");
-                this.screensController.setScreen(Main.waiterPortalScreenID);
-            } else if (role.equals("ADMIN")) {
-                System.out.println("You are an admin.");
-            } else {
-                System.out.println("username or password incorrect");
-                this.resultLabel.setText("Login Failed: incorrect username of password");
+            ResultSet loginResult = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
+                    "SELECT user_id, user_role FROM user_table WHERE user_name='" + username + "' AND password='" + password + "'");
+            while (loginResult.next()) {
+                if (loginResult.getString(2).equals("STAFF")) {
+                    Main.currentLoggedInUser = loginResult.getInt(1);
+                    Main.sessionId = loginResult.getString(1);
+                    DatabaseConnection.getInstance().createStatement().execute(
+                            "UPDATE user_table set session_id="
+                                    + loginResult.getString(1)
+                                    + " WHERE user_id="
+                                    + loginResult.getString(1));
+                    // this will be a hashcode in production. currently just setting sessionId to userID.
+                    this.screensController.loadScreen(Main.staffPortalScreenID, Main.staffPortalScreenFile);
+                    this.screensController.setScreen(Main.staffPortalScreenID);
+                } else if (loginResult.getString(2).equals("WAITER")) {
+                    Main.currentLoggedInUser = loginResult.getInt(1);
+                    Main.sessionId = loginResult.getString(1);
+                    DatabaseConnection.getInstance().createStatement().execute(
+                            "UPDATE user_table set session_id="
+                                    + loginResult.getString(1)
+                                    + " WHERE user_id="
+                                    + loginResult.getString(1));
+                    // this will be a hashcode in production. currently just setting sessionId to userID.
+                    this.screensController.loadScreen(Main.waiterPortalScreenID, Main.WaiterPortalScreenFile);
+                    this.screensController.setScreen(Main.waiterPortalScreenID);
+                }
             }
         } catch (SQLException e) {
             System.out.println(e);
