@@ -3,6 +3,9 @@ package uk.ac.rhul.rms;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class WaiterCallNotifier implements Runnable{
 
     @FXML
@@ -14,8 +17,18 @@ public class WaiterCallNotifier implements Runnable{
 
     @Override
     public void run() {
-        for (int i = 0; i == i; i++) {
-            this.waiterCalls.getItems().add(Integer.toString(i));
+        try {
+            while (true) {
+                ResultSet notifications = DatabaseController.executeQuery(DatabaseConnection.getInstance(), "SELECT *, count(*) as record_count FROM waiter_call");
+                if (notifications.getInt("record_count") > waiterCalls.getItems().size()) {
+                    while (notifications.next()) {
+                        waiterCalls.getItems().add(notifications.getString(1) + ", " + notifications.getString(2) + ", " + notifications.getString(1));
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL exception");
         }
+
     }
 }

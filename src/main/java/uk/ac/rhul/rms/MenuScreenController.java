@@ -25,7 +25,6 @@ import uk.ac.rhul.screenmanager.ScreensController;
 public class MenuScreenController implements ControlledScreen, Initializable {
 
     private ScreensController screensController;
-    private Connection connection;
 
     @Override
     public void setScreenParent(ScreensController screenParent) {
@@ -64,7 +63,6 @@ public class MenuScreenController implements ControlledScreen, Initializable {
 
     @FXML
     void backBtnPressed(ActionEvent event) {
-        this.connection = null; // Garbage collector should remove this value but just to be safe.
         this.screensController.setScreen(Main.startScreenID);
     }
 
@@ -102,17 +100,17 @@ public class MenuScreenController implements ControlledScreen, Initializable {
      */
     public void nonVegMenu() {
         try {
-            ArrayList<MenuItem> nonVegStarter = DatabaseController.getMenuItems(this.connection, "Starters");
+            ArrayList<MenuItem> nonVegStarter = DatabaseController.getMenuItems(DatabaseConnection.getInstance(), "Starters");
             for (MenuItem v : nonVegStarter) {
                 System.out.println(v.getName());
                 this.starterList.getItems().add(v.getName());
             }
-            ArrayList<MenuItem> nonVegMain = DatabaseController.getMenuItems(this.connection, "Main");
+            ArrayList<MenuItem> nonVegMain = DatabaseController.getMenuItems(DatabaseConnection.getInstance(), "Main");
             for (MenuItem v : nonVegMain) {
                 System.out.println(v.getName());
                 this.mainList.getItems().add(v.getName());
             }
-            ArrayList<MenuItem> nonVegDessert = DatabaseController.getMenuItems(this.connection, "Dessert");
+            ArrayList<MenuItem> nonVegDessert = DatabaseController.getMenuItems(DatabaseConnection.getInstance(), "Dessert");
             for (MenuItem v : nonVegDessert) {
                 System.out.println(v.getName());
                 this.dessertList.getItems().add(v.getName());
@@ -127,19 +125,19 @@ public class MenuScreenController implements ControlledScreen, Initializable {
      */
     public void vegetarianMenu() {
         try {
-            ArrayList<MenuItem> vegStarters = DatabaseController.getDietType(this.connection, Diet.VEGETARIAN, "Starters");
+            ArrayList<MenuItem> vegStarters = DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGETARIAN, "Starters");
             this.starterList.getItems().clear();
             for (MenuItem v : vegStarters) {
                 System.out.println(v.getName());
                 this.starterList.getItems().add(v.getName());
             }
-            ArrayList<MenuItem> vegMain = DatabaseController.getDietType(this.connection, Diet.VEGETARIAN, "Main");
+            ArrayList<MenuItem> vegMain = DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGETARIAN, "Main");
             this.mainList.getItems().clear();
             for (MenuItem v : vegMain) {
                 System.out.println(v.getName());
                 this.mainList.getItems().add(v.getName());
             }
-            ArrayList<MenuItem> vegDessert = DatabaseController.getDietType(this.connection, Diet.VEGETARIAN, "Dessert");
+            ArrayList<MenuItem> vegDessert = DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGETARIAN, "Dessert");
             this.dessertList.getItems().clear();
             for (MenuItem v : vegDessert) {
                 System.out.println(v.getName());
@@ -155,17 +153,17 @@ public class MenuScreenController implements ControlledScreen, Initializable {
      */
     public void veganMenu() {
         try {
-            ArrayList<MenuItem> veganStarter = DatabaseController.getDietType(this.connection, Diet.VEGAN, "Starters");
+            ArrayList<MenuItem> veganStarter = DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGAN, "Starters");
             for (MenuItem v : veganStarter) {
                 System.out.println(v.getName());
                 this.starterList.getItems().add(v.getName());
             }
-            ArrayList<MenuItem> veganMain = DatabaseController.getDietType(this.connection, Diet.VEGAN, "Main");
+            ArrayList<MenuItem> veganMain = DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGAN, "Main");
             for (MenuItem v : veganMain) {
                 System.out.println(v.getName());
                 this.mainList.getItems().add(v.getName());
             }
-            ArrayList<MenuItem> veganDessert = DatabaseController.getDietType(this.connection, Diet.VEGAN, "Dessert");
+            ArrayList<MenuItem> veganDessert = DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGAN, "Dessert");
             for (MenuItem v : veganDessert) {
                 System.out.println(v.getName());
                 this.dessertList.getItems().add(v.getName());
@@ -209,7 +207,6 @@ public class MenuScreenController implements ControlledScreen, Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.connection = DatabaseConnection.getInstance();
         nonVegMenu(); // Sets default menu as Non-Vegetarian.
         ObservableList<String> list = FXCollections.observableArrayList("Non-Vegetarian", "Vegetarian", "Vegan");
         filterBox.setItems(list); // This initialises the drop-down menu with 3 diet options.

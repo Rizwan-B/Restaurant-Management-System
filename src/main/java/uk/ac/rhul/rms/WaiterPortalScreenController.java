@@ -68,36 +68,8 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
             3) If the table is not being served -> show it on the screen for waiter to accept.
             4) update waiter_call table to say it is being served by this waiter.
          */
+        System.out.println("free pressed");
 
-
-        if (waiterStatusBtn.getText().equals("FREE")){ // make the waiter free.
-            waiterStatusBtn.setText("BUSY");
-            this.waiterStatus.setText("free");
-            this.busy = false;
-            ResultSet waiterCallRecords = DatabaseController.executeQuery(DatabaseConnection.getInstance(), "SELECT * FROM waiter_call");
-//            try {
-//                while(waiterCallRecords.next()) {
-//                    this.waiterCalls.getItems().add(waiterCallRecords.getString(2));
-//                }
-//            } catch (SQLException e) {
-//                System.out.println(e);
-//            }
-            Runnable waiterNotifier = new WaiterCallNotifier();
-            ((WaiterCallNotifier) waiterNotifier).setNotificationArea(waiterCalls);
-            Thread waiterNotifierThread = new Thread(waiterNotifier);
-            waiterNotifierThread.start();
-
-
-        } else { // make the waiter busy.
-            waiterStatusBtn.setText("FREE");
-            this.waiterStatus.setText("busy");
-            this.busy = true;
-            this.waiterCalls.getItems().removeAll();
-        }
-
-        // 3) change waiterStatus label to green.
-        // 4) if waiter is free -> show all the waiter calls in list view.
-        System.out.println("free pressed.");
     }
 
 
