@@ -2,14 +2,20 @@ package uk.ac.rhul.rms;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -42,6 +48,9 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
     @FXML
     private ListView<String> starterListView;
 
+    @FXML
+    private Button Delete;
+
     /**
      * This method shows the whole menu.
      */
@@ -66,10 +75,55 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
             System.out.println("oops");
         }
     }
+    public static int convertToInt(String arrayString) {
+        StringBuilder sb = new StringBuilder(arrayString);
+        sb.deleteCharAt(0);
+        sb.deleteCharAt(arrayString.length() - 2);
+
+        int result = Integer.parseInt(sb.toString());
+        return result;
+    }
+
+    @FXML
+    void deleteBtnPressed(ActionEvent event) {
+
+        Alert alert = new Alert(Alert.AlertType.NONE, "Are you sure you want to delete this order?", ButtonType.YES, ButtonType.NO);
+        alert.showAndWait();
+
+        if (alert.getResult() == ButtonType.YES) {
+
+            try {
+
+                int index = this.starterListView.getSelectionModel().getSelectedIndex();
+
+                if (index >= 0) {
+                    this.starterListView.getItems().remove(index);
+                }
+
+
+            } catch (Exception e) {
+                System.out.println("ERROR: SQL connection error, or you did not select an item to delete.");
+            }
+        }
+
+    }
+    public void displayItems() {
+        ResultSet allOrders = DatabaseController.executeQuery(DatabaseConnection.getInstance(), "SELECT item_name FROM menu "
+                + "WHERE category = 'Starters';");
+        try {
+            while (allOrders.next()) {
+                    starterListView.getItems().add(allOrders.getString(1));
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL exception.");
+        }
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         fullMenu();
+       // this.displayItems();
 
     }
 
