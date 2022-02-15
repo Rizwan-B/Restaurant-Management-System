@@ -44,6 +44,9 @@ public class Main extends Application {
   public static String manageOrderScreenID = "ManageOrderScreen";
   public static String manageOrderScreenFile = "/uk/ac/rhul/rms/ManageOrderScreen.fxml";
 
+  public static String changeMenuScreenID = "changeMenuScreen";
+  public static String changeMenuScreenFile = "/uk/ac/rhul/rms/ChangeMenuScreen.fxml";
+
   public static int currentLoggedInUser = 0;
   public static String sessionId = null;
 

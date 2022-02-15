@@ -49,6 +49,13 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
     @FXML
     private Button changeMenu;
 
+
+    @FXML
+    void changeMenuPressed(ActionEvent event) {
+        this.screensController.loadScreen(Main.changeMenuScreenID, Main.changeMenuScreenFile);
+        this.screensController.setScreen(Main.changeMenuScreenID);
+    }
+
     @FXML
     void backBtnPressed(ActionEvent event) {
         this.screensController.setScreen(Main.loginScreenID);
