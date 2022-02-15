@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="514.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.ChangeMenuScreenController">
    <children>
-      <Text fx:id="changeMenu" layoutX="202.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHANGE MENU" />
+      <Text fx:id="changeMenu" layoutX="285.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHANGE MENU" wrappingWidth="90.7222900390625" />
+      <Text fx:id="starter" layoutX="55.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STARTER" wrappingWidth="62.31524658203125" />
+      <Text fx:id="main" layoutX="309.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MAIN" wrappingWidth="41.08551025390625" />
+      <Text fx:id="dessert" layoutX="525.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DESSERT" wrappingWidth="62.31524658203125" />
+      <ListView fx:id="starterListView" layoutX="14.0" layoutY="110.0" prefHeight="386.0" prefWidth="202.0" />
+      <ListView fx:id="mainListView" layoutX="230.0" layoutY="110.0" prefHeight="386.0" prefWidth="213.0" />
+      <ListView fx:id="dessertListView" layoutX="462.0" layoutY="110.0" prefHeight="386.0" prefWidth="226.0" />
    </children>
 </Pane>
