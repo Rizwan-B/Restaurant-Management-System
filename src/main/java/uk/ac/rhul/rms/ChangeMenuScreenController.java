@@ -49,7 +49,13 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
     private ListView<String> starterListView;
 
     @FXML
-    private Button Delete;
+    private Button Delete_dessert;
+
+    @FXML
+    private Button Delete_main;
+
+    @FXML
+    private Button Delete_starter;
 
     /**
      * This method shows the whole menu.
@@ -75,17 +81,9 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
             System.out.println("oops");
         }
     }
-    public static int convertToInt(String arrayString) {
-        StringBuilder sb = new StringBuilder(arrayString);
-        sb.deleteCharAt(0);
-        sb.deleteCharAt(arrayString.length() - 2);
-
-        int result = Integer.parseInt(sb.toString());
-        return result;
-    }
 
     @FXML
-    void deleteBtnPressed(ActionEvent event) {
+    void deleteStarter(ActionEvent event) {
 
         Alert alert = new Alert(Alert.AlertType.NONE, "Are you sure you want to delete this order?", ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
@@ -94,10 +92,9 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
 
             try {
 
-                int index = this.starterListView.getSelectionModel().getSelectedIndex();
-
-                if (index >= 0) {
-                    this.starterListView.getItems().remove(index);
+                int index_starter = this.starterListView.getSelectionModel().getSelectedIndex();
+                if (index_starter >= 0) {
+                    this.starterListView.getItems().remove(index_starter);
                 }
 
 
@@ -107,23 +104,61 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
         }
 
     }
-    public void displayItems() {
-        ResultSet allOrders = DatabaseController.executeQuery(DatabaseConnection.getInstance(), "SELECT item_name FROM menu "
-                + "WHERE category = 'Starters';");
-        try {
-            while (allOrders.next()) {
-                    starterListView.getItems().add(allOrders.getString(1));
+
+    @FXML
+    void deleteMain(ActionEvent event) {
+
+        Alert alert = new Alert(Alert.AlertType.NONE, "Are you sure you want to delete this order?", ButtonType.YES, ButtonType.NO);
+        alert.showAndWait();
+
+        if (alert.getResult() == ButtonType.YES) {
+
+            try {
+
+                int index_main= this.mainListView.getSelectionModel().getSelectedIndex();
+                if (index_main >= 0) {
+                    this.mainListView.getItems().remove(index_main);
+                }
+
+
+            } catch (Exception e) {
+                System.out.println("ERROR: SQL connection error, or you did not select an item to delete.");
             }
-        } catch (SQLException e) {
-            System.out.println("SQL exception.");
         }
+
     }
+
+    @FXML
+    void deleteDessert(ActionEvent event) {
+
+        Alert alert = new Alert(Alert.AlertType.NONE, "Are you sure you want to delete this order?", ButtonType.YES, ButtonType.NO);
+        alert.showAndWait();
+
+        if (alert.getResult() == ButtonType.YES) {
+
+            try {
+
+                int index_dessert = this.dessertListView.getSelectionModel().getSelectedIndex();
+                if (index_dessert >= 0) {
+                    this.dessertListView.getItems().remove(index_dessert);
+                }
+
+
+            } catch (Exception e) {
+                System.out.println("ERROR: SQL connection error, or you did not select an item to delete.");
+            }
+        }
+
+    }
+
+
+
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         fullMenu();
-       // this.displayItems();
+
 
     }
 
