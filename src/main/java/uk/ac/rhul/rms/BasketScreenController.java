@@ -5,8 +5,10 @@ import uk.ac.rhul.screenmanager.ScreensController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
 /**
  * The screen controller for the basket screen implementing the ControlledScreen Interface.
@@ -24,6 +26,9 @@ public class BasketScreenController implements ControlledScreen {
   }
 
   @FXML
+  private ListView<String> orderItems;
+
+  @FXML
   private Button backBtn;
 
   @FXML
@@ -31,7 +36,7 @@ public class BasketScreenController implements ControlledScreen {
 
   @FXML
   void getOrders(ActionEvent event){
-
+    this.orderItems.getItems().add("test");
   }
   @FXML
   void backBtnPressed(ActionEvent event) {

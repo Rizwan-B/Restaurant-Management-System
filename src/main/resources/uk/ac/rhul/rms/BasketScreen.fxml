@@ -6,13 +6,9 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.BasketScreenController">
    <children>
       <Button fx:id="backBtn" layoutX="65.0" layoutY="37.0" mnemonicParsing="false" onAction="#backBtnPressed" text="Back" />
-      <AnchorPane layoutX="168.0" prefHeight="400.0" prefWidth="265.0">
-         <children>
-            <Button layoutX="68.0" layoutY="347.0" mnemonicParsing="false" text="Continue to payment" />
-            <ListView id="ItemList" layoutX="33.0" layoutY="72.0" prefHeight="256.0" prefWidth="200.0" />
-            <Label layoutX="116.0" layoutY="26.0" text="Basket" />
-         </children>
-      </AnchorPane>
-      <Button fx:id="getOrderBtn" layoutX="436.0" layoutY="231.0" mnemonicParsing="false" onAction="#getOrders" prefHeight="25.0" prefWidth="77.0" text="Get orders" />
+      <Button fx:id="getOrderBtn" layoutX="439.0" layoutY="231.0" mnemonicParsing="false" onAction="#getOrders" prefHeight="25.0" prefWidth="77.0" text="Get orders" />
+      <ListView id="ItemList" fx:id="orderItems" layoutX="200.0" layoutY="72.0" prefHeight="256.0" prefWidth="200.0" />
+      <Button layoutX="236.0" layoutY="348.0" mnemonicParsing="false" text="Continue to payment" />
+      <Label layoutX="283.0" layoutY="41.0" text="Basket" />
    </children>
 </AnchorPane>
