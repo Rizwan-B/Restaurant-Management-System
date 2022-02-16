@@ -93,9 +93,13 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
             try {
 
                 int index_starter = this.starterListView.getSelectionModel().getSelectedIndex();
+                String selected_item=this.starterListView.getSelectionModel().getSelectedItem();
                 if (index_starter >= 0) {
                     this.starterListView.getItems().remove(index_starter);
+                    DatabaseConnection.getInstance().createStatement().execute("DELETE FROM menu WHERE item_name = '"+ selected_item + "';" );
+
                 }
+
 
 
             } catch (Exception e) {
@@ -116,9 +120,12 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
             try {
 
                 int index_main= this.mainListView.getSelectionModel().getSelectedIndex();
+                String selected_item=this.mainListView.getSelectionModel().getSelectedItem();
                 if (index_main >= 0) {
                     this.mainListView.getItems().remove(index_main);
+                    DatabaseConnection.getInstance().createStatement().execute("DELETE FROM menu WHERE item_name = '"+ selected_item + "';" );
                 }
+
 
 
             } catch (Exception e) {
@@ -139,8 +146,10 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
             try {
 
                 int index_dessert = this.dessertListView.getSelectionModel().getSelectedIndex();
+                String selected_item=this.dessertListView.getSelectionModel().getSelectedItem();
                 if (index_dessert >= 0) {
                     this.dessertListView.getItems().remove(index_dessert);
+                    DatabaseConnection.getInstance().createStatement().execute("DELETE FROM menu WHERE item_name = '"+ selected_item + "';" );
                 }
 
 
