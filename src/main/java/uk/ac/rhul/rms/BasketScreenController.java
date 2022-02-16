@@ -6,6 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
+import javax.swing.*;
+
 /**
  * The screen controller for the basket screen implementing the ControlledScreen Interface.
  *
@@ -24,6 +26,13 @@ public class BasketScreenController implements ControlledScreen {
   @FXML
   private Button backBtn;
 
+  @FXML
+  private Button getOrderBtn;
+
+  @FXML
+  void getOrders(ActionEvent event){
+
+  }
   @FXML
   void backBtnPressed(ActionEvent event) {
     this.screensController.loadScreen(Main.menuScreenID, Main.menuScreenFile);
