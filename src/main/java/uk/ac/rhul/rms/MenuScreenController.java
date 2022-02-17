@@ -211,7 +211,8 @@ public class MenuScreenController implements ControlledScreen, Initializable {
 
     @FXML
     void add(ActionEvent event){
-        for (int i = 0; i < quantity.getSelectionModel().getSelectedItem(); i++) {
+        for (int i = 0; i < quantity.getSelectionModel().getSelectedItem(); i++) { // Loop to add quantity desired.
+
             if (starterList.getSelectionModel().getSelectedItem() != null) {
                 basketList.getItems().add(starterList.getSelectionModel().getSelectedItem());
             }
@@ -239,8 +240,8 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         ObservableList<String> list = FXCollections.observableArrayList("Non-Vegetarian", "Vegetarian", "Vegan");
         filterBox.setItems(list); // This initialises the drop-down menu with 3 diet options.
         ObservableList<Integer> quantityList = FXCollections.observableArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11, 12, 13, 14, 15);
-        quantity.setItems(quantityList);
-        quantity.setValue(1);
+        quantity.setItems(quantityList); // This initialises the drop-down quantity with 3 options 1-10.
+        quantity.setValue(1); // Sets the default value of quantity to 1.
     }
 
 
