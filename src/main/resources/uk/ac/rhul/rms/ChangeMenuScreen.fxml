@@ -4,6 +4,8 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
+
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="514.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.ChangeMenuScreenController">
    <children>
@@ -17,5 +19,10 @@
       <Button fx:id="Delete_starter" layoutX="125.0" layoutY="67.0" mnemonicParsing="false" onAction="#deleteStarter" text="Delete" />
       <Button fx:id="Delete_main" layoutX="356.0" layoutY="67.0" mnemonicParsing="false" onAction="#deleteMain" text="Delete" />
       <Button fx:id="Delete_dessert" layoutX="602.0" layoutY="67.0" mnemonicParsing="false" onAction="#deleteDessert" text="Delete" />
+      <Button fx:id="backBtn" layoutX="6.0" layoutY="14.0" mnemonicParsing="false" onAction="#backBtnPressed" prefHeight="46.0" prefWidth="101.0" text="Back">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
    </children>
 </Pane>

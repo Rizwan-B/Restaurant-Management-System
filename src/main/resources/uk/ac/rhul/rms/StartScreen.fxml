@@ -20,7 +20,7 @@
             <Font name="Bell MT" size="27.0" />
          </font>
       </Button>
-      <Button fx:id="reservationBtn" layoutX="391.0" layoutY="334.0" mnemonicParsing="false" onAction="#changeToReservation" prefHeight="52.0" prefWidth="194.0" text="Rerservations">
+      <Button fx:id="reservationBtn" layoutX="391.0" layoutY="334.0" mnemonicParsing="false" onAction="#changeToReservation" prefHeight="52.0" prefWidth="194.0" text="Reservations">
          <font>
             <Font name="Bell MT" size="27.0" />
          </font>
