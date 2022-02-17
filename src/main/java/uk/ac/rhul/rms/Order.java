@@ -11,14 +11,25 @@ import java.util.ArrayList;
  */
 public class Order {
 
+  private int orderId;
+  private int tableNumber;
   private ArrayList<MenuItem> orderList;
   private boolean orderCompletedStatus = false;
 
   /**
-   * A public default constructor for the order object.
+   * The constructor for the Order class, taking the needed information to construct an order object.
+   *
+   * @param orderId The ID of the order that acts as the primary key in the database.
+   * @param tableNumber The table number the order is for.
+   * @param itemsList A comma separated list of MenuItem IDs constituting the order.
+   * @param cancelled A boolean representing whether the order has been cancelled or not.
+   * @throws InvalidMenuIdException An exception that if thrown is likely due to an incorrect itemsList being passed.
    */
-  public Order() {
-    this.orderList = new ArrayList<>();
+  public Order(int orderId, int tableNumber, String itemsList, boolean cancelled) throws InvalidMenuIdException {
+    this.orderId = orderId;
+    this.tableNumber = tableNumber;
+    this.orderList = this.parseOrderList(itemsList);
+    this.orderCompletedStatus = cancelled;
   }
 
   /**
