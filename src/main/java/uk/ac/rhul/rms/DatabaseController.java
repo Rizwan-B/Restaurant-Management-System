@@ -10,6 +10,7 @@ import java.util.ArrayList;
  * This class handles the connection to database.
  *
  * @author Muqdas
+ * @author Lucas Kimber
  */
 public class DatabaseController {
 
@@ -209,5 +210,32 @@ public class DatabaseController {
     st.execute("UPDATE orders_table SET cancelled = 1 WHERE order_id=" + order_id);
   }
 
+  /**
+   * Returns an array list of all the orders currently in the database.
+   *
+   * @param connection The connection object to the database.
+   * @return An ArrayList of all the orders currently in the database.
+   * @throws SQLException An exception indicating the database couldn't be queried properly.
+   * @throws InvalidMenuIdException An exception indicating one of the menu items in the order couldn't be found.
+   */
+  public ArrayList<Order> getOrders(Connection connection) throws SQLException, InvalidMenuIdException {
+    ResultSet result = executeQuery(connection, "SELECT * FROM orders_table");
+    ArrayList<Order> orders = new ArrayList<>();
 
+    int orderId;
+    int tableNo;
+    String orders_list;
+    Boolean cancelled;
+
+    while (result.next()) {
+      orderId = result.getInt("order_id");
+      tableNo = result.getInt("table_no");
+      orders_list = result.getString("orders_list");
+      cancelled = result.getInt("cancelled") == 1;
+
+      Order orderItem = new Order(orderId, tableNo, orders_list, cancelled);
+      orders.add(orderItem);
+    }
+    return orders;
+  }
 }
