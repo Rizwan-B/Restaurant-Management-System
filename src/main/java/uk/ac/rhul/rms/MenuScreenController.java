@@ -59,6 +59,9 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     private CheckBox peanut;
 
     @FXML
+    private ComboBox<Integer> quantity;
+
+    @FXML
     private CheckBox shellfish;
 
     @FXML
@@ -208,19 +211,20 @@ public class MenuScreenController implements ControlledScreen, Initializable {
 
     @FXML
     void add(ActionEvent event){
-        if (starterList.getSelectionModel().getSelectedItem()!= null){
-            basketList.getItems().add(starterList.getSelectionModel().getSelectedItem());
-            starterList.getSelectionModel().clearSelection();
+        for (int i = 0; i < quantity.getSelectionModel().getSelectedItem(); i++) {
+            if (starterList.getSelectionModel().getSelectedItem() != null) {
+                basketList.getItems().add(starterList.getSelectionModel().getSelectedItem());
+            }
+            if (mainList.getSelectionModel().getSelectedItem() != null) {
+                basketList.getItems().add(mainList.getSelectionModel().getSelectedItem());
+            }
+            if (dessertList.getSelectionModel().getSelectedItem() != null) {
+                basketList.getItems().add(dessertList.getSelectionModel().getSelectedItem());
+            }
         }
-        if (mainList.getSelectionModel().getSelectedItem()!= null){
-            basketList.getItems().add(mainList.getSelectionModel().getSelectedItem());
-            mainList.getSelectionModel().clearSelection();
-        }
-        if (dessertList.getSelectionModel().getSelectedItem()!= null){
-            basketList.getItems().add(dessertList.getSelectionModel().getSelectedItem());
-            dessertList.getSelectionModel().clearSelection();
-        }
-
+        starterList.getSelectionModel().clearSelection();
+        mainList.getSelectionModel().clearSelection();
+        dessertList.getSelectionModel().clearSelection();
     }
 
     @FXML
@@ -233,7 +237,9 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         nonVegMenu(); // Sets default menu as Non-Vegetarian.
         ObservableList<String> list = FXCollections.observableArrayList("Non-Vegetarian", "Vegetarian", "Vegan");
+        ObservableList<Integer> quantityList = FXCollections.observableArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11, 12, 13, 14, 15);
         filterBox.setItems(list); // This initialises the drop-down menu with 3 diet options.
+        quantity.setItems(quantityList);
     }
 
 
