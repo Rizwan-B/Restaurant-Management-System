@@ -53,7 +53,8 @@
                </font>
             </Text>
             <ListView fx:id="basketList" layoutX="442.0" layoutY="187.0" prefHeight="263.0" prefWidth="227.0" />
-            <Button fx:id="addSelection" layoutX="516.0" layoutY="476.0" mnemonicParsing="false" onAction="#add" text="Add selection" />
+            <Button fx:id="addSelection" layoutX="442.0" layoutY="476.0" mnemonicParsing="false" onAction="#add" text="Add selection" />
+            <Button fx:id="removeBtn" layoutX="610.0" layoutY="476.0" mnemonicParsing="false" onAction="#remove" text="Remove" />
          </children></AnchorPane>
   </content>
 </ScrollPane>

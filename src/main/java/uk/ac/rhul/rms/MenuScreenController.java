@@ -210,14 +210,23 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     void add(ActionEvent event){
         if (starterList.getSelectionModel().getSelectedItem()!= null){
             basketList.getItems().add(starterList.getSelectionModel().getSelectedItem());
+            starterList.getSelectionModel().clearSelection();
         }
         if (mainList.getSelectionModel().getSelectedItem()!= null){
             basketList.getItems().add(mainList.getSelectionModel().getSelectedItem());
+            mainList.getSelectionModel().clearSelection();
         }
         if (dessertList.getSelectionModel().getSelectedItem()!= null){
             basketList.getItems().add(dessertList.getSelectionModel().getSelectedItem());
+            dessertList.getSelectionModel().clearSelection();
         }
 
+    }
+
+    @FXML
+    void remove(ActionEvent event){
+        basketList.getItems().remove(basketList.getSelectionModel().getSelectedItem());
+        basketList.getSelectionModel().clearSelection();
     }
 
     @Override
