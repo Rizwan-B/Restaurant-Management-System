@@ -237,9 +237,10 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         nonVegMenu(); // Sets default menu as Non-Vegetarian.
         ObservableList<String> list = FXCollections.observableArrayList("Non-Vegetarian", "Vegetarian", "Vegan");
-        ObservableList<Integer> quantityList = FXCollections.observableArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11, 12, 13, 14, 15);
         filterBox.setItems(list); // This initialises the drop-down menu with 3 diet options.
+        ObservableList<Integer> quantityList = FXCollections.observableArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11, 12, 13, 14, 15);
         quantity.setItems(quantityList);
+        quantity.setValue(1);
     }
 
 
