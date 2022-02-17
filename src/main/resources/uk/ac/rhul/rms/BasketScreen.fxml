@@ -8,7 +8,7 @@
       <Button fx:id="backBtn" layoutX="65.0" layoutY="37.0" mnemonicParsing="false" onAction="#backBtnPressed" text="Back" />
       <Button fx:id="getOrderBtn" layoutX="439.0" layoutY="231.0" mnemonicParsing="false" onAction="#getOrders" prefHeight="25.0" prefWidth="77.0" text="Get orders" />
       <ListView id="ItemList" fx:id="orderItems" layoutX="200.0" layoutY="72.0" prefHeight="256.0" prefWidth="200.0" />
-      <Button layoutX="236.0" layoutY="348.0" mnemonicParsing="false" text="Continue to payment" />
+      <Button layoutX="236.0" layoutY="348.0" mnemonicParsing="false" onAction="#selected" text="Continue to payment" />
       <Label layoutX="283.0" layoutY="41.0" text="Basket" />
    </children>
 </AnchorPane>

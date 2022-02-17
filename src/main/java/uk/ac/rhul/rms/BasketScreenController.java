@@ -38,10 +38,16 @@ public class BasketScreenController implements ControlledScreen {
   void getOrders(ActionEvent event){
     this.orderItems.getItems().add("test");
   }
+
+  @FXML
+  void selected(ActionEvent event){
+    System.out.println(orderItems.getSelectionModel().getSelectedItems());
+  }
+
   @FXML
   void backBtnPressed(ActionEvent event) {
     this.screensController.loadScreen(Main.menuScreenID, Main.menuScreenFile);
     this.screensController.setScreen(Main.menuScreenID);
   }
-  
+
 }
