@@ -60,6 +60,9 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
     @FXML
     private Button backBtn;
 
+    @FXML
+    private Button AddItem;
+
 
     /**
      * This method shows the whole menu.
