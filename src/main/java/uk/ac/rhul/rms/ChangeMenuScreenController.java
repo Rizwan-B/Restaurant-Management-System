@@ -57,6 +57,10 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
     @FXML
     private Button Delete_starter;
 
+    @FXML
+    private Button backBtn;
+
+
     /**
      * This method shows the whole menu.
      */
@@ -161,7 +165,11 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
     }
 
 
-
+    @FXML
+    void backBtnPressed(ActionEvent event) {
+        this.screensController.loadScreen(Main.waiterPortalScreenID, Main.WaiterPortalScreenFile);
+        this.screensController.setScreen(Main.waiterPortalScreenID);
+    }
 
 
     @Override

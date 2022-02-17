@@ -17,6 +17,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * The screen controller for the managing orders screen implementing the ControlledScreen Interface.
+ *
+ * @author Virginia, Ahmed
+ */
+
 public class ManageOrderScreenController implements ControlledScreen, Initializable {
 
     ScreensController screensController;
@@ -53,6 +59,9 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
         return result;
     }
 
+    /**
+     * This cancels the order after asking for confirmation from the waiter.
+     */
     @FXML
     void cancelBtnPressed(ActionEvent event) {
 
