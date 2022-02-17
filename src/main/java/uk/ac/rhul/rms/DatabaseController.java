@@ -128,7 +128,7 @@ public class DatabaseController {
 
     try {
 
-      ResultSet result = executeQuery(connection, "select * from menu where id = '" + itemPrimaryKey + "'");
+      ResultSet result = executeQuery(connection, "select * from menu where itemID = '" + itemPrimaryKey + "'");
 
       itemId = result.getInt("itemID");
       itemName = result.getString("item_name");
