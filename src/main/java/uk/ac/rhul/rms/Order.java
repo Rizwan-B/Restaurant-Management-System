@@ -87,7 +87,7 @@ public class Order {
    * @throws InvalidMenuIdException Thrown if one of the menu items in the order doesn't exist.
    */
   private ArrayList<MenuItem> parseOrderList(String itemListString) throws InvalidMenuIdException {
-    String[] itemIds = itemListString.split(",");
+    String[] itemIds = itemListString.split("-");
     ArrayList<MenuItem> menuItems = new ArrayList<>();
     Connection connection = DatabaseConnection.getInstance();
 
