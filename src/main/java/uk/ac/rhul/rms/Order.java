@@ -96,4 +96,19 @@ public class Order {
     }
     return menuItems;
   }
+
+  /**
+   * Returns a string of all the menu items in the order.
+   *
+   * @return A string of all the menu items.
+   */
+  public String toString() {
+    String orderString = "";
+
+    for (MenuItem item : this.orderList) {
+      orderString += item.toString() + " ";
+    }
+
+    return orderString;
+  }
 }
