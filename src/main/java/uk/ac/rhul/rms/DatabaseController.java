@@ -206,7 +206,12 @@ public class DatabaseController {
 
   public static void cancelOrder(Connection connection, int order_id) throws SQLException{
     Statement st = connection.createStatement();
-    st.execute("UPDATE orders_table SET cancelled = 1 WHERE order_id=" + order_id);
+    st.execute("UPDATE orders_table SET status = 1 WHERE order_id=" + order_id);
+  }
+
+  public static void deliverOrder(Connection connection, int order_id) throws SQLException{
+    Statement st = connection.createStatement();
+    st.execute("UPDATE orders_table SET status = 2 WHERE order_id=" + order_id);
   }
 
 
