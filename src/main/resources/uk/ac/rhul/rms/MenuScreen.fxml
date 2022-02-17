@@ -52,9 +52,14 @@
                   <Font size="23.0" />
                </font>
             </Text>
-            <ListView fx:id="basketList" layoutX="442.0" layoutY="187.0" prefHeight="263.0" prefWidth="227.0" />
-            <Button fx:id="addSelection" layoutX="442.0" layoutY="476.0" mnemonicParsing="false" onAction="#add" text="Add selection" />
-            <Button fx:id="removeBtn" layoutX="610.0" layoutY="476.0" mnemonicParsing="false" onAction="#remove" text="Remove" />
+            <ListView fx:id="basketList" layoutX="442.0" layoutY="217.0" prefHeight="263.0" prefWidth="227.0" />
+            <Button fx:id="addSelection" layoutX="442.0" layoutY="504.0" mnemonicParsing="false" onAction="#add" text="Add selection" />
+            <Button fx:id="removeBtn" layoutX="607.0" layoutY="504.0" mnemonicParsing="false" onAction="#remove" text="Remove" />
+            <Label layoutX="514.0" layoutY="178.0" text="Basket">
+               <font>
+                  <Font name="Calibri" size="31.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
   </content>
 </ScrollPane>
