@@ -4,5 +4,5 @@
 /.settings/
 .classpath
 .project
-
+src/main/resources/SQLite/sqlite-tools-win32-x86-3370200/menudb.db
 /TeamProject2022_20.iml
