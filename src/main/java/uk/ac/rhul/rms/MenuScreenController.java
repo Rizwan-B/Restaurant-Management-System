@@ -41,6 +41,9 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     private ListView<String> dessertList;
 
     @FXML
+    private ListView<String> basketList;
+
+    @FXML
     private Button backBtn;
 
     @FXML
@@ -203,7 +206,28 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         }
     }
 
+    @FXML
+    void add(ActionEvent event){
+        if (starterList.getSelectionModel().getSelectedItem()!= null){
+            basketList.getItems().add(starterList.getSelectionModel().getSelectedItem());
+            starterList.getSelectionModel().clearSelection();
+        }
+        if (mainList.getSelectionModel().getSelectedItem()!= null){
+            basketList.getItems().add(mainList.getSelectionModel().getSelectedItem());
+            mainList.getSelectionModel().clearSelection();
+        }
+        if (dessertList.getSelectionModel().getSelectedItem()!= null){
+            basketList.getItems().add(dessertList.getSelectionModel().getSelectedItem());
+            dessertList.getSelectionModel().clearSelection();
+        }
 
+    }
+
+    @FXML
+    void remove(ActionEvent event){
+        basketList.getItems().remove(basketList.getSelectionModel().getSelectedItem());
+        basketList.getSelectionModel().clearSelection();
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -211,4 +235,6 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         ObservableList<String> list = FXCollections.observableArrayList("Non-Vegetarian", "Vegetarian", "Vegan");
         filterBox.setItems(list); // This initialises the drop-down menu with 3 diet options.
     }
+
+
 }
