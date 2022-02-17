@@ -106,7 +106,7 @@ public class Order {
     String orderString = "";
 
     for (MenuItem item : this.orderList) {
-      orderString += item.toString() + " ";
+      orderString += item.getName() + " ";
     }
 
     return orderString;
