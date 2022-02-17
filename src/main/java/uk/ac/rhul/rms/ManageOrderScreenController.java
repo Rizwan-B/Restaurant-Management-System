@@ -39,7 +39,7 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
     private Button cancelBtn;
 
     @FXML
-    private Button orderCompleteBtn;
+    private Button orderDeliveredBtn;
 
     @FXML
     private ListView<String> orderList;
@@ -98,8 +98,8 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
     }
 
     @FXML
-    void orderCompleteBtnPressed(ActionEvent event) {
-        System.out.println("Order completed.");
+    void orderDeliveredBtnPressed(ActionEvent event) {
+        System.out.println("Order delivered.");
     }
 
     @Override

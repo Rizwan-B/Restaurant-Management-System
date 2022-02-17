@@ -18,12 +18,12 @@
                 <Font size="22.0" />
             </font>
         </Button>
-        <Button id="cancelBtn" fx:id="cancelBtn" layoutX="15.0" layoutY="450.0" mnemonicParsing="false" onAction="#cancelBtnPressed" prefHeight="30.0" prefWidth="194.0" text="Cancel order">
+        <Button id="cancelBtn" fx:id="cancelBtn" layoutX="15.0" layoutY="450.0" mnemonicParsing="false" onAction="#cancelBtnPressed" prefHeight="30.0" prefWidth="194.0" text="Cancel Order">
             <font>
                 <Font name="Bell MT" size="15.0" />
             </font>
         </Button>
-        <Button id="orderCompleteBtn" fx:id="orderCompleteBtn" layoutX="15.0" layoutY="500.0" mnemonicParsing="false" onAction="#orderCompleteBtnPressed" prefHeight="30.0" prefWidth="194.0" text="Mark As Complete">
+        <Button id="orderCompleteBtn" fx:id="orderDeliveredBtn" layoutX="15.0" layoutY="500.0" mnemonicParsing="false" onAction="#orderDeliveredBtnPressed" prefHeight="30.0" prefWidth="194.0" text="Mark As Delivered">
             <font>
                 <Font name="Bell MT" size="15.0" />
             </font>
