@@ -100,6 +100,14 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
     @FXML
     void orderDeliveredBtnPressed(ActionEvent event) {
         System.out.println("Order delivered.");
+
+        // code below for functionality of orders completed being removed from order list.
+
+        int index_main= this.orderList.getSelectionModel().getSelectedIndex();
+        String selected_item=this.orderList.getSelectionModel().getSelectedItem();
+        if (index_main >= 0) {
+            this.orderList.getItems().remove(index_main);
+        }
     }
 
     @Override
