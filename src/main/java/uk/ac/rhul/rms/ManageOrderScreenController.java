@@ -105,8 +105,16 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
 
         int index_main= this.orderList.getSelectionModel().getSelectedIndex();
         String selected_item=this.orderList.getSelectionModel().getSelectedItem();
+        String[] split =  selected_item.split("|");
+        String table_no = split[0];
+        System.out.println(table_no);
         if (index_main >= 0) {
             this.orderList.getItems().remove(index_main);
+            try {
+                DatabaseConnection.getInstance().createStatement().execute("DELETE FROM orders_table WHERE table_no = '"+table_no+ "';");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
