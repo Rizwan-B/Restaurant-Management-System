@@ -174,6 +174,12 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
         this.screensController.setScreen(Main.waiterPortalScreenID);
     }
 
+    @FXML
+    void addItemPressed(ActionEvent event) {
+        this.screensController.loadScreen(Main.addItemScreenID, Main.addItemScreenFile);
+        this.screensController.setScreen(Main.addItemScreenID);
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
