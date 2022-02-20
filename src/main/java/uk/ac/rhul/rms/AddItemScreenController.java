@@ -2,9 +2,7 @@ package uk.ac.rhul.rms;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
@@ -83,7 +81,7 @@ public class AddItemScreenController implements ControlledScreen {
         String getDietType = " ";
 
         if(starter.isSelected()){
-            getCourseType= "Starter";
+            getCourseType= "Starters";
         }
         if(main.isSelected()){
             getCourseType= "Main";
@@ -101,12 +99,19 @@ public class AddItemScreenController implements ControlledScreen {
         if(nonVeg.isSelected()){
             getDietType= "N-V";
         }
-        try {
-            DatabaseConnection.getInstance().createStatement().execute("INSERT INTO menu VALUES('" +
-                    item_id + "','" + getItemName + "','" + getCalories + "','" + getCourseType + "','" +
-                    getDietType + "','" + getItemDescription + "','" + getImageLocation + "');");
-        } catch (Exception e) {
-            System.out.println("ERROR: SQL connection error, or you did not add an item to menu.");
+
+
+        Alert alert = new Alert(Alert.AlertType.NONE, "Are you sure you want to add the new item?", ButtonType.YES,ButtonType.CANCEL);
+        alert.showAndWait();
+
+        if (alert.getResult() == ButtonType.YES) {
+            try {
+                DatabaseConnection.getInstance().createStatement().execute("INSERT INTO menu VALUES('" +
+                        item_id + "','" + getItemName + "','" + getCalories + "','" + getCourseType + "','" +
+                        getDietType + "','" + getItemDescription + "','" + getImageLocation + "');");
+            } catch (Exception e) {
+                System.out.println("ERROR: SQL connection error, or you did not add an item to menu.");
+            }
         }
 
 
