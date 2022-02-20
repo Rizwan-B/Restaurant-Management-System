@@ -71,4 +71,52 @@ public class AddItemScreenController implements ControlledScreen {
         this.screensController.setScreen(Main.changeMenuScreenID);
     }
 
+    @FXML
+    void getText(ActionEvent event) {
+        String getItemID = itemID.getText();
+        String getItemName = itemName.getText();
+        String getCalories = calories.getText();
+        String getItemDescription = itemDescription.getText();
+        String getImageLocation = itemImage.getText();
+        String getCourseType;
+
+
+    }
+
+    @FXML
+    void handleCoursetype(){
+        if (starter.isSelected()){
+            main.setSelected(false);
+            dessert.setSelected(false);
+        }
+        if (main.isSelected()){
+            starter.setSelected(false);
+            dessert.setSelected(false);
+        }
+        if (dessert.isSelected()){
+            main.setSelected(false);
+            starter.setSelected(false);
+        }
+
+    }
+
+
+    @FXML
+    void handleDietType(){
+        if (vegan.isSelected()){
+            nonVeg.setSelected(false);
+            vegetarian.setSelected(false);
+        }
+        if (nonVeg.isSelected()){
+            vegetarian.setSelected(false);
+            vegan.setSelected(false);
+        }
+        if (vegetarian.isSelected()){
+            nonVeg.setSelected(false);
+            vegan.setSelected(false);
+        }
+
+    }
+
+
 }
