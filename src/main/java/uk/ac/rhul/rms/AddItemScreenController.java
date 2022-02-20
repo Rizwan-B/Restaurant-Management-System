@@ -74,11 +74,40 @@ public class AddItemScreenController implements ControlledScreen {
     @FXML
     void getText(ActionEvent event) {
         String getItemID = itemID.getText();
+        int item_id = Integer.parseInt(getItemID);
         String getItemName = itemName.getText();
         String getCalories = calories.getText();
         String getItemDescription = itemDescription.getText();
         String getImageLocation = itemImage.getText();
-        String getCourseType;
+        String getCourseType = " ";
+        String getDietType = " ";
+
+        if(starter.isSelected()){
+            getCourseType= "Starter";
+        }
+        if(main.isSelected()){
+            getCourseType= "Main";
+        }
+        if(dessert.isSelected()){
+            getCourseType= "Dessert";
+        }
+
+        if(vegan.isSelected()){
+            getDietType= "Ve";
+        }
+        if(vegetarian.isSelected()){
+            getDietType= "V";
+        }
+        if(nonVeg.isSelected()){
+            getDietType= "N-V";
+        }
+        try {
+            DatabaseConnection.getInstance().createStatement().execute("INSERT INTO menu VALUES('" +
+                    item_id + "','" + getItemName + "','" + getCalories + "','" + getCourseType + "','" +
+                    getDietType + "','" + getItemDescription + "','" + getImageLocation + "');");
+        } catch (Exception e) {
+            System.out.println("ERROR: SQL connection error, or you did not add an item to menu.");
+        }
 
 
     }
