@@ -9,12 +9,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * The screen controller for the menu screen implementing the ControlledScreen Interface.
@@ -227,12 +226,26 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         mainList.getSelectionModel().clearSelection();
         dessertList.getSelectionModel().clearSelection();
         quantity.setValue(1);
+        System.out.println(groupBasket()); // Test
     }
 
     @FXML
     void remove(ActionEvent event){
         basketList.getItems().remove(basketList.getSelectionModel().getSelectedItem());
         basketList.getSelectionModel().clearSelection();
+    }
+
+    public Set<String> groupBasket() {
+
+        final Set<String> setToReturn = new HashSet<String>();
+        final Set<String> set1 = new HashSet<String>();
+
+        ObservableList<String> basketListItems = basketList.getItems();
+        for (String s: basketListItems) {
+            if (!set1.add(s)) {
+                setToReturn.add(s);
+            }
+        } return setToReturn; // Returns repeated words.
     }
 
     @Override
