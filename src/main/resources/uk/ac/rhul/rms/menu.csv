@@ -1,36 +1,36 @@
-1,Mexican fiesta rice,311,Main,Ve,Spicy rice with vegitables,
+1,Mexican fiesta rice,311,Main,Ve,Spicy rice with vegitables,src/main/resources/uk/ac/rhul/rms/media/Mexican-Fiesta-Rice.jpg
 2,Tacos,430,Main,NV,Fish filling with guacamole,src/main/resources/uk/ac/rhul/rms/media/tacos.jpg
-3,Chicken and bean enchiladas,340,Main,N-V,"Tender chicken, red pepper and black beans, wrapped in tortilla",
-4,Easy chicken fajitas,560,Main,N-V,large chicken breasts finely sliced with onions,
-5,Tacos dorados de barbacoa,323,Main,N-V,lamb tacos with soured cream,
-6,Smoky veggie nachos,466,Main,V,soft corn tortillas with beans,
-7,Nachos Supreme,211,Starters,N-V,"crisp chips, savory beef, rich cheese, beans, colorful veggies.",
-8,Chicken Taquitos,341,Starters,N-V,Shredded chicken and cheese wrapped in tortilla,
-9,Chicken Enchilada Dip,250,Starters,N-V,"Shredded chicken, cream cheese, shredded cheese.",
-10,"Chocolate, peanut butter and avocado pudding",300,Dessert,V,"Creamy pudding with chocolate, avocado and peanut butter",
-11,Lemon cheesecake,120,Dessert,V,Creamy lemon cheesecake,
-12,Toffee pear pudding,320,Dessert,V,Pear pudding with toffee filling,
-13,Jalapeno Poppers,130,Starters,V,"Jalapenos are stuffed with herbed cream cheese, topped with crushed barbeque potato chips.",
-14,Chipotle Black Bean Soup,96,Starters,N-V,burritos and quesadillas paired with black bean soup,
-15,Elote,230,Starters,V,corn Smothered with mayo cheese and chili powder,
+3,Chicken and bean enchiladas,340,Main,N-V,"Tender chicken, red pepper and black beans, wrapped in tortilla",src/main/resources/uk/ac/rhul/rms/media/chicken and bean enchiladas.jpg
+4,Easy chicken fajitas,560,Main,N-V,large chicken breasts finely sliced with onions,src/main/resources/uk/ac/rhul/rms/media/Chicken Fajitas.jpg
+5,Tacos dorados de barbacoa,323,Main,N-V,lamb tacos with soured cream,src/main/resources/uk/ac/rhul/rms/media/Tacos dorados de barbacoa.png
+6,Smoky veggie nachos,466,Main,V,soft corn tortillas with beans,src/main/resources/uk/ac/rhul/rms/media/smoky-veggie-nachos.jpg
+7,Nachos Supreme,211,Starters,N-V,"crisp chips, savory beef, rich cheese, beans, colorful veggies.",src/main/resources/uk/ac/rhul/rms/media/Nachos-Supreme.jpg
+8,Chicken Taquitos,341,Starters,N-V,Shredded chicken and cheese wrapped in tortilla,src/main/resources/uk/ac/rhul/rms/media/Chicken Taquitos.jpg
+9,Chicken Enchilada Dip,250,Starters,N-V,"Shredded chicken, cream cheese, shredded cheese.",src/main/resources/uk/ac/rhul/rms/media/chicken-enchilada-dip.jpg
+10,"Chocolate, peanut butter and avocado pudding",300,Dessert,V,"Creamy pudding with chocolate, avocado and peanut butter",src/main/resources/uk/ac/rhul/rms/media/Chocolate Peanut Butter Avocado Pudding.jpg
+11,Lemon cheesecake,120,Dessert,V,Creamy lemon cheesecake,src/main/resources/uk/ac/rhul/rms/media/Lemon-Cheesecake.jpg
+12,Toffee pear pudding,320,Dessert,V,Pear pudding with toffee filling,src/main/resources/uk/ac/rhul/rms/media/Toffee pear Pudding.jpg
+13,Jalapeno Poppers,130,Starters,V,"Jalapenos are stuffed with herbed cream cheese, topped with crushed barbeque potato chips.",src/main/resources/uk/ac/rhul/rms/media/jalapeno-poppers.jpg
+14,Chipotle Black Bean Soup,96,Starters,N-V,burritos and quesadillas paired with black bean soup,src/main/resources/uk/ac/rhul/rms/media/chipotle black bean soup.jpg
+15,Elote,230,Starters,V,corn Smothered with mayo cheese and chili powder,src/main/resources/uk/ac/rhul/rms/media/elote.jpg
 16,Flatout Pizza,280,Main,N-V,Chicken pizza with mozzarella and fresh vegetables,src/main/resources/uk/ac/rhul/rms/media/pizza.jpg
-17,Chicken Suppreme pizza,428,Main,N-V,Pizza with grilled chicken and Mushrooms,
-18,Barbocoa beef tacos,350,Main,N-V,Avocado cream with beef tacos,
-19,Curtido,180,Main,N-V,chicken with fresh salad drizzled with dressing,
-20,Machaca ,650,Main,N-V,Shredded Dried Beef,
-21,Pozole de Pollo o Guajolote ,500,Main,N-V,Chicken with Wild Turkey Stew,
-22,Pineapple Cheesecake Bars,130,Dessert,N-V,Pineapple cheesecake with egg base,
-23,Fudgy Paleo Brownies,340,Dessert,N-V,Chocolate fudgy brownies,
-24,Cookie Dough,480,Dessert,N-V,Dark chocolate cookie dough with whipped cream,
-25,Ice cream sundae with whipped cream,365,Dessert,N-V,Vanilla ice cream with whipped cream,
+17,Chicken Suppreme pizza,428,Main,N-V,Pizza with grilled chicken and Mushrooms,src/main/resources/uk/ac/rhul/rms/media/Chicken suppreme pizza.jpg
+18,Barbocoa beef tacos,350,Main,N-V,Avocado cream with beef tacos,src/main/resources/uk/ac/rhul/rms/media/Barbocoa beef tacos.jpg
+19,Curtido,180,Main,N-V,chicken with fresh salad drizzled with dressing,src/main/resources/uk/ac/rhul/rms/media/Curtido.jpg
+20,Machaca ,650,Main,N-V,Shredded Dried Beef,src/main/resources/uk/ac/rhul/rms/media/machaca.jpg
+21,Pozole de Pollo o Guajolote ,500,Main,N-V,Chicken with Wild Turkey Stew,src/main/resources/uk/ac/rhul/rms/media/Pozole de Pollo o Guajolote.jpg
+22,Pineapple Cheesecake Bars,130,Dessert,N-V,Pineapple cheesecake with egg base,src/main/resources/uk/ac/rhul/rms/media/pineapple cheese cake bars.jpg
+23,Fudgy Paleo Brownies,340,Dessert,N-V,Chocolate fudgy brownies,src/main/resources/uk/ac/rhul/rms/media/paleo brownies.jpg
+24,Cookie Dough,480,Dessert,N-V,Dark chocolate cookie dough with whipped cream,src/main/resources/uk/ac/rhul/rms/media/cookie dough.jpg
+25,Ice cream sundae with whipped cream,365,Dessert,N-V,Vanilla ice cream with whipped cream,src/main/resources/uk/ac/rhul/rms/media/ice cream sundae.jpg
 26,Guacamole chopped salad,90,Starters,Ve,Avocado guacamole with salad ,src/main/resources/uk/ac/rhul/rms/media/guac_salad.jpg
-27,Jalapeno Corn Cakes,120,Starters,Ve,Combination of sweet corn and hot jalapeno,
-28,Tamale Pie Dip,130,Starters,Ve,pie with cream cheese and corn,
-29,Menudo,430,Main,N-V,Pork Stew with peanuts and broccoli,
-30,Birria de Chivo ,210,Main,N-V,Goat stew with tomatoes base and vegetables,
-31,Aguachile,120,Main,Ve,Chili water with onions and pickles,
-32,Gorditas de Nata,400,Main,Ve,Mini Cream Pancakes,
-33,Torta Ahogada,420,Main,N-V,Beef Drowned Baguette,
-34,Peanut butter pie,62,Dessert,Ve,Peanut butter pies,
+27,Jalapeno Corn Cakes,120,Starters,Ve,Combination of sweet corn and hot jalapeno,src/main/resources/uk/ac/rhul/rms/media/jalapeno corn cakes.jpg
+28,Tamale Pie Dip,130,Starters,Ve,pie with cream cheese and corn,src/main/resources/uk/ac/rhul/rms/media/tamale pie dip.jpg
+29,Menudo,430,Main,N-V,Pork Stew with peanuts and broccoli,src/main/resources/uk/ac/rhul/rms/media/menudo.jpg
+30,Birria de Chivo ,210,Main,N-V,Goat stew with tomatoes base and vegetables,src/main/resources/uk/ac/rhul/rms/media/Birria de Chivo.jpg
+31,Aguachile,120,Main,Ve,Chili water with onions and pickles,src/main/resources/uk/ac/rhul/rms/media/Aguachile.jpg
+32,Gorditas de Nata,400,Main,Ve,Mini Cream Pancakes,src/main/resources/uk/ac/rhul/rms/media/gorditas de nata.jpg
+33,Torta Ahogada,420,Main,N-V,Beef Drowned Baguette,src/main/resources/uk/ac/rhul/rms/media/Torta Ahogada.jpg
+34,Peanut butter pie,62,Dessert,Ve,Peanut butter pies,src/main/resources/uk/ac/rhul/rms/media/Peanut Butter Pie.jpg
 35,Red velvet brownies,73,Dessert,Ve,Vegan red velvet brownies ,src/main/resources/uk/ac/rhul/rms/media/rvc.jpg
-36,Peanut butter cake bars,66,Dessert,Ve,Vegan peanut butter cake bars,
+36,Peanut butter cake bars,66,Dessert,Ve,Vegan peanut butter cake bars,src/main/resources/uk/ac/rhul/rms/media/Peanut Butter Bars.jpg

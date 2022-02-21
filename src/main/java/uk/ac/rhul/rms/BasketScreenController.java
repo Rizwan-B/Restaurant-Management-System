@@ -1,5 +1,8 @@
 package uk.ac.rhul.rms;
 
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 import javafx.event.ActionEvent;
@@ -26,23 +29,25 @@ public class BasketScreenController implements ControlledScreen {
   }
 
   @FXML
-  private ListView<String> orderItems;
-
-  @FXML
   private Button backBtn;
 
   @FXML
-  private Button getOrderBtn;
+  private CheckBox electronicPayment;
 
   @FXML
-  void getOrders(ActionEvent event){
-    this.orderItems.getItems().add("test");
-  }
+  private ListView<?> orderItems;
 
   @FXML
-  void selected(ActionEvent event){
-    System.out.println(orderItems.getSelectionModel().getSelectedItems());
-  }
+  private Text payment;
+
+  @FXML
+  private Text paymentMethod;
+
+  @FXML
+  private TextField tableNo;
+
+  @FXML
+  private CheckBox tillsCheckBox;
 
   @FXML
   void backBtnPressed(ActionEvent event) {
