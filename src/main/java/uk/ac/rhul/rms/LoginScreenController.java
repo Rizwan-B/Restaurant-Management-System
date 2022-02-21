@@ -50,37 +50,21 @@ public class LoginScreenController implements ControlledScreen {
     }
 
     @FXML
-    void bypass(ActionEvent event) {
-        String id = event.getSource().toString().split(",")[1].split("'")[1].split("'")[0];
-        if (id.equals("Ahmed")) {
-            Main.currentLoggedInUser = 2;
-            this.screensController.loadScreen(Main.waiterPortalScreenID, Main.WaiterPortalScreenFile);
-            this.screensController.setScreen(Main.waiterPortalScreenID);
-        } else if (id.equals("Rizwan")){
-            Main.currentLoggedInUser = 3;
-            this.screensController.loadScreen(Main.waiterPortalScreenID, Main.WaiterPortalScreenFile);
-            this.screensController.setScreen(Main.waiterPortalScreenID);
-        } else if (id.equals("Virginia")){
-            Main.currentLoggedInUser = 4;
-            this.screensController.loadScreen(Main.waiterPortalScreenID, Main.WaiterPortalScreenFile);
-            this.screensController.setScreen(Main.waiterPortalScreenID);
-        } else if (id.equals("Mo")) {
-            Main.currentLoggedInUser = 5;
-            this.screensController.loadScreen(Main.staffPortalScreenID, Main.staffPortalScreenFile);
-            this.screensController.setScreen(Main.staffPortalScreenID);
+    void bypass(ActionEvent event) throws SQLException{
+        String id = event.getSource().toString().split("=")[1].split(",")[0].split("b")[1];
+        // This is my favorite line of code. Classic security through obscurity xD.
 
-        } else if (id.equals("Lucas")) {
-            Main.currentLoggedInUser = 6;
-            this.screensController.loadScreen(Main.staffPortalScreenID, Main.staffPortalScreenFile);
-            this.screensController.setScreen(Main.staffPortalScreenID);
-        } else if (id.equals("Muqdas")) {
-            Main.currentLoggedInUser = 7;
-            this.screensController.loadScreen(Main.staffPortalScreenID, Main.staffPortalScreenFile);
-            this.screensController.setScreen(Main.staffPortalScreenID);
-        } else {
-            System.out.println("admin pressed");
-        }
+        Main.currentLoggedInUser = Integer.parseInt(id);
+
+        DatabaseConnection.getInstance().createStatement().execute("UPDATE user_table set session_id="
+                + Main.currentLoggedInUser + " WHERE user_id=" + Main.currentLoggedInUser); // this will be replaced by hashcode.
+
+        Main.sessionId = String.valueOf(Main.currentLoggedInUser);
+
+        Main.loginLoader();
     }
+
+
 
     @FXML
     void login(ActionEvent event) {
@@ -88,36 +72,28 @@ public class LoginScreenController implements ControlledScreen {
         String password = passwordField.getText();
         System.out.println("username: " + username);
         System.out.println("password: " + password);
+
+        if ((Main.currentLoggedInUser != 0) || (Main.sessionId != null)) {
+            System.out.println("this system is already logged into to a different user.");
+            return;
+        }
+
         try {
             ResultSet loginResult = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
-                    "SELECT user_id, user_role FROM user_table WHERE user_name='" + username + "' AND password='" + password + "'");
+                    "SELECT user_id FROM user_table WHERE user_name='" + username + "' AND password='" + password + "'");
             while (loginResult.next()) {
-                if (loginResult.getString(2).equals("STAFF")) {
-                    Main.currentLoggedInUser = loginResult.getInt(1);
-                    Main.sessionId = loginResult.getString(1);
-                    DatabaseConnection.getInstance().createStatement().execute(
-                            "UPDATE user_table set session_id="
-                                    + loginResult.getString(1)
-                                    + " WHERE user_id="
-                                    + loginResult.getString(1));
-                    // this will be a hashcode in production. currently just setting sessionId to userID.
-                    this.screensController.loadScreen(Main.staffPortalScreenID, Main.staffPortalScreenFile);
-                    this.screensController.setScreen(Main.staffPortalScreenID);
-                } else if (loginResult.getString(2).equals("WAITER")) {
-                    Main.currentLoggedInUser = loginResult.getInt(1);
-                    Main.sessionId = loginResult.getString(1);
-                    DatabaseConnection.getInstance().createStatement().execute(
-                            "UPDATE user_table set session_id="
-                                    + loginResult.getString(1)
-                                    + " WHERE user_id="
-                                    + loginResult.getString(1));
-                    // this will be a hashcode in production. currently just setting sessionId to userID.
-                    this.screensController.loadScreen(Main.waiterPortalScreenID, Main.WaiterPortalScreenFile);
-                    this.screensController.setScreen(Main.waiterPortalScreenID);
-                }
+                Main.currentLoggedInUser  = loginResult.getInt(1);
             }
+
+            DatabaseConnection.getInstance().createStatement().execute("UPDATE user_table set session_id="
+                    + Main.currentLoggedInUser + " WHERE user_id=" + Main.currentLoggedInUser); // this will be replaced by hashcode.
+
+            Main.sessionId = String.valueOf(Main.currentLoggedInUser);
+
+            Main.loginLoader();
+
         } catch (SQLException e) {
-            System.out.println(e);
+            System.out.println(e.toString());
         }
     }
 

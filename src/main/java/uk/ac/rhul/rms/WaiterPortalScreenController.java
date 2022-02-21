@@ -1,6 +1,6 @@
 package uk.ac.rhul.rms;
 
-import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,7 +18,6 @@ import java.util.ResourceBundle;
 public class WaiterPortalScreenController implements ControlledScreen, Initializable {
 
     private ScreensController screensController;
-    private boolean busy = false;
 
     @Override
     public void setScreenParent(ScreensController screenParent) {
@@ -37,17 +36,10 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
     @FXML
     private Label waiterStatus;
 
-    @FXML
-    private Button backBtn;
-
-    @FXML
-    private Button cancelOrderBtn;
+    private int lastMaxCallId = -1;
 
     @FXML
     private ListView<String> waiterCalls;
-
-    @FXML
-    private Button changeMenu;
 
 
     @FXML
@@ -57,109 +49,144 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
     }
 
     @FXML
-    void backBtnPressed(ActionEvent event) {
-        this.screensController.setScreen(Main.loginScreenID);
-        this.screensController.unloadScreen(Main.waiterPortalScreenID);
-    }
-
-    @FXML
     void manageOrderBtnPressed(ActionEvent event) {
         this.screensController.loadScreen(Main.manageOrderScreenID, Main.manageOrderScreenFile);
         this.screensController.setScreen(Main.manageOrderScreenID);
     }
 
-    @FXML
-    void waiterStatusBtnPressed(ActionEvent event) {
-        /*
-            1) check if waiter is free...
-            2) while waiter is free -> start a new thread that does a constant db lookup for updates in the waiter_call table.
-            3) If the table is not being served -> show it on the screen for waiter to accept.
-            4) update waiter_call table to say it is being served by this waiter.
-         */
-        if (this.waiterStatus.getText().equals("busy")) {
+    private void addToList(String tableNo) {
+        this.waiterCalls.getItems().add(tableNo);
+    }
+
+    void makeWaiterFree(){
+        try {
+            DatabaseConnection.getInstance().createStatement().execute("UPDATE user_table set busy=0 WHERE user_id=" + Main.currentLoggedInUser);
             this.waiterStatus.setText("free");
             this.waiterStatusBtn.setText("BUSY");
-            try {
-                DatabaseConnection.getInstance().createStatement().execute("UPDATE user_table set busy=0 WHERE user_id=" + Main.currentLoggedInUser);
-            } catch (SQLException e) {
-                e.printStackTrace();
+            this.printAllWaiterCalls();
+            if (Main.workerThread == null || !Main.workerThread.isAlive()) {
+                Main.workerThread = new Thread((new WaiterCallNotifier()));
+                Main.workerThread.start();
             }
-        } else {
-            try {
-                DatabaseConnection.getInstance().createStatement().execute("UPDATE user_table set busy=1 WHERE user_id=" + Main.currentLoggedInUser);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+    }
+
+    void makeWaiterBusy() {
+        try {
+            DatabaseConnection.getInstance().createStatement().execute("UPDATE user_table set busy=1 WHERE user_id=" + Main.currentLoggedInUser);
             this.waiterStatus.setText("busy");
             this.waiterStatusBtn.setText("FREE");
             this.waiterCalls.getItems().clear();
+            if (Main.workerThread != null && Main.workerThread.isAlive()) {
+                Main.workerThread.interrupt();
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
         }
+    }
 
-        this.freeBusyRoutineCheck();
-        System.out.println("button pressed.");
+    private void printAllWaiterCalls() {
+        ResultSet initialRecords = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
+                "SELECT call_id, table_no FROM waiter_call WHERE served=0");
+        try {
+            while(initialRecords.next()) {
+                if (initialRecords.getInt(1) > this.lastMaxCallId) {
+                    this.lastMaxCallId = initialRecords.getInt(1);
+                }
+                addToList(initialRecords.getString(2));
+            }
+        } catch (SQLException | NullPointerException e) {
+            System.out.println(e.toString());
+        }
+    }
 
+
+
+
+    @FXML
+    void startScreen(ActionEvent event) {
+        this.screensController.setScreen(Main.startScreenID);
+
+    }
+
+
+
+    public void fillUserData(ResultSet data) {
+        try {
+            while (data.next()) {
+                this.waiterName.setText(data.getString(1));
+                this.waiterId.setText(Integer.toString(Main.currentLoggedInUser));
+                if (data.getInt("busy") == 0) { // is free.
+                    this.waiterStatus.setText("free");
+                    this.waiterStatusBtn.setText("BUSY");
+                } else {
+                    this.waiterStatus.setText("busy");
+                    this.waiterStatusBtn.setText("FREE");
+                }
+            }
+        } catch (SQLException | NullPointerException e) {
+            System.out.println(e.toString());
+        }
+    }
+
+
+    @FXML
+    void waiterStatusBtnPressed(ActionEvent event) {
+        if (waiterStatus.getText().equals("busy")) { // waiter wants to be free.
+            System.out.println("waiter changed to free.");
+            makeWaiterFree();
+        } else { // waiter wants to be busy.
+            System.out.println("waiter changed to busy.");
+            makeWaiterBusy();
+        }
     }
 
     @FXML
     void acceptCall(ActionEvent event) {
-        try {
-            ObservableList selectedItem = waiterCalls.getSelectionModel().getSelectedIndices();
-            int call_id = Integer.parseInt(waiterCalls.getItems().get(ManageOrderScreenController.convertToInt(selectedItem.toString())).split("|")[0].trim());
-            System.out.println(call_id);
-            DatabaseConnection.getInstance().createStatement().execute("UPDATE waiter_call set served=1 WHERE call_id=" + call_id);
-            DatabaseConnection.getInstance().createStatement().execute("UPDATE user_table set busy=1 WHERE user_id=" + Main.currentLoggedInUser);
-            this.waiterStatus.setText("busy");
-            this.waiterStatusBtn.setText("FREE");
-            this.freeBusyRoutineCheck();
-
-        } catch (Exception e) {
-            System.out.println("ERROR: SQL connection error, or you did not select an item to delete.");
-        }
+        // do this later.
     }
 
     @FXML
     void logOut(ActionEvent event) {
+        this.makeWaiterBusy();
+        Main.alreadyLoggedIn = false;
         Main.sessionId = null;
         Main.currentLoggedInUser = 0;
         this.screensController.setScreen(Main.startScreenID);
-    }
 
-    void freeBusyRoutineCheck() {
-        if (this.waiterStatus.getText().equals("busy")) {
-            this.waiterCalls.getItems().clear();
-        } else {
-            ResultSet calls = DatabaseController.executeQuery(DatabaseConnection.getInstance(), "SELECT call_id, table_no FROM waiter_call WHERE served=0");
-            try {
-                while (calls.next()) {
-                    this.waiterCalls.getItems().add(calls.getString(1) + " | " + calls.getString(2));
-                }
-            } catch (SQLException e) {
-                System.out.println(e.toString());
-            }
-        }
     }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ResultSet waiterData = DatabaseController.executeQuery(DatabaseConnection.getInstance(), "SELECT user_id, user_name, busy FROM user_table WHERE user_id=" + Main.currentLoggedInUser);
-        try {
-            while(waiterData.next()) {
-                this.waiterName.setText(waiterData.getString(2));
-                this.waiterId.setText(waiterData.getString(1));
-                if (waiterData.getInt(3) == 1) {
-                    System.out.println("waiter is busy.");
-                    this.waiterStatus.setText("busy");
-                    this.waiterStatusBtn.setText("FREE");
-                } else {
-                    System.out.println("waiter is free");
-                    this.waiterStatus.setText("free");
-                    this.waiterStatusBtn.setText("BUSY");
-                }
-                this.freeBusyRoutineCheck();
-            }
-        } catch (SQLException e) {
-            System.out.println(e);
+        this.fillUserData(DatabaseController.executeQuery(DatabaseConnection.getInstance(), "SELECT user_name, busy FROM user_table WHERE user_id=" + Main.currentLoggedInUser));
+
+        if (this.waiterStatus.getText().equals("free")) {
+            printAllWaiterCalls();
         }
+
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

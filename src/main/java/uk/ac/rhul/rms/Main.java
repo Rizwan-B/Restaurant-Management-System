@@ -6,6 +6,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import uk.ac.rhul.screenmanager.ScreensController;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 
 /**
  * A public Main class that starts up the application.
@@ -14,6 +17,8 @@ import uk.ac.rhul.screenmanager.ScreensController;
  *
  */
 public class Main extends Application {
+
+  private static ScreensController mainScreenController;
 
   // The ID and location for the fxml startScreen. Make sure to follow the id naming standard I have
   // used below.
@@ -52,17 +57,49 @@ public class Main extends Application {
 
   public static int currentLoggedInUser = 0;
   public static String sessionId = null;
+  public static boolean alreadyLoggedIn = false;
+  public static Thread workerThread;
 
+
+  public static void loginLoader() {
+    // 1) if user is not already logged in, log them in and create session id.
+    // 2) if user is already logged in take them to their screen.
+    String user_role = "";
+
+    if ((Main.currentLoggedInUser == 0) || (Main.sessionId == null)) { return; }
+
+    ResultSet result = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
+            "SELECT user_role FROM user_table WHERE user_id="
+                    + Main.currentLoggedInUser
+                    + " AND session_id="
+                    + Main.sessionId);
+    try {
+      while(result.next()) {
+        user_role = result.getString(1);
+      }
+    } catch (NullPointerException e) {
+      System.out.println("user doesn't exist: " + e.toString());
+    } catch (SQLException e) {
+      System.out.println(e.toString());
+    }
+
+    if (user_role.equals("STAFF")) {
+      Main.mainScreenController.loadScreen(Main.staffPortalScreenID, Main.staffPortalScreenFile);
+      Main.mainScreenController.setScreen(Main.staffPortalScreenID);
+    } else if (user_role.equals("WAITER")) {
+      Main.mainScreenController.loadScreen(Main.waiterPortalScreenID, Main.WaiterPortalScreenFile);
+      Main.mainScreenController.setScreen(Main.waiterPortalScreenID);
+    } else {
+      System.out.println("Admin screen not yet created.");
+    }
+  }
 
   @Override
   public void start(Stage primaryStage) throws Exception {
-    ScreensController mainScreenController = new ScreensController();
-
+    Main.mainScreenController = new ScreensController();
 
     mainScreenController.loadScreen(startScreenID, startScreenFile);
     mainScreenController.setScreen(startScreenID);
-
-
 
     Group root = new Group();
     root.getChildren().addAll(mainScreenController);

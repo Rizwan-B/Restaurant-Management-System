@@ -108,17 +108,14 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         try {
             ArrayList<MenuItem> nonVegStarter = DatabaseController.getMenuItems(DatabaseConnection.getInstance(), "Starters");
             for (MenuItem v : nonVegStarter) {
-                System.out.println(v.getName());
                 this.starterList.getItems().add(v.getName());
             }
             ArrayList<MenuItem> nonVegMain = DatabaseController.getMenuItems(DatabaseConnection.getInstance(), "Main");
             for (MenuItem v : nonVegMain) {
-                System.out.println(v.getName());
                 this.mainList.getItems().add(v.getName());
             }
             ArrayList<MenuItem> nonVegDessert = DatabaseController.getMenuItems(DatabaseConnection.getInstance(), "Dessert");
             for (MenuItem v : nonVegDessert) {
-                System.out.println(v.getName());
                 this.dessertList.getItems().add(v.getName());
             }
         } catch(Exception e) {
@@ -134,19 +131,16 @@ public class MenuScreenController implements ControlledScreen, Initializable {
             ArrayList<MenuItem> vegStarters = DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGETARIAN, "Starters");
             this.starterList.getItems().clear();
             for (MenuItem v : vegStarters) {
-                System.out.println(v.getName());
                 this.starterList.getItems().add(v.getName());
             }
             ArrayList<MenuItem> vegMain = DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGETARIAN, "Main");
             this.mainList.getItems().clear();
             for (MenuItem v : vegMain) {
-                System.out.println(v.getName());
                 this.mainList.getItems().add(v.getName());
             }
             ArrayList<MenuItem> vegDessert = DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGETARIAN, "Dessert");
             this.dessertList.getItems().clear();
             for (MenuItem v : vegDessert) {
-                System.out.println(v.getName());
                 this.dessertList.getItems().add(v.getName());
             }
         } catch(Exception e) {
@@ -161,21 +155,18 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         try {
             ArrayList<MenuItem> veganStarter = DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGAN, "Starters");
             for (MenuItem v : veganStarter) {
-                System.out.println(v.getName());
                 this.starterList.getItems().add(v.getName());
             }
             ArrayList<MenuItem> veganMain = DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGAN, "Main");
             for (MenuItem v : veganMain) {
-                System.out.println(v.getName());
                 this.mainList.getItems().add(v.getName());
             }
             ArrayList<MenuItem> veganDessert = DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGAN, "Dessert");
             for (MenuItem v : veganDessert) {
-                System.out.println(v.getName());
                 this.dessertList.getItems().add(v.getName());
             }
         } catch(Exception e) {
-            System.out.println("oops");
+            System.out.println(e.toString());
         }
     }
 

@@ -1,34 +1,17 @@
 package uk.ac.rhul.rms;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
+import javafx.concurrent.Task;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
-public class WaiterCallNotifier implements Runnable{
-
-    @FXML
-    private ListView<String> waiterCalls;
-
-    public void setNotificationArea(ListView<String> waiterCalls) {
-        this.waiterCalls = waiterCalls;
-    }
+public class WaiterCallNotifier extends Task<Void> {
 
     @Override
-    public void run() {
-        try {
-            while (true) {
-                ResultSet notifications = DatabaseController.executeQuery(DatabaseConnection.getInstance(), "SELECT *, count(*) as record_count FROM waiter_call");
-                if (notifications.getInt("record_count") > waiterCalls.getItems().size()) {
-                    while (notifications.next()) {
-                        waiterCalls.getItems().add(notifications.getString(1) + ", " + notifications.getString(2) + ", " + notifications.getString(1));
-                    }
-                }
-            }
-        } catch (SQLException e) {
-            System.out.println("SQL exception");
+    protected Void call() throws Exception {
+        int i = 0;
+        while (true) {
+            System.out.println("i: " + i);
+            Thread.sleep(2000);
+            i++;
         }
-
     }
 }
