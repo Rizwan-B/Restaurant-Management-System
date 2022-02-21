@@ -20,6 +20,7 @@ import java.util.ResourceBundle;
  * The screen controller for the basket screen implementing the ControlledScreen Interface.
  *
  * @author Jacob Artis
+ * @author Muqdas
  *  
  */
 public class BasketScreenController implements ControlledScreen, Initializable {
@@ -91,6 +92,37 @@ public class BasketScreenController implements ControlledScreen, Initializable {
     this.screensController.loadScreen(Main.menuScreenID, Main.menuScreenFile);
     this.screensController.setScreen(Main.menuScreenID);
   }
+
+  @FXML
+  void getPayment(ActionEvent event){
+    String tableNumber = tableNo.getText();
+    int table_number = Integer.parseInt(tableNumber);
+    String card_no = cardNumber.getText();
+    String holder_no = holderName.getText();
+    String cvc = cvcBox.getText();
+
+    System.out.println(table_number);
+    System.out.println(card_no);
+    System.out.println(holder_no);
+    System.out.println(cvc);
+
+
+  }
+
+  @FXML
+  void handleTills(){
+    if (tillsCheckBox.isSelected()){
+      electronicPayment.setSelected(false);
+    }
+  }
+
+  @FXML
+  void handleElectronic(){
+    if (electronicPayment.isSelected()){
+      tillsCheckBox.setSelected(false);
+    }
+  }
+
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     this.connection = DatabaseConnection.getInstance();
