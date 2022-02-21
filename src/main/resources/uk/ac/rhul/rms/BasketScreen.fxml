@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
@@ -24,5 +25,16 @@
       <Text fx:id="paymentMethod" layoutX="375.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Method:" />
       <CheckBox fx:id="tillsCheckBox" layoutX="375.0" layoutY="132.0" mnemonicParsing="false" text="Tills" />
       <CheckBox fx:id="electronicPayment" layoutX="477.0" layoutY="132.0" mnemonicParsing="false" text="Electronic Payment" />
+      <Text fx:id="cardNo" layoutX="375.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CARD NUMBER:" />
+      <TextField fx:id="cardNumber" layoutX="498.0" layoutY="169.0" prefHeight="26.0" prefWidth="266.0" />
+      <Text fx:id="userName" layoutX="375.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CARD HOLDER NAME:" />
+      <TextField fx:id="holderName" layoutX="499.0" layoutY="196.0" prefHeight="26.0" prefWidth="265.0" />
+      <Text fx:id="expiryDate" layoutX="375.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CARD EXPIRY DATE:" />
+      <ComboBox fx:id="date" layoutX="499.0" layoutY="224.0" prefHeight="18.0" prefWidth="71.0" promptText="Date" />
+      <ComboBox fx:id="year" layoutX="596.0" layoutY="223.0" prefHeight="26.0" prefWidth="71.0" promptText="Year" />
+      <Text fx:id="dash" layoutX="581.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\\" wrappingWidth="12.546875" />
+      <Text fx:id="cvc" layoutX="383.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CVC-" />
+      <TextField fx:id="cvcBox" layoutX="496.0" layoutY="253.0" prefHeight="18.0" prefWidth="71.0" />
+      <Button fx:id="placeOrder" layoutX="384.0" layoutY="316.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="85.0" text="Place Order" />
    </children>
 </AnchorPane>
