@@ -160,7 +160,7 @@ public class DatabaseMain {
       ResultSet query8 = db.executeQuery(connect, "SELECT * FROM orders_table");
       while(query8.next()) {
         System.out.println(query8.getString(1) + ", " + query8.getString(2) + ", "
-                + query8.getString(3) + ", " + query8.getString(4));
+                + query8.getString(3) + ", " + query8.getString(4) + ", " +  query8.getString(5));
       }
 
     } catch (SQLException e) {
@@ -257,7 +257,7 @@ public class DatabaseMain {
                 "table_no int NOT NULL," +
                 "orders_list varchar(100)," +
                 "status number(1) NOT NULL," +  // 0 means in progress, 1 means cancelled, 2 means delivered.
-                "quantity int NOT NULL"+
+                "quantity int NOT NULL,"+
                 "PRIMARY KEY(order_id));");
 
         dropTables(connect, "seat_no");
