@@ -2,12 +2,15 @@ package uk.ac.rhul.rms;
 
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.application.Platform;
+import org.controlsfx.control.Notifications;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 
@@ -42,6 +45,8 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
     @FXML
     private ListView<String> waiterCalls;
 
+    private int newRecordLength = 0;
+
 
     @FXML
     void changeMenuPressed(ActionEvent event) {
@@ -70,21 +75,15 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
                 Task<Void> notifierTask = new Task<Void>() {
                     @Override
                     protected Void call() throws Exception {
-                        int i = 0;
                         while (true) {
                             updateUI();
-                            System.out.println("i: " + i);
-                            Thread.sleep(2000);
-                            i++;
+                            Thread.sleep(5000);
                         }
                     }
-
                     private void updateUI() {
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
-                                //Set your new values in your UI
-                                //Call the method in your UI to update values.
                                 printAllWaiterCalls();
                             }
                         });
@@ -113,8 +112,27 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
         }
     }
 
+    private void notificationCheck() {
+        if (this.newRecordLength > Main.oldRecordLength) {
+            Notifications notification = Notifications.create();
+            notification.title("New Notification");
+            notification.text("More tables need to be served. Visit Waiter Portal for more details.");
+            notification.darkStyle();
+            notification.position(Pos.BASELINE_CENTER);
+            notification.onAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    screensController.setScreen(Main.waiterPortalScreenID);
+                }
+            });
+            notification.showInformation();
+            Main.oldRecordLength = this.newRecordLength;
+        }
+    }
+
     private void printAllWaiterCalls() {
         this.waiterCalls.getItems().clear();
+        this.newRecordLength = 0;
         ResultSet initialRecords = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
                 "SELECT call_id, table_no FROM waiter_call WHERE served=0");
         try {
@@ -123,7 +141,9 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
                     this.lastMaxCallId = initialRecords.getInt(1);
                 }
                 addToList(initialRecords.getString(2));
+                this.newRecordLength++;
             }
+            this.notificationCheck();
         } catch (SQLException | NullPointerException e) {
             System.out.println(e.toString());
         }

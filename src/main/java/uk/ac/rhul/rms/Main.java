@@ -58,6 +58,7 @@ public class Main extends Application {
   public static int currentLoggedInUser = 0;
   public static String sessionId = null;
   public static Thread workerThread;
+  public static int oldRecordLength = 0;
 
 
   public static void loginLoader() {
