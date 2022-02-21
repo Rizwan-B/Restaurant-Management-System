@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.application.Platform;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 
@@ -65,7 +66,32 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
             this.waiterStatusBtn.setText("BUSY");
             this.printAllWaiterCalls();
             if (Main.workerThread == null || !Main.workerThread.isAlive()) {
-                Main.workerThread = new Thread((new WaiterCallNotifier()));
+
+                Task<Void> notifierTask = new Task<Void>() {
+                    @Override
+                    protected Void call() throws Exception {
+                        int i = 0;
+                        while (true) {
+                            updateUI();
+                            System.out.println("i: " + i);
+                            Thread.sleep(2000);
+                            i++;
+                        }
+                    }
+
+                    private void updateUI() {
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                //Set your new values in your UI
+                                //Call the method in your UI to update values.
+                                printAllWaiterCalls();
+                            }
+                        });
+                    }
+                };
+
+                Main.workerThread = new Thread((notifierTask));
                 Main.workerThread.start();
             }
         } catch (SQLException e) {
@@ -88,6 +114,7 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
     }
 
     private void printAllWaiterCalls() {
+        this.waiterCalls.getItems().clear();
         ResultSet initialRecords = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
                 "SELECT call_id, table_no FROM waiter_call WHERE served=0");
         try {
@@ -151,7 +178,6 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
     @FXML
     void logOut(ActionEvent event) {
         this.makeWaiterBusy();
-        Main.alreadyLoggedIn = false;
         Main.sessionId = null;
         Main.currentLoggedInUser = 0;
         this.screensController.setScreen(Main.startScreenID);

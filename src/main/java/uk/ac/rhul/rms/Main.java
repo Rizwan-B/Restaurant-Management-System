@@ -57,7 +57,6 @@ public class Main extends Application {
 
   public static int currentLoggedInUser = 0;
   public static String sessionId = null;
-  public static boolean alreadyLoggedIn = false;
   public static Thread workerThread;
 
 
