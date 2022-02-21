@@ -9,12 +9,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Collections;
 
 /**
  * The screen controller for the menu screen implementing the ControlledScreen Interface.
@@ -227,12 +227,39 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         mainList.getSelectionModel().clearSelection();
         dessertList.getSelectionModel().clearSelection();
         quantity.setValue(1);
+        System.out.println(wordRepeated()); // Test
+        System.out.println(numbRepeated());
     }
 
     @FXML
     void remove(ActionEvent event){
         basketList.getItems().remove(basketList.getSelectionModel().getSelectedItem());
         basketList.getSelectionModel().clearSelection();
+    }
+
+    public Set<String> wordRepeated() { //Set<String>
+
+        final Set<String> setToReturn = new HashSet<String>();
+        final Set<String> set1 = new HashSet<String>();
+
+        ObservableList<String> basketListItems = basketList.getItems();
+        for (String s: basketListItems) {
+            if (!set1.add(s)) {
+                setToReturn.add(s);
+            }
+
+        } return setToReturn; // Returns repeated words.
+    }
+
+    public int numbRepeated() {
+
+        ObservableList<String> basketListItems = basketList.getItems();
+        int occurrences = 0;
+
+        for (String s: basketListItems) {
+            occurrences = Collections.frequency(basketListItems, s);
+        }
+        return occurrences;
     }
 
     @Override
