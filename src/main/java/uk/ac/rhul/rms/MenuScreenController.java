@@ -227,7 +227,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         mainList.getSelectionModel().clearSelection();
         dessertList.getSelectionModel().clearSelection();
         quantity.setValue(1);
-        System.out.println(groupBasket()); // Test
+        System.out.println(wordRepeated()); // Test
         System.out.println(numbRepeated());
     }
 
