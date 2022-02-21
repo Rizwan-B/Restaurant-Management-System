@@ -14,6 +14,7 @@ import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Collections;
 
 /**
  * The screen controller for the menu screen implementing the ControlledScreen Interface.
@@ -227,6 +228,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         dessertList.getSelectionModel().clearSelection();
         quantity.setValue(1);
         System.out.println(groupBasket()); // Test
+        System.out.println(numbRepeated());
     }
 
     @FXML
@@ -235,7 +237,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         basketList.getSelectionModel().clearSelection();
     }
 
-    public Set<String> groupBasket() {
+    public Set<String> wordRepeated() { //Set<String>
 
         final Set<String> setToReturn = new HashSet<String>();
         final Set<String> set1 = new HashSet<String>();
@@ -245,7 +247,19 @@ public class MenuScreenController implements ControlledScreen, Initializable {
             if (!set1.add(s)) {
                 setToReturn.add(s);
             }
+
         } return setToReturn; // Returns repeated words.
+    }
+
+    public int numbRepeated() {
+
+        ObservableList<String> basketListItems = basketList.getItems();
+        int occurrences = 0;
+
+        for (String s: basketListItems) {
+            occurrences = Collections.frequency(basketListItems, s);
+        }
+        return occurrences;
     }
 
     @Override
