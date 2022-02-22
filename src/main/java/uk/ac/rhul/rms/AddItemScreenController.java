@@ -55,6 +55,9 @@ public class AddItemScreenController implements ControlledScreen {
     private CheckBox nonVeg;
 
     @FXML
+    private TextField price;
+
+    @FXML
     private CheckBox starter;
 
     @FXML
@@ -75,6 +78,7 @@ public class AddItemScreenController implements ControlledScreen {
         int item_id = Integer.parseInt(getItemID);
         String getItemName = itemName.getText();
         String getCalories = calories.getText();
+        String getPrice = price.getText();
         String getItemDescription = itemDescription.getText();
         String getImageLocation = itemImage.getText();
         String getCourseType = " ";
@@ -108,7 +112,7 @@ public class AddItemScreenController implements ControlledScreen {
             try {
                 DatabaseConnection.getInstance().createStatement().execute("INSERT INTO menu VALUES('" +
                         item_id + "','" + getItemName + "','" + getCalories + "','" + getCourseType + "','" +
-                        getDietType + "','" + getItemDescription + "','" + getImageLocation + "');");
+                        getDietType + "','" + getItemDescription + "','" + getImageLocation + "','" + getPrice + "');");
             } catch (Exception e) {
                 System.out.println("ERROR: SQL connection error, or you did not add an item to menu.");
             }
