@@ -1,5 +1,6 @@
 package uk.ac.rhul.rms;
 
+import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -10,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.application.Platform;
+import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
@@ -119,6 +121,7 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
             notification.text("More tables need to be served. Visit Waiter Portal for more details.");
             notification.darkStyle();
             notification.position(Pos.BASELINE_CENTER);
+            notification.hideAfter(Duration.seconds(5));
             notification.onAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
@@ -192,7 +195,15 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
 
     @FXML
     void acceptCall(ActionEvent event) {
-        // do this later.
+        try {
+            ObservableList selectedItem = this.waiterCalls.getSelectionModel().getSelectedIndices();
+            int callId = Integer.parseInt(this.waiterCalls.getItems().get(ManageOrderScreenController.convertToInt(selectedItem.toString())));
+
+            DatabaseConnection.getInstance().createStatement().execute("UPDATE waiter_call set served=1, waiter_id=" + Main.currentLoggedInUser + " WHERE table_no="+callId);
+            makeWaiterBusy();
+        } catch (SQLException | NumberFormatException e) {
+            System.out.println(e.toString());
+        }
     }
 
     @FXML

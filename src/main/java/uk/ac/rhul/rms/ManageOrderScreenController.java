@@ -54,9 +54,7 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
         StringBuilder sb = new StringBuilder(arrayString);
         sb.deleteCharAt(0);
         sb.deleteCharAt(arrayString.length() - 2);
-
-        int result = Integer.parseInt(sb.toString());
-        return result;
+        return Integer.parseInt(sb.toString());
     }
 
     /**
@@ -81,7 +79,6 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
                 System.out.println("ERROR: SQL connection error, or you did not select an item to delete.");
             }
         }
-
     }
 
     public void displayItems() {
