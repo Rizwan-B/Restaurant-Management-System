@@ -106,6 +106,12 @@ public class BasketScreenController implements ControlledScreen, Initializable {
     System.out.println(holder_no);
     System.out.println(cvc);
 
+    if (tillsCheckBox.isSelected()){
+      Alert alert = new Alert(Alert.AlertType.NONE, "Table Number  "+ table_number + " will pay at tills", ButtonType.OK);
+      alert.showAndWait();
+
+    }
+
 
   }
 
@@ -113,6 +119,7 @@ public class BasketScreenController implements ControlledScreen, Initializable {
   void handleTills(){
     if (tillsCheckBox.isSelected()){
       electronicPayment.setSelected(false);
+
     }
   }
 
