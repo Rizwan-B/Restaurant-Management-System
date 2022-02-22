@@ -115,6 +115,9 @@ public class AddItemScreenController implements ControlledScreen {
                         getDietType + "','" + getItemDescription + "','" + getImageLocation + "','" + getPrice + "');");
             } catch (Exception e) {
                 System.out.println("ERROR: SQL connection error, or you did not add an item to menu.");
+            } finally {
+                this.screensController.loadScreen(Main.changeMenuScreenID, Main.changeMenuScreenFile);
+                this.screensController.setScreen(Main.changeMenuScreenID);
             }
         }
 
