@@ -105,6 +105,13 @@ public class BasketScreenController implements ControlledScreen, Initializable {
     System.out.println(card_no);
     System.out.println(holder_no);
     System.out.println(cvc);
+    if(electronicPayment.isSelected()) {
+      if (card_no.length() <= 16) {
+        Alert alert = new Alert(Alert.AlertType.NONE, "Incorrect Card Number", ButtonType.OK);
+        alert.showAndWait();
+
+      }
+    }
 
     if (tillsCheckBox.isSelected()){
       Alert alert = new Alert(Alert.AlertType.NONE, "Table Number  "+ table_number + " will pay at tills", ButtonType.OK);
