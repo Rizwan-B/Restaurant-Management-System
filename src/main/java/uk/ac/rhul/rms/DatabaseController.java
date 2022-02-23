@@ -223,7 +223,7 @@ public class DatabaseController {
    * @throws SQLException An exception indicating the database couldn't be queried properly.
    * @throws InvalidMenuIdException An exception indicating one of the menu items in the order couldn't be found.
    */
-  public ArrayList<Order> getOrders(Connection connection) throws SQLException, InvalidMenuIdException {
+  public static ArrayList<Order> getOrders(Connection connection) throws SQLException, InvalidMenuIdException {
     ResultSet result = executeQuery(connection, "SELECT * FROM orders_table");
     ArrayList<Order> orders = new ArrayList<>();
 
@@ -250,7 +250,7 @@ public class DatabaseController {
    * @param connection The connection to the database.
    * @param order The order object being confirmed.
    */
-  public void confirmOrder(Connection connection, ConfirmedOrder order) {
+  public static void confirmOrder(Connection connection, ConfirmedOrder order) {
     executeQuery(connection, "INSERT " + String.valueOf(order.getUserId()) + ", " +
         String.valueOf(order.getOrder().getOrderId() + " INTO orders_table"));
   }
