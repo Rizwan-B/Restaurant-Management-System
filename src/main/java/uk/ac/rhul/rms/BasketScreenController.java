@@ -103,40 +103,38 @@ public class BasketScreenController implements ControlledScreen, Initializable {
     String holder_no = holderName.getText();
     String cvc = cvcBox.getText();
 
-
-
-
     if(electronicPayment.isSelected()) {
-      if (!(card_no.length() == 16) || (!(cvc.length() == 3)) ) {
-        Alert alert = new Alert(Alert.AlertType.NONE, "Incorrect Card Information!", ButtonType.OK);
-        alert.showAndWait();
 
-      }
-
-      if(tableNumber.isEmpty() || card_no.isEmpty() || holder_no.isEmpty() || cvc.isEmpty()){
+      if(tableNumber.isEmpty() || card_no.isEmpty() || holder_no.isEmpty() ||
+              cvc.isEmpty() || date.getSelectionModel().isEmpty() ||
+              year.getSelectionModel().isEmpty()){
         Alert alert1 = new Alert(Alert.AlertType.NONE, "Enter Missing Information", ButtonType.OK);
         alert1.showAndWait();
 
-      }
+      } else {
 
+        if (!(card_no.length() == 16) || (!(cvc.length() == 3)) ) {
+          Alert alert = new Alert(Alert.AlertType.NONE, "Incorrect Card Information!", ButtonType.OK);
+          alert.showAndWait();
+        }
+      }
     }
 
-    if (tillsCheckBox.isSelected()){
+    else if (tillsCheckBox.isSelected()){
       if(tableNumber.isEmpty()){
         Alert alert1 = new Alert(Alert.AlertType.NONE, "Enter table Number", ButtonType.OK);
         alert1.showAndWait();
-
       }
       else {
         Alert alert = new Alert(Alert.AlertType.NONE, "Table Number " + tableNumber + " will pay at tills", ButtonType.OK);
         alert.showAndWait();
       }
-
     }
 
-
-
-
+    else {
+      Alert alert1 = new Alert(Alert.AlertType.NONE, "Select a payment option.", ButtonType.OK);
+      alert1.showAndWait();
+    }
   }
 
   @FXML
