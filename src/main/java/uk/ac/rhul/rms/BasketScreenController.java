@@ -101,21 +101,31 @@ public class BasketScreenController implements ControlledScreen, Initializable {
     String holder_no = holderName.getText();
     String cvc = cvcBox.getText();
 
-    System.out.println(table_number);
-    System.out.println(card_no);
-    System.out.println(holder_no);
-    System.out.println(cvc);
+
+
+
     if(electronicPayment.isSelected()) {
-      if (card_no.length() < 16) {
+      if (!(card_no.length() == 16)) {
         Alert alert = new Alert(Alert.AlertType.NONE, "Incorrect Card Number", ButtonType.OK);
         alert.showAndWait();
 
       }
+
+      if(!(cvc.length() == 3)) {
+        Alert alert1 = new Alert(Alert.AlertType.NONE, "Incorrect CVC Number", ButtonType.OK);
+        alert1.showAndWait();
+
+      }
+
+
+
     }
 
     if (tillsCheckBox.isSelected()){
       Alert alert = new Alert(Alert.AlertType.NONE, "Table Number  "+ table_number + " will pay at tills", ButtonType.OK);
       alert.showAndWait();
+
+
 
     }
 
@@ -126,6 +136,10 @@ public class BasketScreenController implements ControlledScreen, Initializable {
   void handleTills(){
     if (tillsCheckBox.isSelected()){
       electronicPayment.setSelected(false);
+      cardNumber.setDisable(true);
+      holderName.setDisable(true);
+      cvcBox.setDisable(true);
+
 
     }
   }
@@ -134,6 +148,9 @@ public class BasketScreenController implements ControlledScreen, Initializable {
   void handleElectronic(){
     if (electronicPayment.isSelected()){
       tillsCheckBox.setSelected(false);
+      cardNumber.setDisable(false);
+      holderName.setDisable(false);
+      cvcBox.setDisable(false);
     }
   }
 
