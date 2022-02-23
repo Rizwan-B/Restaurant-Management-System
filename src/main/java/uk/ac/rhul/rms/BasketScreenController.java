@@ -88,6 +88,9 @@ public class BasketScreenController implements ControlledScreen, Initializable {
   private ComboBox<String> year;
 
   @FXML
+  private Text responseText;
+
+  @FXML
   void backBtnPressed(ActionEvent event) {
     this.screensController.loadScreen(Main.menuScreenID, Main.menuScreenFile);
     this.screensController.setScreen(Main.menuScreenID);
@@ -96,7 +99,6 @@ public class BasketScreenController implements ControlledScreen, Initializable {
   @FXML
   void getPayment(ActionEvent event){
     String tableNumber = tableNo.getText();
-    int table_number = Integer.parseInt(tableNumber);
     String card_no = cardNumber.getText();
     String holder_no = holderName.getText();
     String cvc = cvcBox.getText();
@@ -105,29 +107,34 @@ public class BasketScreenController implements ControlledScreen, Initializable {
 
 
     if(electronicPayment.isSelected()) {
-      if (!(card_no.length() == 16)) {
-        Alert alert = new Alert(Alert.AlertType.NONE, "Incorrect Card Number", ButtonType.OK);
+      if (!(card_no.length() == 16) || (!(cvc.length() == 3)) ) {
+        Alert alert = new Alert(Alert.AlertType.NONE, "Incorrect Card Information!", ButtonType.OK);
         alert.showAndWait();
 
       }
 
-      if(!(cvc.length() == 3)) {
-        Alert alert1 = new Alert(Alert.AlertType.NONE, "Incorrect CVC Number", ButtonType.OK);
+      if(tableNumber.isEmpty() || card_no.isEmpty() || holder_no.isEmpty() || cvc.isEmpty()){
+        Alert alert1 = new Alert(Alert.AlertType.NONE, "Enter Missing Information", ButtonType.OK);
         alert1.showAndWait();
 
       }
 
-
-
     }
 
     if (tillsCheckBox.isSelected()){
-      Alert alert = new Alert(Alert.AlertType.NONE, "Table Number  "+ table_number + " will pay at tills", ButtonType.OK);
-      alert.showAndWait();
+      if(tableNumber.isEmpty()){
+        Alert alert1 = new Alert(Alert.AlertType.NONE, "Enter table Number", ButtonType.OK);
+        alert1.showAndWait();
 
-
+      }
+      else {
+        Alert alert = new Alert(Alert.AlertType.NONE, "Table Number " + tableNumber + " will pay at tills", ButtonType.OK);
+        alert.showAndWait();
+      }
 
     }
+
+
 
 
   }
