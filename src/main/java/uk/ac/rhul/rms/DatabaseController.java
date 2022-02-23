@@ -243,4 +243,15 @@ public class DatabaseController {
     }
     return orders;
   }
+
+  /**
+   * Inserts a confirmed order into the confirmed_orders table.
+   *
+   * @param connection The connection to the database.
+   * @param order The order object being confirmed.
+   */
+  public void confirmOrder(Connection connection, ConfirmedOrder order) {
+    executeQuery(connection, "INSERT " + String.valueOf(order.getUserId()) + ", " +
+        String.valueOf(order.getOrder().getOrderId() + " INTO orders_table"));
+  }
 }
