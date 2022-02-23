@@ -5,8 +5,8 @@ package uk.ac.rhul.rms;
  */
 public class ConfirmedOrder {
 
-  Order confirmedOrder;
-  int userId;
+  private Order confirmedOrder;
+  private int userId;
 
   /**
    * The public constructor for creating a confirmed order class.
@@ -26,5 +26,13 @@ public class ConfirmedOrder {
    */
   public Order getOrder() {
     return this.confirmedOrder;
+  }
+
+  /**
+   * Returns the userId of of the kitchen staff who confirmed this order.
+   * @return An int corresponding to the user id of the staff who confirmed this order.
+   */
+  public int getUserId() {
+    return this.userId;
   }
 }
