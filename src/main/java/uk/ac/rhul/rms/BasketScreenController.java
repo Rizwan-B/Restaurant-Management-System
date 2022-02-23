@@ -106,7 +106,7 @@ public class BasketScreenController implements ControlledScreen, Initializable {
     System.out.println(holder_no);
     System.out.println(cvc);
     if(electronicPayment.isSelected()) {
-      if (card_no.length() <= 16) {
+      if (card_no.length() < 16) {
         Alert alert = new Alert(Alert.AlertType.NONE, "Incorrect Card Number", ButtonType.OK);
         alert.showAndWait();
 
@@ -141,9 +141,8 @@ public class BasketScreenController implements ControlledScreen, Initializable {
   public void initialize(URL location, ResourceBundle resources) {
     this.connection = DatabaseConnection.getInstance();
 
-    ObservableList<String> list = FXCollections.observableArrayList("1", "2", "3","4","5",
-            "6", "7","8", "9", "10","11","12","13","14","15","16","17","18","19","20","21","22","23","24",
-            "25","26","27","28","29","30","31");
+    ObservableList<String> list = FXCollections.observableArrayList("01", "02", "03","04","05",
+            "06", "07","08", "09", "10","11","12");
     date.setItems(list);
     ObservableList<String> listYear = FXCollections.observableArrayList("2022", "2023", "2024","2025",
             "2026", "2027","2028", "2029", "2030","2031","2032","2033","2034","2035","2036",
