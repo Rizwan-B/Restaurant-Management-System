@@ -117,17 +117,21 @@ public class BasketScreenController implements ControlledScreen, Initializable {
           Alert alert = new Alert(Alert.AlertType.NONE, "Incorrect Card Information!", ButtonType.OK);
           alert.showAndWait();
         }
+        Alert alert = new Alert(Alert.AlertType.NONE, "Payment complete, Thank You for visiting!", ButtonType.OK);
+        alert.showAndWait();
+        this.screensController.setScreen(Main.startScreenID);
       }
     }
 
     else if (tillsCheckBox.isSelected()){
+
       if(tableNumber.isEmpty()){
         Alert alert1 = new Alert(Alert.AlertType.NONE, "Enter table Number", ButtonType.OK);
         alert1.showAndWait();
-      }
-      else {
-        Alert alert = new Alert(Alert.AlertType.NONE, "Table Number " + tableNumber + " will pay at tills", ButtonType.OK);
+      } else {
+        Alert alert = new Alert(Alert.AlertType.NONE, "Please head to the tills, Thank you for visiting!", ButtonType.OK);
         alert.showAndWait();
+        this.screensController.setScreen(Main.startScreenID);
       }
     }
 
@@ -144,8 +148,6 @@ public class BasketScreenController implements ControlledScreen, Initializable {
       cardNumber.setDisable(true);
       holderName.setDisable(true);
       cvcBox.setDisable(true);
-
-
     }
   }
 
@@ -170,8 +172,5 @@ public class BasketScreenController implements ControlledScreen, Initializable {
             "2026", "2027","2028", "2029", "2030","2031","2032","2033","2034","2035","2036",
             "2037","2038","2039","2040");
     year.setItems(listYear);
-
-
   }
-
 }
