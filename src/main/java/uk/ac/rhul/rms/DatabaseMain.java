@@ -266,6 +266,12 @@ public class DatabaseMain {
                 "seat_number int NOT NULL, " +
                 "PRIMARY KEY(table_no));");
 
+        dropTables(connect, "confirmed_orders");
+        createsTable(connect, "confirmed_orders (user_id int NOT NULL, " +
+                "order_id int, " +
+                "FOREIGN KEY (user_id) REFERENCES user_table(user_id), " +
+                "FOREIGN KEY(orders) REFERENCES orders_table(order_id))");
+
         insertFromFile(connect, "menu");
         insertFromFile(connect, "user_table");
         insertFromFile(connect, "seat_no");
