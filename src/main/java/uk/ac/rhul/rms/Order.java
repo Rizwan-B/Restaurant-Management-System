@@ -111,4 +111,13 @@ public class Order {
 
     return orderString;
   }
+
+  /**
+   * A getter for the orderId corresponding to the orders table.
+   *
+   * @return An int orderId.
+   */
+  public int getOrderId() {
+    return this.orderId;
+  }
 }
