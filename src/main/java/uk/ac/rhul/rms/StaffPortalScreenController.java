@@ -48,8 +48,16 @@ public class StaffPortalScreenController implements ControlledScreen, Initializa
     }
 
     @FXML
-    void claimBtnPressed(ActionEvent event) {
+    void claimBtnPressed(ActionEvent event) throws InvalidMenuIdException, SQLException {
+        Connection connection = DatabaseConnection.getInstance();
+        String selectedOrder = this.pendingOrdersList.getSelectionModel().getSelectedItems().toString();
+        String[] splitId = selectedOrder.split(" - ");
+        Order order = DatabaseController.getOrder(connection, Integer.valueOf(splitId[0]));
 
+        ConfirmedOrder confirmedOrder = new ConfirmedOrder(order, Main.currentLoggedInUser);
+        DatabaseController.confirmOrder(connection, confirmedOrder);
+
+        this.claimedOrderList.getItems().add(order.toString());
     }
 
     @FXML
