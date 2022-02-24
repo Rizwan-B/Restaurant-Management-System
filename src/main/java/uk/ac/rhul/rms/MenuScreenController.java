@@ -240,9 +240,20 @@ public class MenuScreenController implements ControlledScreen, Initializable {
             try {
                 DatabaseController.makeOrder(DatabaseConnection.getInstance(), -1, orderList, 0 );
             }catch (SQLException e){
-                System.out.println("Problem using the database: "+e);
+                System.out.println("Problem using the database: "+e+"\n At line 241.");
             }
         }
+        try {
+            ArrayList<Order> orders = DatabaseController.getOrders(DatabaseConnection.getInstance());
+            for (int i = 0; i<orders.size(); i++) {
+                System.out.println(orders.get(i));
+            }
+        }catch (InvalidMenuIdException e){
+            System.out.println("Problem using the database: "+e+"\n At line 247.");
+        } catch (SQLException e) {
+            System.out.println("Problem using the database: "+e+"\n At line 247.");
+        }
+
     }
 
     public void wordRepeated() { //Set<String>

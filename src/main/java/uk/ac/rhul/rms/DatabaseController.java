@@ -236,7 +236,7 @@ public class DatabaseController {
       orderId = result.getInt("order_id");
       tableNo = result.getInt("table_no");
       orders_list = result.getString("orders_list");
-      cancelled = result.getInt("cancelled") == 1;
+      cancelled = result.getInt("status") == 1;
 
       Order orderItem = new Order(orderId, tableNo, orders_list, cancelled);
       orders.add(orderItem);
