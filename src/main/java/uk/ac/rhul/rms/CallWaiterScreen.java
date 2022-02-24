@@ -4,7 +4,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import uk.ac.rhul.screenmanager.ControlledScreen;
@@ -43,11 +45,19 @@ public class CallWaiterScreen implements ControlledScreen {
     void callWaiterBtnPressed(ActionEvent event) {
         try {
             String tableNumberString = this.tableNumberField.getText();
-            int tableNumber = Integer.parseInt(tableNumberString);
-            System.out.println(tableNumber);
-            DatabaseConnection.getInstance().createStatement().execute("insert into waiter_call (table_no,waiter_id,served) values(" + tableNumber + ", NULL, 0)");
-            System.out.println("done");
-            textConfirm.setText("A waiter has been called.");
+            if (tableNumberString.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.NONE, "Please enter your table number.", ButtonType.OK);
+                alert.showAndWait();
+            } else {
+                int tableNumber = Integer.parseInt(tableNumberString);
+                System.out.println(tableNumber);
+                DatabaseConnection.getInstance().createStatement().execute("insert into waiter_call (table_no,waiter_id,served) values(" + tableNumber + ", NULL, 0)");
+                System.out.println("done");
+//            textConfirm.setText("A waiter has been called.");
+                Alert alert = new Alert(Alert.AlertType.NONE, "A waiter will be with you as soon as possible.", ButtonType.OK);
+                alert.showAndWait();
+                this.screensController.setScreen(Main.menuScreenID);
+            }
         } catch (Exception e) {
             System.out.println(e.toString());
         }

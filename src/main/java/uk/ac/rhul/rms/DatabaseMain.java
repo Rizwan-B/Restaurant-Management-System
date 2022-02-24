@@ -270,7 +270,7 @@ public class DatabaseMain {
         createsTable(connect, "confirmed_orders (user_id int NOT NULL, " +
                 "order_id int, " +
                 "FOREIGN KEY (user_id) REFERENCES user_table(user_id), " +
-                "FOREIGN KEY(orders) REFERENCES orders_table(order_id))");
+                "FOREIGN KEY(order_id) REFERENCES orders_table(order_id))");
 
         insertFromFile(connect, "menu");
         insertFromFile(connect, "user_table");
