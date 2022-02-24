@@ -266,5 +266,10 @@ public class DatabaseController {
   public static void makeOrder(Connection connection, int table, String list, int status) throws SQLException {
     connection.createStatement().execute("INSERT INTO orders_table (table_no, orders_list, status) VALUES ('"+table+"' ,'"+list+"' ,'"+status+"') ;");
   }
-
+  public static String getTempOrder(Connection connection) throws SQLException, InvalidMenuIdException {
+    ResultSet result = executeQuery(connection, "SELECT * FROM orders_table");
+    String order= result.getString("orders_list");
+    connection.createStatement().execute("DELETE FROM orders_table WHERE order_id =="+result.getString("order_id")+";");
+    return order;
+  }
 }
