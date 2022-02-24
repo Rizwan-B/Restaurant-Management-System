@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javax.swing.*;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -64,7 +65,7 @@ public class BasketScreenController implements ControlledScreen, Initializable {
   private TextField holderName;
 
   @FXML
-  private ListView<?> orderItems;
+  private ListView<String> orderItems;
 
   @FXML
   private Text payment;
@@ -159,6 +160,15 @@ public class BasketScreenController implements ControlledScreen, Initializable {
       holderName.setDisable(false);
       cvcBox.setDisable(false);
     }
+  }
+
+  @FXML
+  void getItems() throws SQLException, InvalidMenuIdException {
+    String[] items = DatabaseController.getTempOrder(DatabaseConnection.getInstance()).split("-");
+    for (int i = 0; i < items.length; i++) {
+      orderItems.getItems().add(items[i]);
+    }
+
   }
 
   @Override
