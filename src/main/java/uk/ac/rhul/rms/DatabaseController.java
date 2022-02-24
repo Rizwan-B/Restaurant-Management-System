@@ -255,8 +255,17 @@ public class DatabaseController {
         String.valueOf(order.getOrder().getOrderId() + " INTO orders_table"));
   }
 
+  /**
+   * Inserts a new order into the orders_table.
+   * @param connection The connection to the database.
+   * @param table The int for the table_no field.
+   * @param list The String of requested menu items for the orders_list field.
+   * @param status The int for the status field.
+   * @throws SQLException An exception thrown when the database can't be queried properly.
+   */
   public static void makeOrder(Connection connection, int table, String list, int status) throws SQLException {
     Statement st = connection.createStatement();
     st.execute("INSERT INTO orders_table (table_no, orders_list, status) VALUES ('"+table+"' ,'"+list+"' ,'"+status+"') ;");
   }
+
 }
