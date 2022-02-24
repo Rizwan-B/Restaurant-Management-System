@@ -244,10 +244,8 @@ public class MenuScreenController implements ControlledScreen, Initializable {
             }
         }
         try {
-            ArrayList<Order> orders = DatabaseController.getOrders(DatabaseConnection.getInstance());
-            for (int i = 0; i<orders.size(); i++) {
-                System.out.println(orders.get(i));
-            }
+            String orders = DatabaseController.getTempOrder(DatabaseConnection.getInstance());
+            System.out.println(orders);
         }catch (InvalidMenuIdException e){
             System.out.println("Problem with the menu: "+e+"\n At line 247.");
         } catch (SQLException e) {
