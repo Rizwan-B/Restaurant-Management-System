@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javax.swing.*;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -120,6 +121,7 @@ public class BasketScreenController implements ControlledScreen, Initializable {
           Alert alert = new Alert(Alert.AlertType.NONE, "Payment complete, Thank You for visiting!", ButtonType.OK);
           alert.showAndWait();
           this.screensController.setScreen(Main.startScreenID);
+
         }
       }
     }
@@ -141,6 +143,7 @@ public class BasketScreenController implements ControlledScreen, Initializable {
       Alert alert1 = new Alert(Alert.AlertType.NONE, "Select a payment option.", ButtonType.OK);
       alert1.showAndWait();
     }
+
   }
 
   @FXML

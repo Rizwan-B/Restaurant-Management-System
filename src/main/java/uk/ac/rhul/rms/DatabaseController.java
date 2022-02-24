@@ -11,6 +11,7 @@ import java.util.ArrayList;
  *
  * @author Muqdas
  * @author Lucas Kimber
+ * @author Tomas Duarte
  */
 public class DatabaseController {
 
@@ -103,14 +104,104 @@ public class DatabaseController {
       dietType = Diet.toDiet(result.getString("diet_type"));
       itemDescription = result.getString("item_description");
       itemImageLocation = result.getString("item_image_location");
-      itemPrice = result.getInt("itemPrice");
+      itemPrice = result.getInt("item_price");
       MenuItem menuItem = new MenuItem(itemId, itemName, calories, category, dietType,
-          itemDescription, itemImageLocation, itemPrice);
+          itemDescription, itemImageLocation,itemPrice);
       menuItems.add(menuItem);
     }
     return menuItems;
   }
 
+  /**
+   * something here.
+   *
+   * @throws SQLException dfjsfad.
+   */
+  public static ArrayList<MenuItem2> getMenu2Items(Connection connection, String categoryType) throws SQLException {
+    ResultSet result = executeQuery(connection, "select * from menu");
+    ArrayList<MenuItem2> menuItems = new ArrayList<MenuItem2>();
+    int itemId;
+    String item_name;
+    String item_description;
+    String item_category;
+    while (result.next()) {
+      itemId = result.getInt("itemID");
+      item_name = result.getString("item_name");
+      item_description = result.getString("item_description");
+      item_category = result.getString("item_category");
+      MenuItem2 menuItem = new MenuItem2(itemId, item_name, item_description, item_category);
+      menuItems.add(menuItem);
+    }
+    return menuItems;
+  }
+  
+  /**
+   * filters menu for allergenic items.
+   *
+   * @author Tomas Duarte
+   * @author Mohamed Javid
+   */
+  public static ArrayList<MenuItem2> getMenu2ItemsFiltered(Connection connection, String categoryType) throws SQLException {
+    String query = ("SELECT menu2.itemId, menu2.item_name, menu2.item_description, menu2.item_category"
+        + " FROM menu2"
+        + " EXCEPT"
+        + " SELECT menu2.itemId, menu2.item_name, menu2.item_description, menu2.item_category"
+        + " FROM menu2"
+        + " JOIN dish_ingredients_link"
+        + " ON menu2.itemId = dish_ingredients_link.menuItemId"
+        + " JOIN ingredients"
+        + " ON dish_ingredients_link.ingredientId = ingredients.ingredientId"
+        + " JOIN allergy_ingredient_link"
+        + " ON ingredients.ingredientId = allergy_ingredient_link.allergyId;");
+    ResultSet result = executeQuery(connection, query);
+    ArrayList<MenuItem2> menuItems = new ArrayList<MenuItem2>();
+    int itemId;
+    String item_name;
+    String item_description;
+    String item_category;
+    while (result.next()) {
+      itemId = result.getInt("itemID");
+      item_name = result.getString("item_name");
+      item_description = result.getString("item_description");
+      item_category = result.getString("item_category");
+      MenuItem2 menuItem = new MenuItem2(itemId, item_name, item_description, item_category);
+      menuItems.add(menuItem);
+    }
+    return menuItems;
+  }
+ 
+ 
+  /**
+  *
+  * @param itemPrimaryKey The primary key of the menu item to be returned from the database.
+  * @param connection The connection to the database.
+  * @return A menuItem with the values corresponding to the item with the corresponding primary key.
+  * @throws InvalidMenuIdException Thrown if the menu item doesn't exist.
+  */
+ public static MenuItem2 getMenu2Item(String itemPrimaryKey, Connection connection) throws InvalidMenuIdException {
+   int itemId;
+   String item_name;
+   String item_description;
+   String item_category;
+   MenuItem2 menuItem;
+
+   try {
+
+     ResultSet result = executeQuery(connection, "select * from menu where itemID = '" + itemPrimaryKey + "'");
+     itemId = result.getInt("itemID");
+     item_name = result.getString("item_name");
+     item_description = result.getString("item_description");
+     item_category = result.getString("item_category");
+     menuItem = new MenuItem2(itemId, item_name, item_description, item_category);
+
+   } catch (SQLException e) {
+     throw new InvalidMenuIdException();
+   }
+
+   return menuItem;
+ }  
+  
+  
   /**
    *
    * @param itemPrimaryKey The primary key of the menu item to be returned from the database.
@@ -126,8 +217,8 @@ public class DatabaseController {
     Diet dietType;
     String itemDescription;
     String itemImageLocation;
-    MenuItem menuItem;
     int itemPrice;
+    MenuItem menuItem;
 
     try {
 
@@ -140,9 +231,9 @@ public class DatabaseController {
       dietType = Diet.toDiet(result.getString("diet_type"));
       itemDescription = result.getString("item_description");
       itemImageLocation = result.getString("item_image_location");
-      itemPrice = result.getInt("itemPrice");
+      itemPrice = result.getInt("item_price");
       menuItem = new MenuItem(itemId, itemName, calories, category, dietType,
-          itemDescription, itemImageLocation, itemPrice);
+              itemDescription, itemImageLocation,itemPrice);
 
     } catch (SQLException e) {
       throw new InvalidMenuIdException();
@@ -203,9 +294,9 @@ public class DatabaseController {
       dietType = Diet.toDiet(result.getString("diet_type"));
       itemDescription = result.getString("item_description");
       itemImageLocation = result.getString("item_image_location");
-      itemPrice= result.getInt("itemPrice");
+      itemPrice = result.getInt("item_price");
       MenuItem menuItem = new MenuItem(itemId, itemName, calories, category, dietType,
-              itemDescription, itemImageLocation, itemPrice);
+              itemDescription, itemImageLocation,itemPrice);
       menuItems.add(menuItem);
     }
     return menuItems;

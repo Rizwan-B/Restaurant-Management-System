@@ -7,6 +7,11 @@ import javafx.scene.text.Text;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 
+/**
+ * A class to add an item to the menu.
+ *
+ * @author Muqdas
+ */
 public class AddItemScreenController implements ControlledScreen {
     private ScreensController screensController;
 
