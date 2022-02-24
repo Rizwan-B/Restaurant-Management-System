@@ -270,7 +270,9 @@ public class DatabaseController {
    * @param order The order object being confirmed.
    */
   public static void confirmOrder(Connection connection, ConfirmedOrder order) {
-    executeQuery(connection, "INSERT " + String.valueOf(order.getUserId()) + ", " +
-        String.valueOf(order.getOrder().getOrderId() + " INTO orders_table"));
+    executeQuery(connection, "UPDATE confirmed_orders SET user_id = " + String.valueOf(order.getUserId()) +
+            " order_id = " + String.valueOf(order.getOrder().getOrderId()) + ";");
+
+    //TODO: make this work.
   }
 }

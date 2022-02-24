@@ -52,7 +52,7 @@ public class StaffPortalScreenController implements ControlledScreen, Initializa
         Connection connection = DatabaseConnection.getInstance();
         String selectedOrder = this.pendingOrdersList.getSelectionModel().getSelectedItems().toString();
         String[] splitId = selectedOrder.split(" - ");
-        Order order = DatabaseController.getOrder(connection, Integer.valueOf(splitId[0]));
+        Order order = DatabaseController.getOrder(connection, Integer.valueOf(splitId[0].substring(1)));
 
         ConfirmedOrder confirmedOrder = new ConfirmedOrder(order, Main.currentLoggedInUser);
         DatabaseController.confirmOrder(connection, confirmedOrder);
