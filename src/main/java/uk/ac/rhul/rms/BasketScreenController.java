@@ -136,6 +136,7 @@ public class BasketScreenController implements ControlledScreen, Initializable {
       }
     }
 
+
     else {
       Alert alert1 = new Alert(Alert.AlertType.NONE, "Select a payment option.", ButtonType.OK);
       alert1.showAndWait();
