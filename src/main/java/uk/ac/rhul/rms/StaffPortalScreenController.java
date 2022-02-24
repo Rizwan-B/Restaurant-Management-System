@@ -5,10 +5,20 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
+import javafx.scene.control.ListView;
 
 public class StaffPortalScreenController implements ControlledScreen {
 
     private ScreensController screensController;
+
+    @FXML
+    private Button backBtn;
+
+    @FXML
+    private ListView<?> pendingOrdersList;
+
+    @FXML
+    private ListView<?> claimedOrderList;
 
     @Override
     public void setScreenParent(ScreensController screenParent) {
@@ -16,10 +26,12 @@ public class StaffPortalScreenController implements ControlledScreen {
     }
 
     @FXML
-    private Button backBtn;
-
-    @FXML
     void backBtnPressed(ActionEvent event) {
         this.screensController.setScreen(Main.loginScreenID);
+    }
+
+    @FXML
+    void claimBtnPressed(ActionEvent event) {
+
     }
 }
