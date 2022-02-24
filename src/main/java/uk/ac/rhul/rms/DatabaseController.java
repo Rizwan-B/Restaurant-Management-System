@@ -94,6 +94,7 @@ public class DatabaseController {
     Diet dietType;
     String itemDescription;
     String itemImageLocation;
+    int itemPrice;
     while (result.next()) {
       itemId = result.getInt("itemID");
       itemName = result.getString("item_name");
@@ -102,8 +103,9 @@ public class DatabaseController {
       dietType = Diet.toDiet(result.getString("diet_type"));
       itemDescription = result.getString("item_description");
       itemImageLocation = result.getString("item_image_location");
+      itemPrice = result.getInt("itemPrice");
       MenuItem menuItem = new MenuItem(itemId, itemName, calories, category, dietType,
-          itemDescription, itemImageLocation);
+          itemDescription, itemImageLocation, itemPrice);
       menuItems.add(menuItem);
     }
     return menuItems;
@@ -125,6 +127,7 @@ public class DatabaseController {
     String itemDescription;
     String itemImageLocation;
     MenuItem menuItem;
+    int itemPrice;
 
     try {
 
@@ -137,8 +140,9 @@ public class DatabaseController {
       dietType = Diet.toDiet(result.getString("diet_type"));
       itemDescription = result.getString("item_description");
       itemImageLocation = result.getString("item_image_location");
+      itemPrice = result.getInt("itemPrice");
       menuItem = new MenuItem(itemId, itemName, calories, category, dietType,
-          itemDescription, itemImageLocation);
+          itemDescription, itemImageLocation, itemPrice);
 
     } catch (SQLException e) {
       throw new InvalidMenuIdException();
@@ -190,6 +194,7 @@ public class DatabaseController {
     Diet dietType;
     String itemDescription;
     String itemImageLocation;
+    int itemPrice;
     while (result.next()) {
       itemId = result.getInt("itemID");
       itemName = result.getString("item_name");
@@ -198,8 +203,9 @@ public class DatabaseController {
       dietType = Diet.toDiet(result.getString("diet_type"));
       itemDescription = result.getString("item_description");
       itemImageLocation = result.getString("item_image_location");
+      itemPrice= result.getInt("itemPrice");
       MenuItem menuItem = new MenuItem(itemId, itemName, calories, category, dietType,
-              itemDescription, itemImageLocation);
+              itemDescription, itemImageLocation, itemPrice);
       menuItems.add(menuItem);
     }
     return menuItems;
