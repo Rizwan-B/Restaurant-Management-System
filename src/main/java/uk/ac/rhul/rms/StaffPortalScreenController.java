@@ -8,6 +8,8 @@ import uk.ac.rhul.screenmanager.ScreensController;
 import javafx.scene.control.ListView;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class StaffPortalScreenController implements ControlledScreen {
 
@@ -27,10 +29,10 @@ public class StaffPortalScreenController implements ControlledScreen {
     private Button backBtn;
 
     @FXML
-    private ListView<?> pendingOrdersList;
+    private ListView<String> pendingOrdersList;
 
     @FXML
-    private ListView<?> claimedOrderList;
+    private ListView<String> claimedOrderList;
 
     @Override
     public void setScreenParent(ScreensController screenParent) {
@@ -45,5 +47,15 @@ public class StaffPortalScreenController implements ControlledScreen {
     @FXML
     void claimBtnPressed(ActionEvent event) {
 
+    }
+
+    @FXML
+    public void loadOrders() throws SQLException, InvalidMenuIdException {
+        Connection connection = DatabaseConnection.getInstance();
+        ArrayList<Order> orders = DatabaseController.getOrders(connection);
+
+        for(Order order: orders){
+            this.pendingOrdersList.getItems().add(order.toString());
+        }
     }
 }
