@@ -254,4 +254,9 @@ public class DatabaseController {
     executeQuery(connection, "INSERT " + String.valueOf(order.getUserId()) + ", " +
         String.valueOf(order.getOrder().getOrderId() + " INTO orders_table"));
   }
+
+  public static void makeOrder(Connection connection, int table, String list, int status) throws SQLException {
+    Statement st = connection.createStatement();
+    st.execute("INSERT INTO orders_table (table_no, orders_list, status) VALUES ('"+table+"' ,'"+list+"' ,'"+status+"') ;");
+  }
 }
