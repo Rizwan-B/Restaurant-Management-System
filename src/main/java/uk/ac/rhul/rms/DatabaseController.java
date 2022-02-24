@@ -264,8 +264,7 @@ public class DatabaseController {
    * @throws SQLException An exception thrown when the database can't be queried properly.
    */
   public static void makeOrder(Connection connection, int table, String list, int status) throws SQLException {
-    Statement st = connection.createStatement();
-    st.execute("INSERT INTO orders_table (table_no, orders_list, status) VALUES ('"+table+"' ,'"+list+"' ,'"+status+"') ;");
+    executeQuery(connection,"INSERT INTO orders_table (table_no, orders_list, status) VALUES ('"+table+"' ,'"+list+"' ,'"+status+"') ;");
   }
 
 }
