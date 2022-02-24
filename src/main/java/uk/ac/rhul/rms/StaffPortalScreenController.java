@@ -2,16 +2,19 @@ package uk.ac.rhul.rms;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 import javafx.scene.control.ListView;
 
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class StaffPortalScreenController implements ControlledScreen {
+public class StaffPortalScreenController implements ControlledScreen, Initializable {
 
     private ScreensController screensController;
 
@@ -56,6 +59,17 @@ public class StaffPortalScreenController implements ControlledScreen {
 
         for(Order order: orders){
             this.pendingOrdersList.getItems().add(order.toString());
+        }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            loadOrders();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (InvalidMenuIdException e) {
+            e.printStackTrace();
         }
     }
 }
