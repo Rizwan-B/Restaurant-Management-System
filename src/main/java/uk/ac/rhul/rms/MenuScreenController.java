@@ -2,6 +2,7 @@ package uk.ac.rhul.rms;
 
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -74,6 +75,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
 
     @FXML
     void basketBtnPressed(ActionEvent event) {
+        addToDB();
         this.screensController.loadScreen(Main.basketScreenID, Main.basketScreenFile);
         this.screensController.setScreen(Main.basketScreenID);
     }
@@ -227,6 +229,22 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         basketList.getSelectionModel().clearSelection();
     }
 
+    @FXML
+    void addToDB() {
+
+        String orderList = "";
+        if (basketList.getItems().size() != 0){
+            for (int i = 0; i < basketList.getItems().size(); i++){
+                orderList += basketList.getItems().get(i)+" ";
+            }
+            try {
+                DatabaseController.makeOrder(DatabaseConnection.getInstance(), -1, orderList, 0 );
+            }catch (SQLException e){
+                System.out.println("Problem using the database: "+e);
+            }
+        }
+    }
+
     public void wordRepeated() { //Set<String>
 
 //        final Set<String> setToReturn = new HashSet<String>();
@@ -259,6 +277,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         quantity.setItems(quantityList); // This initialises the drop-down quantity with 3 options 1-10.
         quantity.setValue(1); // Sets the default value of quantity to 1.
     }
+
 
 
 }
