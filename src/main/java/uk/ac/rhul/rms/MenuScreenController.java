@@ -235,7 +235,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         String orderList = "";
         if (basketList.getItems().size() != 0){
             for (int i = 0; i < basketList.getItems().size(); i++){
-                orderList += basketList.getItems().get(i)+" ";
+                orderList += basketList.getItems().get(i)+"-";
             }
             try {
                 DatabaseController.makeOrder(DatabaseConnection.getInstance(), -1, orderList, 0 );
@@ -249,7 +249,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
                 System.out.println(orders.get(i));
             }
         }catch (InvalidMenuIdException e){
-            System.out.println("Problem using the database: "+e+"\n At line 247.");
+            System.out.println("Problem with the menu: "+e+"\n At line 247.");
         } catch (SQLException e) {
             System.out.println("Problem using the database: "+e+"\n At line 247.");
         }
