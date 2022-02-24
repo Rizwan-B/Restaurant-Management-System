@@ -221,6 +221,18 @@ public class DatabaseController {
     st.execute("UPDATE orders_table SET status = 2 WHERE order_id=" + order_id);
   }
 
+  public static Order getOrder(Connection connection, int orderId) throws InvalidMenuIdException, SQLException {
+      ResultSet result = executeQuery(connection, "SELECT * FROM orders_table WHERE order_id = " +
+              String.valueOf(orderId));
+
+      orderId = result.getInt("order_id");
+      int tableNo = result.getInt("table_no");
+      String orders_list = result.getString("orders_list");
+      Boolean cancelled = result.getInt("status") == 1;
+
+      return new Order(orderId, tableNo, orders_list, cancelled);
+  }
+
   /**
    * Returns an array list of all the orders currently in the database.
    *
