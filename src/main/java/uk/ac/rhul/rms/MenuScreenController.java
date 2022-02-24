@@ -218,7 +218,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         mainList.getSelectionModel().clearSelection();
         dessertList.getSelectionModel().clearSelection();
         quantity.setValue(1);
-        wordRepeated();
+        //wordRepeated();
     }
 
     @FXML
