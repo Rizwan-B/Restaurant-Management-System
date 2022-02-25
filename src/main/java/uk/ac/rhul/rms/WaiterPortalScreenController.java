@@ -209,7 +209,7 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
         this.makeWaiterBusy();
         Main.sessionId = null;
         Main.currentLoggedInUser = 0;
-        this.screensController.setScreen(Main.startScreenID);
+        this.screensController.setScreen(Main.loginScreenID);
 
     }
 
