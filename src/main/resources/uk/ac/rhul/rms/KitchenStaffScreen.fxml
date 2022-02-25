@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.Pane?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="657.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="KitchenStaffScreenController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="657.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.StaffPortalScreenController">
    <children>
       <ListView fx:id="pendingOrders" layoutX="20.0" layoutY="66.0" prefHeight="224.0" prefWidth="510.0" />
       <ListView fx:id="workingOn" layoutX="20.0" layoutY="380.0" prefHeight="251.0" prefWidth="510.0" />
