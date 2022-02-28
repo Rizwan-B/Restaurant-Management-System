@@ -262,9 +262,10 @@ public class DatabaseController {
    * @param list The String of requested menu items for the orders_list field.
    * @throws SQLException An exception thrown when the database can't be queried properly.
    */
-  public static void makeOrder(Connection connection, int table, String list) throws SQLException {
+  public static void makeTempOrder(Connection connection, int table, String list) throws SQLException {
     connection.createStatement().execute("INSERT INTO orders_table (table_no, orders_list, status) VALUES ('"+table+"' ,'"+list+"' ,'"+-1+"') ;");
   }
+
   public static String getTempOrder(Connection connection) throws SQLException, InvalidMenuIdException {
     ResultSet result = executeQuery(connection, "SELECT * FROM orders_table");
     String order= result.getString("orders_list");
