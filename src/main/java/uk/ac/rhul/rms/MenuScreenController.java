@@ -243,15 +243,6 @@ public class MenuScreenController implements ControlledScreen, Initializable {
                 System.out.println("Problem using the database: "+e+"\n At line 241.");
             }
         }
-        try {
-            String orders = DatabaseController.getTempOrder(DatabaseConnection.getInstance());
-            System.out.println(orders);
-        }catch (InvalidMenuIdException e){
-            System.out.println("Problem with the menu: "+e+"\n At line 247.");
-        } catch (SQLException e) {
-            System.out.println("Problem using the database: "+e+"\n At line 247.");
-        }
-
     }
 
     public void wordRepeated() { //Set<String>
