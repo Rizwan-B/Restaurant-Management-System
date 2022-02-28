@@ -238,7 +238,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
                 orderList += basketList.getItems().get(i)+"-";
             }
             try {
-                DatabaseController.makeOrder(DatabaseConnection.getInstance(), -1, orderList, 0 );
+                DatabaseController.makeTempOrder(DatabaseConnection.getInstance(), -1, orderList);
             }catch (SQLException e){
                 System.out.println("Problem using the database: "+e+"\n At line 241.");
             }
