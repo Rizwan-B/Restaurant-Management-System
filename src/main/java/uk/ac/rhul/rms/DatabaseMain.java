@@ -17,7 +17,7 @@ import java.sql.Statement;
  *@author Muqdas
  *@author Mohamed Yusuf
  *@author Lucas Kimber
- *
+ *@author Tomas Duarte
  */
 public class DatabaseMain {
     
@@ -194,41 +194,46 @@ public class DatabaseMain {
             + "PRIMARY KEY (ItemID)"
             + ");");
         
-        dropTables(connect, "products;");
-        createsTable(connect, "products (productID int NOT NULL,"
-            + "product_name varchar(200) NOT NULL,"
-            + "product_description varchar(1000) NOT NULL,"
-            + "PRIMARY KEY (productID)"
+        dropTables(connect, "menu2;");
+        createsTable(connect, "menu2 (itemId int NOT NULL,"
+            + "item_name varchar(200) NOT NULL,"
+            + "item_description varchar(1000) NOT NULL,"
+            + "item_category varchar(100) NOT NULL,"
+            + "PRIMARY KEY (itemId)"
             + ");");
         
         dropTables(connect, "ingredients;");
-        createsTable(connect, " ingredients (ingredientID INT NOT NULL,"
+        createsTable(connect, " ingredients (ingredientId INT NOT NULL,"
             + "ingredient_name VARCHAR(200) NOT NULL,"
-            + "PRIMARY KEY (ingredientID)"
+            + "PRIMARY KEY (ingredientId)"
             + ");");
 
         dropTables(connect, "allergies;");
-        createsTable(connect, " allergies (allergyID INT NOT NULL,"
+        createsTable(connect, " allergies (allergyId INT NOT NULL,"
             + "allergy_name VARCHAR(200) NOT NULL,"
-            + "PRIMARY KEY (allergyID)"
+            + "PRIMARY KEY (allergyId)"
             + ");");
         
         dropTables(connect, "dish_ingredients_link;");
         createsTable(connect, " dish_ingredients_link ("
-            + "productID INT,"
-            + "ingredientID INT,"
-            + "FOREIGN KEY (productID) REFERENCES products(productID),"
-            + "FOREIGN KEY (ingredientID) REFERENCES ingredients(ingredientID),"
-            + "PRIMARY KEY (productID, ingredientID)"
+            + "menuItemId INT,"
+            + "ingredientId INT,"
+            + "FOREIGN KEY (menuItemId) REFERENCES menu2(itemId)"
+            + " ON UPDATE CASCADE ON DELETE CASCADE,"
+            + "FOREIGN KEY (ingredientId) REFERENCES ingredients(ingredientId)"
+            + " ON UPDATE CASCADE ON DELETE CASCADE,"
+            + "CONSTRAINT dish_ingredient_pk PRIMARY KEY (menuItemId, ingredientId)"
             + ");");
         
         dropTables(connect, "allergy_ingredient_link;");
         createsTable(connect, " allergy_ingredient_link ("
-            + "allergyID INT,"
-            + "ingredientID INT,"
-            + "FOREIGN KEY (allergyID) REFERENCES allergies(allergyID),"
-            + "FOREIGN KEY (ingredientID) REFERENCES ingredients(ingredientID),"
-            + "PRIMARY KEY (allergyID, ingredientID)"
+            + "ingredientId INT,"
+            + "allergyId INT,"
+            + "FOREIGN KEY (ingredientId) REFERENCES ingredients(ingredientId)"
+            + " ON UPDATE CASCADE ON DELETE CASCADE,"
+            + "FOREIGN KEY (allergyId) REFERENCES allergies(allergyId)"
+            + " ON UPDATE CASCADE ON DELETE CASCADE,"
+            + "CONSTRAINT allergy_ingredient_pk PRIMARY KEY (ingredientId, allergyId)"
             + ");");
         
         dropTables(connect, "user_table;");
@@ -257,7 +262,7 @@ public class DatabaseMain {
         createsTable(connect, "orders_table (order_id int," +
                 "table_no int NOT NULL," +
                 "orders_list varchar(100)," +
-                "status number(1) NOT NULL," +  // 0 means in progress, 1 means cancelled, 2 means delivered.
+                "status number(2) NOT NULL," +  // 0 means in progress, 1 means cancelled, 2 means delivered.
                 "quantity int NOT NULL,"+
                 "PRIMARY KEY(order_id));");
 

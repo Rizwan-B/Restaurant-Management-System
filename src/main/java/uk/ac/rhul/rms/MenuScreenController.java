@@ -2,7 +2,6 @@ package uk.ac.rhul.rms;
 
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -75,7 +74,6 @@ public class MenuScreenController implements ControlledScreen, Initializable {
 
     @FXML
     void basketBtnPressed(ActionEvent event) {
-        addToDB();
         this.screensController.loadScreen(Main.basketScreenID, Main.basketScreenFile);
         this.screensController.setScreen(Main.basketScreenID);
     }
@@ -220,29 +218,13 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         mainList.getSelectionModel().clearSelection();
         dessertList.getSelectionModel().clearSelection();
         quantity.setValue(1);
-        // wordRepeated();
+        wordRepeated();
     }
 
     @FXML
     void remove(ActionEvent event){
         basketList.getItems().remove(basketList.getSelectionModel().getSelectedItem());
         basketList.getSelectionModel().clearSelection();
-    }
-
-    @FXML
-    void addToDB() {
-
-        String orderList = "";
-        if (basketList.getItems().size() != 0){
-            for (int i = 0; i < basketList.getItems().size(); i++){
-                orderList += basketList.getItems().get(i)+"-";
-            }
-            try {
-                DatabaseController.makeTempOrder(DatabaseConnection.getInstance(), -1, orderList);
-            }catch (SQLException e){
-                System.out.println("Problem using the database: "+e+"\n At line 241.");
-            }
-        }
     }
 
     public void wordRepeated() { //Set<String>
@@ -277,7 +259,6 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         quantity.setItems(quantityList); // This initialises the drop-down quantity with 3 options 1-10.
         quantity.setValue(1); // Sets the default value of quantity to 1.
     }
-
 
 
 }

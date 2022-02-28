@@ -236,7 +236,7 @@ public class DatabaseController {
       orderId = result.getInt("order_id");
       tableNo = result.getInt("table_no");
       orders_list = result.getString("orders_list");
-      cancelled = result.getInt("status") == 1;
+      cancelled = result.getInt("cancelled") == 1;
 
       Order orderItem = new Order(orderId, tableNo, orders_list, cancelled);
       orders.add(orderItem);
@@ -253,30 +253,5 @@ public class DatabaseController {
   public static void confirmOrder(Connection connection, ConfirmedOrder order) {
     executeQuery(connection, "INSERT " + String.valueOf(order.getUserId()) + ", " +
         String.valueOf(order.getOrder().getOrderId() + " INTO orders_table"));
-  }
-
-  /**
-   * Inserts a new temporary order into the orders_table.
-   * @param connection The connection to the database.
-   * @param table The int for the table_no field.
-   * @param list The String of requested menu items for the orders_list field.
-   * @throws SQLException An exception thrown when the database can't be queried properly.
-   */
-  public static void makeTempOrder(Connection connection, int table, String list) throws SQLException {
-    connection.createStatement().execute("INSERT INTO orders_table (table_no, orders_list, status) VALUES ('"+table+"' ,'"+list+"' ,'"+-1+"') ;");
-  }
-
-  /**
-   * Gets and deletes the temporary order.
-   * @param connection The connection of the database.
-   * @return OrderList of the temp order.
-   * @throws SQLException An exception thrown when the database can't be properly queried.
-   * @throws InvalidMenuIdException An exception thrown when trying to incorrectly access the menu database
-   */
-  public static String getTempOrder(Connection connection) throws SQLException, InvalidMenuIdException {
-    ResultSet result = executeQuery(connection, "SELECT * FROM orders_table");
-    String order= result.getString("orders_list");
-    DatabaseConnection.getInstance().createStatement().execute("DELETE FROM orders_table WHERE status = -1;");
-    return order;
   }
 }
