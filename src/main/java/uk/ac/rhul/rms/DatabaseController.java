@@ -260,16 +260,15 @@ public class DatabaseController {
    * @param connection The connection to the database.
    * @param table The int for the table_no field.
    * @param list The String of requested menu items for the orders_list field.
-   * @param status The int for the status field.
    * @throws SQLException An exception thrown when the database can't be queried properly.
    */
-  public static void makeOrder(Connection connection, int table, String list, int status) throws SQLException {
-    connection.createStatement().execute("INSERT INTO orders_table (table_no, orders_list, status) VALUES ('"+table+"' ,'"+list+"' ,'"+status+"') ;");
+  public static void makeOrder(Connection connection, int table, String list) throws SQLException {
+    connection.createStatement().execute("INSERT INTO orders_table (table_no, orders_list, status) VALUES ('"+table+"' ,'"+list+"' ,'"+-1+"') ;");
   }
   public static String getTempOrder(Connection connection) throws SQLException, InvalidMenuIdException {
     ResultSet result = executeQuery(connection, "SELECT * FROM orders_table");
     String order= result.getString("orders_list");
-    connection.createStatement().execute("DELETE FROM orders_table WHERE order_id =="+result.getString("order_id")+";");
+    DatabaseConnection.getInstance().createStatement().execute("DELETE FROM orders_table WHERE status = -1;");
     return order;
   }
 }
