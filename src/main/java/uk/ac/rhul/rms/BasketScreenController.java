@@ -28,7 +28,6 @@ public class BasketScreenController implements ControlledScreen, Initializable {
 
   ScreensController screensController;
   private Connection connection;
-  
   @Override
   public void setScreenParent(ScreensController screenParent) {
     this.screensController = screenParent;
@@ -182,5 +181,13 @@ public class BasketScreenController implements ControlledScreen, Initializable {
             "2026", "2027","2028", "2029", "2030","2031","2032","2033","2034","2035","2036",
             "2037","2038","2039","2040");
     year.setItems(listYear);
+    try {
+      getItems();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } catch (InvalidMenuIdException e) {
+      e.printStackTrace();
+    }
   }
 }
+
