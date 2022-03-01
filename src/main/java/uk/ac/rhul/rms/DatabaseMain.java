@@ -279,7 +279,7 @@ public class DatabaseMain {
 
         dropTables(connect, "payments;");
         createsTable(connect, "payments (payment_status int NOT NULL," +
-                "order_id int NOT NULL,"
+                "order_id int,"
                 +"table_no int NOT NULL,"
                 + "PRIMARY KEY (table_no)," +
                 "FOREIGN KEY (table_no) REFERENCES orders_table(table_no)," +

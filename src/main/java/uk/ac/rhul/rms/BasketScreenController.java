@@ -141,8 +141,18 @@ public class BasketScreenController implements ControlledScreen, Initializable {
       } else {
         Alert alert = new Alert(Alert.AlertType.NONE, "Please head to the tills, Thank you for visiting!", ButtonType.OK);
         alert.showAndWait();
-        this.screensController.setScreen(Main.startScreenID);
+        int paymentStatus = 0 ;//0 is paid, 1 is unpaid
+        String table = tableNo.getText().toString();
+        int intTable = Integer.parseInt(table);
+        try {
+          DatabaseConnection.getInstance().createStatement().execute("INSERT INTO payments VALUES('"+paymentStatus+
+                  "', '1', '"+ intTable + "'); ");
+          this.screensController.setScreen(Main.startScreenID);
+        } catch (SQLException e) {
+          e.printStackTrace();
+        }
       }
+
     }
 
 
