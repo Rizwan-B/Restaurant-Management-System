@@ -15,9 +15,9 @@ public class MenuItem2 {
    * The public default constructor for a MenuItem.
    *
    * @param itemId            the int used as a primary key.
-   * @param itemName          the String name of the menu item.
-   * @param itemDescription   a String describing the menu item.
-   * @param item
+   * @param item_name          the String name of the menu item.
+   * @param item_description   a String describing the menu item.
+   * @param item_category
    */
   public MenuItem2(int itemId, String item_name, String item_description, String item_category) {
 

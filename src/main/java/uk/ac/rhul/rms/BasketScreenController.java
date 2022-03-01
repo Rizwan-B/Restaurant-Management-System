@@ -28,7 +28,6 @@ public class BasketScreenController implements ControlledScreen, Initializable {
 
   ScreensController screensController;
   private Connection connection;
-  
   @Override
   public void setScreenParent(ScreensController screenParent) {
     this.screensController = screenParent;
@@ -65,7 +64,7 @@ public class BasketScreenController implements ControlledScreen, Initializable {
   private TextField holderName;
 
   @FXML
-  private ListView<?> orderItems;
+  private ListView<String> orderItems;
 
   @FXML
   private Text payment;
@@ -166,6 +165,15 @@ public class BasketScreenController implements ControlledScreen, Initializable {
     }
   }
 
+  @FXML
+  void getItems() throws SQLException, InvalidMenuIdException {
+    String[] items = DatabaseController.getTempOrder(DatabaseConnection.getInstance()).split("-");
+    for (int i = 0; i < items.length; i++) {
+      orderItems.getItems().add(items[i]);
+    }
+
+  }
+
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     this.connection = DatabaseConnection.getInstance();
@@ -177,5 +185,13 @@ public class BasketScreenController implements ControlledScreen, Initializable {
             "2026", "2027","2028", "2029", "2030","2031","2032","2033","2034","2035","2036",
             "2037","2038","2039","2040");
     year.setItems(listYear);
+    try {
+      getItems();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } catch (InvalidMenuIdException e) {
+      e.printStackTrace();
+    }
   }
 }
+
