@@ -376,7 +376,7 @@ public class DatabaseController {
    * @throws SQLException An exception thrown when the database can't be queried properly.
    */
   public static void makeTempOrder(Connection connection, int table, String list) throws SQLException {
-    connection.createStatement().execute("INSERT INTO orders_table (table_no, orders_list, status) VALUES ('"+table+"' ,'"+list+"' ,'"+-1+"') ;");
+    connection.createStatement().execute("INSERT INTO orders_table (table_no, orders_list, status, quantity) VALUES ('"+table+"' ,'"+list+"' ,'"+-1+"','1') ;");
   }
 
   /**
@@ -387,7 +387,7 @@ public class DatabaseController {
    * @throws InvalidMenuIdException An exception thrown when trying to incorrectly access the menu database
    */
   public static String getTempOrder(Connection connection) throws SQLException, InvalidMenuIdException {
-    ResultSet result = executeQuery(connection, "SELECT * FROM orders_table");
+    ResultSet result = executeQuery(connection, "SELECT * FROM orders_table WHERE status = -1");
     String order= result.getString("orders_list");
     DatabaseConnection.getInstance().createStatement().execute("DELETE FROM orders_table WHERE status = -1;");
     return order;
