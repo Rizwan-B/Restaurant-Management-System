@@ -17,6 +17,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Collections;
 
+import static java.lang.Double.sum;
+
 /**
  * The screen controller for the menu screen implementing the ControlledScreen Interface.
  *
@@ -110,15 +112,15 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         try {
             ArrayList<MenuItem> nonVegStarter = DatabaseController.getMenuItems(DatabaseConnection.getInstance(), "Starters");
             for (MenuItem v : nonVegStarter) {
-                this.starterList.getItems().add(v.getName());
+                this.starterList.getItems().add(v.getName() + " - £" + v.getprice());
             }
             ArrayList<MenuItem> nonVegMain = DatabaseController.getMenuItems(DatabaseConnection.getInstance(), "Main");
             for (MenuItem v : nonVegMain) {
-                this.mainList.getItems().add(v.getName());
+                this.mainList.getItems().add(v.getName() + " - £" + v.getprice());
             }
             ArrayList<MenuItem> nonVegDessert = DatabaseController.getMenuItems(DatabaseConnection.getInstance(), "Dessert");
             for (MenuItem v : nonVegDessert) {
-                this.dessertList.getItems().add(v.getName());
+                this.dessertList.getItems().add(v.getName()+ " - £" + v.getprice());
             }
         } catch(Exception e) {
             System.out.println("oops");
@@ -133,17 +135,17 @@ public class MenuScreenController implements ControlledScreen, Initializable {
             ArrayList<MenuItem> vegStarters = DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGETARIAN, "Starters");
             this.starterList.getItems().clear();
             for (MenuItem v : vegStarters) {
-                this.starterList.getItems().add(v.getName());
+                this.starterList.getItems().add(v.getName() + " - £" + v.getprice());
             }
             ArrayList<MenuItem> vegMain = DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGETARIAN, "Main");
             this.mainList.getItems().clear();
             for (MenuItem v : vegMain) {
-                this.mainList.getItems().add(v.getName());
+                this.mainList.getItems().add(v.getName()+ " - £" + v.getprice());
             }
             ArrayList<MenuItem> vegDessert = DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGETARIAN, "Dessert");
             this.dessertList.getItems().clear();
             for (MenuItem v : vegDessert) {
-                this.dessertList.getItems().add(v.getName());
+                this.dessertList.getItems().add(v.getName()+ " - £" + v.getprice());
             }
         } catch(Exception e) {
             System.out.println("oops");
@@ -157,15 +159,15 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         try {
             ArrayList<MenuItem> veganStarter = DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGAN, "Starters");
             for (MenuItem v : veganStarter) {
-                this.starterList.getItems().add(v.getName());
+                this.starterList.getItems().add(v.getName()+ " - £" + v.getprice());
             }
             ArrayList<MenuItem> veganMain = DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGAN, "Main");
             for (MenuItem v : veganMain) {
-                this.mainList.getItems().add(v.getName());
+                this.mainList.getItems().add(v.getName()+ " - £" + v.getprice());
             }
             ArrayList<MenuItem> veganDessert = DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGAN, "Dessert");
             for (MenuItem v : veganDessert) {
-                this.dessertList.getItems().add(v.getName());
+                this.dessertList.getItems().add(v.getName()+ " - £" + v.getprice());
             }
         } catch(Exception e) {
             System.out.println(e.toString());
@@ -204,18 +206,40 @@ public class MenuScreenController implements ControlledScreen, Initializable {
 
     @FXML
     void add(ActionEvent event){
+        double sum = 0;
+        double total =0;
+        String price = null;
         for (int i = 0; i < quantity.getSelectionModel().getSelectedItem(); i++) { // Loop to add quantity desired.
 
             if (starterList.getSelectionModel().getSelectedItem() != null) {
                 basketList.getItems().add(starterList.getSelectionModel().getSelectedItem());
+                String item =starterList.getSelectionModel().getSelectedItem().toString();
+                price = item.replaceAll("[^0-9]", "");
+                total += Double.parseDouble(price);
+
+
             }
+
             if (mainList.getSelectionModel().getSelectedItem() != null) {
                 basketList.getItems().add(mainList.getSelectionModel().getSelectedItem());
+                String item =mainList.getSelectionModel().getSelectedItem().toString();
+                price = item.replaceAll("[^0-9]", "");
+                total += Double.parseDouble(price);
+
             }
             if (dessertList.getSelectionModel().getSelectedItem() != null) {
                 basketList.getItems().add(dessertList.getSelectionModel().getSelectedItem());
+                String item =dessertList.getSelectionModel().getSelectedItem().toString();
+                price = item.replaceAll("[^0-9]", "");
+                total += Double.parseDouble(price);
+
+
             }
+
         }
+
+
+
         starterList.getSelectionModel().clearSelection();
         mainList.getSelectionModel().clearSelection();
         dessertList.getSelectionModel().clearSelection();

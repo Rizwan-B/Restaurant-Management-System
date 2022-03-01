@@ -52,6 +52,12 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
     private ComboBox<?> changeStatus;
 
     @FXML
+    private Text total;
+
+    @FXML
+    private TextField totalField;
+
+    @FXML
     void backBtnPressed(ActionEvent event) {
         this.screensController.setScreen(Main.waiterPortalScreenID);
         this.screensController.unloadScreen(Main.manageOrderScreenID);
