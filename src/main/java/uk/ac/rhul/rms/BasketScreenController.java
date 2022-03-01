@@ -28,6 +28,7 @@ public class BasketScreenController implements ControlledScreen, Initializable {
 
   ScreensController screensController;
   private Connection connection;
+  private double sum =0;
   @Override
   public void setScreenParent(ScreensController screenParent) {
     this.screensController = screenParent;
@@ -89,6 +90,13 @@ public class BasketScreenController implements ControlledScreen, Initializable {
 
   @FXML
   private Text responseText;
+
+
+  @FXML
+  private Text total;
+
+  @FXML
+  private Text totalPrice;
 
   @FXML
   void backBtnPressed(ActionEvent event) {
@@ -168,9 +176,16 @@ public class BasketScreenController implements ControlledScreen, Initializable {
   @FXML
   void getItems() throws SQLException, InvalidMenuIdException {
     String[] items = DatabaseController.getTempOrder(DatabaseConnection.getInstance()).split("-");
-    for (int i = 0; i < items.length; i++) {
+    for (int i = 0; i < items.length; i= i+2) {
       orderItems.getItems().add(items[i]);
     }
+    for (int i = 1; i < items.length; i = i+2) {
+    String str = items[i];
+    String  price = str. replaceAll("[^0-9]", "");
+    sum += Double.parseDouble(price);
+
+    }
+    totalPrice.setText("£ "+sum);
 
   }
 

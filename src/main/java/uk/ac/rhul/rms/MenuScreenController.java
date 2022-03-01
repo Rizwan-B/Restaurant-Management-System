@@ -206,39 +206,25 @@ public class MenuScreenController implements ControlledScreen, Initializable {
 
     @FXML
     void add(ActionEvent event){
-        double sum = 0;
-        double total =0;
-        String price = null;
+
         for (int i = 0; i < quantity.getSelectionModel().getSelectedItem(); i++) { // Loop to add quantity desired.
 
             if (starterList.getSelectionModel().getSelectedItem() != null) {
                 basketList.getItems().add(starterList.getSelectionModel().getSelectedItem());
-                String item =starterList.getSelectionModel().getSelectedItem().toString();
-                price = item.replaceAll("[^0-9]", "");
-                total += Double.parseDouble(price);
-
 
             }
+
 
             if (mainList.getSelectionModel().getSelectedItem() != null) {
                 basketList.getItems().add(mainList.getSelectionModel().getSelectedItem());
-                String item =mainList.getSelectionModel().getSelectedItem().toString();
-                price = item.replaceAll("[^0-9]", "");
-                total += Double.parseDouble(price);
-
             }
             if (dessertList.getSelectionModel().getSelectedItem() != null) {
                 basketList.getItems().add(dessertList.getSelectionModel().getSelectedItem());
-                String item =dessertList.getSelectionModel().getSelectedItem().toString();
-                price = item.replaceAll("[^0-9]", "");
-                total += Double.parseDouble(price);
-
-
             }
 
+
+
         }
-
-
 
         starterList.getSelectionModel().clearSelection();
         mainList.getSelectionModel().clearSelection();
