@@ -153,8 +153,6 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
     }
 
 
-
-
     @FXML
     void startScreen(ActionEvent event) {
         this.screensController.setScreen(Main.startScreenID);
@@ -211,7 +209,7 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
         this.makeWaiterBusy();
         Main.sessionId = null;
         Main.currentLoggedInUser = 0;
-        this.screensController.setScreen(Main.startScreenID);
+        this.screensController.setScreen(Main.loginScreenID);
 
     }
 
@@ -225,25 +223,3 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
 
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

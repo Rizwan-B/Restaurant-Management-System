@@ -110,6 +110,7 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
             this.orderList.getItems().remove(index_main);
             try {
                 DatabaseConnection.getInstance().createStatement().execute("DELETE FROM orders_table WHERE order_id = '"+orderID+ "';");
+              //  DatabaseConnection.getInstance().createStatement().execute("INSERT INTO  = '"+orderID+ "';");
             } catch (SQLException e) {
                 e.printStackTrace();
             }

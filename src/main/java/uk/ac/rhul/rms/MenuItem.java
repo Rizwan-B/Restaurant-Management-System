@@ -13,6 +13,7 @@ public class MenuItem {
   private Diet dietType;
   private String itemDescription;
   private String itemImageLocation;
+  private int itemPrice;
 
   /**
    * The public default constructor for a MenuItem.
@@ -23,9 +24,10 @@ public class MenuItem {
    * @param category          the String category the item belongs to.
    * @param itemDescription   a String describing the menu item.
    * @param itemImageLocation a String filepath for the image of this menu item.
+   * @param itemPrice         the int used as prices for menu item
    */
   public MenuItem(int itemId, String itemName, int calories, String category, Diet dietType,
-                  String itemDescription, String itemImageLocation) {
+                  String itemDescription, String itemImageLocation, int itemPrice) {
 
     this.itemId = itemId;
     this.itemName = itemName;
@@ -34,6 +36,7 @@ public class MenuItem {
     this.dietType = dietType;
     this.itemDescription = itemDescription;
     this.itemImageLocation = itemImageLocation;
+    this.itemPrice=itemPrice;
   }
 
   /**
@@ -106,11 +109,20 @@ public class MenuItem {
    *
    * @return A string representing the values in the MenuItem
    */
+
+  /**
+   * Below is a getter method for item price
+   * @return
+   */
+  public int getprice(){
+    return this.itemPrice;
+  }
+
   @Override
   public String toString() {
     String stringForm = this.itemId + ", " + this.itemName + ", " + Integer.toString(this.calories)
         + ", " + this.itemDescription + ", " + this.category + ", " + this.dietType.toString()
-        + ", " + this.itemDescription + ", " + this.itemImageLocation;
+        + ", " + this.itemDescription + ", " + this.itemImageLocation + ", " + this.itemPrice;
     return stringForm;
   }
 
@@ -128,7 +140,7 @@ public class MenuItem {
     try {
       return new MenuItem(Integer.parseInt(splitValues[0]), splitValues[1],
           Integer.parseInt(splitValues[2]), splitValues[3], Diet.toDiet(splitValues[4]),
-          splitValues[5], splitValues[6]);
+          splitValues[5], splitValues[6], Integer.parseInt(splitValues[7]));
     } catch (Exception e) {
       throw new ToMenuItemFormatException();
     }

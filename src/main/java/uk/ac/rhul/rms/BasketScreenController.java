@@ -116,10 +116,12 @@ public class BasketScreenController implements ControlledScreen, Initializable {
         if (!(card_no.length() == 16) || (!(cvc.length() == 3)) ) {
           Alert alert = new Alert(Alert.AlertType.NONE, "Incorrect Card Information!", ButtonType.OK);
           alert.showAndWait();
+        } else {
+          Alert alert = new Alert(Alert.AlertType.NONE, "Payment complete, Thank You for visiting!", ButtonType.OK);
+          alert.showAndWait();
+          this.screensController.setScreen(Main.startScreenID);
+
         }
-        Alert alert = new Alert(Alert.AlertType.NONE, "Payment complete, Thank You for visiting!", ButtonType.OK);
-        alert.showAndWait();
-        this.screensController.setScreen(Main.startScreenID);
       }
     }
 
@@ -135,10 +137,12 @@ public class BasketScreenController implements ControlledScreen, Initializable {
       }
     }
 
+
     else {
       Alert alert1 = new Alert(Alert.AlertType.NONE, "Select a payment option.", ButtonType.OK);
       alert1.showAndWait();
     }
+
   }
 
   @FXML
