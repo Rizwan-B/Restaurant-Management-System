@@ -20,6 +20,10 @@ public class AddItemScreenController implements ControlledScreen {
         this.screensController = screenParent;
     }
 
+    /**
+     * Below are buttons, drop down menu's, checkboxes and text fields.
+     * They all have different actions to provide to the user.
+     */
     @FXML
     private Button addItem;
 
@@ -71,11 +75,23 @@ public class AddItemScreenController implements ControlledScreen {
     @FXML
     private CheckBox vegetarian;
 
+    /**
+     * This method loads MenuScreen once back button is pressed.
+     * Back button action is declared in this method.
+     * @param event
+     */
     @FXML
     void backBtnPressed(ActionEvent event) {
         this.screensController.loadScreen(Main.changeMenuScreenID, Main.changeMenuScreenFile);
         this.screensController.setScreen(Main.changeMenuScreenID);
     }
+
+    /**
+     * This method gets all the information about the selected item from the database once you add a new item.
+     * item information are its diet type, price, picture, description, calories and item name.
+     * This method also sorts menu item according to your selected menu options and diet types.
+     * @param event
+     */
 
     @FXML
     void getText(ActionEvent event) {
@@ -129,6 +145,10 @@ public class AddItemScreenController implements ControlledScreen {
 
     }
 
+    /**
+     * Below method sorts your course types accordingly to your selections.
+     * if you select starters, Menu will only show you starters from the whole course.
+     */
     @FXML
     void handleCoursetype(){
         if (starter.isSelected()){
@@ -146,7 +166,10 @@ public class AddItemScreenController implements ControlledScreen {
 
     }
 
-
+    /**
+     * This method sorts your diet types in the menu accordingly to your selections.
+     * if a specific diet type is selected, only that will be showcased from the whole menu.
+     */
     @FXML
     void handleDietType(){
         if (vegan.isSelected()){

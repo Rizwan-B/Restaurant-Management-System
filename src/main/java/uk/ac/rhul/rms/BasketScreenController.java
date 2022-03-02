@@ -34,6 +34,10 @@ public class BasketScreenController implements ControlledScreen, Initializable {
     this.screensController = screenParent;
   }
 
+  /**
+   * Below are buttons, TextFields, drop down boxes which have different actions.
+   * Some are feilds which store certain numbers and text. Some are buttons which have certain actions.
+   */
   @FXML
   private Button backBtn;
 
@@ -98,12 +102,25 @@ public class BasketScreenController implements ControlledScreen, Initializable {
   @FXML
   private Text totalPrice;
 
+  /**
+   * Below is back button action which is to load Menu screen when clicked.
+   * @param event
+   */
   @FXML
   void backBtnPressed(ActionEvent event) {
     this.screensController.loadScreen(Main.menuScreenID, Main.menuScreenFile);
     this.screensController.setScreen(Main.menuScreenID);
   }
 
+  /**
+   * This method stores payment information which is table number, card no, holder name and cvc.
+   * once the user selects electronic payment,user has to enter payment details. Those details are then processed if they are incorrect then it would print incorrect details.
+   * if the details are correct, payment complete message will be printed.
+   * This method also allows user to pay using their table number when tillCheckBox is selected.
+   * This method assures that payment has been successful with paymentStatus field.
+   *
+   * @param event
+   */
   @FXML
   void getPayment(ActionEvent event){
     String tableNumber = tableNo.getText();
@@ -163,6 +180,10 @@ public class BasketScreenController implements ControlledScreen, Initializable {
 
   }
 
+  /**
+   * This method sorts tills when tillsCheckBox is selected
+   * electronic payment details will be hidden.
+   */
   @FXML
   void handleTills(){
     if (tillsCheckBox.isSelected()){
@@ -173,6 +194,10 @@ public class BasketScreenController implements ControlledScreen, Initializable {
     }
   }
 
+  /**
+   * This method will show all the electronic payment details when electronic payment is selected.
+   *
+   */
   @FXML
   void handleElectronic(){
     if (electronicPayment.isSelected()){
@@ -183,6 +208,13 @@ public class BasketScreenController implements ControlledScreen, Initializable {
     }
   }
 
+  /**
+   * getItems method returns total price of the selected items once in the basket.
+   * A for loops checks how many items are in the basket and calculates the total price accordingly.
+   *
+   * @throws SQLException
+   * @throws InvalidMenuIdException
+   */
   @FXML
   void getItems() throws SQLException, InvalidMenuIdException {
     String[] items = DatabaseController.getTempOrder(DatabaseConnection.getInstance()).split("-");
@@ -198,6 +230,7 @@ public class BasketScreenController implements ControlledScreen, Initializable {
     totalPrice.setText("£ "+sum);
 
   }
+
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
