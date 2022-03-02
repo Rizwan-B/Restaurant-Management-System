@@ -10,11 +10,10 @@ import uk.ac.rhul.screenmanager.ScreensController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-import javax.swing.*;
+
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -35,8 +34,8 @@ public class BasketScreenController implements ControlledScreen, Initializable {
   }
 
   /**
-   * Below are buttons, TextFields, drop down boxes which have different actions.
-   * Some are feilds which store certain numbers and text. Some are buttons which have certain actions.
+   * Below are buttons, TextFields, dropdown boxes which have different actions.
+   * Some are fields which store certain numbers and text. Some are buttons which have certain actions.
    */
   @FXML
   private Button backBtn;
@@ -158,12 +157,12 @@ public class BasketScreenController implements ControlledScreen, Initializable {
       } else {
         Alert alert = new Alert(Alert.AlertType.NONE, "Please head to the tills, Thank you for visiting!", ButtonType.OK);
         alert.showAndWait();
-        int paymentStatus = 0 ;//0 is paid, 1 is unpaid
+        String paymentStatus = "unpaid" ;
         String table = tableNo.getText().toString();
         int intTable = Integer.parseInt(table);
         try {
-          DatabaseConnection.getInstance().createStatement().execute("INSERT INTO payments VALUES('"+paymentStatus+
-                  "', '1', '"+ intTable + "'); ");
+          DatabaseConnection.getInstance().createStatement().execute("INSERT INTO payments(payment_status,table_no) VALUES('"+paymentStatus+
+                  "', '"+ intTable + "'); ");
           this.screensController.setScreen(Main.startScreenID);
         } catch (SQLException e) {
           e.printStackTrace();

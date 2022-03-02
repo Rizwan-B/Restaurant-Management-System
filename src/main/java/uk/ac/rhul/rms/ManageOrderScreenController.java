@@ -43,19 +43,22 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
     private ListView<String> orderList;
 
     @FXML
-    private ListView<?> displayPayment;
+    private ListView<String> displayPayment;
 
     @FXML
     private Text paymentStatus;
 
     @FXML
-    private ComboBox<?> changeStatus;
+    private ComboBox<String> changeStatus;
 
     @FXML
     private Text total;
 
     @FXML
     private TextField totalField;
+
+    @FXML
+    private Text display;
 
     @FXML
     void backBtnPressed(ActionEvent event) {
@@ -107,6 +110,19 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
         }
     }
 
+
+    public void unPaidOrder() {
+        ResultSet unPaidOrders = DatabaseController.executeQuery(DatabaseConnection.getInstance(), "SELECT * FROM payments;");
+        try {
+            while (unPaidOrders.next()) {
+                displayPayment.getItems().add(unPaidOrders.getString(1)+ " | "+unPaidOrders.getString(2) + " | " + unPaidOrders.getString(3));
+
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL exception.");
+        }
+    }
+
     @FXML
     void orderDeliveredBtnPressed(ActionEvent event) {
         System.out.println("Order delivered.");
@@ -133,5 +149,6 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.displayItems();
+        this.unPaidOrder();
     }
 }

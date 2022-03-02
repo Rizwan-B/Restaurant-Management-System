@@ -278,11 +278,10 @@ public class DatabaseMain {
                 "FOREIGN KEY(order_id) REFERENCES orders_table(order_id))");
 
         dropTables(connect, "payments;");
-        createsTable(connect, "payments (payment_status int NOT NULL," +
-                "order_id int,"
+        createsTable(connect, "payments (payment_status varchar(1000) NOT NULL," +
+                "order_id int ,"
                 +"table_no int NOT NULL,"
-                + "PRIMARY KEY (table_no)," +
-                "FOREIGN KEY (table_no) REFERENCES orders_table(table_no)," +
+                + "FOREIGN KEY (table_no) REFERENCES orders_table(table_no)," +
                 "FOREIGN KEY (order_id) REFERENCES confirmed_order(order_id)"
                 + ");");
 

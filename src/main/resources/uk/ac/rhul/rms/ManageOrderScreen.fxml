@@ -37,5 +37,10 @@
       </Text>
       <ListView fx:id="displayPayment" layoutX="347.0" layoutY="120.0" prefHeight="307.0" prefWidth="240.0" />
       <ComboBox fx:id="changeStatus" layoutX="348.0" layoutY="437.0" prefWidth="150.0" promptText="Payment Status" />
+      <Text fx:id="display" layoutX="348.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Status | Order ID | Table Number">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
     </children>
 </Pane>
