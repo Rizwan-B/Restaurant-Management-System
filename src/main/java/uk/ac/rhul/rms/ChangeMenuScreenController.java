@@ -99,7 +99,7 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
 
     /**
      * This method is to delete the starter once user selects Yes the order is removed from the database and deleted.
-     * @param event
+     * @param event delete starters dish
      */
     @FXML
     void deleteStarter(ActionEvent event) {
@@ -130,7 +130,7 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
 
     /**
      * This method is to delete the main dish once user selects Yes the order is removed from the database and deleted.
-     * @param event
+     * @param event deletes main dish
      */
     @FXML
     void deleteMain(ActionEvent event) {
@@ -160,7 +160,7 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
 
     /**
      * This method is to delete the dessert once user selects Yes the order is removed from the database and deleted.
-     * @param event
+     * @param event deletes dessert dish
      */
     @FXML
     void deleteDessert(ActionEvent event) {
@@ -189,7 +189,7 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
 
     /**
      * This method loads the waiter portal screen when back button is pressed.
-     * @param event
+     * @param event back button loads waiter portal
      */
     @FXML
     void backBtnPressed(ActionEvent event) {
@@ -199,7 +199,7 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
 
     /**
      * This method is to take user to item screen once he selects a dish and clicks add.
-     * @param event
+     * @param event add item button is pressed
      */
     @FXML
     void addItemPressed(ActionEvent event) {
@@ -209,8 +209,8 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
 
     /**
      * initialize method. Full menu.
-     * @param location
-     * @param resources
+     * @param location URL
+     * @param resources menu resources
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -103,7 +103,7 @@ public class BasketScreenController implements ControlledScreen, Initializable {
 
   /**
    * Below is back button action which is to load Menu screen when clicked.
-   * @param event
+   * @param event upon clicking back button menu screen is loaded.
    */
   @FXML
   void backBtnPressed(ActionEvent event) {
@@ -118,7 +118,7 @@ public class BasketScreenController implements ControlledScreen, Initializable {
    * This method also allows user to pay using their table number when tillCheckBox is selected.
    * This method assures that payment has been successful with paymentStatus field.
    *
-   * @param event
+   * @param event electronic payment is selected
    */
   @FXML
   void getPayment(ActionEvent event){

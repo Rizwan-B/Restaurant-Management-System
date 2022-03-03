@@ -47,7 +47,7 @@ public class CallWaiterScreen implements ControlledScreen {
     /**
      * In the method below once call waiter button is pressed, user enters his table number and the waiter is alerted.
      * Message to user is also given that waiter is on its way.
-     * @param event
+     * @param event call waiter button pressed.
      */
     @FXML
     void callWaiterBtnPressed(ActionEvent event) {
@@ -73,7 +73,7 @@ public class CallWaiterScreen implements ControlledScreen {
 
     /**
      * in the function below oncce back button is pressed Menu screen is loaded.
-     * @param event
+     * @param event back button is pressed.
      */
     @FXML
     void backBtnPressed(ActionEvent event) {

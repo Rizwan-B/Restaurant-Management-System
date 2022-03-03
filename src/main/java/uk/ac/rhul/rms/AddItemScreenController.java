@@ -78,7 +78,7 @@ public class AddItemScreenController implements ControlledScreen {
     /**
      * This method loads MenuScreen once back button is pressed.
      * Back button action is declared in this method.
-     * @param event
+     * @param event when a button is clicked.
      */
     @FXML
     void backBtnPressed(ActionEvent event) {
@@ -90,7 +90,7 @@ public class AddItemScreenController implements ControlledScreen {
      * This method gets all the information about the selected item from the database once you add a new item.
      * item information are its diet type, price, picture, description, calories and item name.
      * This method also sorts menu item according to your selected menu options and diet types.
-     * @param event
+     * @param event user selects diet type or course type
      */
 
     @FXML
