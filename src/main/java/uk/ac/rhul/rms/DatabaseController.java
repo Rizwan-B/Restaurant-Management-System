@@ -1,9 +1,6 @@
 package uk.ac.rhul.rms;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 /**
@@ -333,7 +330,7 @@ public class DatabaseController {
    * @throws InvalidMenuIdException An exception indicating one of the menu items in the order couldn't be found.
    */
   public static ArrayList<Order> getOrders(Connection connection) throws SQLException, InvalidMenuIdException {
-    ResultSet result = executeQuery(connection, "SELECT * FROM orders_table");
+    ResultSet result = executeQuery(connection, "SELECT * FROM orders_table WHERE status = 0");
     ArrayList<Order> orders = new ArrayList<>();
 
     int orderId;
@@ -350,7 +347,7 @@ public class DatabaseController {
       Order orderItem = new Order(orderId, tableNo, orders_list, cancelled);
       orders.add(orderItem);
     }
-    //TODO: Change this so it doesn't include orders that have already been delivered.
+
     return orders;
   }
 
@@ -365,5 +362,10 @@ public class DatabaseController {
             " order_id = " + String.valueOf(order.getOrder().getOrderId()) + ";");
 
     //TODO: make this work.
+  }
+
+  public static ArrayList<ConfirmedOrder> getWorkingOnOrders(Connection connection, int userId) {
+    ArrayList<ConfirmedOrder> workingOn = new ArrayList<>();
+    return workingOn;
   }
 }
