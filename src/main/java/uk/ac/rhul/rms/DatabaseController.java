@@ -1,6 +1,9 @@
 package uk.ac.rhul.rms;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -362,6 +365,32 @@ public class DatabaseController {
             " order_id = " + String.valueOf(order.getOrder().getOrderId()) + ";");
 
     //TODO: make this work.
+
+  }
+
+  /**
+   * Inserts a new temporary order into the orders_table.
+   * @param connection The connection to the database.
+   * @param table The int for the table_no field.
+   * @param list The String of requested menu items for the orders_list field.
+   * @throws SQLException An exception thrown when the database can't be queried properly.
+   */
+  public static void makeTempOrder(Connection connection, int table, String list) throws SQLException {
+    connection.createStatement().execute("INSERT INTO orders_table (table_no, orders_list, status, quantity) VALUES ('"+table+"' ,'"+list+"' ,'"+-1+"','1') ;");
+  }
+
+  /**
+   * Gets and deletes the temporary order.
+   * @param connection The connection of the database.
+   * @return OrderList of the temp order.
+   * @throws SQLException An exception thrown when the database can't be properly queried.
+   * @throws InvalidMenuIdException An exception thrown when trying to incorrectly access the menu database
+   */
+  public static String getTempOrder(Connection connection) throws SQLException, InvalidMenuIdException {
+    ResultSet result = executeQuery(connection, "SELECT * FROM orders_table WHERE status = -1");
+    String order= result.getString("orders_list");
+    DatabaseConnection.getInstance().createStatement().execute("DELETE FROM orders_table WHERE status = -1;");
+    return order;
   }
 
   /**

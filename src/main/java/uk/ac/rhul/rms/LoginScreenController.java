@@ -96,7 +96,6 @@ public class LoginScreenController implements ControlledScreen {
             System.out.println(e.toString());
         }
     }
-
 }
 
 

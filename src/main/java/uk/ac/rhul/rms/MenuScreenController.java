@@ -2,6 +2,7 @@ package uk.ac.rhul.rms;
 
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -15,6 +16,8 @@ import uk.ac.rhul.screenmanager.ScreensController;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Collections;
+
+import static java.lang.Double.sum;
 
 /**
  * The screen controller for the menu screen implementing the ControlledScreen Interface.
@@ -74,6 +77,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
 
     @FXML
     void basketBtnPressed(ActionEvent event) {
+        addToDB();
         this.screensController.loadScreen(Main.basketScreenID, Main.basketScreenFile);
         this.screensController.setScreen(Main.basketScreenID);
     }
@@ -108,15 +112,15 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         try {
             ArrayList<MenuItem> nonVegStarter = DatabaseController.getMenuItems(DatabaseConnection.getInstance(), "Starters");
             for (MenuItem v : nonVegStarter) {
-                this.starterList.getItems().add(v.getName() + " - £" + String.valueOf(v.getprice()));
+                this.starterList.getItems().add(v.getName() + " - £" + v.getprice());
             }
             ArrayList<MenuItem> nonVegMain = DatabaseController.getMenuItems(DatabaseConnection.getInstance(), "Main");
             for (MenuItem v : nonVegMain) {
-                this.mainList.getItems().add(v.getName() + " - £" + String.valueOf(v.getprice()));
+                this.mainList.getItems().add(v.getName() + " - £" + v.getprice());
             }
             ArrayList<MenuItem> nonVegDessert = DatabaseController.getMenuItems(DatabaseConnection.getInstance(), "Dessert");
             for (MenuItem v : nonVegDessert) {
-                this.dessertList.getItems().add(v.getName() + " - £" + String.valueOf(v.getprice()));
+                this.dessertList.getItems().add(v.getName()+ " - £" + v.getprice());
             }
         } catch(Exception e) {
             System.out.println("oops");
@@ -131,17 +135,17 @@ public class MenuScreenController implements ControlledScreen, Initializable {
             ArrayList<MenuItem> vegStarters = DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGETARIAN, "Starters");
             this.starterList.getItems().clear();
             for (MenuItem v : vegStarters) {
-                this.starterList.getItems().add(v.getName() + " - £" + String.valueOf(v.getprice()));
+                this.starterList.getItems().add(v.getName() + " - £" + v.getprice());
             }
             ArrayList<MenuItem> vegMain = DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGETARIAN, "Main");
             this.mainList.getItems().clear();
             for (MenuItem v : vegMain) {
-                this.mainList.getItems().add(v.getName() + " - £" + String.valueOf(v.getprice()));
+                this.mainList.getItems().add(v.getName()+ " - £" + v.getprice());
             }
             ArrayList<MenuItem> vegDessert = DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGETARIAN, "Dessert");
             this.dessertList.getItems().clear();
             for (MenuItem v : vegDessert) {
-                this.dessertList.getItems().add(v.getName() + " - £" + String.valueOf(v.getprice()));
+                this.dessertList.getItems().add(v.getName()+ " - £" + v.getprice());
             }
         } catch(Exception e) {
             System.out.println("oops");
@@ -155,15 +159,15 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         try {
             ArrayList<MenuItem> veganStarter = DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGAN, "Starters");
             for (MenuItem v : veganStarter) {
-                this.starterList.getItems().add(v.getName() + " - £" + String.valueOf(v.getprice()));
+                this.starterList.getItems().add(v.getName()+ " - £" + v.getprice());
             }
             ArrayList<MenuItem> veganMain = DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGAN, "Main");
             for (MenuItem v : veganMain) {
-                this.mainList.getItems().add(v.getName() + " - £" + String.valueOf(v.getprice()));
+                this.mainList.getItems().add(v.getName()+ " - £" + v.getprice());
             }
             ArrayList<MenuItem> veganDessert = DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGAN, "Dessert");
             for (MenuItem v : veganDessert) {
-                this.dessertList.getItems().add(v.getName()+ " - £" + String.valueOf(v.getprice()));
+                this.dessertList.getItems().add(v.getName()+ " - £" + v.getprice());
             }
         } catch(Exception e) {
             System.out.println(e.toString());
@@ -202,29 +206,53 @@ public class MenuScreenController implements ControlledScreen, Initializable {
 
     @FXML
     void add(ActionEvent event){
+
         for (int i = 0; i < quantity.getSelectionModel().getSelectedItem(); i++) { // Loop to add quantity desired.
 
             if (starterList.getSelectionModel().getSelectedItem() != null) {
                 basketList.getItems().add(starterList.getSelectionModel().getSelectedItem());
+
             }
+
+
             if (mainList.getSelectionModel().getSelectedItem() != null) {
                 basketList.getItems().add(mainList.getSelectionModel().getSelectedItem());
             }
             if (dessertList.getSelectionModel().getSelectedItem() != null) {
                 basketList.getItems().add(dessertList.getSelectionModel().getSelectedItem());
             }
+
+
+
         }
+
         starterList.getSelectionModel().clearSelection();
         mainList.getSelectionModel().clearSelection();
         dessertList.getSelectionModel().clearSelection();
         quantity.setValue(1);
-        //wordRepeated();
+        // wordRepeated();
     }
 
     @FXML
     void remove(ActionEvent event){
         basketList.getItems().remove(basketList.getSelectionModel().getSelectedItem());
         basketList.getSelectionModel().clearSelection();
+    }
+
+    @FXML
+    void addToDB() {
+
+        String orderList = "";
+        if (basketList.getItems().size() != 0){
+            for (int i = 0; i < basketList.getItems().size(); i++){
+                orderList += basketList.getItems().get(i)+"-";
+            }
+            try {
+                DatabaseController.makeTempOrder(DatabaseConnection.getInstance(), -1, orderList);
+            }catch (SQLException e){
+                System.out.println("Problem using the database: "+e+"\n At line 241.");
+            }
+        }
     }
 
     public void wordRepeated() { //Set<String>
@@ -259,6 +287,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         quantity.setItems(quantityList); // This initialises the drop-down quantity with 3 options 1-10.
         quantity.setValue(1); // Sets the default value of quantity to 1.
     }
+
 
 
 }

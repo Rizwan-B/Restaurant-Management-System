@@ -4,10 +4,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
+import javafx.scene.text.Text;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 import javafx.fxml.Initializable;
@@ -43,6 +41,24 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
 
     @FXML
     private ListView<String> orderList;
+
+    @FXML
+    private ListView<String> displayPayment;
+
+    @FXML
+    private Text paymentStatus;
+
+    @FXML
+    private ComboBox<String> changeStatus;
+
+    @FXML
+    private Text total;
+
+    @FXML
+    private TextField totalField;
+
+    @FXML
+    private Text display;
 
     @FXML
     void backBtnPressed(ActionEvent event) {
@@ -94,6 +110,19 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
         }
     }
 
+
+    public void unPaidOrder() {
+        ResultSet unPaidOrders = DatabaseController.executeQuery(DatabaseConnection.getInstance(), "SELECT * FROM payments;");
+        try {
+            while (unPaidOrders.next()) {
+                displayPayment.getItems().add(unPaidOrders.getString(1)+ " | "+unPaidOrders.getString(2) + " | " + unPaidOrders.getString(3));
+
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL exception.");
+        }
+    }
+
     @FXML
     void orderDeliveredBtnPressed(ActionEvent event) {
         System.out.println("Order delivered.");
@@ -110,6 +139,7 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
             this.orderList.getItems().remove(index_main);
             try {
                 DatabaseConnection.getInstance().createStatement().execute("DELETE FROM orders_table WHERE order_id = '"+orderID+ "';");
+              //  DatabaseConnection.getInstance().createStatement().execute("INSERT INTO  = '"+orderID+ "';");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -119,5 +149,6 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.displayItems();
+        this.unPaidOrder();
     }
 }

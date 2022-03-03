@@ -277,6 +277,14 @@ public class DatabaseMain {
                 "FOREIGN KEY (user_id) REFERENCES user_table(user_id), " +
                 "FOREIGN KEY(order_id) REFERENCES orders_table(order_id))");
 
+        dropTables(connect, "payments;");
+        createsTable(connect, "payments (payment_status varchar(1000) NOT NULL," +
+                "order_id int ,"
+                +"table_no int NOT NULL,"
+                + "FOREIGN KEY (table_no) REFERENCES orders_table(table_no)," +
+                "FOREIGN KEY (order_id) REFERENCES confirmed_order(order_id)"
+                + ");");
+
         insertFromFile(connect, "menu");
         insertFromFile(connect, "user_table");
         insertFromFile(connect, "seat_no");

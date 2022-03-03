@@ -18,6 +18,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+/**
+ * A class to change menu from the screen.
+ *
+ * @author Muqdas
+ */
 
 public class ChangeMenuScreenController implements ControlledScreen, Initializable {
     private ScreensController screensController;
