@@ -70,10 +70,22 @@ public class StaffPortalScreenController implements ControlledScreen, Initializa
         }
     }
 
+    @FXML
+    public void loadWorkingOn() throws SQLException, InvalidMenuIdException {
+        Connection connection = DatabaseConnection.getInstance();
+        ArrayList<ConfirmedOrder> workingOn =
+            DatabaseController.getWorkingOnOrders(connection, Main.currentLoggedInUser);
+
+        for (ConfirmedOrder order : workingOn) {
+            this.claimedOrderList.getItems().add(order.toString());
+        }
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
             loadOrders();
+            loadWorkingOn();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (InvalidMenuIdException e) {
