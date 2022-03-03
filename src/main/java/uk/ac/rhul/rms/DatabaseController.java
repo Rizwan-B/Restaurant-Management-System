@@ -364,6 +364,15 @@ public class DatabaseController {
     //TODO: make this work.
   }
 
+  /**
+   * A function that returns all the orders a given userId is working on.
+   *
+   * @param connection The connection to the database.
+   * @param userId The userId of the kitchen staff to return the orders of.
+   * @return An ArrayList of all the orders being worked on by the given kitchen staff.
+   * @throws SQLException Thrown if the query encounters an error.
+   * @throws InvalidMenuIdException Thrown if an order is being worked on for a menu item that doesn't exist.
+   */
   public static ArrayList<ConfirmedOrder> getWorkingOnOrders(Connection connection, int userId) throws SQLException, InvalidMenuIdException {
     ArrayList<ConfirmedOrder> workingOn = new ArrayList<>();
     ResultSet result = executeQuery(connection, "SELECT * FROM confirmed_orders WHERE user_id = "
