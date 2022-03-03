@@ -29,6 +29,9 @@ public class CallWaiterScreen implements ControlledScreen {
         this.screensController = screenParent;
     }
 
+    /**
+     * Below are releveant text fields , buttons and texts for the call waiter screen.
+     */
     @FXML
     private TextField tableNumberField;
 
@@ -41,6 +44,11 @@ public class CallWaiterScreen implements ControlledScreen {
     @FXML
     private Text textConfirm;
 
+    /**
+     * In the method below once call waiter button is pressed, user enters his table number and the waiter is alerted.
+     * Message to user is also given that waiter is on its way.
+     * @param event
+     */
     @FXML
     void callWaiterBtnPressed(ActionEvent event) {
         try {
@@ -63,12 +71,21 @@ public class CallWaiterScreen implements ControlledScreen {
         }
     }
 
+    /**
+     * in the function below oncce back button is pressed Menu screen is loaded.
+     * @param event
+     */
     @FXML
     void backBtnPressed(ActionEvent event) {
         this.screensController.loadScreen(Main.menuScreenID, Main.menuScreenFile);
         this.screensController.setScreen(Main.menuScreenID);
     }
 
+    /**
+     * Below Method is for database to select call ID, Table no and Waiter ID.
+     * @param event
+     * @throws SQLException
+     */
     @FXML
     void justNothing(ActionEvent event) throws SQLException{
         ResultSet test = DatabaseController.executeQuery(DatabaseConnection.getInstance(), "select * from waiter_call");
