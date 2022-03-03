@@ -30,9 +30,18 @@ public class ConfirmedOrder {
 
   /**
    * Returns the userId of of the kitchen staff who confirmed this order.
+   *
    * @return An int corresponding to the user id of the staff who confirmed this order.
    */
   public int getUserId() {
     return this.userId;
+  }
+
+  /**
+   * Returns the string form of the contained order.
+   */
+  @Override
+  public String toString() {
+    return this.confirmedOrder.toString();
   }
 }
