@@ -32,6 +32,9 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
         this.screensController = screenParent;
     }
 
+    /**
+     * Below are texts, list views and buttons for this class.
+     */
     @FXML
     private Text changeMenu;
 
@@ -94,6 +97,10 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
         }
     }
 
+    /**
+     * This method is to delete the starter once user selects Yes the order is removed from the database and deleted.
+     * @param event
+     */
     @FXML
     void deleteStarter(ActionEvent event) {
 
@@ -121,6 +128,10 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
 
     }
 
+    /**
+     * This method is to delete the main dish once user selects Yes the order is removed from the database and deleted.
+     * @param event
+     */
     @FXML
     void deleteMain(ActionEvent event) {
 
@@ -147,6 +158,10 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
 
     }
 
+    /**
+     * This method is to delete the dessert once user selects Yes the order is removed from the database and deleted.
+     * @param event
+     */
     @FXML
     void deleteDessert(ActionEvent event) {
 
@@ -172,20 +187,31 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
 
     }
 
-
+    /**
+     * This method loads the waiter portal screen when back button is pressed.
+     * @param event
+     */
     @FXML
     void backBtnPressed(ActionEvent event) {
         this.screensController.loadScreen(Main.waiterPortalScreenID, Main.WaiterPortalScreenFile);
         this.screensController.setScreen(Main.waiterPortalScreenID);
     }
 
+    /**
+     * This method is to take user to item screen once he selects a dish and clicks add.
+     * @param event
+     */
     @FXML
     void addItemPressed(ActionEvent event) {
         this.screensController.loadScreen(Main.addItemScreenID, Main.addItemScreenFile);
         this.screensController.setScreen(Main.addItemScreenID);
     }
 
-
+    /**
+     * initialize method. Full menu.
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         fullMenu();
