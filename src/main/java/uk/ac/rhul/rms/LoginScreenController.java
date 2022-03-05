@@ -24,11 +24,18 @@ public class LoginScreenController implements ControlledScreen {
 
     ScreensController screensController;
 
+    /**
+     *
+     * @param screenParent The parent ScreensController of 'this' screen.
+     */
     @Override
     public void setScreenParent(ScreensController screenParent) {
         this.screensController = screenParent;
     }
 
+    /**
+     * Below methods contains buttons, text Fields and password fields for login screen.
+     */
     @FXML
     private Button backBtn;
 
@@ -44,11 +51,20 @@ public class LoginScreenController implements ControlledScreen {
     @FXML
     private Label resultLabel;
 
+    /**
+     *
+     * @param event once back button pressed takes you back to start screen.
+     */
     @FXML
     void backBtnPressed(ActionEvent event) {
         this.screensController.setScreen(Main.startScreenID);
     }
 
+    /**
+     *
+     * @param event checks security credentials and logs user in.
+     * @throws SQLException
+     */
     @FXML
     void bypass(ActionEvent event) throws SQLException{
         String id = event.getSource().toString().split("=")[1].split(",")[0].split("b")[1];
@@ -65,7 +81,10 @@ public class LoginScreenController implements ControlledScreen {
     }
 
 
-
+    /**
+     * This method checks if there is another user logged in when someone is trying to log in.
+     * @param event if system is logged in a message will be printe d saying that this system is already logged in.
+     */
     @FXML
     void login(ActionEvent event) {
         String username = usernameField.getText();

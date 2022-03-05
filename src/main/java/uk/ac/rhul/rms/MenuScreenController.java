@@ -29,11 +29,18 @@ public class MenuScreenController implements ControlledScreen, Initializable {
 
     private ScreensController screensController;
 
+    /**
+     *
+     * @param screenParent The parent ScreensController of 'this' screen.
+     */
     @Override
     public void setScreenParent(ScreensController screenParent) {
         this.screensController = screenParent;
     }
 
+    /**
+     * Below are listviews, buttons,checkboxes and drop down boxes for menu screen.
+     */
     @FXML
     private ListView<String> starterList;
 
@@ -70,11 +77,19 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     @FXML
     private CheckBox wheat;
 
+    /**
+     * once back button is pressed start screen is bought up.
+     * @param event loads start screen
+     */
     @FXML
     void backBtnPressed(ActionEvent event) {
         this.screensController.setScreen(Main.startScreenID);
     }
 
+    /**
+     * method to load basket screen.
+     * @param event basket screen is loaded.
+     */
     @FXML
     void basketBtnPressed(ActionEvent event) {
         addToDB();
@@ -82,12 +97,20 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         this.screensController.setScreen(Main.basketScreenID);
     }
 
+    /**
+     * once call waiter button is clicked this method takes you to call waiter screen.
+     * @param event Call waiter screen is loaded
+     */
     @FXML
     void callWaiterBtnPressed(ActionEvent event) {
         this.screensController.loadScreen(Main.callWaiterScreenID, Main.callWaiterScreenFile);
         this.screensController.setScreen(Main.callWaiterScreenID);
     }
 
+    /**
+     * this filters the menu to show only selected diet type courses.
+     * @param event
+     */
     @FXML
     void filterSelect(ActionEvent event) {
         this.starterList.getItems().clear();
@@ -204,6 +227,10 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         }
     }
 
+    /**
+     * This method is to add starters items, main items and desert items into basket.
+     * @param event adds items to basket.
+     */
     @FXML
     void add(ActionEvent event){
 
@@ -233,12 +260,19 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         // wordRepeated();
     }
 
+    /**
+     * This method is to remove items from basket
+     * @param event remove items from basket.
+     */
     @FXML
     void remove(ActionEvent event){
         basketList.getItems().remove(basketList.getSelectionModel().getSelectedItem());
         basketList.getSelectionModel().clearSelection();
     }
 
+    /**
+     * This method is to add items in database which are in basket.
+     */
     @FXML
     void addToDB() {
 

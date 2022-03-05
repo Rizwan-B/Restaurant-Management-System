@@ -25,11 +25,18 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
 
     private ScreensController screensController;
 
+    /**
+     *
+     * @param screenParent The parent ScreensController of 'this' screen.
+     */
     @Override
     public void setScreenParent(ScreensController screenParent) {
         this.screensController = screenParent;
     }
 
+    /**
+     * Below are labels, buttons and list view for waiter portal
+     */
     @FXML
     private Label waiterName;
 
@@ -49,13 +56,20 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
 
     private int newRecordLength = 0;
 
-
+    /**
+     * once menu is pressed, menu screen is loaded.
+     * @param event load menu screen
+     */
     @FXML
     void changeMenuPressed(ActionEvent event) {
         this.screensController.loadScreen(Main.changeMenuScreenID, Main.changeMenuScreenFile);
         this.screensController.setScreen(Main.changeMenuScreenID);
     }
 
+    /**
+     *
+     * @param event manage order screen is loaded
+     */
     @FXML
     void manageOrderBtnPressed(ActionEvent event) {
         this.screensController.loadScreen(Main.manageOrderScreenID, Main.manageOrderScreenFile);
@@ -66,6 +80,9 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
         this.waiterCalls.getItems().add(tableNo);
     }
 
+    /**
+     * This method is to make waiter free so he can be called.
+     */
     void makeWaiterFree(){
         try {
             DatabaseConnection.getInstance().createStatement().execute("UPDATE user_table set busy=0 WHERE user_id=" + Main.currentLoggedInUser);
@@ -100,6 +117,9 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
         }
     }
 
+    /**
+     * This method is make waiter busy
+     */
     void makeWaiterBusy() {
         try {
             DatabaseConnection.getInstance().createStatement().execute("UPDATE user_table set busy=1 WHERE user_id=" + Main.currentLoggedInUser);
@@ -114,6 +134,9 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
         }
     }
 
+    /**
+     * This method is about notifications to the waiters to call them for more orders to serve.
+     */
     private void notificationCheck() {
         if (this.newRecordLength > Main.oldRecordLength) {
             Notifications notification = Notifications.create();
@@ -133,6 +156,9 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
         }
     }
 
+    /**
+     * This method prints all waiter calls.
+     */
     private void printAllWaiterCalls() {
         this.waiterCalls.getItems().clear();
         this.newRecordLength = 0;
@@ -160,7 +186,10 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
     }
 
 
-
+    /**
+     * this method is to add data such as waiter name, waiter id and waiter status
+     * @param data adds data.
+     */
     public void fillUserData(ResultSet data) {
         try {
             while (data.next()) {
@@ -179,7 +208,10 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
         }
     }
 
-
+    /**
+     * this changes status of waiter upon clicking button
+     * @param event changes status.
+     */
     @FXML
     void waiterStatusBtnPressed(ActionEvent event) {
         if (waiterStatus.getText().equals("busy")) { // waiter wants to be free.
@@ -191,6 +223,10 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
         }
     }
 
+    /**
+     * this method is to accept call and table number is provided.
+     * @param event changes waiter status to busy
+     */
     @FXML
     void acceptCall(ActionEvent event) {
         try {
@@ -204,6 +240,10 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
         }
     }
 
+    /**
+     * This to log out from waiter portal
+     * @param event log out waiter portal
+     */
     @FXML
     void logOut(ActionEvent event) {
         this.makeWaiterBusy();

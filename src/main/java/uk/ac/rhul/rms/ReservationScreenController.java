@@ -27,21 +27,34 @@ public class ReservationScreenController implements ControlledScreen, Initializa
     ScreensController screensController;
     private Connection connection;
 
+    /**
+     *
+     * @param screenParent The parent ScreensController of 'this' screen.
+     */
     @Override
     public void setScreenParent(ScreensController screenParent) {
         this.screensController = screenParent;
     }
 
+    /**
+     * this takes you to start screen once back button pressed.
+     * @param event load start screen
+     */
     @FXML
     void backBtnPressed(ActionEvent event) {
         this.screensController.loadScreen(Main.startScreenID, Main.startScreenFile);
         this.screensController.setScreen(Main.startScreenID);
     }
+
+    /**
+     * Below are labels, ListViews, combox box,text field and label for reservation screen.
+     */
     @FXML
     private Label seatNo;
 
     @FXML
     private Label tableNo;
+
     @FXML
     private ListView<Integer> seat_no;
 

@@ -28,6 +28,9 @@ public class StaffPortalScreenController implements ControlledScreen, Initializa
         DatabaseController.confirmOrder(connection, order);
     }
 
+    /**
+     * below are button and list views for staff portal.
+     */
     @FXML
     private Button backBtn;
 
@@ -37,16 +40,30 @@ public class StaffPortalScreenController implements ControlledScreen, Initializa
     @FXML
     private ListView<String> claimedOrderList;
 
+    /**
+     *
+     * @param screenParent The parent ScreensController of 'this' screen.
+     */
     @Override
     public void setScreenParent(ScreensController screenParent) {
         this.screensController = screenParent;
     }
 
+    /**
+     * once back button pressed this loads login screen.
+     * @param event load login screen
+     */
     @FXML
     void backBtnPressed(ActionEvent event) {
         this.screensController.setScreen(Main.loginScreenID);
     }
 
+    /**
+     * this method is for kitchen staff to choose incoming orders.
+     * @param event adds claimed order to working on
+     * @throws InvalidMenuIdException
+     * @throws SQLException
+     */
     @FXML
     void claimBtnPressed(ActionEvent event) throws InvalidMenuIdException, SQLException {
         Connection connection = DatabaseConnection.getInstance();
@@ -60,6 +77,11 @@ public class StaffPortalScreenController implements ControlledScreen, Initializa
         this.claimedOrderList.getItems().add(order.toString());
     }
 
+    /**
+     * This method adds orders into pending orders from database.
+     * @throws SQLException
+     * @throws InvalidMenuIdException
+     */
     @FXML
     public void loadOrders() throws SQLException, InvalidMenuIdException {
         Connection connection = DatabaseConnection.getInstance();
@@ -70,6 +92,11 @@ public class StaffPortalScreenController implements ControlledScreen, Initializa
         }
     }
 
+    /**
+     * This method adds claimed orders into working on list.
+     * @throws SQLException
+     * @throws InvalidMenuIdException
+     */
     @FXML
     public void loadWorkingOn() throws SQLException, InvalidMenuIdException {
         Connection connection = DatabaseConnection.getInstance();

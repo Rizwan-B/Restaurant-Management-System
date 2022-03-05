@@ -25,11 +25,18 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
 
     ScreensController screensController;
 
+    /**
+     *
+     * @param screenParent The parent ScreensController of 'this' screen.
+     */
     @Override
     public void setScreenParent(ScreensController screenParent) {
         this.screensController = screenParent;
     }
 
+    /**
+     * Below are buttons, list views, text, drop down menus and text fields for manage order screen.
+     */
     @FXML
     private Button backBtn;
 
@@ -60,6 +67,10 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
     @FXML
     private Text display;
 
+    /**
+     * once back button is clicked waiter portal screen is loaded.
+     * @param event waiter portal screen is loaded.
+     */
     @FXML
     void backBtnPressed(ActionEvent event) {
         this.screensController.setScreen(Main.waiterPortalScreenID);
@@ -97,6 +108,9 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
         }
     }
 
+    /**
+     * This method displays the orders item in the basket.
+     */
     public void displayItems() {
         ResultSet allOrders = DatabaseController.executeQuery(DatabaseConnection.getInstance(), "SELECT * FROM orders_table");
         try {
@@ -110,7 +124,9 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
         }
     }
 
-
+    /**
+     * This method gets the order items from the database which are not paid yet.
+     */
     public void unPaidOrder() {
         ResultSet unPaidOrders = DatabaseController.executeQuery(DatabaseConnection.getInstance(), "SELECT * FROM payments;");
         try {
@@ -123,6 +139,10 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
         }
     }
 
+    /**
+     * This method is to confirm that the order has been delivered and removes them from order list.
+     * @param event removes thr order from orderlist
+     */
     @FXML
     void orderDeliveredBtnPressed(ActionEvent event) {
         System.out.println("Order delivered.");
@@ -146,6 +166,11 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
         }
     }
 
+    /**
+     * This method is to initialize unpaid order and display items.
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.displayItems();

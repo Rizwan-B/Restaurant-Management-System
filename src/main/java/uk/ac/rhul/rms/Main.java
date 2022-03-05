@@ -17,7 +17,9 @@ import java.sql.SQLException;
  *
  */
 public class Main extends Application {
-
+  /**
+   * Below are many screens this application has to offer.
+   */
   private static ScreensController mainScreenController;
 
   // The ID and location for the fxml startScreen. Make sure to follow the id naming standard I have
