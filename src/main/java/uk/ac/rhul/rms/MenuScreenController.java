@@ -257,7 +257,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         mainList.getSelectionModel().clearSelection();
         dessertList.getSelectionModel().clearSelection();
         quantity.setValue(1);
-        // wordRepeated();
+//         wordRepeated();
     }
 
     /**
@@ -285,29 +285,6 @@ public class MenuScreenController implements ControlledScreen, Initializable {
                 DatabaseController.makeTempOrder(DatabaseConnection.getInstance(), -1, orderList);
             }catch (SQLException e){
                 System.out.println("Problem using the database: "+e+"\n At line 241.");
-            }
-        }
-    }
-
-    public void wordRepeated() { //Set<String>
-
-//        final Set<String> setToReturn = new HashSet<String>();
-//        final Set<String> set1 = new HashSet<String>();
-//
-//        ObservableList<String> basketListItems = basketList.getItems();
-//        for (String s: basketListItems) {
-//            if (!set1.add(s)) {
-//                setToReturn.add(s);
-//            }
-        ObservableList<String> basketListItems = basketList.getItems();
-        int occurrences = 0;
-        for (String s: basketListItems) {
-            if ((occurrences = Collections.frequency(basketListItems, s)) > 1) {
-                basketList.getItems().add(s + " x" + occurrences);
-                for (int i = 0; i < occurrences; i++) {
-                    basketList.getItems().remove(s);
-                    basketList.getSelectionModel().clearSelection();
-                }
             }
         }
     }

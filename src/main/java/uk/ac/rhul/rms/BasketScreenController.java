@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 /**
@@ -244,11 +245,32 @@ public class BasketScreenController implements ControlledScreen, Initializable {
     year.setItems(listYear);
     try {
       getItems();
+//      wordRepeated();
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (InvalidMenuIdException e) {
       e.printStackTrace();
     }
   }
+
+//  public void wordRepeated() {
+//
+//    ObservableList<String> basketListItems = orderItems.getItems();
+//    System.out.println(basketListItems);
+//    int occurrences = 0;
+//    for (String s: basketListItems) {
+//      System.out.println(s);
+//      if ((occurrences = Collections.frequency(basketListItems, s)) > 1) {
+//        orderItems.getItems().add(s + " x" + occurrences); //This line doesn't work
+//        for (int i = 0; i < occurrences; i++) {
+//          orderItems.getItems().remove(s);
+//        }
+//      }
+//      else {
+//        orderItems.getItems().add(s + " x1");
+//        orderItems.getItems().remove(s);
+//      }
+//    }
+//  }
 }
 
