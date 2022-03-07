@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.ResourceBundle;
 
@@ -208,6 +209,8 @@ public class BasketScreenController implements ControlledScreen, Initializable {
     }
   }
 
+  ArrayList<String> list = new ArrayList<String>();
+
   /**
    * getItems method returns total price of the selected items once in the basket.
    * A for loops checks how many items are in the basket and calculates the total price accordingly.
@@ -219,7 +222,8 @@ public class BasketScreenController implements ControlledScreen, Initializable {
   void getItems() throws SQLException, InvalidMenuIdException {
     String[] items = DatabaseController.getTempOrder(DatabaseConnection.getInstance()).split("-");
     for (int i = 0; i < items.length; i= i+2) {
-      orderItems.getItems().add(items[i]);
+//      orderItems.getItems().add(items[i]);
+      list.add(items[i]);
     }
     for (int i = 1; i < items.length; i = i+2) {
     String str = items[i];
@@ -245,7 +249,7 @@ public class BasketScreenController implements ControlledScreen, Initializable {
     year.setItems(listYear);
     try {
       getItems();
-//      wordRepeated();
+      wordRepeated();
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (InvalidMenuIdException e) {
@@ -253,24 +257,26 @@ public class BasketScreenController implements ControlledScreen, Initializable {
     }
   }
 
-//  public void wordRepeated() {
-//
-//    ObservableList<String> basketListItems = orderItems.getItems();
+  public void wordRepeated() {
+
+    ObservableList<String> basketListItems = orderItems.getItems();
 //    System.out.println(basketListItems);
-//    int occurrences = 0;
-//    for (String s: basketListItems) {
-//      System.out.println(s);
-//      if ((occurrences = Collections.frequency(basketListItems, s)) > 1) {
-//        orderItems.getItems().add(s + " x" + occurrences); //This line doesn't work
-//        for (int i = 0; i < occurrences; i++) {
+    int occurrences = 0;
+    for (String s: list) {
+      System.out.println("list=   "+list);
+      if ((occurrences = Collections.frequency(list, s)) > 1) {
+        orderItems.getItems().add(s + " x" + occurrences); //This line doesn't work
+        System.out.println("order=   "+orderItems.getItems());
+        for (int i = 0; i < occurrences; i++) {
 //          orderItems.getItems().remove(s);
-//        }
-//      }
-//      else {
-//        orderItems.getItems().add(s + " x1");
-//        orderItems.getItems().remove(s);
-//      }
-//    }
-//  }
+          list.remove(s);
+        }
+      }
+      else {
+        orderItems.getItems().add(s + " x1");
+        orderItems.getItems().remove(s);
+      }
+    }
+  }
 }
 
