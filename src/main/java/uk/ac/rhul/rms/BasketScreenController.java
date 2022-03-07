@@ -13,9 +13,11 @@ import javafx.fxml.FXML;
 
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 /**
@@ -23,7 +25,7 @@ import java.util.ResourceBundle;
  *
  * @author Jacob Artis
  * @author Muqdas
- *  
+ *
  */
 public class BasketScreenController implements ControlledScreen, Initializable {
 
@@ -102,6 +104,8 @@ public class BasketScreenController implements ControlledScreen, Initializable {
 
   @FXML
   private Text totalPrice;
+
+  private ArrayList<String> list = new ArrayList<>();
 
   /**
    * Below is back button action which is to load Menu screen when clicked.
@@ -209,8 +213,6 @@ public class BasketScreenController implements ControlledScreen, Initializable {
     }
   }
 
-  ArrayList<String> list = new ArrayList<String>();
-
   /**
    * getItems method returns total price of the selected items once in the basket.
    * A for loops checks how many items are in the basket and calculates the total price accordingly.
@@ -221,17 +223,25 @@ public class BasketScreenController implements ControlledScreen, Initializable {
   @FXML
   void getItems() throws SQLException, InvalidMenuIdException {
     String[] items = DatabaseController.getTempOrder(DatabaseConnection.getInstance()).split("-");
-    for (int i = 0; i < items.length; i= i+2) {
-//      orderItems.getItems().add(items[i]);
+
+    for(int i=0; i<items.length; i=i+2) {
+
       list.add(items[i]);
+
     }
-    for (int i = 1; i < items.length; i = i+2) {
-    String str = items[i];
-    String  price = str. replaceAll("[^0-9]", "");
-    sum += Double.parseDouble(price);
+    wordRepeated();
+
+
+
+
+    for (int i= 1; i < items.length; i = i+2) {
+      String str = items[i];
+      String  price = str. replaceAll("[^0-9]", "");
+      sum += Double.parseDouble(price);
 
     }
     totalPrice.setText("£ "+sum);
+
 
   }
 
@@ -247,9 +257,11 @@ public class BasketScreenController implements ControlledScreen, Initializable {
             "2026", "2027","2028", "2029", "2030","2031","2032","2033","2034","2035","2036",
             "2037","2038","2039","2040");
     year.setItems(listYear);
+
     try {
+
       getItems();
-      wordRepeated();
+
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (InvalidMenuIdException e) {
@@ -258,25 +270,25 @@ public class BasketScreenController implements ControlledScreen, Initializable {
   }
 
   public void wordRepeated() {
+    String item=" ";
+    HashMap<String, Integer> map = new HashMap<String, Integer>();
 
-    ObservableList<String> basketListItems = orderItems.getItems();
-//    System.out.println(basketListItems);
     int occurrences = 0;
+
+
     for (String s: list) {
-      System.out.println("list=   "+list);
-      if ((occurrences = Collections.frequency(list, s)) > 1) {
-        orderItems.getItems().add(s + " x" + occurrences); //This line doesn't work
-        System.out.println("order=   "+orderItems.getItems());
-        for (int i = 0; i < occurrences; i++) {
-//          orderItems.getItems().remove(s);
-          list.remove(s);
-        }
-      }
-      else {
-        orderItems.getItems().add(s + " x1");
-        orderItems.getItems().remove(s);
-      }
+      occurrences = Collections.frequency(list, s);
+      map.put(s,occurrences);
     }
+    for (HashMap.Entry<String, Integer> entry : map.entrySet()) {
+      String key = entry.getKey();
+      Object value = entry.getValue();
+      orderItems.getItems().add(key +" x"+ value);
+    }
+
+
+
   }
+
 }
 
