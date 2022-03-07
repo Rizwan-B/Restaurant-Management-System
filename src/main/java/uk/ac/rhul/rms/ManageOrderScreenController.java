@@ -140,6 +140,27 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
             System.out.println("SQL exception.");
         }
     }
+    @FXML
+    void paidOrder() {
+        int index_main= this.displayPayment.getSelectionModel().getSelectedIndex();
+        String selected_item=this.displayPayment.getSelectionModel().getSelectedItem();
+        String[] split =  selected_item.split(" | ");
+        String table= split[4];
+        System.out.println(table);
+
+
+        if (index_main >= 0) {
+            this.displayPayment.getItems().remove(index_main);
+            try {
+                DatabaseConnection.getInstance().createStatement().execute("DELETE FROM payments WHERE table_no = '"+table+ "';");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+    }
+
 
     /**
      * This method is to confirm that the order has been delivered and removes them from order list.

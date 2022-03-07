@@ -279,8 +279,9 @@ public class DatabaseMain {
                 "order_id int ,"
                 +"table_no int NOT NULL,"
                 +"price varchar(100) NOT NULL,"
-                + "FOREIGN KEY (table_no) REFERENCES orders_table(table_no)," +
-                "FOREIGN KEY (order_id) REFERENCES confirmed_order(order_id)"
+                + "FOREIGN KEY (table_no) REFERENCES orders_table(table_no),"
+                + "FOREIGN KEY (order_id) REFERENCES confirmed_order(order_id),"
+                + "PRIMARY KEY(table_no)"
                 + ");");
 
         insertFromFile(connect, "menu");

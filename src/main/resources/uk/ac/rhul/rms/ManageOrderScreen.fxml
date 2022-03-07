@@ -40,6 +40,6 @@
             <Font name="System Bold" size="10.0" />
          </font>
       </Text>
-      <Button fx:id="paid" layoutX="535.0" layoutY="437.0" mnemonicParsing="false" text="Paid" />
+      <Button fx:id="paid" layoutX="535.0" layoutY="437.0" mnemonicParsing="false" onAction="#paidOrder" text="Paid" />
     </children>
 </Pane>
