@@ -278,6 +278,7 @@ public class DatabaseMain {
         createsTable(connect, "payments (payment_status varchar(1000) NOT NULL," +
                 "order_id int ,"
                 +"table_no int NOT NULL,"
+                +"price varchar(100) NOT NULL,"
                 + "FOREIGN KEY (table_no) REFERENCES orders_table(table_no)," +
                 "FOREIGN KEY (order_id) REFERENCES confirmed_order(order_id)"
                 + ");");

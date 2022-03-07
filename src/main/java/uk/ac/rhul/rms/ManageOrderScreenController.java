@@ -56,9 +56,6 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
     private Text paymentStatus;
 
     @FXML
-    private ComboBox<String> changeStatus;
-
-    @FXML
     private Text total;
 
     @FXML
@@ -66,6 +63,10 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
 
     @FXML
     private Text display;
+
+    @FXML
+    private Button paid;
+
 
     /**
      * once back button is clicked waiter portal screen is loaded.
@@ -131,7 +132,8 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
         ResultSet unPaidOrders = DatabaseController.executeQuery(DatabaseConnection.getInstance(), "SELECT * FROM payments;");
         try {
             while (unPaidOrders.next()) {
-                displayPayment.getItems().add(unPaidOrders.getString(1)+ " | "+unPaidOrders.getString(2) + " | " + unPaidOrders.getString(3));
+                displayPayment.getItems().add(unPaidOrders.getString(1)+ " | "+unPaidOrders.getString(2) + " | " + unPaidOrders.getString(3)+
+                        " | "+ unPaidOrders.getString(4));
 
             }
         } catch (SQLException e) {

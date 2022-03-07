@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.Pane?>
@@ -36,11 +35,11 @@
          </font>
       </Text>
       <ListView fx:id="displayPayment" layoutX="347.0" layoutY="120.0" prefHeight="307.0" prefWidth="240.0" />
-      <ComboBox fx:id="changeStatus" layoutX="348.0" layoutY="437.0" prefWidth="150.0" promptText="Payment Status" />
-      <Text fx:id="display" layoutX="348.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Status | Order ID | Table Number">
+      <Text fx:id="display" layoutX="348.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Status | Order ID | Table Number | Price">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="10.0" />
          </font>
       </Text>
+      <Button fx:id="paid" layoutX="535.0" layoutY="437.0" mnemonicParsing="false" text="Paid" />
     </children>
 </Pane>

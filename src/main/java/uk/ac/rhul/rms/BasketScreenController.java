@@ -130,7 +130,7 @@ public class BasketScreenController implements ControlledScreen, Initializable {
    * @param event electronic payment is selected
    */
   @FXML
-  void getPayment(ActionEvent event) {
+  void getPayment(ActionEvent event) throws SQLException, InvalidMenuIdException {
     String tableNumber = tableNo.getText();
     String card_no = cardNumber.getText();
     String holder_no = holderName.getText();
@@ -168,10 +168,12 @@ public class BasketScreenController implements ControlledScreen, Initializable {
         String paymentStatus = "unpaid";
         String table = tableNo.getText().toString();
         int intTable = Integer.parseInt(table);
+        String x = totalPrice.getText();
         try {
           DatabaseConnection.getInstance().createStatement()
-              .execute("INSERT INTO payments(payment_status,table_no) VALUES('" + paymentStatus
-                  + "', '" + intTable + "'); ");
+              .execute("INSERT INTO payments(payment_status,table_no,price) VALUES('" + paymentStatus
+                  + "', '" + intTable +"', '"+x+ "'); ");
+
           this.screensController.setScreen(Main.startScreenID);
         } catch (SQLException e) {
           e.printStackTrace();
@@ -236,6 +238,7 @@ public class BasketScreenController implements ControlledScreen, Initializable {
 
     }
     totalPrice.setText("£ " + sum);
+
   }
 
   @Override
