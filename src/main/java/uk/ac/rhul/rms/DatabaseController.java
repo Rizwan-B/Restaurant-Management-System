@@ -355,7 +355,7 @@ public class DatabaseController {
   }
 
   /**
-   * Inserts a confirmed order into the confirmed_orders table.
+   * Inserts a confirmed o  rder into the confirmed_orders table.
    *
    * @param connection The connection to the database.
    * @param order The order object being confirmed.

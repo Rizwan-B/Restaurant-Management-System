@@ -9,6 +9,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -71,11 +73,12 @@ public class LoginScreenController implements ControlledScreen {
         // This is my favorite line of code. Classic security through obscurity xD.
 
         Main.currentLoggedInUser = Integer.parseInt(id);
+        Main.sessionId = String.valueOf(Main.currentLoggedInUser);
 
         DatabaseConnection.getInstance().createStatement().execute("UPDATE user_table set session_id="
-                + Main.currentLoggedInUser + " WHERE user_id=" + Main.currentLoggedInUser); // this will be replaced by hashcode.
+                + Main.sessionId + " WHERE user_id=" + Main.currentLoggedInUser); // this will be replaced by hashcode.
 
-        Main.sessionId = String.valueOf(Main.currentLoggedInUser);
+
 
         Main.loginLoader();
     }
@@ -89,29 +92,36 @@ public class LoginScreenController implements ControlledScreen {
     void login(ActionEvent event) {
         String username = usernameField.getText();
         String password = passwordField.getText();
-        System.out.println("username: " + username);
-        System.out.println("password: " + password);
+        Hash security = new Hash(username, password);
 
-        if ((Main.currentLoggedInUser != 0) || (Main.sessionId != null)) {
-            System.out.println("this system is already logged into to a different user.");
-            return;
-        }
+
+
+        // Grabbing values above this.
+
 
         try {
             ResultSet loginResult = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
-                    "SELECT user_id FROM user_table WHERE user_name='" + username + "' AND password='" + password + "'");
+                    "SELECT user_id, session_id FROM user_table WHERE user_name='" + username + "' AND password='" + security.getHashPassword() + "'");
             while (loginResult.next()) {
                 Main.currentLoggedInUser  = loginResult.getInt(1);
+                if (!loginResult.getString(2).equals("NULL")) {
+                    System.out.println("Someone is already logged into this account.");
+                    return;
+                }
             }
 
-            DatabaseConnection.getInstance().createStatement().execute("UPDATE user_table set session_id="
-                    + Main.currentLoggedInUser + " WHERE user_id=" + Main.currentLoggedInUser); // this will be replaced by hashcode.
+            if (Main.currentLoggedInUser == 0) {
+                System.out.println("username or password incorrect.");
+            }
 
-            Main.sessionId = String.valueOf(Main.currentLoggedInUser);
+            Main.sessionId = security.getSessionID();
+
+            DatabaseConnection.getInstance().createStatement().execute("UPDATE user_table set session_id='"
+                    + Main.sessionId + "' WHERE user_id=" + Main.currentLoggedInUser);
 
             Main.loginLoader();
 
-        } catch (SQLException e) {
+        } catch (SQLException | NoSuchAlgorithmException | InvalidKeySpecException e) {
             System.out.println(e.toString());
         }
     }

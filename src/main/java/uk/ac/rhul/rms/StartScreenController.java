@@ -69,7 +69,7 @@ public class StartScreenController implements ControlledScreen {
   @FXML
   private void loginBtnPressed(ActionEvent event) {
     if (Main.sessionId != null) {
-      ResultSet loggedUser = DatabaseController.executeQuery(DatabaseConnection.getInstance(), "SELECT user_id, user_role FROM user_table WHERE session_id=" + Main.sessionId);
+      ResultSet loggedUser = DatabaseController.executeQuery(DatabaseConnection.getInstance(), "SELECT user_id, user_role FROM user_table WHERE session_id='" + Main.sessionId + "'");
       try {
         while (loggedUser.next()) {
           if (loggedUser.getString(2).equals("STAFF")) {

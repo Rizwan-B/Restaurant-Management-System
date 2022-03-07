@@ -153,7 +153,7 @@ public class DatabaseMain {
       ResultSet query7 = db.executeQuery(connect, "SELECT * FROM user_table");
       while(query7.next()) {
         System.out.println(query7.getString(1) + ", " + query7.getString(2) + ", "
-                + query7.getString(3) + ", " + query7.getString(4));
+                + query7.getString(3) + ", " + query7.getString(4) + ", " + query7.getString(5));
       }
 
       System.out.println("\n\nORDERS");

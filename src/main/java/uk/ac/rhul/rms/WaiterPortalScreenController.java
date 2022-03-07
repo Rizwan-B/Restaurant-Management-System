@@ -248,9 +248,13 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
     void logOut(ActionEvent event) {
         this.makeWaiterBusy();
         Main.sessionId = null;
+        try {
+            DatabaseConnection.getInstance().createStatement().execute("UPDATE user_table set session_id='NULL' WHERE user_id=" + Main.currentLoggedInUser);
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
         Main.currentLoggedInUser = 0;
         this.screensController.setScreen(Main.loginScreenID);
-
     }
 
     @Override

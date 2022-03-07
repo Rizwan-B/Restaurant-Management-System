@@ -71,10 +71,8 @@ public class Main extends Application {
     if ((Main.currentLoggedInUser == 0) || (Main.sessionId == null)) { return; }
 
     ResultSet result = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
-            "SELECT user_role FROM user_table WHERE user_id="
-                    + Main.currentLoggedInUser
-                    + " AND session_id="
-                    + Main.sessionId);
+            "SELECT user_role FROM user_table WHERE session_id='"
+                    + Main.sessionId + "'");
     try {
       while(result.next()) {
         user_role = result.getString(1);
