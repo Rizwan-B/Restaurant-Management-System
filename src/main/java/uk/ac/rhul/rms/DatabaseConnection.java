@@ -4,6 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * Initialises the connection to the database. 
+ *
+ * @author Mohamed Yusuf
+ * @author Muqdas
+ */
 public class DatabaseConnection {
 
   private static Connection instance = null;
@@ -27,6 +33,11 @@ public class DatabaseConnection {
     return connect;
   }
 
+  /**
+   * Establishes the connection.
+   *
+   * @return the connection.
+   */
   public static Connection getInstance() {
     if (instance == null) {
       instance = connection();

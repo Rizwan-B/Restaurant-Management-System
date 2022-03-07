@@ -24,11 +24,8 @@ public class DatabaseMain {
   /**
    * A public default constructor for the DatabaseMain class.
    */
-  public DatabaseMain() {
-    
-  }
+  public DatabaseMain() {}
 
-  
   /**
    * This creates a table in the database server.
    *
@@ -155,7 +152,7 @@ public class DatabaseMain {
         System.out.println(query7.getString(1) + ", " + query7.getString(2) + ", "
                 + query7.getString(3) + ", " + query7.getString(4) + ", " + query7.getString(5));
       }
-
+      
       System.out.println("\n\nORDERS");
       ResultSet query8 = db.executeQuery(connect, "SELECT * FROM orders_table");
       while(query8.next()) {
@@ -297,5 +294,4 @@ public class DatabaseMain {
       e.printStackTrace();
     }
   }
-   
 }
