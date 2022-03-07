@@ -135,6 +135,7 @@ public class BasketScreenController implements ControlledScreen, Initializable {
     String card_no = cardNumber.getText();
     String holder_no = holderName.getText();
     String cvc = cvcBox.getText();
+    int table_Number = Integer.parseInt(tableNumber);
 
     if (electronicPayment.isSelected()) {
 
@@ -161,24 +162,31 @@ public class BasketScreenController implements ControlledScreen, Initializable {
       if (tableNumber.isEmpty()) {
         Alert alert1 = new Alert(Alert.AlertType.NONE, "Enter table Number", ButtonType.OK);
         alert1.showAndWait();
-      } else {
-        Alert alert = new Alert(Alert.AlertType.NONE,
-            "Please head to the tills, Thank you for visiting!", ButtonType.OK);
-        alert.showAndWait();
-        String paymentStatus = "unpaid";
-        String table = tableNo.getText().toString();
-        int intTable = Integer.parseInt(table);
-        String x = totalPrice.getText();
-        try {
-          DatabaseConnection.getInstance().createStatement()
-              .execute("INSERT INTO payments(payment_status,table_no,price) VALUES('" + paymentStatus
-                  + "', '" + intTable +"', '"+x+ "'); ");
 
-          this.screensController.setScreen(Main.startScreenID);
-        } catch (SQLException e) {
-          e.printStackTrace();
+      } else {
+        if(!(table_Number>0 && table_Number<14)){
+          Alert alert = new Alert(Alert.AlertType.NONE, "Wrong Table Number", ButtonType.OK);
+          alert.showAndWait();
+        }else{
+          Alert alert = new Alert(Alert.AlertType.NONE,
+                  "Please head to the tills, Thank you for visiting!", ButtonType.OK);
+          alert.showAndWait();
+          String paymentStatus = "unpaid";
+          String table = tableNo.getText().toString();
+          int intTable = Integer.parseInt(table);
+          String x = totalPrice.getText();
+          try {
+            DatabaseConnection.getInstance().createStatement()
+                    .execute("INSERT INTO payments(payment_status,table_no,price) VALUES('" + paymentStatus
+                            + "', '" + intTable +"', '"+x+ "'); ");
+
+            this.screensController.setScreen(Main.startScreenID);
+          } catch (SQLException e) {
+            e.printStackTrace();
+          }
         }
-      }
+        }
+
     } else {
       Alert alert1 = new Alert(Alert.AlertType.NONE, "Select a payment option.", ButtonType.OK);
       alert1.showAndWait();
