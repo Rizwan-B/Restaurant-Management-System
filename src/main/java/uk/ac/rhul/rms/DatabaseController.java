@@ -391,6 +391,7 @@ public class DatabaseController {
     Statement st = connection.createStatement();
     st.execute("UPDATE orders_table SET status = 2 WHERE order_id=" + order_id);
   }
+  //TODO: Refactor the above two functions to use executeUpdate.
 
   /**
    * Returns the order.
