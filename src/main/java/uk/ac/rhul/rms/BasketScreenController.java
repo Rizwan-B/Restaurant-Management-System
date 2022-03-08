@@ -15,10 +15,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * The screen controller for the basket screen implementing the ControlledScreen Interface.
@@ -165,7 +162,7 @@ public class BasketScreenController implements ControlledScreen, Initializable {
 
       } else {
         if(!(table_Number>0 && table_Number<14)){
-          Alert alert = new Alert(Alert.AlertType.NONE, "Wrong Table Number", ButtonType.OK);
+          Alert alert = new Alert(Alert.AlertType.NONE, "Wrong Table Number!!", ButtonType.OK);
           alert.showAndWait();
         }else{
           Alert alert = new Alert(Alert.AlertType.NONE,
@@ -175,17 +172,16 @@ public class BasketScreenController implements ControlledScreen, Initializable {
           String table = tableNo.getText().toString();
           int intTable = Integer.parseInt(table);
           String x = totalPrice.getText();
-          try {
-            DatabaseConnection.getInstance().createStatement()
-                    .execute("INSERT INTO payments(payment_status,table_no,price) VALUES('" + paymentStatus
-                            + "', '" + intTable +"', '"+x+ "'); ");
+          Random rand = new Random();
+          int order_id= rand.nextInt(100);
+          DatabaseConnection.getInstance().createStatement()
+                  .execute("INSERT INTO payments VALUES('" + paymentStatus + "','"+order_id
+                          + "', '" + intTable +"', '"+x+ "'); ");
+          this.screensController.setScreen(Main.startScreenID);
+        }
 
-            this.screensController.setScreen(Main.startScreenID);
-          } catch (SQLException e) {
-            e.printStackTrace();
-          }
-        }
-        }
+
+      }
 
     } else {
       Alert alert1 = new Alert(Alert.AlertType.NONE, "Select a payment option.", ButtonType.OK);
@@ -193,6 +189,7 @@ public class BasketScreenController implements ControlledScreen, Initializable {
     }
 
   }
+
 
   /**
    * This method sorts tills when tillsCheckBox is selected electronic payment details will be
