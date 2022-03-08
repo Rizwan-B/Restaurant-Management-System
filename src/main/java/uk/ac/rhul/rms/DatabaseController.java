@@ -55,6 +55,22 @@ public class DatabaseController {
   }
 
   /**
+   * Executes an update through sqlite.
+   *
+   * @param connect to database.
+   * @param query is the update passed into sqlite.
+   */
+  public static void executeUpdate(Connection connect, String query) {
+    try {
+      Statement statement = connect.createStatement();
+      statement.executeUpdate(query);
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
    * gets a list of string with table names.
    *
    * @param connect gets the connection to the database.
@@ -431,15 +447,15 @@ public class DatabaseController {
   }
 
   /**
-   * Inserts a confirmed o rder into the confirmed_orders table.
+   * Inserts a confirmed order into the confirmed_orders table.
    *
    * @param connection The connection to the database.
    * @param order The order object being confirmed.
    */
   public static void confirmOrder(Connection connection, ConfirmedOrder order) {
     executeQuery(connection,
-        "UPDATE confirmed_orders SET user_id = " + String.valueOf(order.getUserId())
-            + " order_id = " + String.valueOf(order.getOrder().getOrderId()) + ";");
+        "INSERT INTO confirmed_orders(user_id, order_id) VALUES (" + String.valueOf(order.getUserId())
+            + ", " + String.valueOf(order.getOrder().getOrderId()) + ");");
 
     // TODO: make this work.
 
