@@ -196,6 +196,9 @@ public class DatabaseMain {
             + "item_name varchar(200) NOT NULL,"
             + "item_description varchar(1000) NOT NULL,"
             + "item_category varchar(100) NOT NULL,"
+            + "item_calories varchar(100) NOT NULL,"
+            + "item_image_location varchar(1000),"
+            + "item_price varchar(200) NOT NULL,"
             + "PRIMARY KEY (itemId)"
             + ");");
         
