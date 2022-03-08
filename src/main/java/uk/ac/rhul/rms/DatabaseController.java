@@ -453,12 +453,9 @@ public class DatabaseController {
    * @param order The order object being confirmed.
    */
   public static void confirmOrder(Connection connection, ConfirmedOrder order) {
-    executeQuery(connection,
+    executeUpdate(connection,
         "INSERT INTO confirmed_orders(user_id, order_id) VALUES (" + String.valueOf(order.getUserId())
             + ", " + String.valueOf(order.getOrder().getOrderId()) + ");");
-
-    // TODO: make this work.
-
   }
 
   /**
