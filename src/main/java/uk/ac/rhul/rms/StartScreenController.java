@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 
@@ -51,7 +52,7 @@ public class StartScreenController implements ControlledScreen, Initializable {
   private Button reservationBtn;
 
   @FXML
-  private ImageView imageView;
+  private Pane pane;
 
   /**
    * this loads menu screen once menu is clicked.
@@ -104,8 +105,10 @@ public class StartScreenController implements ControlledScreen, Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    File file = new File("src/main/resources/uk/ac/rhul/rms/media/mexican-cook-menu-tacos-cuisine-icon-smiling-latino-chef-national-clothing-poncho-sombrero-mustache-holding-card-80167194.jpg");
+    File file = new File("src/main/resources/uk/ac/rhul/rms/media/start screen.png");
     Image image = new Image(file.toURI().toString());
-    imageView.setImage(image);
+    BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1,1, true, true, false,false));
+    Background background = new Background(backgroundImage);
+    pane.setBackground(background);
   }
 }
