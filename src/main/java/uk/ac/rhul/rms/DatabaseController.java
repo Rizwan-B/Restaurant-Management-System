@@ -140,21 +140,21 @@ public class DatabaseController {
     ArrayList<MenuItem2> menuItems = new ArrayList<MenuItem2>();
     int itemId;
     String itemName;
-    String itemDescription;
-    String itemCategory;
     int itemCalories;
+    String itemCategory;
+    String itemDescription;
     String itemImageLocation;
     int itemPrice;
     MenuItem2 menuItem;
     while (result.next()) {
       itemId = result.getInt("itemID");
       itemName = result.getString("item_name");
-      itemDescription = result.getString("item_description");
-      itemCategory = result.getString("item_category");
       itemCalories = result.getInt("item_calories");
+      itemCategory = result.getString("item_category");
+      itemDescription = result.getString("item_description");
       itemImageLocation = result.getString("item_image_location");
       itemPrice = result.getInt("item_price");
-      menuItem = new MenuItem2(itemId, itemName, itemDescription, itemCategory, itemCalories,
+      menuItem = new MenuItem2(itemId, itemName, itemCalories, itemCategory, itemDescription,
           itemImageLocation, itemPrice);
       menuItems.add(menuItem);
     }
@@ -171,13 +171,13 @@ public class DatabaseController {
     String allergens = Arrays.toString(allergensArray);
     int length = allergens.length();
     String allergensFormatted = allergens.substring(1,length-1);
-    String query = ("SELECT menu2.itemId, menu2.item_name, menu2.item_description,"
-        + " menu2.item_calories, menu2.item_image_location, menu2.item_price"
+    String query = ("SELECT menu2.itemId, menu2.item_name, menu2.item_calories,"
+        + " menu2.item_category, menu2.item_description, menu2.item_image_location, menu2.item_price"
         + " FROM menu2"
         + " WHERE menu2.item_category ='" + categoryType + "'"
         + " EXCEPT"
-        + " SELECT menu2.itemId, menu2.item_name, menu2.item_description, menu2.item_calories,"
-        + " menu2.item_image_location, menu2.item_price"
+        + " SELECT menu2.itemId, menu2.item_name, menu2.item_calories, menu2.item_category,"
+        + " menu2.item_description, menu2.item_image_location, menu2.item_price"
         + " AS menu2allergens"
         + " FROM menu2"
         + " JOIN dish_ingredients_link"
@@ -193,21 +193,21 @@ public class DatabaseController {
     ArrayList<MenuItem2> menuItems = new ArrayList<MenuItem2>();
     int itemId;
     String itemName;
-    String itemDescription;
-    String itemCategory;
     int itemCalories;
+    String itemCategory;
+    String itemDescription;
     String itemImageLocation;
     int itemPrice;
     MenuItem2 menuItem;
     while (result.next()) {
       itemId = result.getInt("itemID");
       itemName = result.getString("item_name");
-      itemDescription = result.getString("item_description");
-      itemCategory = result.getString("item_category");
       itemCalories = result.getInt("item_calories");
+      itemCategory = result.getString("item_category");
+      itemDescription = result.getString("item_description");
       itemImageLocation = result.getString("item_image_location");
       itemPrice = result.getInt("item_price");
-      menuItem = new MenuItem2(itemId, itemName, itemDescription, itemCategory, itemCalories,
+      menuItem = new MenuItem2(itemId, itemName, itemCalories, itemCategory, itemDescription,
           itemImageLocation, itemPrice);
       menuItems.add(menuItem);
     }
@@ -226,9 +226,9 @@ public class DatabaseController {
   public static MenuItem2 getMenu2Item(String itemPrimaryKey, Connection connection) throws InvalidMenuIdException {
     int itemId;
     String itemName;
-    String itemDescription;
-    String itemCategory;
     int itemCalories;
+    String itemCategory;
+    String itemDescription;
     String itemImageLocation;
     int itemPrice;
     MenuItem2 menuItem;
@@ -236,12 +236,12 @@ public class DatabaseController {
       ResultSet result = executeQuery(connection, "select * from menu where itemID = '" + itemPrimaryKey + "'");
       itemId = result.getInt("itemID");
       itemName = result.getString("item_name");
-      itemDescription = result.getString("item_description");
-      itemCategory = result.getString("item_category");
       itemCalories = result.getInt("item_calories");
+      itemCategory = result.getString("item_category");
+      itemDescription = result.getString("item_description");
       itemImageLocation = result.getString("item_image_location");
       itemPrice = result.getInt("item_price");
-      menuItem = new MenuItem2(itemId, itemName, itemDescription, itemCategory, itemCalories,
+      menuItem = new MenuItem2(itemId, itemName, itemCalories, itemCategory, itemDescription,
           itemImageLocation, itemPrice);
     } catch (SQLException e) {
       throw new InvalidMenuIdException();
