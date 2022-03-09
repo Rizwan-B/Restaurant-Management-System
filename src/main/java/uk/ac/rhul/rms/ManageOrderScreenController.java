@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 /**
  * The screen controller for the managing orders screen implementing the ControlledScreen Interface.
  *
- * @author Virginia, Ahmed
+ * @author Virginia, Ahmed, Muqdas
  */
 
 public class ManageOrderScreenController implements ControlledScreen, Initializable {
@@ -145,14 +145,14 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
         int index_main= this.displayPayment.getSelectionModel().getSelectedIndex();
         String selected_item=this.displayPayment.getSelectionModel().getSelectedItem();
         String[] split =  selected_item.split(" | ");
-        String table= split[4];
-        System.out.println(table);
+        String order_id= split[2];
+        System.out.println(order_id);
 
 
         if (index_main >= 0) {
             this.displayPayment.getItems().remove(index_main);
             try {
-                DatabaseConnection.getInstance().createStatement().execute("DELETE FROM payments WHERE table_no = '"+table+ "';");
+                DatabaseConnection.getInstance().createStatement().execute("DELETE FROM payments WHERE order_id = '"+order_id+ "';");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
