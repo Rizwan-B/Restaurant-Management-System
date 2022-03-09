@@ -17,15 +17,18 @@ public class Order {
   private boolean orderCompletedStatus = false;
 
   /**
-   * The constructor for the Order class, taking the needed information to construct an order object.
+   * The constructor for the Order class, taking the needed information to construct an order
+   * object.
    *
    * @param orderId The ID of the order that acts as the primary key in the database.
    * @param tableNumber The table number the order is for.
    * @param itemsList A comma separated list of MenuItem IDs constituting the order.
    * @param cancelled A boolean representing whether the order has been cancelled or not.
-   * @throws InvalidMenuIdException An exception that if thrown is likely due to an incorrect itemsList being passed.
+   * @throws InvalidMenuIdException An exception that if thrown is likely due to an incorrect
+   *         itemsList being passed.
    */
-  public Order(int orderId, int tableNumber, String itemsList, boolean cancelled) throws InvalidMenuIdException {
+  public Order(int orderId, int tableNumber, String itemsList, boolean cancelled)
+      throws InvalidMenuIdException {
     this.orderId = orderId;
     this.tableNumber = tableNumber;
     this.orderList = this.parseOrderList(itemsList);
@@ -40,7 +43,7 @@ public class Order {
   public ArrayList<MenuItem> getOrder() {
     return this.orderList;
   }
-  
+
   /**
    * A public getter method to return the status of a customer's order.
    *
@@ -49,7 +52,7 @@ public class Order {
   public boolean getOrderStatus() {
     return this.orderCompletedStatus;
   }
-  
+
   /**
    * A public method to change the status of a customer's order.
    */

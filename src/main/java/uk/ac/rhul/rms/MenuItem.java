@@ -18,16 +18,16 @@ public class MenuItem {
   /**
    * The public default constructor for a MenuItem.
    *
-   * @param itemId            the int used as a primary key.
-   * @param itemName          the String name of the menu item.
-   * @param calories          an int representing the number of calories it has.
-   * @param category          the String category the item belongs to.
-   * @param itemDescription   a String describing the menu item.
+   * @param itemId the int used as a primary key.
+   * @param itemName the String name of the menu item.
+   * @param calories an int representing the number of calories it has.
+   * @param category the String category the item belongs to.
+   * @param itemDescription a String describing the menu item.
    * @param itemImageLocation a String filepath for the image of this menu item.
-   * @param itemPrice         the int used as prices for menu item
+   * @param itemPrice the int used as prices for menu item
    */
   public MenuItem(int itemId, String itemName, int calories, String category, Diet dietType,
-                  String itemDescription, String itemImageLocation, int itemPrice) {
+      String itemDescription, String itemImageLocation, int itemPrice) {
 
     this.itemId = itemId;
     this.itemName = itemName;
@@ -36,7 +36,7 @@ public class MenuItem {
     this.dietType = dietType;
     this.itemDescription = itemDescription;
     this.itemImageLocation = itemImageLocation;
-    this.itemPrice=itemPrice;
+    this.itemPrice = itemPrice;
   }
 
   /**
@@ -102,6 +102,14 @@ public class MenuItem {
     return this.itemImageLocation;
   }
 
+  /**
+   * Below is a getter method for item price.
+   *
+   * @return the price.
+   */
+  public int getprice() {
+    return this.itemPrice;
+  }
 
   /**
    * Creates a string representation of the MenuItem, which is formatted for the SQL Menu table (so
@@ -109,15 +117,6 @@ public class MenuItem {
    *
    * @return A string representing the values in the MenuItem
    */
-
-  /**
-   * Below is a getter method for item price
-   * @return
-   */
-  public int getprice(){
-    return this.itemPrice;
-  }
-
   @Override
   public String toString() {
     String stringForm = this.itemId + ", " + this.itemName + ", " + Integer.toString(this.calories)
@@ -133,7 +132,7 @@ public class MenuItem {
    * @param menuItemValues A string of all the values a menu item needs.
    * @return A MenuItem representation of the string of values provided.
    * @throws ToMenuItemFormatException Thrown when the parameter string menuItemValues is in a bad
-   *                                   format.
+   *         format.
    */
   public static MenuItem toMenuItem(String menuItemValues) throws ToMenuItemFormatException {
     String[] splitValues = menuItemValues.split(", ");
