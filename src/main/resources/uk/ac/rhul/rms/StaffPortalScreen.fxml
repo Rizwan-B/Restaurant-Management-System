@@ -21,6 +21,8 @@
       <ListView id="pendingOrdersList" fx:id="pendingOrdersList" layoutX="40.0" layoutY="129.0" prefHeight="347.0" prefWidth="388.0" />
       <ListView id="confirmedOrdersList" fx:id="claimedOrderList" layoutX="480.0" layoutY="129.0" prefHeight="347.0" prefWidth="388.0" />
       <Button id="claimOrderBtn" fx:id="claimOrderBtn" layoutX="38.0" layoutY="491.0" mnemonicParsing="false" onAction="#claimBtnPressed" text="Claim Order" />
+      <Button fx:id="logOutBtn" layoutX="600.0" layoutY="28.0" mnemonicParsing="false" onAction="#logOut" prefHeight="50.0" prefWidth="115.0" text="Log Out" />
+      <Button fx:id="startScreenBtn" layoutX="755.0" layoutY="28.0" mnemonicParsing="false" onAction="#startScreen" prefHeight="50.0" prefWidth="113.0" text="Start Screen" />
       <Label layoutX="40.0" layoutY="100.0" prefHeight="17.0" prefWidth="126.0" text="Pending Orders:" />
       <Label layoutX="480.0" layoutY="100.0" text="Working On:" />
    </children>

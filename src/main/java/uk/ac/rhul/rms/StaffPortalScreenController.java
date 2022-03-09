@@ -108,6 +108,24 @@ public class StaffPortalScreenController implements ControlledScreen, Initializa
         }
     }
 
+    @FXML
+    void startScreen(ActionEvent event) {
+        this.screensController.setScreen(Main.startScreenID);
+
+    }
+
+    @FXML
+    void logOut(ActionEvent event) {
+        Main.sessionId = null;
+        try {
+            DatabaseConnection.getInstance().createStatement().execute("UPDATE user_table set session_id='NULL' WHERE user_id=" + Main.currentLoggedInUser);
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        Main.currentLoggedInUser = 0;
+        this.screensController.setScreen(Main.loginScreenID);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
