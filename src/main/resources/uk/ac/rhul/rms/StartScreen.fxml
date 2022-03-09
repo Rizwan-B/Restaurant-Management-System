@@ -27,10 +27,6 @@
             <Font name="Bell MT" size="27.0" />
          </font>
       </Button>
-      <ImageView fx:id="MexicanDude" blendMode="DARKEN" fitHeight="150.0" fitWidth="194.0" layoutX="49.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../../../../Desktop/mexican-cook-menu-tacos-cuisine-icon-smiling-latino-chef-national-clothing-poncho-sombrero-mustache-holding-card-80167194.jpg" />
-         </image>
-      </ImageView>
+      <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" layoutX="61.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </Pane>
