@@ -8,31 +8,25 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.LoginScreenController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.LoginScreenController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="354.0" layoutX="343.0" layoutY="131.0" stroke="BLACK" strokeType="INSIDE" width="297.0" />
-      <TextField fx:id="usernameField" layoutX="385.0" layoutY="219.0" prefHeight="39.0" prefWidth="194.0" promptText="Username">
+      <TextField fx:id="usernameField" layoutX="385.0" layoutY="200.0" prefHeight="39.0" prefWidth="194.0" promptText="Username">
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <Button fx:id="loginBtn" layoutX="362.0" layoutY="375.0" mnemonicParsing="false" onAction="#login" prefHeight="63.0" prefWidth="255.0" text="Login">
+      <Button fx:id="loginBtn" layoutX="425.0" layoutY="350.0" mnemonicParsing="false" onAction="#login" prefHeight="40.0" prefWidth="100.0" text="Sign In">
          <font>
-            <Font size="36.0" />
+            <Font name="Bell MT" size="20.0" />
          </font></Button>
-      <PasswordField fx:id="passwordField" layoutX="385.0" layoutY="270.0" prefHeight="39.0" prefWidth="194.0" promptText="Password">
+      <PasswordField fx:id="passwordField" layoutX="385.0" layoutY="250.0" prefHeight="39.0" prefWidth="194.0" promptText="Password">
          <font>
             <Font size="18.0" />
          </font></PasswordField>
-      <Button fx:id="backBtn" layoutX="6.0" layoutY="14.0" mnemonicParsing="false" onAction="#backBtnPressed" prefHeight="46.0" prefWidth="101.0" text="Back">
+      <Button fx:id="backBtn" layoutX="6.0" layoutY="14.0" mnemonicParsing="false" onAction="#backBtnPressed" prefHeight="25.0" prefWidth="70.0" text="Back">
          <font>
-            <Font size="22.0" />
+            <Font name="Bell MT" size="15.0" />
          </font>
       </Button>
-      <Label layoutX="381.0" layoutY="14.0" text="Log In">
-         <font>
-            <Font size="80.0" />
-         </font>
-      </Label>
       <Label fx:id="resultLabel" alignment="CENTER" layoutX="347.0" layoutY="131.0" prefHeight="68.0" prefWidth="290.0" style="-fx-text-fill: red;" textAlignment="CENTER" textFill="RED" wrapText="true">
          <font>
             <Font size="17.0" />

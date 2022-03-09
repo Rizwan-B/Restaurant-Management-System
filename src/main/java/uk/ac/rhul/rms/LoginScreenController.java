@@ -1,18 +1,24 @@
 package uk.ac.rhul.rms;
 
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
+import java.io.File;
+import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 /**
  * The screen controller for the login screen implementing the ControlledScreen Interface.
@@ -22,7 +28,7 @@ import java.sql.SQLException;
  *
  */
 
-public class LoginScreenController implements ControlledScreen {
+public class LoginScreenController implements ControlledScreen, Initializable {
 
   ScreensController screensController;
 
@@ -53,6 +59,9 @@ public class LoginScreenController implements ControlledScreen {
 
   @FXML
   private Label resultLabel;
+
+  @FXML
+  private Pane pane;
 
   /**
    * Back button.
@@ -132,6 +141,15 @@ public class LoginScreenController implements ControlledScreen {
     } catch (SQLException | NoSuchAlgorithmException | InvalidKeySpecException e) {
       System.out.println(e.toString());
     }
+  }
+
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    File file = new File("src/main/resources/uk/ac/rhul/rms/media/login screen.png");
+    Image image = new Image(file.toURI().toString());
+    BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1,1, true, true, false,false));
+    Background background = new Background(backgroundImage);
+    pane.setBackground(background);
   }
 }
 
