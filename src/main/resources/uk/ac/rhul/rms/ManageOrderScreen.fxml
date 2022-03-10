@@ -34,8 +34,8 @@
             <Font name="Bookman Old Style" size="15.0" />
          </font>
       </Text>
-      <ListView fx:id="displayPayment" layoutX="347.0" layoutY="120.0" prefHeight="307.0" prefWidth="240.0" />
-      <Text fx:id="display" layoutX="348.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Status | Order ID | Table Number | Price">
+      <ListView fx:id="displayPayment" layoutX="347.0" layoutY="120.0" prefHeight="299.0" prefWidth="295.0" />
+      <Text fx:id="display" layoutX="348.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Status | Order ID | Table Number | Price| Order Time">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>

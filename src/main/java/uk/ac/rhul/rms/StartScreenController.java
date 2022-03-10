@@ -54,6 +54,10 @@ public class StartScreenController implements ControlledScreen, Initializable {
   @FXML
   private Pane pane;
 
+  @FXML
+  private ImageView image;
+
+
   /**
    * this loads menu screen once menu is clicked.
    * @param event load menu screen

@@ -15,6 +15,8 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.time.LocalTime;
 import java.util.*;
 
 /**
@@ -152,6 +154,10 @@ public class BasketScreenController implements ControlledScreen, Initializable {
           Alert alert = new Alert(Alert.AlertType.NONE, "Payment complete, Thank You for visiting!",
               ButtonType.OK);
           alert.showAndWait();
+          long now = System.currentTimeMillis();
+          Time time= new Time(now);
+          System.out.println(time);
+          String t = time.toString();
           String paymentStatus = "paid";
           String table = tableNo.getText().toString();
           int intTable = Integer.parseInt(table);
@@ -160,7 +166,7 @@ public class BasketScreenController implements ControlledScreen, Initializable {
           int order_id= rand.nextInt(100);
           DatabaseConnection.getInstance().createStatement()
                   .execute("INSERT INTO payments VALUES('" + paymentStatus + "','"+order_id
-                          + "', '" + intTable +"', '"+x+ "'); ");
+                          + "', '" + intTable +"', '"+x+"', '"+ t+ "'); ");
           this.screensController.setScreen(Main.startScreenID);
         }
       }
@@ -178,6 +184,10 @@ public class BasketScreenController implements ControlledScreen, Initializable {
           Alert alert = new Alert(Alert.AlertType.NONE,
                   "Please head to the tills, Thank you for visiting!", ButtonType.OK);
           alert.showAndWait();
+          long now = System.currentTimeMillis();
+          Time time= new Time(now);
+          System.out.println(time);
+          String t = time.toString();
           String paymentStatus = "unpaid";
           String table = tableNo.getText().toString();
           int intTable = Integer.parseInt(table);
@@ -186,7 +196,7 @@ public class BasketScreenController implements ControlledScreen, Initializable {
           int order_id= rand.nextInt(100);
           DatabaseConnection.getInstance().createStatement()
                   .execute("INSERT INTO payments VALUES('" + paymentStatus + "','"+order_id
-                          + "', '" + intTable +"', '"+x+ "'); ");
+                          + "', '" + intTable +"', '"+x+"', '"+ t+ "'); ");
           this.screensController.setScreen(Main.startScreenID);
         }
 

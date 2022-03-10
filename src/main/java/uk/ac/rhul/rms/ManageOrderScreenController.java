@@ -143,7 +143,7 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
     try {
       while (unPaidOrders.next()) {
         displayPayment.getItems().add(unPaidOrders.getString(1) + " | " + unPaidOrders.getString(2)
-            + " | " + unPaidOrders.getString(3));
+            + " | " + unPaidOrders.getString(3) + " | " + unPaidOrders.getString(4) + " | " + unPaidOrders.getString(5));
 
       }
     } catch (SQLException e) {
