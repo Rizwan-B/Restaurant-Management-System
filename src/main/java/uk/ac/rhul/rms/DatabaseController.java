@@ -426,7 +426,10 @@ public class DatabaseController {
    */
   public static ArrayList<Order> getOrders(Connection connection)
       throws SQLException, InvalidMenuIdException {
-    ResultSet result = executeQuery(connection, "SELECT * FROM orders_table WHERE status = 0");
+    ResultSet result = executeQuery(connection, "SELECT * FROM orders_table " +
+        "LEFT OUTER JOIN " +
+        "confirmed_orders ON orders_table.order_id = confirmed_orders.order_id " +
+        "WHERE status = 0");
     ArrayList<Order> orders = new ArrayList<>();
 
     int orderId;
