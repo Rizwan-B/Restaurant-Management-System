@@ -14,6 +14,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * The Screen Controller for the staff landing.
+ *
+ * @author Lucas Kimber
+ */
 public class StaffPortalScreenController implements ControlledScreen, Initializable {
 
     private ScreensController screensController;
@@ -29,7 +34,7 @@ public class StaffPortalScreenController implements ControlledScreen, Initializa
     }
 
     /**
-     * below are button and list views for staff portal.
+     * Below are button and list views for staff portal.
      */
     @FXML
     private Button backBtn;
@@ -59,7 +64,7 @@ public class StaffPortalScreenController implements ControlledScreen, Initializa
     }
 
     /**
-     * this method is for kitchen staff to choose incoming orders.
+     * This method is for kitchen staff to choose incoming orders.
      * @param event adds claimed order to working on
      * @throws InvalidMenuIdException
      * @throws SQLException
@@ -68,6 +73,10 @@ public class StaffPortalScreenController implements ControlledScreen, Initializa
     void claimBtnPressed(ActionEvent event) throws InvalidMenuIdException, SQLException {
         Connection connection = DatabaseConnection.getInstance();
         String selectedOrder = this.pendingOrdersList.getSelectionModel().getSelectedItems().toString();
+
+        int index = this.pendingOrdersList.getSelectionModel().getSelectedIndex();
+        this.pendingOrdersList.getItems().remove(index);
+
         String[] splitId = selectedOrder.split(" - ");
         Order order = DatabaseController.getOrder(connection, Integer.valueOf(splitId[0].substring(1)));
 
