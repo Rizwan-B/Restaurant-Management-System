@@ -8,9 +8,9 @@ package uk.ac.rhul.rms;
 public class MenuItem2 {
   private int itemId;
   private String itemName;
-  private String itemDescription;
-  private String itemCategory;
   private int itemCalories;
+  private String itemCategory;
+  private String itemDescription;
   private String itemImageLocation;
   private int itemPrice;
 
@@ -19,19 +19,19 @@ public class MenuItem2 {
    *
    * @param itemId            the int used as a primary key.
    * @param itemName          the String name of the menu item.
-   * @param itemDescription   a String describing the menu item.
-   * @param itemCategory      a string describing category.
    * @param itemCalories      an int of the item calories.
+   * @param itemCategory      a string describing category.
+   * @param itemDescription   a String describing the menu item.
    * @param itemImageLocation an string address for item image.
    * @param itemPrice an int of the item price.
    */
-  public MenuItem2(int itemId, String itemName, String itemDescription, String itemCategory, int itemCalories, String itemImageLocation, int itemPrice) {
+  public MenuItem2(int itemId, String itemName, int itemCalories, String itemCategory, String itemDescription, String itemImageLocation, int itemPrice) {
 
     this.itemId = itemId;
     this.itemName = itemName;
-    this.itemDescription = itemDescription;
-    this.itemCategory = itemCategory;
     this.itemCalories = itemCalories;
+    this.itemCategory = itemCategory;
+    this.itemDescription = itemDescription;
     this.itemImageLocation = itemImageLocation;
     this.itemPrice = itemPrice;
   }
@@ -55,12 +55,12 @@ public class MenuItem2 {
   }
 
   /**
-   * Getter for the description.
+   * Getter for calories.
    *
-   * @return A String describing the menu item.
+   * @return An int of the number of calories.
    */
-  public String getDescription() {
-    return this.itemDescription;
+  public int getCalories() {
+    return this.itemCalories;
   }
 
   /**
@@ -71,14 +71,14 @@ public class MenuItem2 {
   public String getCategory() {
     return this.itemCategory;
   }
-  
+
   /**
-   * Getter for calories.
+   * Getter for the description.
    *
-   * @return An int of the number of calories.
+   * @return A String describing the menu item.
    */
-  public int getCalories() {
-    return this.itemCalories;
+  public String getDescription() {
+    return this.itemDescription;
   }
   
   /**
@@ -107,8 +107,8 @@ public class MenuItem2 {
    */
   @Override
   public String toString() {
-    String stringForm = this.itemId + ", " + this.itemName + ", " + this.itemDescription + ", " 
-  + this.itemCategory + ", " + this.itemCalories + ", " + this.itemImageLocation + ", " + this.itemPrice;
+    String stringForm = this.itemId + ", " + this.itemName + ", " + this.itemCalories + ", " 
+  + this.itemCategory + ", " + this.itemDescription + ", " + this.itemImageLocation + ", " + this.itemPrice;
     return stringForm;
   }
 
@@ -124,8 +124,8 @@ public class MenuItem2 {
   public static MenuItem2 toMenuItem(String menuItemValues) throws ToMenuItemFormatException {
     String[] splitValues = menuItemValues.split(", ");
     try {
-      return new MenuItem2(Integer.parseInt(splitValues[0]), splitValues[1], splitValues[2],
-          splitValues[3], Integer.parseInt(splitValues[4]), splitValues[5], Integer.parseInt(splitValues[6]));
+      return new MenuItem2(Integer.parseInt(splitValues[0]), splitValues[1], Integer.parseInt(splitValues[2]),
+          splitValues[3], splitValues[4], splitValues[5], Integer.parseInt(splitValues[6]));
     } catch (Exception e) {
       throw new ToMenuItemFormatException();
     }

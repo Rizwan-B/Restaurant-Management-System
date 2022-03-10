@@ -1,5 +1,6 @@
 package uk.ac.rhul.rms;
 
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -10,7 +11,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.application.Platform;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import uk.ac.rhul.screenmanager.ControlledScreen;

@@ -25,8 +25,7 @@ public class Main extends Application {
   // The ID and location for the fxml startScreen. Make sure to follow the id naming standard I have
   // used below.
   public static String startScreenID = "StartScreen";
-  public static String startScreenFile =
-      "/uk/ac/rhul/rms/StartScreen.fxml";
+  public static String startScreenFile = "/uk/ac/rhul/rms/StartScreen.fxml";
   public static String menuScreenID = "MenuScreen";
   public static String menuScreenFile = "/uk/ac/rhul/rms/MenuScreen.fxml";
 
@@ -63,18 +62,21 @@ public class Main extends Application {
   public static int oldRecordLength = 0;
 
 
+  /**
+   * 1) if user is not already logged in, log them in and create session id. 2) if user is already
+   * logged in take them to their screen.
+   */
   public static void loginLoader() {
-    // 1) if user is not already logged in, log them in and create session id.
-    // 2) if user is already logged in take them to their screen.
     String user_role = "";
 
-    if ((Main.currentLoggedInUser == 0) || (Main.sessionId == null)) { return; }
+    if ((Main.currentLoggedInUser == 0) || (Main.sessionId == null)) {
+      return;
+    }
 
     ResultSet result = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
-            "SELECT user_role FROM user_table WHERE session_id='"
-                    + Main.sessionId + "'");
+        "SELECT user_role FROM user_table WHERE session_id='" + Main.sessionId + "'");
     try {
-      while(result.next()) {
+      while (result.next()) {
         user_role = result.getString(1);
       }
     } catch (NullPointerException e) {
@@ -107,7 +109,6 @@ public class Main extends Application {
 
     primaryStage.setScene(scene);
     primaryStage.show();
-
   }
 
   /**
@@ -118,5 +119,4 @@ public class Main extends Application {
   public static void main(String[] args) {
     launch(args);
   }
-
 }

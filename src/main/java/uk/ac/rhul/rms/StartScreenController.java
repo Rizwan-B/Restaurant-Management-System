@@ -2,12 +2,21 @@ package uk.ac.rhul.rms;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * The Controller for the Welcome/Start screen implementing the ControlledScreen Interface.
@@ -15,7 +24,7 @@ import java.sql.SQLException;
  * @author Mohamed Yusuf
  *
  */
-public class StartScreenController implements ControlledScreen {
+public class StartScreenController implements ControlledScreen, Initializable {
 
   ScreensController screenController;
 
@@ -41,6 +50,9 @@ public class StartScreenController implements ControlledScreen {
 
   @FXML
   private Button reservationBtn;
+
+  @FXML
+  private Pane pane;
 
   /**
    * this loads menu screen once menu is clicked.
@@ -89,5 +101,14 @@ public class StartScreenController implements ControlledScreen {
       this.screenController.loadScreen(Main.loginScreenID, Main.loginScreenFile);
       this.screenController.setScreen(Main.loginScreenID);
     }
+  }
+
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    File file = new File("src/main/resources/uk/ac/rhul/rms/media/start screen.png");
+    Image image = new Image(file.toURI().toString());
+    BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1,1, true, true, false,false));
+    Background background = new Background(backgroundImage);
+    pane.setBackground(background);
   }
 }
