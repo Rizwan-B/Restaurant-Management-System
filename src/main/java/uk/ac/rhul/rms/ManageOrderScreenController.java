@@ -66,6 +66,9 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
   @FXML
   private Text display;
 
+  @FXML
+  private Text text;
+
   /**
    * Once back button is clicked waiter portal screen is loaded.
    *
@@ -126,7 +129,7 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
       while (allOrders.next()) {
         if (allOrders.getString(4).equals("0")) {
           orderList.getItems().add(allOrders.getString(1) + " | " + allOrders.getString(2) + " | "
-              + allOrders.getString(3));
+              + allOrders.getString(4));
         }
       }
     } catch (SQLException e) {
@@ -187,9 +190,11 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
 
     int index_main = this.orderList.getSelectionModel().getSelectedIndex();
     String selected_item = this.orderList.getSelectionModel().getSelectedItem();
-    String[] split = selected_item.split("|");
+    String[] split = selected_item.split(" | ");
     String order_id = split[0];
+
     int orderID = Integer.parseInt(order_id);
+
 
     if (index_main >= 0) {
       this.orderList.getItems().remove(index_main);

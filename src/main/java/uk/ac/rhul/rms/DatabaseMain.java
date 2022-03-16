@@ -263,7 +263,7 @@ public class DatabaseMain {
                 "table_no int NOT NULL," +
                 "orders_list varchar(100)," +
                 "status number(2) NOT NULL," +  // 0 means in progress, 1 means cancelled, 2 means delivered.
-                "quantity int NOT NULL,"+
+                "quantity int,"+
                 "PRIMARY KEY(order_id));");
 
         dropTables(connect, "seat_no");
