@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 
+import javax.swing.*;
 import java.awt.*;
 import java.sql.SQLException;
 
@@ -50,6 +51,14 @@ public class AdminScreenController implements ControlledScreen {
     this.screensController.loadScreen(Main.manageOrderScreenID, Main.manageOrderScreenFile);
     this.screensController.setScreen(Main.manageOrderScreenID);
   }
+
+
+  @FXML
+  void addStaffBtnPressed(ActionEvent event) {
+    this.screensController.loadScreen(Main.addStaffMemberScreenID, Main.addStaffMemberScreenFile);
+    this.screensController.setScreen(Main.addStaffMemberScreenID);
+  }
+
 
   @FXML
   void logOut(ActionEvent event) {

@@ -237,13 +237,13 @@ public class DatabaseMain {
             + ");");
         
         dropTables(connect, "user_table;");
-        createsTable(connect, "user_table(user_id int NOT NULL,"
+        createsTable(connect, "user_table(user_id INTEGER PRIMARY KEY AUTOINCREMENT,"
                               + "user_name varchar(1000) NOT NULL,"
                               + "password varchar(1000) NOT NULL,"
                               + "user_role varchar(1000) NOT NULL,"
-                              + "session_id varchar(1000)," // NULL means not logged it.
-                              + "busy number(1) NOT NULL," // 1 means yes 0 means no.
-                              + "PRIMARY KEY(user_id));");
+                              + "session_id varchar(1000)," // NULL means not logged in.
+                              + "busy number(1) NOT NULL);");// 1 means yes 0 means no.
+
         dropTables(connect, "reservations;");
         createsTable(connect, "reservations (reservation_id int NOT NULL,"
                                             + "customer_name varchar(1000) NOT NULL,"

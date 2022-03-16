@@ -18,7 +18,7 @@
         <Button fx:id="changeMenu" layoutX="5.0" layoutY="148.0" mnemonicParsing="false" onAction="#changeMenuPressed" prefHeight="30.0" prefWidth="200.0" text="Change Menu" />
         <Button fx:id="logOutBtn" layoutX="14.0" layoutY="34.0" mnemonicParsing="false" onAction="#logOut" prefHeight="50.0" prefWidth="115.0" text="Log Out" />
         <Button fx:id="startScreenBtn" layoutX="146.0" layoutY="34.0" mnemonicParsing="false" onAction="#startScreen" prefHeight="50.0" prefWidth="113.0" text="Start Screen" />
-      <Button layoutX="5.0" layoutY="243.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Add Staff Member" />
+      <Button fx:id="addStaffBtn" layoutX="5.0" layoutY="243.0" mnemonicParsing="false" onAction="#addStaffBtnPressed" prefHeight="30.0" prefWidth="200.0" text="Add Staff Member" />
       <Button layoutX="5.0" layoutY="295.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Delete Staff Member" />
     </children>
 </Pane>
