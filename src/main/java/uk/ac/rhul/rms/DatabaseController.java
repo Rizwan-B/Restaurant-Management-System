@@ -462,6 +462,11 @@ public class DatabaseController {
             + ", " + String.valueOf(order.getOrder().getOrderId()) + ");");
   }
 
+  public static void markOrderComplete(Connection connection, Order order) {
+    executeUpdate(connection, "UPDATE orders_table SET status = 2 WHERE order_id = " +
+        String.valueOf(order.getOrderId()));
+  }
+
   /**
    * Inserts a new temporary order into the orders_table.
    *
