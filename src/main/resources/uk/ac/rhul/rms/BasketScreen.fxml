@@ -32,6 +32,6 @@
       <Button fx:id="placeOrder" layoutX="421.0" layoutY="405.0" mnemonicParsing="false" onAction="#getPayment" prefHeight="26.0" prefWidth="85.0" text="Place Order" />
       <Text fx:id="responseText" layoutX="627.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="162.40004882812514" />
       <Text fx:id="total" layoutX="186.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL- " />
-      <Text fx:id="totalPrice" layoutX="229.0" layoutY="422.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="43.19999999999993" />
+      <Text fx:id="totalPrice" layoutX="229.0" layoutY="429.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="43.19999999999993" />
    </children>
 </Pane>
