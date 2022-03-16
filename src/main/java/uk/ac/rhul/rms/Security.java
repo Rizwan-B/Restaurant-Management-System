@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter;
  *
  * @author Mohamed Yusuf
  */
-public class Hash {
+public class Security {
 
   private String password;
   private String username;
@@ -28,7 +28,7 @@ public class Hash {
    * @param username username.
    * @param password password.
    */
-  public Hash(String username, String password) {
+  public Security(String username, String password) {
     this.username = username;
     this.password = password;
     this.length = 512;

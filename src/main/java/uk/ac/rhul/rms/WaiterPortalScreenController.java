@@ -259,6 +259,7 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         this.fillUserData(DatabaseController.executeQuery(DatabaseConnection.getInstance(), "SELECT user_name, busy FROM user_table WHERE user_id=" + Main.currentLoggedInUser));
 
         if (this.waiterStatus.getText().equals("free")) {

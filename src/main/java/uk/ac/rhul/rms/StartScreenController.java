@@ -95,7 +95,8 @@ public class StartScreenController implements ControlledScreen, Initializable {
             this.screenController.loadScreen(Main.waiterPortalScreenID, Main.WaiterPortalScreenFile);
             this.screenController.setScreen(Main.waiterPortalScreenID);
           } else {
-            System.out.println("admin.");
+            this.screenController.loadScreen(Main.adminPortalScreenId, Main.adminPortalScreenFile);
+            this.screenController.setScreen(Main.adminPortalScreenId);
           }
         }
       } catch (SQLException e) {

@@ -47,6 +47,9 @@ public class Main extends Application {
   public static String waiterPortalScreenID = "waiterPortal";
   public static String WaiterPortalScreenFile = "/uk/ac/rhul/rms/WaiterPortalScreen.fxml";
 
+  public static String adminPortalScreenId = "adminPoltal";
+  public static String adminPortalScreenFile = "/uk/ac/rhul/rms/AdminScreen.fxml";
+
   public static String manageOrderScreenID = "ManageOrderScreen";
   public static String manageOrderScreenFile = "/uk/ac/rhul/rms/ManageOrderScreen.fxml";
 
@@ -92,7 +95,9 @@ public class Main extends Application {
       Main.mainScreenController.loadScreen(Main.waiterPortalScreenID, Main.WaiterPortalScreenFile);
       Main.mainScreenController.setScreen(Main.waiterPortalScreenID);
     } else {
-      System.out.println("Admin screen not yet created.");
+      System.out.println("loading");
+      Main.mainScreenController.loadScreen(Main.adminPortalScreenId, Main.adminPortalScreenFile);
+      Main.mainScreenController.setScreen(Main.adminPortalScreenId);
     }
   }
 

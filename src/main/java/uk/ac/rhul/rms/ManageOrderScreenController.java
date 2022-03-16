@@ -70,14 +70,13 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
   private Text text;
 
   /**
-   * Once back button is clicked waiter portal screen is loaded.
+   * Once back button is clicked Logged Screen is loaded.
    *
    * @param event waiter portal screen is loaded.
    */
   @FXML
   void backBtnPressed(ActionEvent event) {
-    this.screensController.setScreen(Main.waiterPortalScreenID);
-    this.screensController.unloadScreen(Main.manageOrderScreenID);
+    Main.loginLoader();
   }
 
   /**

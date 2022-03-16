@@ -107,17 +107,19 @@ public class LoginScreenController implements ControlledScreen, Initializable {
   void login(ActionEvent event) {
     String username = usernameField.getText();
     String password = passwordField.getText();
-    Hash security = new Hash(username, password);
+    Security security = new Security(username, password);
+    System.out.println(username);
+    System.out.println(password);
 
 
 
     // Grabbing values above this.
 
-
     try {
       ResultSet loginResult = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
           "SELECT user_id, session_id FROM user_table WHERE user_name='" + username
               + "' AND password='" + security.getHashPassword() + "'");
+      System.out.println(security.getHashPassword());
       while (loginResult.next()) {
         Main.currentLoggedInUser = loginResult.getInt(1);
         if (!loginResult.getString(2).equals("NULL")) {
@@ -125,6 +127,7 @@ public class LoginScreenController implements ControlledScreen, Initializable {
           return;
         }
       }
+      System.out.println(Main.currentLoggedInUser);
 
       if (Main.currentLoggedInUser == 0) {
         System.out.println("username or password incorrect.");

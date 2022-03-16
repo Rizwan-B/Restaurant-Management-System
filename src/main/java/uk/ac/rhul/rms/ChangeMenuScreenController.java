@@ -196,14 +196,15 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
   }
 
   /**
-   * This method loads the waiter portal screen when back button is pressed.
+   * This method loads the Logged Screen when back button is pressed.
    *
    * @param event back button loads waiter portal
    */
   @FXML
   void backBtnPressed(ActionEvent event) {
-    this.screensController.loadScreen(Main.waiterPortalScreenID, Main.WaiterPortalScreenFile);
-    this.screensController.setScreen(Main.waiterPortalScreenID);
+//    this.screensController.loadScreen(Main.waiterPortalScreenID, Main.WaiterPortalScreenFile);
+//    this.screensController.setScreen(Main.waiterPortalScreenID);
+    Main.loginLoader();
   }
 
   /**
