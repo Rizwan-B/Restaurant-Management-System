@@ -462,6 +462,12 @@ public class DatabaseController {
             + ", " + String.valueOf(order.getOrder().getOrderId()) + ");");
   }
 
+  /**
+   * A function for marking a given order as complete.
+   *
+   * @param connection The connection to the database.
+   * @param order The order being marked as complete.
+   */
   public static void markOrderComplete(Connection connection, Order order) {
     executeUpdate(connection, "UPDATE orders_table SET status = 2 WHERE order_id = " +
         String.valueOf(order.getOrderId()));

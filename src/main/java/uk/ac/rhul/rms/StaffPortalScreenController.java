@@ -145,6 +145,8 @@ public class StaffPortalScreenController implements ControlledScreen, Initializa
 
         String[] splitId = selectedOrder.split(" - ");
         Order order = DatabaseController.getOrder(connection, Integer.valueOf(splitId[0].substring(1)));
+
+        DatabaseController.markOrderComplete(connection, order);
     }
 
     @FXML
