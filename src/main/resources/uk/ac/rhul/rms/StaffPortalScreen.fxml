@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.StaffPortalScreenController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.StaffPortalScreenController">
    <children>
       <Label layoutX="344.0" layoutY="229.0">
          <font>
@@ -25,5 +25,7 @@
       <Button fx:id="startScreenBtn" layoutX="755.0" layoutY="28.0" mnemonicParsing="false" onAction="#startScreen" prefHeight="50.0" prefWidth="113.0" text="Start Screen" />
       <Label layoutX="40.0" layoutY="100.0" prefHeight="17.0" prefWidth="126.0" text="Pending Orders:" />
       <Label layoutX="480.0" layoutY="100.0" text="Working On:" />
+      <Button id="markCompleteBtn" fx:id="markCompletedBtn" layoutX="480.0" layoutY="491.0" mnemonicParsing="false" onAction="#markCompletedBtnPressed" text="Mark Completed" />
+      <Button id="refreshBtn" fx:id="refreshBtn" layoutX="154.0" layoutY="491.0" mnemonicParsing="false" onAction="#refreshBtnPressed" text="Refresh" />
    </children>
 </Pane>

@@ -37,9 +37,6 @@ public class StaffPortalScreenController implements ControlledScreen, Initializa
      * Below are button and list views for staff portal.
      */
     @FXML
-    private Button backBtn;
-
-    @FXML
     private ListView<String> pendingOrdersList;
 
     @FXML
@@ -133,6 +130,22 @@ public class StaffPortalScreenController implements ControlledScreen, Initializa
         }
         Main.currentLoggedInUser = 0;
         this.screensController.setScreen(Main.loginScreenID);
+    }
+
+    @FXML
+    void markCompletedBtnPressed(ActionEvent event) {
+
+    }
+
+    @FXML
+    void refreshBtnPressed(ActionEvent event) {
+        try {
+            loadOrders();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (InvalidMenuIdException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
