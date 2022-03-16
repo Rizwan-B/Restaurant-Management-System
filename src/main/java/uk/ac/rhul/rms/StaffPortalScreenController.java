@@ -12,6 +12,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Queue;
 import java.util.ResourceBundle;
 
 /**
@@ -124,7 +125,8 @@ public class StaffPortalScreenController implements ControlledScreen, Initializa
     void logOut(ActionEvent event) {
         Main.sessionId = null;
         try {
-            DatabaseConnection.getInstance().createStatement().execute("UPDATE user_table set session_id='NULL' WHERE user_id=" + Main.currentLoggedInUser);
+            DatabaseConnection.getInstance().createStatement().execute("UPDATE user_table set session_id='NULL' " +
+                "WHERE user_id=" + Main.currentLoggedInUser);
         } catch (SQLException e) {
             System.out.println(e.toString());
         }
@@ -133,8 +135,16 @@ public class StaffPortalScreenController implements ControlledScreen, Initializa
     }
 
     @FXML
-    void markCompletedBtnPressed(ActionEvent event) {
+    void markCompletedBtnPressed(ActionEvent event) throws InvalidMenuIdException, SQLException {
+        Connection connection = DatabaseConnection.getInstance();
 
+        String selectedOrder = this.claimedOrderList.getSelectionModel().getSelectedItems().toString();
+
+        int index = this.claimedOrderList.getSelectionModel().getSelectedIndex();
+        this.claimedOrderList.getItems().remove(index);
+
+        String[] splitId = selectedOrder.split(" - ");
+        Order order = DatabaseController.getOrder(connection, Integer.valueOf(splitId[0].substring(1)));
     }
 
     @FXML
