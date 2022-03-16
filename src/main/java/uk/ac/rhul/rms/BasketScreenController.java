@@ -157,9 +157,7 @@ public class BasketScreenController implements ControlledScreen, Initializable {
           alert.showAndWait();
 
         } else {
-          Alert alert = new Alert(Alert.AlertType.NONE, "Payment complete, Thank You for visiting!",
-              ButtonType.OK);
-          alert.showAndWait();
+
           long now = System.currentTimeMillis();
           Time time= new Time(now);
           System.out.println(time);
@@ -170,6 +168,12 @@ public class BasketScreenController implements ControlledScreen, Initializable {
           String x = totalPrice.getText();
           Random rand = new Random();
           int order_id= rand.nextInt(100);
+          Alert order = new Alert(Alert.AlertType.NONE,
+                  "Your Order Number is " + order_id, ButtonType.OK);
+          order.showAndWait();
+          Alert alert = new Alert(Alert.AlertType.NONE, "Payment complete, Thank You for visiting!",
+                  ButtonType.OK);
+          alert.showAndWait();
           DatabaseConnection.getInstance().createStatement()
                   .execute("INSERT INTO payments VALUES('" + paymentStatus + "','"+order_id
                           + "', '" + intTable +"', '"+x+"', '"+ t+ "'); ");
@@ -190,9 +194,6 @@ public class BasketScreenController implements ControlledScreen, Initializable {
           Alert alert = new Alert(Alert.AlertType.NONE, "Wrong Table Number!!", ButtonType.OK);
           alert.showAndWait();
         }else{
-          Alert alert = new Alert(Alert.AlertType.NONE,
-                  "Please head to the tills, Thank you for visiting!", ButtonType.OK);
-          alert.showAndWait();
           long now = System.currentTimeMillis();
           Time time= new Time(now);
           System.out.println(time);
@@ -203,6 +204,12 @@ public class BasketScreenController implements ControlledScreen, Initializable {
           String x = totalPrice.getText();
           Random rand = new Random();
           int order_id= rand.nextInt(100);
+          Alert order = new Alert(Alert.AlertType.NONE,
+                  "Your Order Number is " + order_id, ButtonType.OK);
+          order.showAndWait();
+          Alert alert = new Alert(Alert.AlertType.NONE,
+                  "Please head to the tills, Thank you for visiting!", ButtonType.OK);
+          alert.showAndWait();
           DatabaseConnection.getInstance().createStatement()
                   .execute("INSERT INTO payments VALUES('" + paymentStatus + "','"+order_id
                           + "', '" + intTable +"', '"+x+"', '"+ t+ "'); ");

@@ -41,10 +41,5 @@
          </font>
       </Text>
       <Button fx:id="paid" layoutX="535.0" layoutY="437.0" mnemonicParsing="false" onAction="#paidOrder" text="Delete" />
-      <Text fx:id="text" layoutX="14.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order ID | Table No | Status Order">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Text>
     </children>
 </Pane>

@@ -108,7 +108,7 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
       try {
         ObservableList selectedItem = orderList.getSelectionModel().getSelectedIndices();
         int orderId = Integer.parseInt(
-            orderList.getItems().get(convertToInt(selectedItem.toString())).split("|")[0].trim());
+            orderList.getItems().get(convertToInt(selectedItem.toString())).split(" | ")[0].trim());
 
         DatabaseController.cancelOrder(DatabaseConnection.getInstance(), orderId);
         this.orderList.getItems().clear();
