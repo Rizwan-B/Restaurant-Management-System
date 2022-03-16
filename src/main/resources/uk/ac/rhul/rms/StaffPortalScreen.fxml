@@ -25,7 +25,7 @@
       <Button fx:id="startScreenBtn" layoutX="755.0" layoutY="28.0" mnemonicParsing="false" onAction="#startScreen" prefHeight="50.0" prefWidth="113.0" text="Start Screen" />
       <Label layoutX="40.0" layoutY="100.0" prefHeight="17.0" prefWidth="126.0" text="Pending Orders:" />
       <Label layoutX="480.0" layoutY="100.0" text="Working On:" />
-      <Button id="claimOrderBtn" fx:id="claimOrderBtn1" layoutX="480.0" layoutY="491.0" mnemonicParsing="false" onAction="#claimBtnPressed" text="Mark Completed" />
-      <Button id="claimOrderBtn" fx:id="claimOrderBtn2" layoutX="154.0" layoutY="491.0" mnemonicParsing="false" onAction="#claimBtnPressed" text="Refresh" />
+      <Button id="markCompleteBtn" fx:id="markCompletedBtn" layoutX="480.0" layoutY="491.0" mnemonicParsing="false" onAction="#markCompletedBtnPressed" text="Mark Completed" />
+      <Button id="refreshBtn" fx:id="refreshBtn" layoutX="154.0" layoutY="491.0" mnemonicParsing="false" onAction="#refreshBtnPressed" text="Refresh" />
    </children>
 </Pane>
