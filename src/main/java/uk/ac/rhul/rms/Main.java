@@ -59,6 +59,9 @@ public class Main extends Application {
   public static String addItemScreenID = "AddItem";
   public static String addItemScreenFile = "/uk/ac/rhul/rms/AddItem.fxml";
 
+  public static String addStaffMemberScreenID = "AddStaffMemeber";
+  public static String addStaffMemberScreenFile = "/uk/ac/rhul/rms/AddStaffMemberScreen.fxml";
+
   public static int currentLoggedInUser = 0;
   public static String sessionId = null;
   public static Thread workerThread;
