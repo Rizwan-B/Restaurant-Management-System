@@ -124,5 +124,6 @@ public class AddStaffMemberScreenController implements ControlledScreen, Initial
   public void initialize(URL location, ResourceBundle resources) {
     ObservableList<String> list = FXCollections.observableArrayList("WAITER", "STAFF", "ADMIN");
     roleChoiceBox.setItems(list);
+    System.out.println("sfdojdsoij");
   }
 }
