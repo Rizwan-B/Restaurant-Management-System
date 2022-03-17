@@ -71,6 +71,7 @@ public class Main extends Application {
   public static int oldRecordLength = 0;
 
 
+
   /**
    * 1) if user is not already logged in, log them in and create session id. 2) if user is already
    * logged in take them to their screen.

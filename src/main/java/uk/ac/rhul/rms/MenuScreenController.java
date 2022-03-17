@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 import java.util.HashSet;
@@ -77,6 +78,16 @@ public class MenuScreenController implements ControlledScreen, Initializable {
 
   @FXML
   private CheckBox wheat;
+
+  @FXML
+  private Text track;
+
+  @FXML
+  private Text layOut;
+
+  @FXML
+  private ListView<String> TrackOrder;
+
 
   /**
    * Once back button is pressed start screen is bought up.
