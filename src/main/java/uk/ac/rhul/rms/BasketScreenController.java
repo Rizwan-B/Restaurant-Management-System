@@ -163,7 +163,7 @@ public class BasketScreenController implements ControlledScreen, Initializable {
           System.out.println(time);
           String t = time.toString();
           String paymentStatus = "paid";
-          String table = tableNo.getText().toString();
+          String table = tableNo.getText();
           int intTable = Integer.parseInt(table);
           String x = totalPrice.getText();
           Random rand = new Random();
@@ -177,6 +177,9 @@ public class BasketScreenController implements ControlledScreen, Initializable {
           DatabaseConnection.getInstance().createStatement()
                   .execute("INSERT INTO payments VALUES('" + paymentStatus + "','"+order_id
                           + "', '" + intTable +"', '"+x+"', '"+ t+ "'); ");
+
+          String allItems = this.orderItems.getItems().toString();
+          System.out.println(allItems);
           DatabaseConnection.getInstance().createStatement()
                   .execute("INSERT INTO orders_table(order_id, table_no,status) VALUES('" + order_id
                           + "', '" + intTable +"', '0'); ");
@@ -269,7 +272,6 @@ public class BasketScreenController implements ControlledScreen, Initializable {
   @FXML
   void getItems() throws SQLException, InvalidMenuIdException {
     String[] items = DatabaseController.getTempOrder(DatabaseConnection.getInstance()).split("-");
-
     for (int i = 0; i < items.length; i = i + 2) {
       list.add(items[i]);
     }

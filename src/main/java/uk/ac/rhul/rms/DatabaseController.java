@@ -527,4 +527,15 @@ public class DatabaseController {
     }
     return workingOn;
   }
+
+  /**
+   * Takes an Order object and inserts it into the database.
+   *
+   * @param connection The connection to the database.
+   * @param order The Order object to be inserted.
+   */
+  public static void addOrder(Connection connection, Order order) {
+    executeUpdate(connection, "INSERT INTO orders_table (table_no, orders_list, status, quantity) VALUES" +
+        " (" + String.valueOf(order.getOrderId()) + ", " + order.getOrder() + ", 0, 1);");
+  }
 }
