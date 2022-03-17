@@ -67,6 +67,13 @@
                </font>
             </Label>
             <ComboBox fx:id="quantity" layoutX="547.0" layoutY="503.0" prefHeight="26.0" prefWidth="31.0" promptText="1" />
+            <Text fx:id="track" layoutX="448.0" layoutY="626.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Track Order:" wrappingWidth="164.6932373046875">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </Text>
+            <ListView fx:id="TrackOrder" layoutX="448.0" layoutY="687.0" prefHeight="245.0" prefWidth="280.0" />
+            <Text fx:id="layOut" layoutX="448.0" layoutY="665.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OrderNumber | Table Number | Order Status | Price" />
          </children></AnchorPane>
   </content>
 </ScrollPane>

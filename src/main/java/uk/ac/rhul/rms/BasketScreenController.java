@@ -216,6 +216,7 @@ public class BasketScreenController implements ControlledScreen, Initializable {
           DatabaseConnection.getInstance().createStatement()
                   .execute("INSERT INTO orders_table(order_id, table_no,status) VALUES('" + order_id
                           + "', '" + intTable +"', '0'); ");
+
           this.screensController.setScreen(Main.startScreenID);
         }
 
