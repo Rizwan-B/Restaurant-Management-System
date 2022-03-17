@@ -2,6 +2,7 @@ package uk.ac.rhul.rms;
 
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -88,6 +89,10 @@ public class MenuScreenController implements ControlledScreen, Initializable {
   @FXML
   private ListView<String> TrackOrder;
 
+  @FXML
+  private Button refresh;
+
+
 
   /**
    * Once back button is pressed start screen is bought up.
@@ -109,6 +114,23 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     addToDB();
     this.screensController.loadScreen(Main.basketScreenID, Main.basketScreenFile);
     this.screensController.setScreen(Main.basketScreenID);
+  }
+
+  @FXML
+  void refreshButton(ActionEvent event){
+    ResultSet orders = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
+            "SELECT * FROM orders_table;");
+    ResultSet payments = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
+            "SELECT * FROM payments;");
+    try {
+      while (orders.next() && payments.next()) {
+        TrackOrder.getItems().add(orders.getString(1) + " | " + orders.getString(2)
+                + " | " + orders.getString(4) + " | " + payments.getString(4));
+
+      }
+    } catch (SQLException e) {
+      System.out.println("SQL exception.");
+    }
   }
 
   /**

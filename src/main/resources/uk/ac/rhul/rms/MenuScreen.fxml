@@ -74,6 +74,7 @@
             </Text>
             <ListView fx:id="TrackOrder" layoutX="448.0" layoutY="687.0" prefHeight="245.0" prefWidth="280.0" />
             <Text fx:id="layOut" layoutX="448.0" layoutY="665.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OrderNumber | Table Number | Order Status | Price" />
+            <Button fx:id="refresh" layoutX="637.0" layoutY="936.0" mnemonicParsing="false" onAction="#refreshButton" text="Refresh Orders" />
          </children></AnchorPane>
   </content>
 </ScrollPane>
