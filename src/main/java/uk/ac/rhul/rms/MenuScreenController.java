@@ -118,14 +118,24 @@ public class MenuScreenController implements ControlledScreen, Initializable {
 
   @FXML
   void refreshButton(ActionEvent event){
+    String status = " ";
     ResultSet orders = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
             "SELECT * FROM orders_table;");
     ResultSet payments = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
             "SELECT * FROM payments;");
     try {
       while (orders.next() && payments.next()) {
+        if( orders.getString(4).equals("0")){
+          status = "Confirmed";
+        }
+        if(orders.getString(4).equals("1")){
+          status = "Working On";
+        }
+        if(orders.getString(4).equals("2")){
+          status = "On the Way!";
+        }
         TrackOrder.getItems().add(orders.getString(1) + " | " + orders.getString(2)
-                + " | " + orders.getString(4) + " | " + payments.getString(4));
+                + " | " + status + " | " + payments.getString(4));
 
       }
     } catch (SQLException e) {
