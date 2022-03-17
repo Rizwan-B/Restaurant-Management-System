@@ -11,11 +11,14 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 
+import java.io.File;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -45,6 +48,9 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
 
     @FXML
     private Button waiterStatusBtn;
+
+    @FXML
+    private Pane pane;
 
     @FXML
     private Label waiterStatus;
@@ -265,6 +271,12 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
         if (this.waiterStatus.getText().equals("free")) {
             printAllWaiterCalls();
         }
+
+        File file = new File("src/main/resources/uk/ac/rhul/rms/media/waiter screen.png");
+        Image image = new Image(file.toURI().toString());
+        BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1,1, true, true, false,false));
+        Background background = new Background(backgroundImage);
+        pane.setBackground(background);
 
     }
 }
