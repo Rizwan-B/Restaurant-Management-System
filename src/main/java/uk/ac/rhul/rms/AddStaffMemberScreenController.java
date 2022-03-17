@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import org.w3c.dom.Text;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 
@@ -41,6 +40,9 @@ public class AddStaffMemberScreenController implements ControlledScreen, Initial
 
   @FXML
   private TextField reTypePasswordField;
+
+  @FXML
+  private TextField emailField;
 
 
 
@@ -86,10 +88,11 @@ public class AddStaffMemberScreenController implements ControlledScreen, Initial
     String username = usernameField.getText();
     String password = passwordField.getText();
     String reTypePassword = reTypePasswordField.getText();
+    String email = emailField.getText();
     String role = roleChoiceBox.getSelectionModel().getSelectedItem();
 
     try {
-      if (username.equals("") || password.equals("") || reTypePassword.equals("") || role.equals("")) {
+      if (username.equals("") || password.equals("") || reTypePassword.equals("") || role.equals("") || email.equals("")) {
         System.out.println("Please fill all fields.");
       } else {
         if (!password.equals(reTypePassword)) {
@@ -101,14 +104,13 @@ public class AddStaffMemberScreenController implements ControlledScreen, Initial
           DatabaseConnection.getInstance().createStatement().execute(
               "INSERT INTO user_table(user_name, password, user_role, session_id, busy)" +
                   " VALUES('"+ username + "', '" + hashedPassword + "', '" + role + "', 'NULL', " + "'1'" +")");
+          Mail sendMail = new Mail(email);
+          sendMail.sendConfirmationEmail(username, password);
         }
       }
     } catch (NullPointerException | SQLException | NoSuchAlgorithmException | InvalidKeySpecException e) {
       System.out.println(e.toString());
     }
-
-
-
 
   }
 

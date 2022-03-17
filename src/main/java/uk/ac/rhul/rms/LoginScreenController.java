@@ -111,6 +111,11 @@ public class LoginScreenController implements ControlledScreen, Initializable {
     System.out.println(username);
     System.out.println(password);
 
+    if (!(security.isSqlInjectionSafe(username) && security.isSqlInjectionSafe(password))) {
+      System.out.println("I see what you did there huh!");
+      displayError("I see what you did there huh!");
+      return;
+    }
 
 
     // Grabbing values above this.
@@ -124,13 +129,16 @@ public class LoginScreenController implements ControlledScreen, Initializable {
         Main.currentLoggedInUser = loginResult.getInt(1);
         if (!loginResult.getString(2).equals("NULL")) {
           System.out.println("Someone is already logged into this account.");
+          displayError("Someone is already logged into this account.");
           return;
         }
       }
       System.out.println(Main.currentLoggedInUser);
 
       if (Main.currentLoggedInUser == 0) {
-        System.out.println("username or password incorrect.");
+        System.out.println("Username or Password incorrect.");
+        displayError("Username or Password incorrect.");
+        return;
       }
 
       Main.sessionId = security.getSessionID();
@@ -144,6 +152,10 @@ public class LoginScreenController implements ControlledScreen, Initializable {
     } catch (SQLException | NoSuchAlgorithmException | InvalidKeySpecException e) {
       System.out.println(e.toString());
     }
+  }
+
+  void displayError(String error) {
+    resultLabel.setText(error);
   }
 
   @Override

@@ -5,7 +5,6 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.LoginScreenController">
@@ -27,7 +26,7 @@
             <Font name="Bell MT" size="15.0" />
          </font>
       </Button>
-      <Label fx:id="resultLabel" alignment="CENTER" layoutX="347.0" layoutY="131.0" prefHeight="68.0" prefWidth="290.0" style="-fx-text-fill: red;" textAlignment="CENTER" textFill="RED" wrapText="true">
+      <Label fx:id="resultLabel" alignment="CENTER" layoutX="347.0" layoutY="131.0" prefHeight="68.0" prefWidth="290.0" style="-fx-text-fill: white;" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font size="17.0" />
          </font>
