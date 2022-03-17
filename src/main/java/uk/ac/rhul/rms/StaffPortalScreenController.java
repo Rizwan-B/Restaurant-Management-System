@@ -152,6 +152,7 @@ public class StaffPortalScreenController implements ControlledScreen, Initializa
     @FXML
     void refreshBtnPressed(ActionEvent event) {
         try {
+            this.pendingOrdersList.getItems().clear();
             loadOrders();
         } catch (SQLException e) {
             e.printStackTrace();
