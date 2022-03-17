@@ -114,6 +114,12 @@ public class AddStaffMemberScreenController implements ControlledScreen, Initial
 
   }
 
+  @FXML
+  void deleteUserBtnPressed(ActionEvent event) {
+    this.screensController.loadScreen(Main.deleteUserScreenID, Main.deleteUserScreenFile);
+    this.screensController.setScreen(Main.deleteUserScreenID);
+  }
+
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     ObservableList<String> list = FXCollections.observableArrayList("WAITER", "STAFF", "ADMIN");
