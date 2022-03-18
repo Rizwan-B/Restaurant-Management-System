@@ -1,5 +1,6 @@
 package uk.ac.rhul.rms;
 
+import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -12,6 +13,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
@@ -92,6 +95,13 @@ public class MenuScreenController implements ControlledScreen, Initializable {
   @FXML
   private Button refresh;
 
+  @FXML
+  private Label items;
+
+  @FXML
+  private Pane pane;
+
+  int count = 0;
 
 
   /**
@@ -293,18 +303,22 @@ public class MenuScreenController implements ControlledScreen, Initializable {
 
     for (int i = 0; i < quantity.getSelectionModel().getSelectedItem(); i++) { // Loop to add
                                                                                // quantity desired.
-
       if (starterList.getSelectionModel().getSelectedItem() != null) {
         basketList.getItems().add(starterList.getSelectionModel().getSelectedItem());
-
+        count++;
+        items.setText("(" + count + ")");
       }
-
 
       if (mainList.getSelectionModel().getSelectedItem() != null) {
         basketList.getItems().add(mainList.getSelectionModel().getSelectedItem());
+        count++;
+        items.setText("(" + count + ")");
       }
+
       if (dessertList.getSelectionModel().getSelectedItem() != null) {
         basketList.getItems().add(dessertList.getSelectionModel().getSelectedItem());
+        count++;
+        items.setText("(" + count + ")");
       }
 
 
@@ -358,5 +372,12 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         FXCollections.observableArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
     quantity.setItems(quantityList); // This initialises the drop-down quantity with 3 options 1-10.
     quantity.setValue(1); // Sets the default value of quantity to 1.
+    items.setText("(0)");
+
+    File file = new File("src/main/resources/uk/ac/rhul/rms/media/menu screen.png");
+    Image image = new Image(file.toURI().toString());
+    BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1,1, true, true, false,false));
+    Background background = new Background(backgroundImage);
+    pane.setBackground(background);
   }
 }

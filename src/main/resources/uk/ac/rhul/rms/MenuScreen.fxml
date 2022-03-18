@@ -8,73 +8,64 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1056.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.MenuScreenController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.MenuScreenController">
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" onDragDetected="#add" prefHeight="2000.0" prefWidth="960.0">
+    <AnchorPane fx:id="pane" minHeight="0.0" minWidth="0.0" onDragDetected="#add" prefHeight="540.0" prefWidth="960.0">
          <children>
-            <Label alignment="CENTER" layoutX="-5.0" layoutY="7.0" prefHeight="57.0" prefWidth="947.0" text="Menu">
+            <ListView id="starterList" fx:id="starterList" layoutX="15.0" layoutY="182.0" prefHeight="285.0" prefWidth="277.0" />
+            <Button fx:id="backBtn" layoutX="12.0" layoutY="12.0" mnemonicParsing="false" onAction="#backBtnPressed" prefHeight="31.0" prefWidth="67.0" text="Back">
                <font>
-                  <Font name="Calibri Bold" size="71.0" />
-               </font>
-            </Label>
-            <Label layoutX="7.0" layoutY="83.0" prefHeight="57.0" prefWidth="266.0" text="Starters">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Label>
-            <Label layoutY="488.0" prefHeight="57.0" prefWidth="266.0" text="Main Course">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Label>
-            <Label layoutX="7.0" layoutY="891.0" prefHeight="57.0" prefWidth="266.0" text="Dessert">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Label>
-            <ListView id="starterList" fx:id="starterList" layoutX="24.0" layoutY="137.0" prefHeight="346.0" prefWidth="274.0" />
-            <Button fx:id="backBtn" layoutY="14.0" mnemonicParsing="false" onAction="#backBtnPressed" prefHeight="53.0" prefWidth="227.0" text="Back">
-               <font>
-                  <Font size="29.0" />
+                  <Font name="Baskerville Old Face" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="basketBtn" layoutX="666.0" layoutY="17.0" mnemonicParsing="false" onAction="#basketBtnPressed" prefHeight="53.0" prefWidth="227.0" text="Pay">
+            <Button fx:id="basketBtn" layoutX="745.0" layoutY="18.0" mnemonicParsing="false" onAction="#basketBtnPressed" prefHeight="31.0" prefWidth="188.0" text="Basket    ">
                <font>
-                  <Font size="29.0" />
+                  <Font name="Baskerville Old Face" size="23.0" />
                </font>
             </Button>
-            <ListView id="starterList" fx:id="mainList" layoutX="24.0" layoutY="545.0" prefHeight="346.0" prefWidth="278.0" />
-            <ListView id="starterList" fx:id="dessertList" layoutX="23.0" layoutY="943.0" prefHeight="346.0" prefWidth="277.0" />
-            <Button fx:id="callWaiterBtn" layoutX="442.0" layoutY="99.0" mnemonicParsing="false" onAction="#callWaiterBtnPressed" text="Call Waiter" />
-            <ComboBox fx:id="filterBox" layoutX="163.0" layoutY="99.0" onAction="#filterSelect" prefWidth="150.0" promptText="Non-Vegetarian" />
-            <CheckBox fx:id="peanut" layoutX="815.0" layoutY="187.0" mnemonicParsing="false" onAction="#peanutFilter" text="Peanut" />
-            <CheckBox fx:id="shellfish" layoutX="815.0" layoutY="217.0" mnemonicParsing="false" onAction="#shellfishFilter" text="Shellfish" />
-            <CheckBox fx:id="wheat" layoutX="815.0" layoutY="245.0" mnemonicParsing="false" onAction="#wheatFilter" text="Wheat" />
-            <CheckBox fx:id="dairy" layoutX="815.0" layoutY="273.0" mnemonicParsing="false" onAction="#dairyFilter" text="Dairy" />
-            <Text layoutX="815.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Allergies">
+            <ListView id="starterList" fx:id="mainList" layoutX="336.0" layoutY="182.0" prefHeight="285.0" prefWidth="277.0" />
+            <ListView id="starterList" fx:id="dessertList" layoutX="660.0" layoutY="182.0" prefHeight="285.0" prefWidth="277.0" />
+            <Button fx:id="callWaiterBtn" layoutX="21.0" layoutY="484.0" mnemonicParsing="false" onAction="#callWaiterBtnPressed" text="Call Waiter">
                <font>
-                  <Font size="23.0" />
-               </font>
-            </Text>
-            <ListView fx:id="basketList" layoutX="442.0" layoutY="217.0" prefHeight="263.0" prefWidth="227.0" />
-            <Button fx:id="addSelection" layoutX="442.0" layoutY="504.0" mnemonicParsing="false" onAction="#add" text="Add selection" />
-            <Button fx:id="removeBtn" layoutX="607.0" layoutY="504.0" mnemonicParsing="false" onAction="#remove" text="Remove" />
-            <Label layoutX="514.0" layoutY="178.0" text="Basket">
+                  <Font name="Baskerville Old Face" size="15.0" />
+               </font></Button>
+            <ComboBox fx:id="filterBox" layoutX="83.0" layoutY="91.0" onAction="#filterSelect" prefHeight="22.0" prefWidth="147.0" promptText="Non-Vegetarian" />
+            <CheckBox fx:id="peanut" layoutX="614.0" layoutY="95.0" mnemonicParsing="false" onAction="#peanutFilter" text="Peanut" textFill="WHITE">
+               <font>
+                  <Font name="Baskerville Old Face" size="14.0" />
+               </font></CheckBox>
+            <CheckBox fx:id="shellfish" layoutX="530.0" layoutY="95.0" mnemonicParsing="false" onAction="#shellfishFilter" text="Shellfish" textFill="WHITE">
+               <font>
+                  <Font name="Baskerville Old Face" size="14.0" />
+               </font></CheckBox>
+            <CheckBox fx:id="wheat" layoutX="457.0" layoutY="95.0" mnemonicParsing="false" onAction="#wheatFilter" text="Wheat" textFill="WHITE">
+               <font>
+                  <Font name="Baskerville Old Face" size="14.0" />
+               </font></CheckBox>
+            <CheckBox fx:id="dairy" layoutX="390.0" layoutY="95.0" mnemonicParsing="false" onAction="#dairyFilter" text="Dairy" textFill="WHITE">
+               <font>
+                  <Font name="Baskerville Old Face" size="14.0" />
+               </font></CheckBox>
+            <ListView fx:id="basketList" layoutX="469.0" layoutY="680.0" prefHeight="263.0" prefWidth="227.0" />
+            <Button fx:id="addSelection" layoutX="414.0" layoutY="484.0" mnemonicParsing="false" onAction="#add" text="Add to Basket">
+               <font>
+                  <Font name="Baskerville Old Face" size="15.0" />
+               </font></Button>
+            <Button fx:id="removeBtn" layoutX="541.0" layoutY="484.0" mnemonicParsing="false" onAction="#remove" text="Remove">
+               <font>
+                  <Font name="Baskerville Old Face" size="15.0" />
+               </font></Button>
+            <Label layoutX="530.0" layoutY="644.0" text="Basket">
                <font>
                   <Font name="Calibri" size="31.0" />
                </font>
             </Label>
-            <ComboBox fx:id="quantity" layoutX="547.0" layoutY="503.0" prefHeight="26.0" prefWidth="31.0" promptText="1" />
-            <Text fx:id="track" layoutX="448.0" layoutY="626.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Track Order:" wrappingWidth="164.6932373046875">
+            <Label fx:id="items" layoutX="863.0" layoutY="26.0" text="&lt;count&gt;">
                <font>
-                  <Font name="System Bold" size="23.0" />
-               </font>
-            </Text>
-            <ListView fx:id="TrackOrder" layoutX="448.0" layoutY="687.0" prefHeight="245.0" prefWidth="280.0" />
-            <Text fx:id="layOut" layoutX="448.0" layoutY="665.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OrderNumber | Table Number | Order Status | Price" />
-            <Button fx:id="refresh" layoutX="637.0" layoutY="936.0" mnemonicParsing="false" onAction="#refreshButton" text="Refresh Orders" />
+                  <Font name="Baskerville Old Face" size="23.0" />
+               </font></Label>
+            <ComboBox fx:id="quantity" layoutX="336.0" layoutY="485.0" prefHeight="26.0" prefWidth="50.0" promptText="1" />
          </children></AnchorPane>
   </content>
 </ScrollPane>
