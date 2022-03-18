@@ -3,16 +3,22 @@ package uk.ac.rhul.rms;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
+import javafx.fxml.Initializable;
+import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * A class to add an item to the menu.
  *
  * @author Muqdas
  */
-public class AddItemScreenController implements ControlledScreen {
+public class AddItemScreenController implements ControlledScreen, Initializable {
   private ScreensController screensController;
 
   @Override
@@ -75,6 +81,9 @@ public class AddItemScreenController implements ControlledScreen {
 
   @FXML
   private CheckBox vegetarian;
+
+  @FXML
+  private Pane pane;
 
   /**
    * This method loads MenuScreen once back button is pressed. Back button action is declared in
@@ -186,5 +195,14 @@ public class AddItemScreenController implements ControlledScreen {
       nonVeg.setSelected(false);
       vegan.setSelected(false);
     }
+  }
+
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    File file = new File("src/main/resources/uk/ac/rhul/rms/media/add item screen.png");
+    Image image = new Image(file.toURI().toString());
+    BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1,1, true, true, false,false));
+    Background background = new Background(backgroundImage);
+    pane.setBackground(background);
   }
 }

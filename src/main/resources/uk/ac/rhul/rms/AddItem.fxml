@@ -3,40 +3,41 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.AddItemScreenController">
+<Pane fx:id="pane" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.AddItemScreenController">
    <children>
-      <Button fx:id="backButton" layoutX="30.0" layoutY="35.0" mnemonicParsing="false" onAction="#backBtnPressed" prefHeight="34.0" prefWidth="78.0" text="Back" />
-      <Text fx:id="headLine" fill="#ba4720" layoutX="183.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADDING NEW ITEM TO MENU" textAlignment="CENTER" underline="true" wrappingWidth="286.50152587890625">
+      <Button fx:id="backButton" layoutX="12.0" layoutY="12.0" mnemonicParsing="false" onAction="#backBtnPressed" prefHeight="31.0" prefWidth="67.0" text="Back">
          <font>
-            <Font name="System Bold" size="17.0" />
-         </font>
-      </Text>
-      <TextField fx:id="itemID" layoutX="125.0" layoutY="77.0" prefHeight="23.0" prefWidth="349.0" promptText="ITEM ID" />
-      <TextField fx:id="itemName" layoutX="124.0" layoutY="115.0" prefHeight="17.0" prefWidth="350.0" promptText="ITEM NAME" />
-      <TextField fx:id="calories" layoutX="125.0" layoutY="152.0" prefHeight="23.0" prefWidth="350.0" promptText="CALORIES (KCAL)" />
-      <CheckBox fx:id="starter" layoutX="124.0" layoutY="224.0" mnemonicParsing="false" onAction="#handleCoursetype" text="Starter" />
-      <CheckBox fx:id="main" layoutX="206.0" layoutY="224.0" mnemonicParsing="false" onAction="#handleCoursetype" text="Main" />
-      <CheckBox fx:id="dessert" layoutX="290.0" layoutY="224.0" mnemonicParsing="false" onAction="#handleCoursetype" text="Dessert" />
-      <Text fx:id="chooseOne" layoutX="30.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHOOSE ONE-" underline="true">
+            <Font name="Baskerville Old Face" size="15.0" />
+         </font></Button>
+      <TextField fx:id="itemID" layoutX="297.0" layoutY="149.0" prefHeight="23.0" prefWidth="349.0" promptText="ITEM ID" />
+      <TextField fx:id="itemName" layoutX="296.0" layoutY="187.0" prefHeight="17.0" prefWidth="350.0" promptText="ITEM NAME" />
+      <TextField fx:id="calories" layoutX="297.0" layoutY="224.0" prefHeight="23.0" prefWidth="350.0" promptText="CALORIES (KCAL)" />
+      <CheckBox fx:id="starter" layoutX="392.0" layoutY="297.0" mnemonicParsing="false" onAction="#handleCoursetype" text="Starter" textFill="WHITE" />
+      <CheckBox fx:id="main" layoutX="474.0" layoutY="297.0" mnemonicParsing="false" onAction="#handleCoursetype" text="Main" textFill="WHITE" />
+      <CheckBox fx:id="dessert" layoutX="558.0" layoutY="297.0" mnemonicParsing="false" onAction="#handleCoursetype" text="Dessert" textFill="WHITE" />
+      <Text fx:id="chooseOne" fill="WHITE" layoutX="297.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHOOSE ONE-" underline="true">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
-      <Text fx:id="ChooseDiet" layoutX="30.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHOOSE ONE-" underline="true">
+      <Text fx:id="ChooseDiet" fill="WHITE" layoutX="297.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHOOSE ONE-" underline="true">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
-      <CheckBox fx:id="vegan" layoutX="124.0" layoutY="256.0" mnemonicParsing="false" onAction="#handleDietType" text="Vegan" />
-      <CheckBox fx:id="vegetarian" layoutX="206.0" layoutY="256.0" mnemonicParsing="false" onAction="#handleDietType" text="Vegetarian" />
-      <CheckBox fx:id="nonVeg" layoutX="290.0" layoutY="256.0" mnemonicParsing="false" onAction="#handleDietType" text="Non-Vegetarian" />
-      <TextField fx:id="itemDescription" layoutX="124.0" layoutY="284.0" prefHeight="23.0" prefWidth="350.0" promptText="ITEM DESCRIPTION" />
-      <TextField fx:id="itemImage" layoutX="124.0" layoutY="322.0" prefHeight="16.0" prefWidth="350.0" promptText="ITEM IMAGE LOCATION" />
-      <Button fx:id="addItem" layoutX="449.0" layoutY="361.0" mnemonicParsing="false" onAction="#getText" text="Add" />
-      <TextField fx:id="price" layoutX="124.0" layoutY="187.0" prefHeight="26.0" prefWidth="350.0" promptText="PRICE" />
+      <CheckBox fx:id="vegan" layoutX="392.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleDietType" text="Vegan" textFill="WHITE" />
+      <CheckBox fx:id="vegetarian" layoutX="474.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleDietType" text="Vegetarian" textFill="WHITE" />
+      <CheckBox fx:id="nonVeg" layoutX="558.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleDietType" text="Non-Vegetarian" textFill="WHITE" />
+      <TextField fx:id="itemDescription" layoutX="296.0" layoutY="356.0" prefHeight="23.0" prefWidth="350.0" promptText="ITEM DESCRIPTION" />
+      <TextField fx:id="itemImage" layoutX="296.0" layoutY="394.0" prefHeight="16.0" prefWidth="350.0" promptText="ITEM IMAGE LOCATION" />
+      <Button fx:id="addItem" layoutX="398.0" layoutY="451.0" mnemonicParsing="false" onAction="#getText" prefHeight="28.0" prefWidth="146.0" text="Add Item">
+         <font>
+            <Font name="Baskerville Old Face" size="15.0" />
+         </font></Button>
+      <TextField fx:id="price" layoutX="296.0" layoutY="259.0" prefHeight="26.0" prefWidth="350.0" promptText="PRICE" />
    </children>
-</AnchorPane>
+</Pane>
