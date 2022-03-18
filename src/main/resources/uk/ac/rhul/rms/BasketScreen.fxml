@@ -69,11 +69,11 @@
          <font>
             <Font name="Baskerville Old Face" size="15.0" />
          </font></Text>
-      <Text fx:id="totalPrice" fill="WHITE" layoutX="264.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="43.19999999999993">
+      <Text fx:id="totalPrice" fill="WHITE" layoutX="257.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="43.19999999999993">
          <font>
             <Font name="Baskerville Old Face" size="15.0" />
          </font></Text>
-      <Button fx:id="removeBtn" layoutX="186.0" layoutY="448.0" mnemonicParsing="false" onAction="#remove" text="Remove Item">
+      <Button fx:id="removeBtn" layoutX="307.0" layoutY="421.0" mnemonicParsing="false" onAction="#remove" text="Remove Item">
          <font>
             <Font name="Baskerville Old Face" size="12.0" />
          </font>

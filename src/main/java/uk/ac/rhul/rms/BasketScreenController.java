@@ -254,6 +254,8 @@ public class BasketScreenController implements ControlledScreen, Initializable {
       electronicPayment.setSelected(false);
       cardNumber.setDisable(true);
       holderName.setDisable(true);
+      date.setDisable(true);
+      year.setDisable(true);
       cvcBox.setDisable(true);
     }
   }
@@ -268,6 +270,8 @@ public class BasketScreenController implements ControlledScreen, Initializable {
       tillsCheckBox.setSelected(false);
       cardNumber.setDisable(false);
       holderName.setDisable(false);
+      date.setDisable(false);
+      year.setDisable(false);
       cvcBox.setDisable(false);
     }
   }
