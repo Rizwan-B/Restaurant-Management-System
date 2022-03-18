@@ -136,6 +136,8 @@ public class BasketScreenController implements ControlledScreen, Initializable {
    */
   @FXML
   void getPayment(ActionEvent event) throws SQLException, InvalidMenuIdException {
+    int order_id = DatabaseController.nextInt(DatabaseConnection.getInstance());
+    makeOrder(order_id);
     String tableNumber = tableNo.getText();
     String card_no = cardNumber.getText();
     String holder_no = holderName.getText();
@@ -166,8 +168,6 @@ public class BasketScreenController implements ControlledScreen, Initializable {
           String table = tableNo.getText();
           int intTable = Integer.parseInt(table);
           String x = totalPrice.getText();
-          Random rand = new Random();
-          int order_id= rand.nextInt(100);
           Alert order = new Alert(Alert.AlertType.NONE,
                   "Your Order Number is " + order_id, ButtonType.OK);
           order.showAndWait();
@@ -205,8 +205,6 @@ public class BasketScreenController implements ControlledScreen, Initializable {
           String table = tableNo.getText().toString();
           int intTable = Integer.parseInt(table);
           String x = totalPrice.getText();
-          Random rand = new Random();
-          int order_id= rand.nextInt(100);
           Alert order = new Alert(Alert.AlertType.NONE,
                   "Your Order Number is " + order_id, ButtonType.OK);
           order.showAndWait();
@@ -259,6 +257,35 @@ public class BasketScreenController implements ControlledScreen, Initializable {
       cardNumber.setDisable(false);
       holderName.setDisable(false);
       cvcBox.setDisable(false);
+    }
+  }
+
+  @FXML
+  void makeOrder(int order_id){
+    String orderList = "";
+    try {
+      if (orderItems.getItems().size() != 0) {
+        for (int i = 0; i < orderItems.getItems().size(); i++) {
+          String itemName = orderItems.getItems().get(i);
+
+          System.out.println(itemName.substring(0, itemName.length()-4));
+
+          int itemId = DatabaseController.getItemId(DatabaseConnection.getInstance(),itemName.substring(0, itemName.length()-4));
+
+          orderList += itemId + "-";
+
+        }
+        System.out.println(orderList);
+
+        Order newOrder = new Order(order_id, Integer.parseInt(tableNo.getText()), orderList, false);
+        DatabaseController.addOrder(DatabaseConnection.getInstance(),newOrder);
+      }
+    } catch (InvalidItemNameException e) {
+      e.printStackTrace();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } catch (InvalidMenuIdException e) {
+      e.printStackTrace();
     }
   }
 
