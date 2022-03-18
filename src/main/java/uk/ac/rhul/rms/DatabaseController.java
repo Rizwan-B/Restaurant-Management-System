@@ -296,7 +296,7 @@ public class DatabaseController {
   /**
    * Returns the seat number.
    *
-   * @param connection Conenction.
+   * @param connection Connnection.
    * @return seat number.
    * @throws InvalidMenuIdException Invalid Menu ID.
    */
