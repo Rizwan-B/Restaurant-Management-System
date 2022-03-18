@@ -12,31 +12,70 @@
 
 <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.BasketScreenController">
    <children>
-      <Button fx:id="backBtn" layoutX="21.0" layoutY="20.0" mnemonicParsing="false" onAction="#backBtnPressed" text="Back" />
-      <ListView id="ItemList" fx:id="orderItems" layoutX="186.0" layoutY="162.0" prefHeight="256.0" prefWidth="200.0" />
-      <Label layoutX="269.0" layoutY="131.0" text="Basket" />
-      <Text layoutX="408.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Table No:" />
-      <TextField fx:id="tableNo" layoutX="497.0" layoutY="158.0" />
-      <Text fx:id="paymentMethod" layoutX="399.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Method:" />
-      <CheckBox fx:id="tillsCheckBox" layoutX="413.0" layoutY="224.0" mnemonicParsing="false" onAction="#handleTills" text="Tills" />
-      <CheckBox fx:id="electronicPayment" layoutX="515.0" layoutY="224.0" mnemonicParsing="false" onAction="#handleElectronic" text="Electronic Payment" />
-      <Text fx:id="cardNo" layoutX="412.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CARD NUMBER:" />
-      <TextField fx:id="cardNumber" layoutX="537.0" layoutY="264.0" prefHeight="26.0" prefWidth="266.0" />
-      <Text fx:id="userName" layoutX="412.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CARD HOLDER NAME:" />
-      <TextField fx:id="holderName" layoutX="537.0" layoutY="298.0" prefHeight="26.0" prefWidth="265.0" />
-      <Text fx:id="expiryDate" layoutX="411.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CARD EXPIRY DATE:" />
-      <ComboBox fx:id="date" layoutX="537.0" layoutY="331.0" prefHeight="26.0" prefWidth="78.0" promptText="Month" />
-      <ComboBox fx:id="year" layoutX="634.0" layoutY="331.0" prefHeight="26.0" prefWidth="71.0" promptText="Year" />
-      <Text fx:id="dash" layoutX="621.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\\" wrappingWidth="12.546875" />
-      <Text fx:id="cvc" layoutX="409.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CVC:" />
-      <TextField fx:id="cvcBox" layoutX="536.0" layoutY="363.0" prefHeight="18.0" prefWidth="71.0" />
-      <Button fx:id="placeOrder" layoutX="421.0" layoutY="405.0" mnemonicParsing="false" onAction="#getPayment" prefHeight="26.0" prefWidth="85.0" text="Place Order" />
-      <Text fx:id="responseText" layoutX="627.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="162.40004882812514" />
-      <Text fx:id="total" layoutX="186.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL- " />
-      <Text fx:id="totalPrice" layoutX="229.0" layoutY="429.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="43.19999999999993" />
-      <Button fx:id="removeBtn" layoutX="315.0" layoutY="433.0" mnemonicParsing="false" onAction="#remove" text="Remove">
+      <Button fx:id="backBtn" layoutX="12.0" layoutY="12.0" mnemonicParsing="false" onAction="#backBtnPressed" prefHeight="31.0" prefWidth="67.0" text="Back">
          <font>
             <Font name="Baskerville Old Face" size="15.0" />
+         </font></Button>
+      <ListView id="ItemList" fx:id="orderItems" layoutX="186.0" layoutY="162.0" prefHeight="256.0" prefWidth="200.0" />
+      <Label layoutX="249.0" layoutY="132.0" text="BASKET" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Label>
+      <Text fill="WHITE" layoutX="408.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Table No:">
+         <font>
+            <Font name="Baskerville Old Face" size="15.0" />
+         </font></Text>
+      <TextField fx:id="tableNo" layoutX="493.0" layoutY="159.0" prefHeight="25.0" prefWidth="78.0" />
+      <Text fx:id="paymentMethod" fill="WHITE" layoutX="408.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Method:">
+         <font>
+            <Font name="Baskerville Old Face" size="15.0" />
+         </font></Text>
+      <CheckBox fx:id="tillsCheckBox" layoutX="413.0" layoutY="224.0" mnemonicParsing="false" onAction="#handleTills" text="Tills" textFill="WHITE">
+         <font>
+            <Font name="Baskerville Old Face" size="15.0" />
+         </font></CheckBox>
+      <CheckBox fx:id="electronicPayment" layoutX="515.0" layoutY="224.0" mnemonicParsing="false" onAction="#handleElectronic" text="Electronic Payment" textFill="WHITE">
+         <font>
+            <Font name="Baskerville Old Face" size="15.0" />
+         </font></CheckBox>
+      <Text fx:id="cardNo" fill="WHITE" layoutX="412.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CARD NUMBER:">
+         <font>
+            <Font name="Baskerville Old Face" size="15.0" />
+         </font></Text>
+      <TextField fx:id="cardNumber" layoutX="587.0" layoutY="264.0" prefHeight="26.0" prefWidth="228.0" />
+      <Text fx:id="userName" fill="WHITE" layoutX="412.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CARD HOLDER NAME:">
+         <font>
+            <Font name="Baskerville Old Face" size="15.0" />
+         </font></Text>
+      <TextField fx:id="holderName" layoutX="587.0" layoutY="298.0" prefHeight="26.0" prefWidth="228.0" />
+      <Text fx:id="expiryDate" fill="WHITE" layoutX="411.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CARD EXPIRY DATE:">
+         <font>
+            <Font name="Baskerville Old Face" size="15.0" />
+         </font></Text>
+      <ComboBox fx:id="date" layoutX="588.0" layoutY="332.0" prefHeight="26.0" prefWidth="78.0" promptText="Month" />
+      <ComboBox fx:id="year" layoutX="681.0" layoutY="333.0" prefHeight="26.0" prefWidth="71.0" promptText="Year" />
+      <Text fx:id="dash" fill="WHITE" layoutX="670.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\\" wrappingWidth="12.546875" />
+      <Text fx:id="cvc" fill="WHITE" layoutX="409.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CVC:">
+         <font>
+            <Font name="Baskerville Old Face" size="15.0" />
+         </font></Text>
+      <TextField fx:id="cvcBox" layoutX="587.0" layoutY="364.0" prefHeight="18.0" prefWidth="71.0" />
+      <Button fx:id="placeOrder" layoutX="493.0" layoutY="414.0" mnemonicParsing="false" onAction="#getPayment" prefHeight="34.0" prefWidth="161.0" text="Place Order">
+         <font>
+            <Font name="Baskerville Old Face" size="17.0" />
+         </font></Button>
+      <Text fx:id="responseText" layoutX="627.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="162.40004882812514" />
+      <Text fx:id="total" fill="WHITE" layoutX="186.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL - ">
+         <font>
+            <Font name="Baskerville Old Face" size="15.0" />
+         </font></Text>
+      <Text fx:id="totalPrice" fill="WHITE" layoutX="264.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="43.19999999999993">
+         <font>
+            <Font name="Baskerville Old Face" size="15.0" />
+         </font></Text>
+      <Button fx:id="removeBtn" layoutX="186.0" layoutY="448.0" mnemonicParsing="false" onAction="#remove" text="Remove Item">
+         <font>
+            <Font name="Baskerville Old Face" size="12.0" />
          </font>
       </Button>
    </children>

@@ -18,7 +18,7 @@
          <font>
             <Font name="Baskerville Old Face" size="12.0" />
          </font></Button>
-        <Button fx:id="startScreenBtn" layoutX="14.0" layoutY="21.0" mnemonicParsing="false" onAction="#startScreen" prefHeight="25.0" prefWidth="95.0" text="Start Screen">
+        <Button fx:id="startScreenBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#startScreen" prefHeight="25.0" prefWidth="95.0" text="Start Screen">
          <font>
             <Font name="Baskerville Old Face" size="12.0" />
          </font></Button>

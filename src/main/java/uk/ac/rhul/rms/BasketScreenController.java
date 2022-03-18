@@ -292,10 +292,8 @@ public class BasketScreenController implements ControlledScreen, Initializable {
       String str = items[i];
       String price = str.replaceAll("[^0-9]", "");
       sum += Double.parseDouble(price);
-
     }
     totalPrice.setText("£ " + sum);
-
   }
 
   @Override
