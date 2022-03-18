@@ -307,16 +307,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     // wordRepeated();
   }
 
-  /**
-   * This method is to remove items from basket.
-   *
-   * @param event remove items from basket.
-   */
-  @FXML
-  void remove(ActionEvent event) {
-    basketList.getItems().remove(basketList.getSelectionModel().getSelectedItem());
-    basketList.getSelectionModel().clearSelection();
-  }
+
 
   /**
    * This method is to add items in database which are in basket.

@@ -52,10 +52,6 @@
                <font>
                   <Font name="Baskerville Old Face" size="15.0" />
                </font></Button>
-            <Button fx:id="removeBtn" layoutX="541.0" layoutY="484.0" mnemonicParsing="false" onAction="#remove" text="Remove">
-               <font>
-                  <Font name="Baskerville Old Face" size="15.0" />
-               </font></Button>
             <Label layoutX="530.0" layoutY="644.0" text="Basket">
                <font>
                   <Font name="Calibri" size="31.0" />

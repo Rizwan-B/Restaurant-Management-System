@@ -123,6 +123,16 @@ public class BasketScreenController implements ControlledScreen, Initializable {
     this.screensController.loadScreen(Main.menuScreenID, Main.menuScreenFile);
     this.screensController.setScreen(Main.menuScreenID);
   }
+  /**
+   * This method is to remove items from basket.
+   *
+   * @param event remove items from basket.
+   */
+  @FXML
+  void remove(ActionEvent event) {
+    orderItems.getItems().remove(orderItems.getSelectionModel().getSelectedItem());
+    orderItems.getSelectionModel().clearSelection();
+  }
 
   /**
    * This method stores payment information which is table number, card no, holder name and cvc.
