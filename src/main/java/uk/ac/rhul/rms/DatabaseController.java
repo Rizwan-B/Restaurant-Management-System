@@ -530,16 +530,13 @@ public class DatabaseController {
 
   public static int nextInt(Connection connection)
     throws SQLException{
+    int highestInt = 0;
     ResultSet result = executeQuery(connection,
             "SELECT order_id FROM confirmed_orders;");
-    if (result != null){
-      while (result.next()){
-        if (result.last()){
-          return result.getInt("order_id")+1;
-        }
-      }
+    while(result.next()){
+      if (result.getInt("order_id") > highestInt){ highestInt = result.getInt("order_id"); }
     }
-    return 1;
+    return highestInt+1;
   }
 
   /**
