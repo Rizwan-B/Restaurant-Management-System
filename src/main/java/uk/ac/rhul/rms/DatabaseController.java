@@ -528,6 +528,20 @@ public class DatabaseController {
     return workingOn;
   }
 
+  public static int nextInt(Connection connection)
+    throws SQLException{
+    ResultSet result = executeQuery(connection,
+            "SELECT order_id FROM confirmed_orders;");
+    if (result != null){
+      while (result.next()){
+        if (result.last()){
+          return result.getInt("order_id")+1;
+        }
+      }
+    }
+    return 1;
+  }
+
   /**
    * Takes an Order object and inserts it into the database.
    *
