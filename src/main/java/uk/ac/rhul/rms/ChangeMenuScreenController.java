@@ -9,10 +9,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 
+import java.io.File;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -50,9 +53,6 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
   private Button Delete_starter;
   
   @FXML
-  private Text changeMenu;
-  
-  @FXML
   private Button backBtn;
   
   @FXML
@@ -72,6 +72,9 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
 
   @FXML
   private ListView<String> starterListView;
+
+  @FXML
+  private Pane pane;
 
 
   /**
@@ -227,5 +230,11 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     fullMenu();
+
+    File file = new File("src/main/resources/uk/ac/rhul/rms/media/change menu screen.png");
+    Image image = new Image(file.toURI().toString());
+    BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1,1, true, true, false,false));
+    Background background = new Background(backgroundImage);
+    pane.setBackground(background);
   }
 }
