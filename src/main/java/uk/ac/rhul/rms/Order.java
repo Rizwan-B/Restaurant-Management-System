@@ -36,6 +36,12 @@ public class Order {
   }
 
   /**
+   * A public getter method to return the table number of the order
+   * @return tableNumber the table number of the order.
+   */
+  public int getTableNumber() {return tableNumber;}
+
+  /**
    * A public getter method to return the customers order.
    *
    * @return The customers order as an ArrayList.
