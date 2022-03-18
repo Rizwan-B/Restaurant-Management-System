@@ -6,26 +6,34 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.StaffPortalScreenController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.StaffPortalScreenController">
    <children>
       <Label layoutX="344.0" layoutY="229.0">
          <font>
             <Font size="56.0" />
          </font>
       </Label>
-      <Button fx:id="backBtn" layoutX="14.0" layoutY="28.0" mnemonicParsing="false" onAction="#backBtnPressed" prefHeight="44.0" prefWidth="99.0" text="Back">
+      <ListView id="pendingOrdersList" fx:id="pendingOrdersList" layoutX="97.0" layoutY="150.0" prefHeight="240.0" prefWidth="288.0" />
+      <ListView id="confirmedOrdersList" fx:id="claimedOrderList" layoutX="570.0" layoutY="150.0" prefHeight="240.0" prefWidth="288.0" />
+      <Button id="claimOrderBtn" fx:id="claimOrderBtn" layoutX="193.0" layoutY="413.0" mnemonicParsing="false" onAction="#claimBtnPressed" text="Claim Order">
          <font>
-            <Font size="19.0" />
-         </font>
-      </Button>
-      <ListView id="pendingOrdersList" fx:id="pendingOrdersList" layoutX="40.0" layoutY="129.0" prefHeight="347.0" prefWidth="388.0" />
-      <ListView id="confirmedOrdersList" fx:id="claimedOrderList" layoutX="480.0" layoutY="129.0" prefHeight="347.0" prefWidth="388.0" />
-      <Button id="claimOrderBtn" fx:id="claimOrderBtn" layoutX="38.0" layoutY="491.0" mnemonicParsing="false" onAction="#claimBtnPressed" text="Claim Order" />
-      <Button fx:id="logOutBtn" layoutX="600.0" layoutY="28.0" mnemonicParsing="false" onAction="#logOut" prefHeight="50.0" prefWidth="115.0" text="Log Out" />
-      <Button fx:id="startScreenBtn" layoutX="755.0" layoutY="28.0" mnemonicParsing="false" onAction="#startScreen" prefHeight="50.0" prefWidth="113.0" text="Start Screen" />
-      <Label layoutX="40.0" layoutY="100.0" prefHeight="17.0" prefWidth="126.0" text="Pending Orders:" />
-      <Label layoutX="480.0" layoutY="100.0" text="Working On:" />
-      <Button id="markCompleteBtn" fx:id="markCompletedBtn" layoutX="480.0" layoutY="491.0" mnemonicParsing="false" onAction="#markCompletedBtnPressed" text="Mark Completed" />
-      <Button id="refreshBtn" fx:id="refreshBtn" layoutX="154.0" layoutY="491.0" mnemonicParsing="false" onAction="#refreshBtnPressed" text="Refresh" />
+            <Font name="Baskerville Old Face" size="15.0" />
+         </font></Button>
+      <Button fx:id="logOutBtn" layoutX="851.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOut" prefHeight="25.0" prefWidth="95.0" text="Log Out">
+         <font>
+            <Font name="Baskerville Old Face" size="12.0" />
+         </font></Button>
+      <Button fx:id="startScreenBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#startScreen" prefHeight="25.0" prefWidth="95.0" text="Start Screen">
+         <font>
+            <Font name="Baskerville Old Face" size="12.0" />
+         </font></Button>
+      <Button id="markCompleteBtn" fx:id="markCompletedBtn" layoutX="653.0" layoutY="413.0" mnemonicParsing="false" onAction="#markCompletedBtnPressed" text="Mark Completed">
+         <font>
+            <Font name="Baskerville Old Face" size="15.0" />
+         </font></Button>
+      <Button id="refreshBtn" fx:id="refreshBtn" layoutX="452.0" layoutY="479.0" mnemonicParsing="false" onAction="#refreshBtnPressed" text="Refresh">
+         <font>
+            <Font name="Baskerville Old Face" size="12.0" />
+         </font></Button>
    </children>
 </Pane>
