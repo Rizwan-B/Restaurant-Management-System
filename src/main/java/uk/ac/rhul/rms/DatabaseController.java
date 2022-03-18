@@ -546,7 +546,14 @@ public class DatabaseController {
    * @param order The Order object to be inserted.
    */
   public static void addOrder(Connection connection, Order order) {
-    executeUpdate(connection, "INSERT INTO orders_table (table_no, orders_list, status, quantity) VALUES" +
-        " (" + String.valueOf(order.getOrderId()) + ", " + order.getOrder() + ", 0, 1);");
+    executeUpdate(connection, "INSERT INTO orders_table (order_id,table_no, orders_list, status, quantity) VALUES" +
+        " (" + order.getOrderId() + ", " + order.getTableNumber() + ", " + order.getOrder() + ", 0, 1);");
+  }
+
+  public static int getItemId(Connection connection, String itemName) throws SQLException {
+    ResultSet result = executeQuery(connection,
+            "SELECT itemID FROM menu WHERE item_name='"+ itemName +"'");
+    int itemId = result.getInt("itemID");
+    return itemId;
   }
 }
