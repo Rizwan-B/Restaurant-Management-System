@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+import org.apache.commons.lang3.ArrayUtils;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 import javafx.event.ActionEvent;
@@ -112,6 +113,17 @@ public class BasketScreenController implements ControlledScreen, Initializable {
   private Pane pane;
 
   private ArrayList<String> list = new ArrayList<>();
+  public String[] items;
+
+  {
+    try {
+      items = DatabaseController.getTempOrder(DatabaseConnection.getInstance()).split("-");
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } catch (InvalidMenuIdException e) {
+      e.printStackTrace();
+    }
+  }
 
   /**
    * Below is back button action which is to load Menu screen when clicked.
@@ -122,6 +134,41 @@ public class BasketScreenController implements ControlledScreen, Initializable {
   void backBtnPressed(ActionEvent event) {
     this.screensController.loadScreen(Main.menuScreenID, Main.menuScreenFile);
     this.screensController.setScreen(Main.menuScreenID);
+  }
+  /**
+   * This method is to remove items from basket.
+   *
+   * @param event remove items from basket.
+   */
+  @FXML
+  void remove(ActionEvent event) {
+    sum = 0;
+    String item = orderItems.getSelectionModel().getSelectedItem();
+    String[] item_split = item.split(" x");
+    orderItems.getItems().remove(item);
+    orderItems.getSelectionModel().clearSelection();
+
+      for(int i=0 ; i<items.length; i=i+2) {
+
+        if (items[i].equals(item_split[0])) {
+         items[i] = "null";
+         items[i+1]= "£ 0";
+        }
+
+      }
+
+    for (int i = 1; i < items.length; i = i + 2) {
+
+      String str = items[i];
+      System.out.println(str);
+      String price = str.replaceAll("[^0-9]", "");
+      sum += Double.parseDouble(price);
+
+    }
+    totalPrice.setText("£ " + sum);
+
+
+
   }
 
   /**
@@ -242,6 +289,8 @@ public class BasketScreenController implements ControlledScreen, Initializable {
       electronicPayment.setSelected(false);
       cardNumber.setDisable(true);
       holderName.setDisable(true);
+      date.setDisable(true);
+      year.setDisable(true);
       cvcBox.setDisable(true);
     }
   }
@@ -256,6 +305,8 @@ public class BasketScreenController implements ControlledScreen, Initializable {
       tillsCheckBox.setSelected(false);
       cardNumber.setDisable(false);
       holderName.setDisable(false);
+      date.setDisable(false);
+      year.setDisable(false);
       cvcBox.setDisable(false);
     }
   }
@@ -298,7 +349,7 @@ public class BasketScreenController implements ControlledScreen, Initializable {
    */
   @FXML
   void getItems() throws SQLException, InvalidMenuIdException {
-    String[] items = DatabaseController.getTempOrder(DatabaseConnection.getInstance()).split("-");
+
     for (int i = 0; i < items.length; i = i + 2) {
       list.add(items[i]);
     }
@@ -309,10 +360,8 @@ public class BasketScreenController implements ControlledScreen, Initializable {
       String str = items[i];
       String price = str.replaceAll("[^0-9]", "");
       sum += Double.parseDouble(price);
-
     }
     totalPrice.setText("£ " + sum);
-
   }
 
   @Override

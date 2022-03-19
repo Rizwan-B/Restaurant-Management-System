@@ -1,13 +1,20 @@
 package uk.ac.rhul.rms;
 
+import java.io.File;
+import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
@@ -19,7 +26,7 @@ import uk.ac.rhul.screenmanager.ScreensController;
  * @author Rizwan Bagdadi
  *
  */
-public class CallWaiterScreen implements ControlledScreen {
+public class CallWaiterScreen implements ControlledScreen, Initializable {
 
 
   private ScreensController screensController;
@@ -43,6 +50,9 @@ public class CallWaiterScreen implements ControlledScreen {
 
   @FXML
   private Text textConfirm;
+
+  @FXML
+  private Pane pane;
 
   /**
    * In the method below once call waiter button is pressed, user enters his table number and the
@@ -105,5 +115,14 @@ public class CallWaiterScreen implements ControlledScreen {
           + " | " + test.getString(4) + " |");
     }
     System.out.println("---------------------------------------");
+  }
+
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    File file = new File("src/main/resources/uk/ac/rhul/rms/media/call waiter screen.png");
+    Image image = new Image(file.toURI().toString());
+    BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1,1, true, true, false,false));
+    Background background = new Background(backgroundImage);
+    pane.setBackground(background);
   }
 }

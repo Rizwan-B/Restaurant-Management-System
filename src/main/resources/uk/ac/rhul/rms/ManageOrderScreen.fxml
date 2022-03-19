@@ -1,45 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.ManageOrderScreenController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.ManageOrderScreenController">
     <children>
-        <Label layoutX="14.0" layoutY="50.0" prefHeight="86.0" prefWidth="947.0" text="Select an order:">
+        <ListView fx:id="orderList" layoutX="45.0" layoutY="156.0" prefHeight="210.0" prefWidth="356.0" />
+        <Button fx:id="backBtn" layoutX="12.0" layoutY="12.0" mnemonicParsing="false" onAction="#backBtnPressed" prefHeight="31.0" prefWidth="67.0" text="Back">
             <font>
-                <Font name="Bookman Old Style" size="15.0" />
-            </font></Label>
-        <ListView fx:id="orderList" layoutX="5.0" layoutY="120.0" prefHeight="307.0" prefWidth="250.0" />
-        <Button fx:id="backBtn" layoutX="6.0" layoutY="12.0" mnemonicParsing="false" onAction="#backBtnPressed" prefHeight="46.0" prefWidth="101.0" text="Back">
-            <font>
-                <Font size="22.0" />
+                <Font name="Baskerville Old Face" size="15.0" />
             </font>
         </Button>
-        <Button id="cancelBtn" fx:id="cancelBtn" layoutX="15.0" layoutY="450.0" mnemonicParsing="false" onAction="#cancelBtnPressed" prefHeight="30.0" prefWidth="194.0" text="Cancel Order">
+        <Button id="cancelBtn" fx:id="cancelBtn" layoutX="112.0" layoutY="382.0" mnemonicParsing="false" onAction="#cancelBtnPressed" prefHeight="30.0" prefWidth="194.0" text="Cancel Order">
             <font>
-                <Font name="Bell MT" size="15.0" />
+                <Font name="Baskerville Old Face" size="15.0" />
             </font>
         </Button>
-        <Button id="orderCompleteBtn" fx:id="orderDeliveredBtn" layoutX="15.0" layoutY="500.0" mnemonicParsing="false" onAction="#orderDeliveredBtnPressed" prefHeight="30.0" prefWidth="194.0" text="Mark As Delivered">
+        <Button id="orderCompleteBtn" fx:id="orderDeliveredBtn" layoutX="112.0" layoutY="422.0" mnemonicParsing="false" onAction="#orderDeliveredBtnPressed" prefHeight="30.0" prefWidth="194.0" text="Mark As Delivered">
             <font>
-                <Font name="Bell MT" size="15.0" />
+                <Font name="Baskerville Old Face" size="15.0" />
             </font>
         </Button>
-      <Text fx:id="paymentStatus" layoutX="374.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Status:" wrappingWidth="124.486328125">
+      <ListView fx:id="displayPayment" layoutX="545.0" layoutY="156.0" prefHeight="210.0" prefWidth="356.0" />
+      <Button fx:id="paid" layoutX="626.0" layoutY="382.0" mnemonicParsing="false" onAction="#paidOrder" prefHeight="30.0" prefWidth="194.0" text="Mark as Paid">
          <font>
-            <Font name="Bookman Old Style" size="15.0" />
-         </font>
-      </Text>
-      <ListView fx:id="displayPayment" layoutX="347.0" layoutY="120.0" prefHeight="299.0" prefWidth="295.0" />
-      <Text fx:id="display" layoutX="348.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Status | Order ID | Table Number | Price| Order Time">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Text>
-      <Button fx:id="paid" layoutX="535.0" layoutY="437.0" mnemonicParsing="false" onAction="#paidOrder" text="Delete" />
+            <Font name="Baskerville Old Face" size="15.0" />
+         </font></Button>
     </children>
 </Pane>

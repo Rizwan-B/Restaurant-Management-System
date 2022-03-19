@@ -1,5 +1,6 @@
 package uk.ac.rhul.rms;
 
+import java.io.File;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,6 +10,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
@@ -68,6 +71,9 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
 
   @FXML
   private Text text;
+
+  @FXML
+  private Pane pane;
 
   /**
    * Once back button is clicked Logged Screen is loaded.
@@ -218,5 +224,11 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
   public void initialize(URL location, ResourceBundle resources) {
     this.displayItems();
     this.unPaidOrder();
+
+    File file = new File("src/main/resources/uk/ac/rhul/rms/media/manage order screen.png");
+    Image image = new Image(file.toURI().toString());
+    BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1,1, true, true, false,false));
+    Background background = new Background(backgroundImage);
+    pane.setBackground(background);
   }
 }

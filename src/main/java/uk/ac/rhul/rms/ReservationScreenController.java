@@ -12,6 +12,8 @@ import uk.ac.rhul.screenmanager.ScreensController;
 
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -62,25 +64,19 @@ public class ReservationScreenController implements ControlledScreen, Initializa
     private ListView<Integer> table_no;
 
     @FXML
-    private ComboBox<String> timePicker;
-
-    @FXML
-    private DatePicker datePicker;
-
-    @FXML
-    private Text tNumber;
-
-    @FXML
-    private TextField tableInput;
-
-    @FXML
-    private Text fullName;
+    private Text layout;
 
     @FXML
     private TextField nameInput;
 
     @FXML
     private Button reserve;
+
+    @FXML
+    private Text text;
+
+    @FXML
+    private ListView<String> trackOrder;
 
 
     public void tableSeat() {
@@ -99,16 +95,40 @@ public class ReservationScreenController implements ControlledScreen, Initializa
         }
     }
 
+    @FXML
+    public void refreshButton(){
+        String status = " ";
+        ResultSet orders = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
+                "SELECT * FROM orders_table;");
+        ResultSet payments = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
+                "SELECT * FROM payments;");
+        try {
+            while (orders.next() && payments.next()) {
+                if( orders.getString(4).equals("0")){
+                    status = "Confirmed";
+                }
+                if(orders.getString(4).equals("1")){
+                    status = "Working On";
+                }
+                if(orders.getString(4).equals("2")){
+                    status = "On the Way!";
+                }
+                trackOrder.getItems().add(orders.getString(1) + " | " + orders.getString(2)
+                        + " | " + payments.getString(4) + " | " + status);
+
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL exception.");
+        }
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.connection = DatabaseConnection.getInstance();
         tableSeat();
-        ObservableList<String> list = FXCollections.observableArrayList("12:00",
-                                                                                "1:00", "2:00", "3:00","4:00","5:00",
-                                                                                "6:00", "7:00","8:00",
-                                                                                "9:00", "10:00");
-        timePicker.setItems(list);
+        refreshButton();
+
 
 
     }

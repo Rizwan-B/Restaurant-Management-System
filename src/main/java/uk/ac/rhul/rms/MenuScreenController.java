@@ -121,37 +121,19 @@ public class MenuScreenController implements ControlledScreen, Initializable {
    */
   @FXML
   void basketBtnPressed(ActionEvent event) {
-    addToDB();
-    this.screensController.loadScreen(Main.basketScreenID, Main.basketScreenFile);
-    this.screensController.setScreen(Main.basketScreenID);
-  }
+    if (count == 0) {
+      Alert alert = new Alert(Alert.AlertType.NONE, "The basket is empty!", ButtonType.OK);
+      alert.showAndWait();
+    }
 
-  @FXML
-  void refreshButton(ActionEvent event){
-    String status = " ";
-    ResultSet orders = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
-            "SELECT * FROM orders_table;");
-    ResultSet payments = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
-            "SELECT * FROM payments;");
-    try {
-      while (orders.next() && payments.next()) {
-        if( orders.getString(4).equals("0")){
-          status = "Confirmed";
-        }
-        if(orders.getString(4).equals("1")){
-          status = "Working On";
-        }
-        if(orders.getString(4).equals("2")){
-          status = "On the Way!";
-        }
-        TrackOrder.getItems().add(orders.getString(1) + " | " + orders.getString(2)
-                + " | " + status + " | " + payments.getString(4));
-
-      }
-    } catch (SQLException e) {
-      System.out.println("SQL exception.");
+    else {
+      addToDB();
+      this.screensController.loadScreen(Main.basketScreenID, Main.basketScreenFile);
+      this.screensController.setScreen(Main.basketScreenID);
     }
   }
+
+
 
   /**
    * Once call waiter button is clicked this method takes you to call waiter screen.
@@ -332,16 +314,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     // wordRepeated();
   }
 
-  /**
-   * This method is to remove items from basket.
-   *
-   * @param event remove items from basket.
-   */
-  @FXML
-  void remove(ActionEvent event) {
-    basketList.getItems().remove(basketList.getSelectionModel().getSelectedItem());
-    basketList.getSelectionModel().clearSelection();
-  }
+
 
   /**
    * This method is to add items in database which are in basket.
