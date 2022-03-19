@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.AdminScreenController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.AdminScreenController">
     <children>
         <Button fx:id="manageOrderBtn" layoutX="120.0" layoutY="269.0" mnemonicParsing="false" onAction="#manageOrderBtnPressed" prefHeight="30.0" prefWidth="200.0" text="Manage Orders">
          <font>
@@ -26,7 +26,7 @@
          <font>
             <Font name="Baskerville Old Face" size="20.0" />
          </font></Button>
-      <Button layoutX="628.0" layoutY="269.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Delete Staff Member">
+      <Button fx:id="deleteUsrBtn" layoutX="628.0" layoutY="269.0" mnemonicParsing="false" onAction="#deleteUserBtnPressed" prefHeight="30.0" prefWidth="200.0" text="Delete Staff Member">
          <font>
             <Font name="Baskerville Old Face" size="20.0" />
          </font></Button>

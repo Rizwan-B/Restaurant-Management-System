@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -19,5 +20,13 @@
         <Button fx:id="logOutBtn" layoutX="14.0" layoutY="34.0" mnemonicParsing="false" onAction="#logOut" prefHeight="50.0" prefWidth="115.0" text="Log Out" />
         <Button fx:id="backBtn" layoutX="146.0" layoutY="34.0" mnemonicParsing="false" onAction="#backBtnPressed" prefHeight="50.0" prefWidth="113.0" text="Back" />
         <Button layoutX="5.0" layoutY="243.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Delete Staff Member" />
+      <ListView fx:id="userList" layoutX="339.0" layoutY="178.0" prefHeight="291.0" prefWidth="454.0" />
+      <Button fx:id="removeUserBtn" layoutX="807.0" layoutY="185.0" mnemonicParsing="false" onAction="#removeUserBtnPressed" text="Remove User" />
+      <Label layoutX="339.0" layoutY="135.0" prefHeight="32.0" prefWidth="95.0" text="User List">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="errorLog" alignment="CENTER" layoutX="807.0" layoutY="250.0" prefHeight="218.0" prefWidth="143.0" wrapText="true" />
     </children>
 </Pane>

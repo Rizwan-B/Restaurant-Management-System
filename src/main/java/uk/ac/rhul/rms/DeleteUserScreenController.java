@@ -1,13 +1,21 @@
 package uk.ac.rhul.rms;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 
+import javax.swing.*;
+import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class DeleteUserScreenController implements ControlledScreen {
+public class DeleteUserScreenController implements ControlledScreen, Initializable {
 
   private ScreensController screensController;
 
@@ -19,6 +27,12 @@ public class DeleteUserScreenController implements ControlledScreen {
   public void setScreenParent(ScreensController screenParent) {
     this.screensController = screenParent;
   }
+
+  @FXML
+  private ListView<String> userList;
+
+  @FXML
+  private Label errorLog;
 
 
   /**
@@ -58,4 +72,48 @@ public class DeleteUserScreenController implements ControlledScreen {
     Main.loginLoader();
   }
 
+
+  void printUsers() {
+    try {
+      ResultSet users = DatabaseController.executeQuery(DatabaseConnection.getInstance(), "SELECT user_name, user_role FROM user_table");
+      while (users.next()) {
+        System.out.println(users.getString(1));
+        this.userList.getItems().add(users.getString(1) + " - " + users.getString(2));
+      }
+    } catch (SQLException | NullPointerException e) {
+      System.out.println(e.toString());
+    }
+  }
+
+
+  @FXML
+  void removeUserBtnPressed(ActionEvent event) {
+    ObservableList selectedItem = this.userList.getSelectionModel().getSelectedIndices();
+    int selectedUserId = Integer.parseInt(selectedItem.toArray()[0].toString());
+    String selectedName = this.userList.getItems().get(selectedUserId).split(" - ")[0];
+    System.out.println(selectedName);
+    ResultSet loggedUser = DatabaseController.executeQuery(DatabaseConnection.getInstance(), "SELECT session_id FROM user_table WHERE user_name='" + selectedName + "'");
+    try {
+      while (loggedUser.next()) {
+        if (!loggedUser.getString(1).equals("NULL")) {
+          System.out.println("Please ask user to log out before trying to delete it.");
+          this.errorLog.setText("Please ask user to log out before trying to delete it.");
+        } else {
+          DatabaseConnection.getInstance().createStatement().execute("DELETE FROM user_table WHERE user_name='" + selectedName + "'");
+          this.errorLog.setText("User Deleted");
+          this.userList.getItems().clear();
+          printUsers();
+
+        }
+      }
+    } catch (SQLException e) {
+      System.out.println(e.toString());
+    }
+
+  }
+
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    printUsers();
+  }
 }

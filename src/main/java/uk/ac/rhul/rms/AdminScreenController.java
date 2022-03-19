@@ -78,6 +78,12 @@ public class AdminScreenController implements ControlledScreen, Initializable {
     this.screensController.setScreen(Main.loginScreenID);
   }
 
+  @FXML
+  void deleteUserBtnPressed(ActionEvent event) {
+    this.screensController.loadScreen(Main.deleteUserScreenID, Main.deleteUserScreenFile);
+    this.screensController.setScreen(Main.deleteUserScreenID);
+  }
+
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     File file = new File("src/main/resources/uk/ac/rhul/rms/media/admin screen.png");

@@ -112,6 +112,7 @@ public class AddStaffMemberScreenController implements ControlledScreen, Initial
                   " VALUES('"+ username + "', '" + hashedPassword + "', '" + role + "', 'NULL', " + "'1'" +")");
           Mail sendMail = new Mail(email);
           sendMail.sendConfirmationEmail(username, password);
+          Main.loginLoader();
         }
       }
     } catch (NullPointerException | SQLException | NoSuchAlgorithmException | InvalidKeySpecException e) {
