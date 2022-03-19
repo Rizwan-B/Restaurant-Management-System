@@ -144,6 +144,7 @@ public class DatabaseMain {
           + "WHERE category = 'Dessert' AND diet_type = 'V' ;");
       while ((query6.next())) {
         System.out.println(query6.getString(1));
+        System.out.println(query6.getString(1));
       }
 
       System.out.println("\n\n USERS");
