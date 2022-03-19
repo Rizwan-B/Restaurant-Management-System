@@ -11,6 +11,7 @@ import java.util.ArrayList;
  */
 public class Order {
 
+  private final String itemIds;
   private int orderId;
   private int tableNumber;
   private ArrayList<MenuItem> orderList;
@@ -31,6 +32,7 @@ public class Order {
       throws InvalidMenuIdException {
     this.orderId = orderId;
     this.tableNumber = tableNumber;
+    this.itemIds = itemsList;
     this.orderList = this.parseOrderList(itemsList);
     this.orderCompletedStatus = cancelled;
   }
@@ -46,7 +48,7 @@ public class Order {
    *
    * @return The customers order as an ArrayList.
    */
-  public ArrayList<MenuItem> getOrder() {
+  public ArrayList<MenuItem> getOrderItems() {
     return this.orderList;
   }
 
@@ -58,6 +60,13 @@ public class Order {
   public boolean getOrderStatus() {
     return this.orderCompletedStatus;
   }
+
+  /**
+   * A public getter method to return the itemId of a customer's order.
+   *
+   * @return The item Ids of the order as a String.
+   */
+  public String getItemIds() { return this.itemIds; }
 
   /**
    * A public method to change the status of a customer's order.
