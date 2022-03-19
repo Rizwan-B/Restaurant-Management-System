@@ -319,8 +319,6 @@ public class BasketScreenController implements ControlledScreen, Initializable {
         for (int i = 0; i < orderItems.getItems().size(); i++) {
           String itemName = orderItems.getItems().get(i);
 
-          System.out.println(itemName.substring(0, itemName.length()-4));
-
           int itemId = DatabaseController.getItemId(DatabaseConnection.getInstance(),itemName.substring(0, itemName.length()-4));
 
           orderList += itemId + "-";
@@ -331,8 +329,6 @@ public class BasketScreenController implements ControlledScreen, Initializable {
         Order newOrder = new Order(order_id, Integer.parseInt(tableNo.getText()), orderList, false);
         DatabaseController.addOrder(DatabaseConnection.getInstance(),newOrder);
       }
-    } catch (InvalidItemNameException e) {
-      e.printStackTrace();
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (InvalidMenuIdException e) {
