@@ -528,7 +528,11 @@ public class DatabaseController {
     return workingOn;
   }
 
-
+  /**
+   * Checks the database for the next empty order id.
+   *
+   * @param connection The connection to the database..
+   */
   public static int nextInt(Connection connection)
     throws SQLException{
     int highestInt = 0;
