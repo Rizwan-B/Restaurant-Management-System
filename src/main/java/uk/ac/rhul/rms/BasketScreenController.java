@@ -311,6 +311,11 @@ public class BasketScreenController implements ControlledScreen, Initializable {
     }
   }
 
+  /**
+   * This method takes the generated order id and makes an order from the current basket and adds it to the database.
+   *
+   * @param order_id The next available id for an order.
+   */
   @FXML
   void makeOrder(int order_id){
     String orderList = "";
