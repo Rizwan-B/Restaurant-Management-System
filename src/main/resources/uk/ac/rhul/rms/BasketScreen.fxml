@@ -69,7 +69,7 @@
          <font>
             <Font name="Baskerville Old Face" size="15.0" />
          </font></Text>
-      <Text fx:id="totalPrice" fill="WHITE" layoutX="257.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="43.19999999999993">
+      <Text fx:id="totalPrice" fill="WHITE" layoutX="255.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="54.4990234375">
          <font>
             <Font name="Baskerville Old Face" size="15.0" />
          </font></Text>

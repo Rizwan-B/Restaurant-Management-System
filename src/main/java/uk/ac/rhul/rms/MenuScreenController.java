@@ -121,9 +121,16 @@ public class MenuScreenController implements ControlledScreen, Initializable {
    */
   @FXML
   void basketBtnPressed(ActionEvent event) {
-    addToDB();
-    this.screensController.loadScreen(Main.basketScreenID, Main.basketScreenFile);
-    this.screensController.setScreen(Main.basketScreenID);
+    if (count == 0) {
+      Alert alert = new Alert(Alert.AlertType.NONE, "The basket is empty!", ButtonType.OK);
+      alert.showAndWait();
+    }
+
+    else {
+      addToDB();
+      this.screensController.loadScreen(Main.basketScreenID, Main.basketScreenFile);
+      this.screensController.setScreen(Main.basketScreenID);
+    }
   }
 
 
