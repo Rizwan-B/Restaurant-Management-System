@@ -528,13 +528,17 @@ public class DatabaseController {
     return workingOn;
   }
 
+
   public static int nextInt(Connection connection)
     throws SQLException{
     int highestInt = 0;
-    ResultSet result = executeQuery(connection,
-            "SELECT order_id FROM confirmed_orders;");
+    ResultSet result = executeQuery(connection,"SELECT order_id FROM orders_table;");
+    System.out.println(result.next());
     while(result.next()){
-      if (result.getInt("order_id") > highestInt){ highestInt = result.getInt("order_id"); }
+      int currentId = result.getInt("order_id");
+      System.out.println("Highest int: "+highestInt+" order_Id: "+currentId);
+      if (currentId > highestInt){
+        highestInt = result.getInt("order_id"); }
     }
     return highestInt+1;
   }
@@ -547,7 +551,7 @@ public class DatabaseController {
    */
   public static void addOrder(Connection connection, Order order) {
     executeUpdate(connection, "INSERT INTO orders_table (order_id,table_no, orders_list, status, quantity) VALUES" +
-        " (" + order.getOrderId() + ", " + order.getTableNumber() + ", " + order.getOrder() + ", 0, 1);");
+        " ('" + order.getOrderId() + "', '" + order.getTableNumber() + "', '" + order.getItemIds() + "', 0, 1);");
   }
 
   public static int getItemId(Connection connection, String itemName) throws SQLException {
