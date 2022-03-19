@@ -9,7 +9,6 @@ import javafx.scene.control.ListView;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 
-import javax.swing.*;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -103,13 +102,11 @@ public class DeleteUserScreenController implements ControlledScreen, Initializab
           this.errorLog.setText("User Deleted");
           this.userList.getItems().clear();
           printUsers();
-
         }
       }
     } catch (SQLException e) {
       System.out.println(e.toString());
     }
-
   }
 
   @Override
