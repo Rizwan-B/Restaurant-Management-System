@@ -533,11 +533,8 @@ public class DatabaseController {
     throws SQLException{
     int highestInt = 0;
     ResultSet result = executeQuery(connection,"SELECT order_id FROM orders_table;");
-    System.out.println(result.next());
     while(result.next()){
-      int currentId = result.getInt("order_id");
-      System.out.println("Highest int: "+highestInt+" order_Id: "+currentId);
-      if (currentId > highestInt){
+      if (result.getInt("order_id") > highestInt){
         highestInt = result.getInt("order_id"); }
     }
     return highestInt+1;

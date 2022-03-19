@@ -324,7 +324,6 @@ public class BasketScreenController implements ControlledScreen, Initializable {
           orderList += itemId + "-";
 
         }
-        System.out.println(orderList);
 
         Order newOrder = new Order(order_id, Integer.parseInt(tableNo.getText()), orderList, false);
         DatabaseController.addOrder(DatabaseConnection.getInstance(),newOrder);
