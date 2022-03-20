@@ -103,19 +103,24 @@ public class ReservationScreenController implements ControlledScreen, Initializa
         ResultSet payments = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
                 "SELECT * FROM payments;");
         try {
-            while (orders.next() && payments.next()) {
-                if( orders.getString(4).equals("0")){
-                    status = "Confirmed";
-                }
-                if(orders.getString(4).equals("1")){
-                    status = "Working On";
-                }
-                if(orders.getString(4).equals("2")){
-                    status = "On the Way!";
-                }
-                trackOrder.getItems().add(orders.getString(1) + " | " + orders.getString(2)
-                        + " | " + payments.getString(4) + " | " + status);
+            while(payments.next()) {
+                while (orders.next()) {
 
+                    if (orders.getString(4).equals("0")) {
+                        status = "Confirmed";
+                    }
+                    if (orders.getString(4).equals("1")) {
+                        status = "Working On";
+                    }
+                    if (orders.getString(4).equals("2")) {
+                        status = "On the Way!";
+                    }
+
+
+
+                }
+                trackOrder.getItems().add(payments.getString(2) + " | " + payments.getString(3)
+                        + " | " + payments.getString(4) + " | " + status);
             }
         } catch (SQLException e) {
             System.out.println("SQL exception.");

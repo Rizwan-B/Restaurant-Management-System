@@ -227,9 +227,8 @@ public class BasketScreenController implements ControlledScreen, Initializable {
 
           String allItems = this.orderItems.getItems().toString();
           System.out.println(allItems);
-          DatabaseConnection.getInstance().createStatement()
-                  .execute("INSERT INTO orders_table(order_id, table_no,status) VALUES('" + order_id
-                          + "', '" + intTable +"', '0'); ");
+//          DatabaseConnection.getInstance().createStatement()
+//                  .execute("INSERT INTO orders_table( table_no,status) VALUES('"  + intTable +"', '0'); ");
           this.screensController.setScreen(Main.startScreenID);
         }
       }
@@ -261,9 +260,8 @@ public class BasketScreenController implements ControlledScreen, Initializable {
           DatabaseConnection.getInstance().createStatement()
                   .execute("INSERT INTO payments VALUES('" + paymentStatus + "','"+order_id
                           + "', '" + intTable +"', '"+x+"', '"+ t+ "'); ");
-          DatabaseConnection.getInstance().createStatement()
-                  .execute("INSERT INTO orders_table(order_id, table_no,status) VALUES('" + order_id
-                          + "', '" + intTable +"', '0'); ");
+//          DatabaseConnection.getInstance().createStatement()
+//                  .execute("INSERT INTO orders_table(table_no,status) VALUES('" + intTable +"', '0'); ");
 
           this.screensController.setScreen(Main.startScreenID);
         }
