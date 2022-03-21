@@ -528,14 +528,23 @@ public class DatabaseController {
     return workingOn;
   }
 
-  public static ArrayList<ConfirmedOrder> getAllWorkingOn(Connection connection, int userId)
+  /**
+   * Gets all the orders currently being worked on.
+   *
+   * @param connection The connection to the database.
+   * @return An ArrayList of all the orders currently being worked on.
+   * @throws SQLException Thrown if the query encounters an error.
+   * @throws InvalidMenuIdException Thrown if an order is being worked on for a menu item that
+   * doesn't exist.
+   */
+  public static ArrayList<Order> getAllWorkingOn(Connection connection)
           throws SQLException, InvalidMenuIdException {
-    ArrayList<ConfirmedOrder> workingOn = new ArrayList<>();
+    ArrayList<Order> workingOn = new ArrayList<>();
     ResultSet result = executeQuery(connection,
             "SELECT * FROM confirmed_orders WHERE status = 0");
 
     while (result.next()) {
-      workingOn.add(new ConfirmedOrder(getOrder(connection, result.getInt("order_id")), userId));
+      workingOn.add(getOrder(connection, result.getInt("order_id")));
     }
     return workingOn;
   }
