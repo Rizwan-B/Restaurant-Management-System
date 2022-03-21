@@ -111,13 +111,16 @@ public class TrackOrderScreenController implements ControlledScreen, Initializab
                 while (orders.next()) {
 
                     if (orders.getString(4).equals("0")) {
-                        status = "Confirmed";
+                        status = "Working On";
                     }
                     if (orders.getString(4).equals("1")) {
-                        status = "Working On";
+                        status = "Cancelled";
                     }
                     if (orders.getString(4).equals("2")) {
                         status = "On the Way!";
+                    }
+                    if (orders.getString(4).equals("3")) {
+                        status = "Order Confirmed";
                     }
 
 

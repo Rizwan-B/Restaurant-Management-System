@@ -29,7 +29,7 @@ public class ConfirmedOrder {
   }
 
   /**
-   * Returns the userId of of the kitchen staff who confirmed this order.
+   * Returns the userId of the kitchen staff who confirmed this order.
    *
    * @return An int corresponding to the user id of the staff who confirmed this order.
    */

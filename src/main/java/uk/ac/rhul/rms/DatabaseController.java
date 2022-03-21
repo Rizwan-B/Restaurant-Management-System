@@ -462,6 +462,8 @@ public class DatabaseController {
             + ", " + String.valueOf(order.getOrder().getOrderId()) + ");");
   }
 
+
+
   /**
    * A function for marking a given order as complete.
    *
@@ -552,7 +554,7 @@ public class DatabaseController {
   /**
    * Checks the database for the next empty order id.
    *
-   * @param connection The connection to the database..
+   * @param connection The connection to the database.
    */
   public static int nextInt(Connection connection)
     throws SQLException{

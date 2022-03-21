@@ -132,7 +132,7 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
         "SELECT * FROM orders_table");
     try {
       while (allOrders.next()) {
-        if (allOrders.getString(4).equals("0")) {
+        if (allOrders.getString(4).equals("3")) {
           orderList.getItems().add(allOrders.getString(1) + " | " + allOrders.getString(2) + " | "
               + allOrders.getString(4));
         }
@@ -206,8 +206,7 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
       try {
         DatabaseConnection.getInstance().createStatement()
             .execute("DELETE FROM orders_table WHERE order_id = '" + orderID + "';");
-        // DatabaseConnection.getInstance().createStatement().execute("INSERT INTO = '"+orderID+
-        // "';");
+
       } catch (SQLException e) {
         e.printStackTrace();
       }
