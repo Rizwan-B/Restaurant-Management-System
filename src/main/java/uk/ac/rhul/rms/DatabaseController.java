@@ -528,6 +528,18 @@ public class DatabaseController {
     return workingOn;
   }
 
+  public static ArrayList<ConfirmedOrder> getAllWorkingOn(Connection connection, int userId)
+          throws SQLException, InvalidMenuIdException {
+    ArrayList<ConfirmedOrder> workingOn = new ArrayList<>();
+    ResultSet result = executeQuery(connection,
+            "SELECT * FROM confirmed_orders WHERE status = 0");
+
+    while (result.next()) {
+      workingOn.add(new ConfirmedOrder(getOrder(connection, result.getInt("order_id")), userId));
+    }
+    return workingOn;
+  }
+
   /**
    * Checks the database for the next empty order id.
    *
