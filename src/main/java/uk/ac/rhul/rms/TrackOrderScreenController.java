@@ -1,15 +1,16 @@
 package uk.ac.rhul.rms;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 
+import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -24,7 +25,7 @@ import java.util.ResourceBundle;
  * @author Muqdas Sheikh
  *
  */
-public class ReservationScreenController implements ControlledScreen, Initializable {
+public class TrackOrderScreenController implements ControlledScreen, Initializable {
 
     ScreensController screensController;
     private Connection connection;
@@ -77,6 +78,9 @@ public class ReservationScreenController implements ControlledScreen, Initializa
 
     @FXML
     private ListView<String> trackOrder;
+
+    @FXML
+    private Pane pane;
 
 
     public void tableSeat() {
@@ -134,7 +138,10 @@ public class ReservationScreenController implements ControlledScreen, Initializa
         tableSeat();
         refreshButton();
 
-
-
+        File file = new File("src/main/resources/uk/ac/rhul/rms/media/track order screen.png");
+        javafx.scene.image.Image image = new Image(file.toURI().toString());
+        BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1,1, true, true, false,false));
+        Background background = new Background(backgroundImage);
+        pane.setBackground(background);
     }
 }

@@ -6,9 +6,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 
+import java.io.File;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,6 +36,9 @@ public class DeleteUserScreenController implements ControlledScreen, Initializab
   @FXML
   private Label errorLog;
 
+  @FXML
+  private Pane pane;
+
 
   /**
    *
@@ -52,6 +58,12 @@ public class DeleteUserScreenController implements ControlledScreen, Initializab
   void changeMenuPressed(ActionEvent event) {
     this.screensController.loadScreen(Main.changeMenuScreenID, Main.changeMenuScreenFile);
     this.screensController.setScreen(Main.changeMenuScreenID);
+  }
+
+  @FXML
+  void addStaffBtnPressed(ActionEvent event) {
+    this.screensController.loadScreen(Main.addStaffMemberScreenID, Main.addStaffMemberScreenFile);
+    this.screensController.setScreen(Main.addStaffMemberScreenID);
   }
 
   @FXML
@@ -112,5 +124,11 @@ public class DeleteUserScreenController implements ControlledScreen, Initializab
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     printUsers();
+
+    File file = new File("src/main/resources/uk/ac/rhul/rms/media/remove staff screen.png");
+    javafx.scene.image.Image image = new Image(file.toURI().toString());
+    BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1,1, true, true, false,false));
+    Background background = new Background(backgroundImage);
+    pane.setBackground(background);
   }
 }
