@@ -4,29 +4,35 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.DeleteUserScreenController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.DeleteUserScreenController">
     <children>
-        <Label alignment="CENTER" layoutX="295.0" layoutY="8.0" prefHeight="84.0" prefWidth="605.0" text="Delete Staff Account">
-            <font>
-                <Font size="57.0" />
-            </font>
-        </Label>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="540.0" stroke="BLACK" strokeType="INSIDE" width="264.0" />
-        <Button fx:id="manageOrderBtn" layoutX="5.0" layoutY="197.0" mnemonicParsing="false" onAction="#manageOrderBtnPressed" prefHeight="30.0" prefWidth="200.0" text="Manage Orders"> </Button>
-        <Button fx:id="changeMenu" layoutX="5.0" layoutY="148.0" mnemonicParsing="false" onAction="#changeMenuPressed" prefHeight="30.0" prefWidth="200.0" text="Change Menu" />
-        <Button fx:id="logOutBtn" layoutX="14.0" layoutY="34.0" mnemonicParsing="false" onAction="#logOut" prefHeight="50.0" prefWidth="115.0" text="Log Out" />
-        <Button fx:id="backBtn" layoutX="146.0" layoutY="34.0" mnemonicParsing="false" onAction="#backBtnPressed" prefHeight="50.0" prefWidth="113.0" text="Back" />
-        <Button layoutX="5.0" layoutY="243.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Delete Staff Member" />
-      <ListView fx:id="userList" layoutX="339.0" layoutY="178.0" prefHeight="291.0" prefWidth="454.0" />
-      <Button fx:id="removeUserBtn" layoutX="807.0" layoutY="185.0" mnemonicParsing="false" onAction="#removeUserBtnPressed" text="Remove User" />
-      <Label layoutX="339.0" layoutY="135.0" prefHeight="32.0" prefWidth="95.0" text="User List">
+        <Button fx:id="manageOrderBtn" layoutX="33.0" layoutY="394.0" mnemonicParsing="false" onAction="#manageOrderBtnPressed" prefHeight="30.0" prefWidth="175.0" text="Manage Orders">
          <font>
-            <Font size="22.0" />
-         </font>
-      </Label>
+            <Font name="Baskerville Old Face" size="12.0" />
+         </font></Button>
+        <Button fx:id="changeMenu" layoutX="33.0" layoutY="335.0" mnemonicParsing="false" onAction="#changeMenuPressed" prefHeight="30.0" prefWidth="175.0" text="Change Menu">
+         <font>
+            <Font name="Baskerville Old Face" size="12.0" />
+         </font></Button>
+        <Button fx:id="logOutBtn" layoutX="872.0" layoutY="12.0" mnemonicParsing="false" onAction="#logOut" prefHeight="31.0" prefWidth="74.0" text="Log Out">
+         <font>
+            <Font name="Baskerville Old Face" size="15.0" />
+         </font></Button>
+        <Button fx:id="backBtn" layoutX="12.0" layoutY="12.0" mnemonicParsing="false" onAction="#backBtnPressed" prefHeight="31.0" prefWidth="67.0" text="Back">
+         <font>
+            <Font name="Baskerville Old Face" size="15.0" />
+         </font></Button>
+        <Button fx:id="addStaffBtn" layoutX="33.0" layoutY="450.0" mnemonicParsing="false" onAction="#addStaffBtnPressed" prefHeight="30.0" prefWidth="175.0" text="Add Staff Member">
+         <font>
+            <Font name="Baskerville Old Face" size="12.0" />
+         </font></Button>
+      <ListView fx:id="userList" layoutX="263.0" layoutY="105.0" prefHeight="291.0" prefWidth="438.0" />
+      <Button fx:id="removeUserBtn" layoutX="300.0" layoutY="425.0" mnemonicParsing="false" onAction="#removeUserBtnPressed" prefHeight="43.0" prefWidth="364.0" text="Remove User">
+         <font>
+            <Font name="Baskerville Old Face" size="26.0" />
+         </font></Button>
       <Label fx:id="errorLog" alignment="CENTER" layoutX="807.0" layoutY="250.0" prefHeight="218.0" prefWidth="143.0" wrapText="true" />
     </children>
 </Pane>
