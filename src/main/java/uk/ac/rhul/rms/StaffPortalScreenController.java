@@ -152,15 +152,16 @@ public class StaffPortalScreenController implements ControlledScreen, Initializa
 
         String selectedOrder = this.claimedOrderList.getSelectionModel().getSelectedItems().toString();
 
-        int index = this.claimedOrderList.getSelectionModel().getSelectedIndex();
-        this.claimedOrderList.getItems().remove(index);
+        if (selectedOrder != "") {
+            int index = this.claimedOrderList.getSelectionModel().getSelectedIndex();
+            this.claimedOrderList.getItems().remove(index);
 
-        String[] splitId = selectedOrder.split(" - ");
-        Order order = DatabaseController.getOrder(connection, Integer.valueOf(splitId[0].substring(1)));
-        DatabaseConnection.getInstance().createStatement()
-                .execute("UPDATE orders_table SET status = 2 WHERE order_id= " +  order.getOrderId());
-        DatabaseController.markOrderComplete(connection, order);
-
+            String[] splitId = selectedOrder.split(" - ");
+            Order order = DatabaseController.getOrder(connection, Integer.valueOf(splitId[0].substring(1)));
+            DatabaseConnection.getInstance().createStatement()
+                    .execute("UPDATE orders_table SET status = 2 WHERE order_id= " + order.getOrderId());
+            DatabaseController.markOrderComplete(connection, order);
+        }
     }
 
     @FXML
