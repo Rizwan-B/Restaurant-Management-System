@@ -3,7 +3,9 @@ package uk.ac.rhul.rms;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import uk.ac.rhul.screenmanager.ControlledScreen;
@@ -75,23 +77,27 @@ public class StaffPortalScreenController implements ControlledScreen, Initializa
      */
     @FXML
     void claimBtnPressed(ActionEvent event) throws InvalidMenuIdException, SQLException {
-        Connection connection = DatabaseConnection.getInstance();
-        String selectedOrder = this.pendingOrdersList.getSelectionModel().getSelectedItems().toString();
+        try {
+            Connection connection = DatabaseConnection.getInstance();
+            String selectedOrder = this.pendingOrdersList.getSelectionModel().getSelectedItems().toString();
 
-        int index = this.pendingOrdersList.getSelectionModel().getSelectedIndex();
-        this.pendingOrdersList.getItems().remove(index);
+            int index = this.pendingOrdersList.getSelectionModel().getSelectedIndex();
+            this.pendingOrdersList.getItems().remove(index);
 
-        String[] splitId = selectedOrder.split(" - ");
-        Order order = DatabaseController.getOrder(connection, Integer.valueOf(splitId[0].substring(1)));
+            String[] splitId = selectedOrder.split(" - ");
+            Order order = DatabaseController.getOrder(connection, Integer.valueOf(splitId[0].substring(1)));
 
-        ConfirmedOrder confirmedOrder = new ConfirmedOrder(order, Main.currentLoggedInUser);
-        DatabaseController.confirmOrder(connection, confirmedOrder);
+            ConfirmedOrder confirmedOrder = new ConfirmedOrder(order, Main.currentLoggedInUser);
+            DatabaseController.confirmOrder(connection, confirmedOrder);
 
-        this.claimedOrderList.getItems().add(order.toString());
-        System.out.println(order.getOrderId());
-        DatabaseConnection.getInstance().createStatement()
-                .execute("UPDATE orders_table SET status = 1 WHERE order_id= " +  order.getOrderId());
-
+            this.claimedOrderList.getItems().add(order.toString());
+            System.out.println(order.getOrderId());
+            DatabaseConnection.getInstance().createStatement()
+                    .execute("UPDATE orders_table SET status = 1 WHERE order_id= " +  order.getOrderId());
+        } catch (IndexOutOfBoundsException e) {
+            Alert alert = new Alert(Alert.AlertType.NONE, "You need to select an order", ButtonType.OK);
+            alert.showAndWait();
+        }
     }
 
     /**
@@ -148,11 +154,10 @@ public class StaffPortalScreenController implements ControlledScreen, Initializa
 
     @FXML
     void markCompletedBtnPressed(ActionEvent event) throws InvalidMenuIdException, SQLException {
-        Connection connection = DatabaseConnection.getInstance();
+        try {
+            Connection connection = DatabaseConnection.getInstance();
+            String selectedOrder = this.claimedOrderList.getSelectionModel().getSelectedItems().toString();
 
-        String selectedOrder = this.claimedOrderList.getSelectionModel().getSelectedItems().toString();
-
-        if (selectedOrder != "") {
             int index = this.claimedOrderList.getSelectionModel().getSelectedIndex();
             this.claimedOrderList.getItems().remove(index);
 
@@ -161,6 +166,9 @@ public class StaffPortalScreenController implements ControlledScreen, Initializa
             DatabaseConnection.getInstance().createStatement()
                     .execute("UPDATE orders_table SET status = 2 WHERE order_id= " + order.getOrderId());
             DatabaseController.markOrderComplete(connection, order);
+        } catch (IndexOutOfBoundsException e) {
+            Alert alert = new Alert(Alert.AlertType.NONE, "You need to select an order", ButtonType.OK);
+            alert.showAndWait();
         }
     }
 
