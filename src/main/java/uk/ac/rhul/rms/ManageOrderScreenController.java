@@ -132,7 +132,7 @@ public class ManageOrderScreenController implements ControlledScreen, Initializa
         "SELECT * FROM orders_table");
     try {
       while (allOrders.next()) {
-        if (allOrders.getString(4).equals("3")) {
+        if (allOrders.getString(4).equals("0")) {
           orderList.getItems().add(allOrders.getString(1) + " | " + allOrders.getString(2) + " | "
               + allOrders.getString(4));
         }

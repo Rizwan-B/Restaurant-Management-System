@@ -224,8 +224,8 @@ public class BasketScreenController implements ControlledScreen, Initializable {
           DatabaseConnection.getInstance().createStatement()
                   .execute("INSERT INTO payments VALUES('" + paymentStatus + "','"+order_id
                           + "', '" + intTable +"', '"+x+"', '"+ t+ "'); ");
-          DatabaseConnection.getInstance().createStatement()
-                  .execute("UPDATE orders_table SET status = 3 WHERE order_id= " +  order_id);
+//          DatabaseConnection.getInstance().createStatement()
+//                  .execute("UPDATE orders_table SET status = 3 WHERE order_id= " +  order_id);
 
 
           String allItems = this.orderItems.getItems().toString();
@@ -262,8 +262,8 @@ public class BasketScreenController implements ControlledScreen, Initializable {
           DatabaseConnection.getInstance().createStatement()
                   .execute("INSERT INTO payments VALUES('" + paymentStatus + "','"+order_id
                           + "', '" + intTable +"', '"+x+"', '"+ t+ "'); ");
-          DatabaseConnection.getInstance().createStatement()
-                  .execute("UPDATE orders_table SET status = 3 WHERE order_id= " +  order_id);
+//          DatabaseConnection.getInstance().createStatement()
+//                  .execute("UPDATE orders_table SET status = 3 WHERE order_id= " +  order_id);
 
           this.screensController.setScreen(Main.startScreenID);
         }
