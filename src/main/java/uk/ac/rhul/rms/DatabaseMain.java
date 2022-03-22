@@ -262,7 +262,7 @@ public class DatabaseMain {
         createsTable(connect, "orders_table (order_id int," +
                 "table_no int NOT NULL," +
                 "orders_list varchar(100)," +
-                "status number(3) NOT NULL," +  // 0 means in progress, 1 means cancelled, 2 means complete, 3 means confirmed
+                "status number(2) NOT NULL," +  // 0 means in progress, 1 means cancelled, 2 means complete
                 "quantity int," +
                 "PRIMARY KEY(order_id));");
 
