@@ -14,8 +14,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+import javafx.scene.input.MouseEvent;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 import java.util.HashSet;
@@ -334,6 +336,19 @@ public class MenuScreenController implements ControlledScreen, Initializable {
       }
     }
   }
+
+  @FXML
+  void viewItem(MouseEvent event) {
+
+    if (event.getClickCount() == 2) {
+      String itemSelected = starterList.getSelectionModel().getSelectedItem();
+      // To change:
+      Alert alert1 = new Alert(Alert.AlertType.NONE, "Testing pop up", ButtonType.OK);
+      alert1.showAndWait();
+    }
+  }
+
+
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
