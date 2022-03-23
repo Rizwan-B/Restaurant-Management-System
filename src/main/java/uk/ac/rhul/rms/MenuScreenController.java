@@ -136,7 +136,6 @@ public class MenuScreenController implements ControlledScreen, Initializable {
   }
 
 
-
   /**
    * Once call waiter button is clicked this method takes you to call waiter screen.
    *
