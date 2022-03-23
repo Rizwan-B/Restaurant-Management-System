@@ -65,6 +65,9 @@ public class Main extends Application {
   public static String deleteUserScreenID = "DeleteUser";
   public static String deleteUserScreenFile = "/uk/ac/rhul/rms/DeleteUserScreen.fxml";
 
+  public static String nutrientsScreenID = "Nutrients";
+  public static String nutrientsScreenFile = "/uk/ac/rhul/rms/Nutrients.fxml";
+
   public static int currentLoggedInUser = 0;
   public static String sessionId = null;
   public static Thread workerThread;

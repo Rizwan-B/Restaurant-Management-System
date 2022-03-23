@@ -1,6 +1,7 @@
 package uk.ac.rhul.rms;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,13 +12,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
 import java.util.HashSet;
@@ -337,13 +343,17 @@ public class MenuScreenController implements ControlledScreen, Initializable {
   }
 
   @FXML
-  void viewItem(MouseEvent event) {
+  void viewItem(MouseEvent event) throws IOException {
 
     if (event.getClickCount() == 2) {
       String itemSelected = starterList.getSelectionModel().getSelectedItem();
-      // To change:
-      Alert alert1 = new Alert(Alert.AlertType.NONE, "Testing pop up", ButtonType.OK);
-      alert1.showAndWait();
+      Parent root = FXMLLoader.load(getClass().getResource(Main.nutrientsScreenFile));
+      Scene scene = new Scene(root);
+
+      Stage stage = new Stage();
+     // stage.setTitle("Nutrients");
+      stage.setScene(scene);
+      stage.show();
     }
   }
 

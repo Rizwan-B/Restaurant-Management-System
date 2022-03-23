@@ -471,8 +471,9 @@ public class DatabaseController {
    * @param order The order being marked as complete.
    */
   public static void markOrderComplete(Connection connection, Order order) {
+    System.out.println(order.getOrderId());
     executeUpdate(connection, "UPDATE orders_table SET status = 2 WHERE order_id = " +
-        String.valueOf(order.getOrderId()));
+        order.getOrderId());
   }
 
   /**
