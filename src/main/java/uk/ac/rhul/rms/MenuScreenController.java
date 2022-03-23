@@ -336,16 +336,16 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     }
   }
 
-  @FXML
-  void viewItem(MouseEvent event) {
-
-    if (event.getClickCount() == 2) {
-      String itemSelected = starterList.getSelectionModel().getSelectedItem();
-      // To change:
-      Alert alert1 = new Alert(Alert.AlertType.NONE, "Testing pop up", ButtonType.OK);
-      alert1.showAndWait();
-    }
-  }
+//  @FXML
+//  void viewItem(MouseEvent event) {
+//
+//    if (event.getClickCount() == 2) {
+//      String itemSelected = starterList.getSelectionModel().getSelectedItem();
+//      // To change:
+//      Alert alert1 = new Alert(Alert.AlertType.NONE, "Testing pop up", ButtonType.OK);
+//      alert1.showAndWait();
+//    }
+//  }
 
 
 
