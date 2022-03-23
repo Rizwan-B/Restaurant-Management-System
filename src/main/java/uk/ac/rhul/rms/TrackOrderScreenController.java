@@ -121,10 +121,10 @@ public class TrackOrderScreenController implements ControlledScreen, Initializab
                     }
 
 
-
+                    trackOrder.getItems().add(payments.getString(2) + " | " + payments.getString(3)
+                            + " | " + payments.getString(4) + " | " + status);
                 }
-                trackOrder.getItems().add(payments.getString(2) + " | " + payments.getString(3)
-                        + " | " + payments.getString(4) + " | " + status);
+
             }
         } catch (SQLException e) {
             System.out.println("SQL exception.");
