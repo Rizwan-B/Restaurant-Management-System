@@ -344,9 +344,27 @@ public class MenuScreenController implements ControlledScreen, Initializable {
 
   @FXML
   void viewItem(MouseEvent event) throws IOException {
-
+    String[] selectedItem;
+    String item= " ";
     if (event.getClickCount() == 2) {
-      String itemSelected = starterList.getSelectionModel().getSelectedItem();
+      if(!starterList.getSelectionModel().isEmpty()){
+        selectedItem = starterList.getSelectionModel().getSelectedItem().split(" -");
+        item = selectedItem[0];
+
+      }
+      if(!mainList.getSelectionModel().isEmpty()){
+        selectedItem = mainList.getSelectionModel().getSelectedItem().split(" -");
+        item = selectedItem[0];
+
+      }
+      if(!dessertList.getSelectionModel().isEmpty()){
+        selectedItem = mainList.getSelectionModel().getSelectedItem().split(" -");
+        item = selectedItem[0];
+
+      }
+      System.out.println(item);
+
+
       Parent root = FXMLLoader.load(getClass().getResource(Main.nutrientsScreenFile));
       Scene scene = new Scene(root);
 
