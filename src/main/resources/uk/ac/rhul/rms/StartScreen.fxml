@@ -4,13 +4,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.StartScreenController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.StartScreenController" stylesheets="@buttonsCSS.css">
    <children>
       <Button id="menuBtn" fx:id="menuBtn" layoutX="440.0" layoutY="272.0" mnemonicParsing="false" onAction="#changeToMenu" prefHeight="30.0" prefWidth="90.0" text="Menu">
          <font>
             <Font name="Bell MT" size="15.0" />
          </font></Button>
-      <Button id="menuBtn" fx:id="LoginBtn" layoutX="840.0" layoutY="79.0" mnemonicParsing="false" onAction="#loginBtnPressed" prefHeight="30.0" prefWidth="100.0" text="Login">
+      <Button id="LoginBtn" fx:id="LoginBtn" layoutX="840.0" layoutY="79.0" mnemonicParsing="false" onAction="#loginBtnPressed" prefHeight="30.0" prefWidth="100.0" text="Login">
          <font>
             <Font name="Bell MT" size="20.0" />
          </font>
