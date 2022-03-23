@@ -114,7 +114,7 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
   @FXML
   void deleteStarter(ActionEvent event) {
 
-    Alert alert = new Alert(Alert.AlertType.NONE, "Are you sure you want to delete this order?",
+    Alert alert = new Alert(Alert.AlertType.NONE, "Are you sure you want to delete this item?",
         ButtonType.YES, ButtonType.NO);
     alert.showAndWait();
 
@@ -145,7 +145,7 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
   @FXML
   void deleteMain(ActionEvent event) {
 
-    Alert alert = new Alert(Alert.AlertType.NONE, "Are you sure you want to delete this order?",
+    Alert alert = new Alert(Alert.AlertType.NONE, "Are you sure you want to delete this item?",
         ButtonType.YES, ButtonType.NO);
     alert.showAndWait();
 
@@ -176,7 +176,7 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
   @FXML
   void deleteDessert(ActionEvent event) {
 
-    Alert alert = new Alert(Alert.AlertType.NONE, "Are you sure you want to delete this order?",
+    Alert alert = new Alert(Alert.AlertType.NONE, "Are you sure you want to delete this item?",
         ButtonType.YES, ButtonType.NO);
     alert.showAndWait();
 
