@@ -67,6 +67,8 @@ public class MenuScreenController implements ControlledScreen, Initializable {
   @FXML
   private ListView<String> basketList;
 
+  public static String itemName = "";
+
   @FXML
   private Button backBtn;
 
@@ -343,23 +345,28 @@ public class MenuScreenController implements ControlledScreen, Initializable {
   }
 
   @FXML
-  void viewItem(MouseEvent event) throws IOException {
+  void viewItem(MouseEvent event) throws IOException, SQLException {
     String[] selectedItem;
     String item= " ";
     if (event.getClickCount() == 2) {
       if(!starterList.getSelectionModel().isEmpty()){
         selectedItem = starterList.getSelectionModel().getSelectedItem().split(" -");
         item = selectedItem[0];
+        MenuScreenController.itemName = item;
+
 
       }
       if(!mainList.getSelectionModel().isEmpty()){
         selectedItem = mainList.getSelectionModel().getSelectedItem().split(" -");
         item = selectedItem[0];
+        MenuScreenController.itemName = item;
+
 
       }
       if(!dessertList.getSelectionModel().isEmpty()){
         selectedItem = mainList.getSelectionModel().getSelectedItem().split(" -");
         item = selectedItem[0];
+        MenuScreenController.itemName = item;
 
       }
       System.out.println(item);

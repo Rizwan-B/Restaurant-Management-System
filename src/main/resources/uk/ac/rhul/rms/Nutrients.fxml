@@ -3,7 +3,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Text?>
 
 <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.NutrientsController">
    <children>
@@ -11,7 +10,11 @@
       <ImageView fx:id="itemImage" fitHeight="150.0" fitWidth="200.0" layoutX="190.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="text1" layoutX="152.0" layoutY="201.0" text="Item Name =" />
       <Label fx:id="text2" layoutX="152.0" layoutY="231.0" text="Calories = " />
-      <Text fx:id="itemName" layoutX="239.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text fx:id="itemCalories" layoutX="223.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Label fx:id="type" layoutX="152.0" layoutY="260.0" text="Diet Type = " />
+      <Label fx:id="description" layoutX="152.0" layoutY="291.0" text="Description = " />
+      <Label fx:id="itemName" layoutX="225.0" layoutY="200.0" prefHeight="17.0" prefWidth="365.0" />
+      <Label fx:id="itemCalories" layoutX="225.0" layoutY="231.0" prefHeight="17.0" prefWidth="365.0" />
+      <Label fx:id="diet" layoutX="225.0" layoutY="260.0" prefHeight="17.0" prefWidth="325.0" />
+      <Label fx:id="itemDescription" layoutX="225.0" layoutY="288.0" prefHeight="41.0" prefWidth="365.0" />
    </children>
 </Pane>

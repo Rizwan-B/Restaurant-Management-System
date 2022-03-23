@@ -74,6 +74,8 @@ public class Main extends Application {
   public static int oldRecordLength = 0;
   public static String status = " ";
 
+  public static String itemName = "";
+
 
 
   /**
