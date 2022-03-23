@@ -107,26 +107,22 @@ public class TrackOrderScreenController implements ControlledScreen, Initializab
         ResultSet payments = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
                 "SELECT * FROM payments;");
         try {
-            while(payments.next()) {
-                while (orders.next()) {
-
-                    if (orders.getString(4).equals("0")) {
-                        status = "Working On";
-                    }
-                    if (orders.getString(4).equals("1")) {
-                        status = "Cancelled";
-                    }
-                    if (orders.getString(4).equals("2")) {
-                        status = "On the Way!";
-                    }
-
-
-                    trackOrder.getItems().add(payments.getString(2) + " | " + payments.getString(3)
-                            + " | " + payments.getString(4) + " | " + status);
+            while (orders.next()) {
+                if (orders.getString(4).equals("0")) {
+                    status = "Working On";
                 }
-
+                if (orders.getString(4).equals("1")) {
+                    status = "Cancelled";
+                }
+                if (orders.getString(4).equals("2")) {
+                    status = "On the Way!";
+                }
+                payments.next();
+                trackOrder.getItems().add(payments.getString(2) + " | " + payments.getString(3)
+                        + " | " + payments.getString(4) + " | " + status);
             }
-        } catch (SQLException e) {
+
+            } catch (SQLException e) {
             System.out.println("SQL exception.");
         }
     }
