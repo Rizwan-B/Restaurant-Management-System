@@ -1,20 +1,47 @@
-#menuBtn {
+.combo-box {
     -fx-background-color: linear-gradient(#ff7373, #df5c5c);
     -fx-background-radius: 30;
     -fx-background-insets: 0;
+    -fx-border-color: #93BC31;
+    -fx-border-width: 3;
+    -fx-border-radius: 30;
     -fx-text-fill: white;
 }
 
-#reservationBtn {
-    -fx-background-color: linear-gradient(#ff7373, #df5c5c);
-    -fx-background-radius: 30;
-    -fx-background-insets: 0;
-    -fx-text-fill: white;
+#items {
+-fx-text-fill: white;
 }
 
-#LoginBtn {
+.box {
     -fx-background-color: linear-gradient(#ff7373, #df5c5c);
     -fx-background-radius: 30;
     -fx-background-insets: 0;
+    -fx-border-color: #93BC31;
+    -fx-border-width: 3;
+    -fx-border-radius: 30;
+}
+.combo-box-base .text {
+    -fx-fill: white;
+}
+
+.combo-box-popup .list-view .list-cell {
+    -fx-background-color: #ff7373;
+}
+
+.combo-box-popup .list-view .list-cell:filled:hover{
+    -fx-background-color: #93BC31;
+}
+
+.button {
+    -fx-background-color: linear-gradient(#ff7373, #df5c5c);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0;
+    -fx-border-color: #93BC31;
+    -fx-border-width: 3;
+    -fx-border-radius: 30;
     -fx-text-fill: white;
+}
+.button:pressed {
+ -fx-background-insets: 2;
+ -fx-border-insets: 2;
 }

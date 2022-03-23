@@ -5,13 +5,10 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.MenuScreenController">
-  <content>
-    <AnchorPane fx:id="pane" minHeight="0.0" minWidth="0.0" onDragDetected="#add" prefHeight="540.0" prefWidth="960.0">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.MenuScreenController" stylesheets="@buttonsCSS.css">
          <children>
             <ListView id="starterList" fx:id="starterList" layoutX="15.0" layoutY="182.0" onMouseClicked="#viewItem" prefHeight="285.0" prefWidth="277.0" />
             <Button fx:id="backBtn" layoutX="12.0" layoutY="12.0" mnemonicParsing="false" onAction="#backBtnPressed" prefHeight="31.0" prefWidth="67.0" text="Back">
@@ -30,7 +27,7 @@
                <font>
                   <Font name="Baskerville Old Face" size="15.0" />
                </font></Button>
-            <ComboBox fx:id="filterBox" layoutX="83.0" layoutY="91.0" onAction="#filterSelect" prefHeight="22.0" prefWidth="147.0" promptText="Non-Vegetarian" />
+            <ComboBox id="filterBox" fx:id="filterBox" layoutX="83.0" layoutY="91.0" onAction="#filterSelect" prefHeight="22.0" prefWidth="147.0" promptText="Non-Vegetarian" />
             <CheckBox fx:id="peanut" layoutX="614.0" layoutY="95.0" mnemonicParsing="false" onAction="#peanutFilter" text="Peanut" textFill="WHITE">
                <font>
                   <Font name="Baskerville Old Face" size="14.0" />
@@ -57,11 +54,10 @@
                   <Font name="Calibri" size="31.0" />
                </font>
             </Label>
-            <Label fx:id="items" layoutX="863.0" layoutY="26.0" text="&lt;count&gt;">
+            <Label fx:id="items" layoutX="863.0" layoutY="28.0" text="&lt;count&gt;">
                <font>
                   <Font name="Baskerville Old Face" size="23.0" />
                </font></Label>
-            <ComboBox fx:id="quantity" layoutX="336.0" layoutY="485.0" prefHeight="26.0" prefWidth="50.0" promptText="1" />
-         </children></AnchorPane>
-  </content>
-</ScrollPane>
+            <ComboBox fx:id="quantity" layoutX="336.0" layoutY="485.0" prefHeight="26.0" prefWidth="55.0" promptText="1" />
+         </children>
+</Pane>
