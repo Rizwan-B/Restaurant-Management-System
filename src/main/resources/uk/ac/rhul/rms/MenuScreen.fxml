@@ -21,8 +21,8 @@
                   <Font name="Baskerville Old Face" size="23.0" />
                </font>
             </Button>
-            <ListView id="starterList" fx:id="mainList" layoutX="336.0" layoutY="182.0" onMouseClicked="#viewItem" prefHeight="285.0" prefWidth="277.0" />
-            <ListView id="starterList" fx:id="dessertList" layoutX="660.0" layoutY="182.0" onMouseClicked="#viewItem" prefHeight="285.0" prefWidth="277.0" />
+            <ListView id="mainList" fx:id="mainList" layoutX="336.0" layoutY="182.0" onMouseClicked="#viewItem" prefHeight="285.0" prefWidth="277.0" />
+            <ListView id="dessertList" fx:id="dessertList" layoutX="660.0" layoutY="182.0" onMouseClicked="#viewItem" prefHeight="285.0" prefWidth="277.0" />
             <Button fx:id="callWaiterBtn" layoutX="21.0" layoutY="484.0" mnemonicParsing="false" onAction="#callWaiterBtnPressed" text="Call Waiter">
                <font>
                   <Font name="Baskerville Old Face" size="15.0" />

@@ -364,11 +364,16 @@ public class MenuScreenController implements ControlledScreen, Initializable {
 
       }
       if(!dessertList.getSelectionModel().isEmpty()){
-        selectedItem = mainList.getSelectionModel().getSelectedItem().split(" -");
+        selectedItem = dessertList.getSelectionModel().getSelectedItem().split(" -");
         item = selectedItem[0];
         MenuScreenController.itemName = item;
 
       }
+
+      starterList.getSelectionModel().clearSelection();
+      mainList.getSelectionModel().clearSelection();
+      dessertList.getSelectionModel().clearSelection();
+
       System.out.println(item);
 
 
