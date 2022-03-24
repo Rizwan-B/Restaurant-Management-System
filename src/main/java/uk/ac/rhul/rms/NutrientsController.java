@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 
 /**
  *
- * @author Muqdas
+ * @author Muqdas, Virginia
  */
 public class NutrientsController implements ControlledScreen, Initializable {
 
