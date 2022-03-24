@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.BasketScreenController" stylesheets="@buttonsCSS.css">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" stylesheets="@buttonsCSS.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.BasketScreenController">
    <children>
       <Button fx:id="backBtn" layoutX="12.0" layoutY="12.0" mnemonicParsing="false" onAction="#backBtnPressed" prefHeight="31.0" prefWidth="67.0" text="Back">
          <font>
@@ -25,7 +25,7 @@
          <font>
             <Font name="Baskerville Old Face" size="15.0" />
          </font></Text>
-      <TextField fx:id="tableNo" layoutX="493.0" layoutY="159.0" prefHeight="25.0" prefWidth="78.0" />
+      <TextField fx:id="tableNo" layoutX="493.0" layoutY="159.0" prefHeight="25.0" prefWidth="78.0" text="0" />
       <Text fx:id="paymentMethod" fill="WHITE" layoutX="408.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Method:">
          <font>
             <Font name="Baskerville Old Face" size="15.0" />

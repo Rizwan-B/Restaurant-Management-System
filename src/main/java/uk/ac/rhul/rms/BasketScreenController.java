@@ -184,15 +184,19 @@ public class BasketScreenController implements ControlledScreen, Initializable {
   @FXML
   void getPayment(ActionEvent event) throws SQLException, InvalidMenuIdException {
     int order_id = DatabaseController.nextInt(DatabaseConnection.getInstance());
-    makeOrder(order_id);
+
     String tableNumber = tableNo.getText();
     String card_no = cardNumber.getText();
     String holder_no = holderName.getText();
     String cvc = cvcBox.getText();
-    int table_Number = Integer.parseInt(tableNumber);
+    if(tableNumber.isEmpty()){
+      System.out.println("Try again");
+    }
+    makeOrder(order_id);
+
 
     if (electronicPayment.isSelected()) {
-
+      int table_Number = Integer.parseInt(tableNumber);
       if (tableNumber.isEmpty() || card_no.isEmpty() || holder_no.isEmpty() || cvc.isEmpty()
           || date.getSelectionModel().isEmpty() || year.getSelectionModel().isEmpty()) {
         Alert alert1 = new Alert(Alert.AlertType.NONE, "Enter Missing Information", ButtonType.OK);
@@ -235,7 +239,7 @@ public class BasketScreenController implements ControlledScreen, Initializable {
         }
       }
     } else if (tillsCheckBox.isSelected()) {
-
+      int table_Number = Integer.parseInt(tableNumber);
       if (tableNumber.isEmpty()) {
         Alert alert1 = new Alert(Alert.AlertType.NONE, "Enter table Number", ButtonType.OK);
         alert1.showAndWait();
