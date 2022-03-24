@@ -100,30 +100,30 @@ public class TrackOrderScreenController implements ControlledScreen, Initializab
     }
 
     @FXML
-    public void refreshButton(){
+    public void refreshButton() {
         String status = " ";
-        ResultSet orders = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
-                "SELECT * FROM orders_table;");
+
         ResultSet payments = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
                 "SELECT * FROM payments;");
         try {
-            while (orders.next()) {
-                if (orders.getString(4).equals("0")) {
+            while (payments.next()) {
+                ResultSet orders = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
+                        "SELECT status FROM orders_table WHERE order_id = '" + payments.getInt("order_id") + "';");
+                if (orders.getString("status").equals("0")) {
                     status = "Working On";
                 }
-                if (orders.getString(4).equals("1")) {
+                if (orders.getString("status").equals("1")) {
                     status = "Cancelled";
                 }
-                if (orders.getString(4).equals("2")) {
+                if (orders.getString("status").equals("2")) {
                     status = "On the Way!";
                 }
-                payments.next();
                 trackOrder.getItems().add(payments.getString(2) + " | " + payments.getString(3)
                         + " | " + payments.getString(4) + " | " + status);
             }
 
-            } catch (SQLException e) {
-            System.out.println("SQL exception.");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }
 
