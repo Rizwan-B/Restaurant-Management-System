@@ -134,9 +134,7 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     if (count == 0) {
       Alert alert = new Alert(Alert.AlertType.NONE, "The basket is empty!", ButtonType.OK);
       alert.showAndWait();
-    }
-
-    else {
+    } else {
       addToDB();
       this.screensController.loadScreen(Main.basketScreenID, Main.basketScreenFile);
       this.screensController.setScreen(Main.basketScreenID);
@@ -344,30 +342,32 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     }
   }
 
+  /**
+   * Double click on item to view picture and information.
+   *
+   * @param event event caused by double click.
+   * @throws IOException IO exception
+   * @throws SQLException SQL exception
+   */
   @FXML
   void viewItem(MouseEvent event) throws IOException, SQLException {
     String[] selectedItem;
-    String item= " ";
+    String item = " ";
     if (event.getClickCount() == 2) {
-      if(!starterList.getSelectionModel().isEmpty()){
+      if (!starterList.getSelectionModel().isEmpty()) {
         selectedItem = starterList.getSelectionModel().getSelectedItem().split(" -");
         item = selectedItem[0];
         MenuScreenController.itemName = item;
-
-
       }
-      if(!mainList.getSelectionModel().isEmpty()){
+      if (!mainList.getSelectionModel().isEmpty()) {
         selectedItem = mainList.getSelectionModel().getSelectedItem().split(" -");
         item = selectedItem[0];
         MenuScreenController.itemName = item;
-
-
       }
-      if(!dessertList.getSelectionModel().isEmpty()){
+      if (!dessertList.getSelectionModel().isEmpty()) {
         selectedItem = dessertList.getSelectionModel().getSelectedItem().split(" -");
         item = selectedItem[0];
         MenuScreenController.itemName = item;
-
       }
 
       starterList.getSelectionModel().clearSelection();
@@ -381,7 +381,6 @@ public class MenuScreenController implements ControlledScreen, Initializable {
       Scene scene = new Scene(root);
 
       Stage stage = new Stage();
-     // stage.setTitle("Nutrients");
       stage.setScene(scene);
       stage.show();
     }
@@ -403,7 +402,9 @@ public class MenuScreenController implements ControlledScreen, Initializable {
 
     File file = new File("src/main/resources/uk/ac/rhul/rms/media/menu screen.png");
     Image image = new Image(file.toURI().toString());
-    BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1,1, true, true, false,false));
+    BackgroundImage backgroundImage =
+        new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+            BackgroundPosition.DEFAULT, new BackgroundSize(1, 1, true, true, false, false));
     Background background = new Background(backgroundImage);
     pane.setBackground(background);
   }
