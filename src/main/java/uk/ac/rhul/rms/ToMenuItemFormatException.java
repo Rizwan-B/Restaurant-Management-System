@@ -1,7 +1,7 @@
 package uk.ac.rhul.rms;
 
 /**
- * An error to be thrown when trying to cast a string to a menu object using the incorrect format. 
+ * An error to be thrown when trying to cast a string to a menu object using the incorrect format.
  *
  * @author Lucas Kimber
  *
@@ -13,7 +13,7 @@ public class ToMenuItemFormatException extends Exception {
    */
   private static final long serialVersionUID = 1L;
 
-  
+
   /**
    * Sends the relevant exception message to the exception super class.
    */

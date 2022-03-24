@@ -116,28 +116,28 @@ public class Security {
       return true;
     }
 
-    for(Pattern pattern : validationPatterns){
-      if(matches(pattern, dataString)){
+    for (Pattern pattern : validationPatterns) {
+      if (matches(pattern, dataString)) {
         return false;
       }
     }
     return true;
   }
 
-  private static boolean matches(Pattern pattern, String dataString){
+  private static boolean matches(Pattern pattern, String dataString) {
     Matcher matcher = pattern.matcher(dataString);
     return matcher.matches();
   }
 
-  private static List<Pattern> buildPatterns(String[] expressionStrings){
+  private static List<Pattern> buildPatterns(String[] expressionStrings) {
     List<Pattern> patterns = new ArrayList<Pattern>();
-    for(String expression : expressionStrings){
+    for (String expression : expressionStrings) {
       patterns.add(getPattern(expression));
     }
     return patterns;
   }
 
-  private static Pattern getPattern(String regEx){
+  private static Pattern getPattern(String regEx) {
     return Pattern.compile(regEx, Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
   }
 

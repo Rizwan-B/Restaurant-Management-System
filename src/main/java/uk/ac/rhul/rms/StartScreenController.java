@@ -30,6 +30,7 @@ public class StartScreenController implements ControlledScreen, Initializable {
 
 
   /**
+   * Sets screen parent.
    *
    * @param screenParent The parent ScreensController of 'this' screen.
    */
@@ -44,7 +45,7 @@ public class StartScreenController implements ControlledScreen, Initializable {
    */
   @FXML
   private Button menuBtn;
-  
+
   @FXML
   private Button loginBtn;
 
@@ -60,6 +61,7 @@ public class StartScreenController implements ControlledScreen, Initializable {
 
   /**
    * this loads menu screen once menu is clicked.
+   *
    * @param event load menu screen
    */
   @FXML
@@ -70,6 +72,7 @@ public class StartScreenController implements ControlledScreen, Initializable {
 
   /**
    * This loads reservation screen when clicked reservation.
+   *
    * @param event load reservation screen
    */
   @FXML
@@ -80,19 +83,22 @@ public class StartScreenController implements ControlledScreen, Initializable {
 
   /**
    * this is to bring up login screen when clicked login.
+   *
    * @param event load login screen
    */
   @FXML
   private void loginBtnPressed(ActionEvent event) {
     if (Main.sessionId != null) {
-      ResultSet loggedUser = DatabaseController.executeQuery(DatabaseConnection.getInstance(), "SELECT user_id, user_role FROM user_table WHERE session_id='" + Main.sessionId + "'");
+      ResultSet loggedUser = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
+          "SELECT user_id, user_role FROM user_table WHERE session_id='" + Main.sessionId + "'");
       try {
         while (loggedUser.next()) {
           if (loggedUser.getString(2).equals("STAFF")) {
             this.screenController.loadScreen(Main.staffPortalScreenID, Main.staffPortalScreenFile);
             this.screenController.setScreen(Main.staffPortalScreenID);
           } else if (loggedUser.getString(2).equals("WAITER")) {
-            this.screenController.loadScreen(Main.waiterPortalScreenID, Main.WaiterPortalScreenFile);
+            this.screenController.loadScreen(Main.waiterPortalScreenID,
+                Main.WaiterPortalScreenFile);
             this.screenController.setScreen(Main.waiterPortalScreenID);
           } else {
             this.screenController.loadScreen(Main.adminPortalScreenId, Main.adminPortalScreenFile);
@@ -112,7 +118,9 @@ public class StartScreenController implements ControlledScreen, Initializable {
   public void initialize(URL location, ResourceBundle resources) {
     File file = new File("src/main/resources/uk/ac/rhul/rms/media/start screen.png");
     Image image = new Image(file.toURI().toString());
-    BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1,1, true, true, false,false));
+    BackgroundImage backgroundImage =
+        new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+            BackgroundPosition.DEFAULT, new BackgroundSize(1, 1, true, true, false, false));
     Background background = new Background(backgroundImage);
     pane.setBackground(background);
   }
