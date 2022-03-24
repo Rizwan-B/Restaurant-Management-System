@@ -189,21 +189,19 @@ public class BasketScreenController implements ControlledScreen, Initializable {
     String card_no = cardNumber.getText();
     String holder_no = holderName.getText();
     String cvc = cvcBox.getText();
-    if(tableNumber.isEmpty()){
-      System.out.println("Try again");
+    int table_Number = 0;
+    if(!(tableNumber.isEmpty())){
+      table_Number = Integer.parseInt(tableNumber);
+      makeOrder(order_id);
     }
-    makeOrder(order_id);
-
 
     if (electronicPayment.isSelected()) {
-      int table_Number = Integer.parseInt(tableNumber);
       if (tableNumber.isEmpty() || card_no.isEmpty() || holder_no.isEmpty() || cvc.isEmpty()
           || date.getSelectionModel().isEmpty() || year.getSelectionModel().isEmpty()) {
         Alert alert1 = new Alert(Alert.AlertType.NONE, "Enter Missing Information", ButtonType.OK);
         alert1.showAndWait();
 
       } else {
-
         if (!(card_no.length() == 16) || (!(cvc.length() == 3))) {
           Alert alert =
               new Alert(Alert.AlertType.NONE, "Incorrect Card Information!", ButtonType.OK);
@@ -239,7 +237,6 @@ public class BasketScreenController implements ControlledScreen, Initializable {
         }
       }
     } else if (tillsCheckBox.isSelected()) {
-      int table_Number = Integer.parseInt(tableNumber);
       if (tableNumber.isEmpty()) {
         Alert alert1 = new Alert(Alert.AlertType.NONE, "Enter table Number", ButtonType.OK);
         alert1.showAndWait();

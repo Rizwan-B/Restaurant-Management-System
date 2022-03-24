@@ -25,7 +25,7 @@
          <font>
             <Font name="Baskerville Old Face" size="15.0" />
          </font></Text>
-      <TextField fx:id="tableNo" layoutX="493.0" layoutY="159.0" prefHeight="25.0" prefWidth="78.0" text="0" />
+      <TextField fx:id="tableNo" layoutX="493.0" layoutY="159.0" prefHeight="25.0" prefWidth="78.0" />
       <Text fx:id="paymentMethod" fill="WHITE" layoutX="408.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Method:">
          <font>
             <Font name="Baskerville Old Face" size="15.0" />
