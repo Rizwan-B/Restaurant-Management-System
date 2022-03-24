@@ -124,8 +124,8 @@ public class Main extends Application {
     Group root = new Group();
     root.getChildren().addAll(mainScreenController);
     Scene scene = new Scene(root, 960, 540);
-
     primaryStage.setScene(scene);
+    primaryStage.setResizable(false);
     primaryStage.show();
   }
 
