@@ -201,7 +201,12 @@ public class BasketScreenController implements ControlledScreen, Initializable {
         Alert alert1 = new Alert(Alert.AlertType.NONE, "Enter Missing Information", ButtonType.OK);
         alert1.showAndWait();
 
-      } else {
+      }
+      if(!(table_Number>0 && table_Number<14)){
+        Alert alert = new Alert(Alert.AlertType.NONE, "Wrong Table Number!!", ButtonType.OK);
+        alert.showAndWait();
+      }
+      else {
         if (!(card_no.length() == 16) || (!(cvc.length() == 3))) {
           Alert alert =
               new Alert(Alert.AlertType.NONE, "Incorrect Card Information!", ButtonType.OK);
