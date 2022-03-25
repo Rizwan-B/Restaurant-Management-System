@@ -65,7 +65,7 @@ public class DatabaseMain {
   /**
    * Inserts values in to the table from the csv file. 
    *
-   *@param connection connects to the database.
+   * @param connection connects to the database.
    * @param table is the name of the table the values are inserted in. Table name must be same as csv file name.
    */
   public static void insertFromFile(Connection connection, String table) {
