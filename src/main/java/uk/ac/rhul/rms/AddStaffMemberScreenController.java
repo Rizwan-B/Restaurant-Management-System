@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -40,10 +41,10 @@ public class AddStaffMemberScreenController implements ControlledScreen, Initial
   private TextField usernameField;
 
   @FXML
-  private TextField passwordField;
+  private PasswordField passwordField;
 
   @FXML
-  private TextField reTypePasswordField;
+  private PasswordField reTypePasswordField;
 
   @FXML
   private TextField emailField;
