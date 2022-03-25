@@ -257,7 +257,7 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
       ObservableList selectedItem = this.waiterCalls.getSelectionModel().getSelectedIndices();
       String idString = this.waiterCalls.getItems()
               .get(ManageOrderScreenController.convertToInt(selectedItem.toString()));
-      if (idString.substring(0, 2) == "Kit") {
+      if (idString.substring(0, 2) == "Ki") {
         idString = idString.split(". ")[1];
       }
 
