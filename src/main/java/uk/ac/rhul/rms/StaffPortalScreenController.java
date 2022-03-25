@@ -174,7 +174,7 @@ public class StaffPortalScreenController implements ControlledScreen, Initializa
           .execute("UPDATE orders_table SET status = 2 WHERE order_id= " + order.getOrderId());
       DatabaseController.markOrderComplete(connection, order);
 
-      DatabaseController.makeWaiterCall(connection, -1); // Here -1 will be used to indicate the kitchen.
+      DatabaseController.makeWaiterCall(connection, order.getTableNumber()*-1); // Here -1 will be used to indicate the kitchen.
     } catch (IndexOutOfBoundsException e) {
       Alert alert = new Alert(Alert.AlertType.NONE, "You need to select an order", ButtonType.OK);
       alert.showAndWait();
