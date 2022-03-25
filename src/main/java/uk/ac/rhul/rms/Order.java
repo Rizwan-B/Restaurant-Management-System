@@ -121,7 +121,7 @@ public class Order {
    * @return A string of all the menu items.
    */
   public String toString() {
-    String orderString = String.valueOf(this.orderId) + " - ";
+    String orderString = String.valueOf(this.orderId) + " - | ";
 
     for (MenuItem item : this.orderList) {
       orderString += item.getName() + " | ";

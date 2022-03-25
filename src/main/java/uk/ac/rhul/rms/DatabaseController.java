@@ -531,6 +531,18 @@ public class DatabaseController {
     return workingOn;
   }
 
+
+  /**
+   * A function that assigns a waiter call in the database.
+   *
+   * @param connection The connection to the database.
+   * @param tableNum The table to call the waiter to.
+   */
+  public static void makeWaiterCall(Connection connection, int tableNum) {
+    executeUpdate(connection, "insert into waiter_call (table_no,waiter_id,served) values(" +
+            String.valueOf(tableNum) + ", NULL, 0)");
+  }
+
   /**
    * Gets all the orders currently being worked on.
    *
