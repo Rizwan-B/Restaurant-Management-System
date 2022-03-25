@@ -187,8 +187,8 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
           this.lastMaxCallId = initialRecords.getInt(1);
         }
         String tableNo = initialRecords.getString(2);
-        if (tableNo == "-1") {
-          tableNo = "Kitchen";
+        if (Integer.parseInt(tableNo) < 0) {
+          tableNo = "Kitchen: Delivery for Table No. " + Integer.parseInt(tableNo) * -1;
         }
         addToList(tableNo);
         this.newRecordLength++;
