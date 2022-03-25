@@ -136,8 +136,6 @@ public class StaffPortalScreenController implements ControlledScreen, Initializa
     for (ConfirmedOrder order : workingOn) {
       this.claimedOrderList.getItems().add(order.toString());
     }
-
-
   }
 
   @FXML
@@ -175,6 +173,8 @@ public class StaffPortalScreenController implements ControlledScreen, Initializa
       DatabaseConnection.getInstance().createStatement()
           .execute("UPDATE orders_table SET status = 2 WHERE order_id= " + order.getOrderId());
       DatabaseController.markOrderComplete(connection, order);
+
+      DatabaseController.makeWaiterCall(connection, -1); // Here -1 will be used to indicate the kitchen.
     } catch (IndexOutOfBoundsException e) {
       Alert alert = new Alert(Alert.AlertType.NONE, "You need to select an order", ButtonType.OK);
       alert.showAndWait();
