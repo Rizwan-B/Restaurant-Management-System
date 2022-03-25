@@ -294,6 +294,9 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     this.mainList.getItems().clear();
     this.dessertList.getItems().clear();
     String s = filterBox.getSelectionModel().getSelectedItem();
+    if (s == null) {
+      s = "Non-Vegetarian";
+    }
     if (s.equals("Vegan")) {
       veganMenu();
     } else if (s.equals("Vegetarian")) {
@@ -317,6 +320,9 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     this.mainList.getItems().clear();
     this.dessertList.getItems().clear();
     String s = filterBox.getSelectionModel().getSelectedItem();
+    if (s == null) {
+      s = "Non-Vegetarian";
+    }
     if (s.equals("Vegan")) {
       veganMenu();
     } else if (s.equals("Vegetarian")) {
@@ -339,6 +345,9 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     this.mainList.getItems().clear();
     this.dessertList.getItems().clear();
     String s = filterBox.getSelectionModel().getSelectedItem();
+    if (s == null) {
+      s = "Non-Vegetarian";
+    }
     if (s.equals("Vegan")) {
       veganMenu();
     } else if (s.equals("Vegetarian")) {
@@ -361,6 +370,9 @@ public class MenuScreenController implements ControlledScreen, Initializable {
     this.mainList.getItems().clear();
     this.dessertList.getItems().clear();
     String s = filterBox.getSelectionModel().getSelectedItem();
+    if (s == null) {
+      s = "Non-Vegetarian";
+    }
     if (s.equals("Vegan")) {
       veganMenu();
     } else if (s.equals("Vegetarian")) {
