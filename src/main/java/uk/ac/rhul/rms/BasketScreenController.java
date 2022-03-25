@@ -160,7 +160,6 @@ public class BasketScreenController implements ControlledScreen, Initializable {
     for (int i = 1; i < items.length; i = i + 2) {
 
       String str = items[i];
-      System.out.println(str);
       String price = str.replaceAll("[^0-9]", "");
       sum += Double.parseDouble(price);
 
@@ -216,7 +215,6 @@ public class BasketScreenController implements ControlledScreen, Initializable {
 
           long now = System.currentTimeMillis();
           Time time= new Time(now);
-          System.out.println(time);
           String t = time.toString();
           String paymentStatus = "paid";
           String table = tableNo.getText();
@@ -234,10 +232,6 @@ public class BasketScreenController implements ControlledScreen, Initializable {
 //          DatabaseConnection.getInstance().createStatement()
 //                  .execute("UPDATE orders_table SET status = 3 WHERE order_id= " +  order_id);
 
-
-          String allItems = this.orderItems.getItems().toString();
-          System.out.println(allItems);
-
           this.screensController.setScreen(Main.startScreenID);
         }
       }
@@ -253,7 +247,6 @@ public class BasketScreenController implements ControlledScreen, Initializable {
         }else{
           long now = System.currentTimeMillis();
           Time time= new Time(now);
-          System.out.println(time);
           String t = time.toString();
           String paymentStatus = "unpaid";
           String table = tableNo.getText().toString();

@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -50,6 +51,9 @@ public class AddStaffMemberScreenController implements ControlledScreen, Initial
   @FXML
   private Pane pane;
 
+  @FXML
+  private Label errorLog;
+
 
 
   /**
@@ -70,6 +74,10 @@ public class AddStaffMemberScreenController implements ControlledScreen, Initial
   void changeMenuPressed(ActionEvent event) {
     this.screensController.loadScreen(Main.changeMenuScreenID, Main.changeMenuScreenFile);
     this.screensController.setScreen(Main.changeMenuScreenID);
+  }
+
+  void displayError(String error) {
+    this.errorLog.setText(error);
   }
 
   @FXML
@@ -99,12 +107,11 @@ public class AddStaffMemberScreenController implements ControlledScreen, Initial
 
     try {
       if (username.equals("") || password.equals("") || reTypePassword.equals("") || role.equals("") || email.equals("")) {
-        System.out.println("Please fill all fields.");
+        displayError("Please fill all fields.");
       } else {
         if (!password.equals(reTypePassword)) {
-          System.out.println("Passwords do not match.");
+          displayError("Passwords do not match.");
         } else {
-          System.out.println("OK");
           Security security = new Security(username, password);
           String hashedPassword = security.getHashPassword();
           DatabaseConnection.getInstance().createStatement().execute(

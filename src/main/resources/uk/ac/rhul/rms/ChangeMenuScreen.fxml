@@ -28,7 +28,7 @@
          </font></Button>
       <Button fx:id="backBtn" layoutX="12.0" layoutY="12.0" mnemonicParsing="false" onAction="#backBtnPressed" prefHeight="31.0" prefWidth="67.0" text="Back">
          <font>
-            <Font name="Baskerville Old Face" size="12.0" />
+            <Font name="Baskerville Old Face" size="15.0" />
          </font>
       </Button>
       <Button fx:id="AddItem" layoutX="369.0" layoutY="491.0" mnemonicParsing="false" onAction="#addItemPressed" prefHeight="28.0" prefWidth="213.0" text="ADD NEW ITEM" textFill="#131212" textOverrun="CLIP">

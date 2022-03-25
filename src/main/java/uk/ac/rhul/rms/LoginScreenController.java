@@ -73,29 +73,6 @@ public class LoginScreenController implements ControlledScreen, Initializable {
     this.screensController.setScreen(Main.startScreenID);
   }
 
-  /**
-   * Bypasses.
-   *
-   * @param event checks security credentials and logs user in.
-   * @throws SQLException SQL Exception
-   */
-  @FXML
-  void bypass(ActionEvent event) throws SQLException {
-    String id = event.getSource().toString().split("=")[1].split(",")[0].split("b")[1];
-    // This is my favorite line of code. Classic security through obscurity xD.
-
-    Main.currentLoggedInUser = Integer.parseInt(id);
-    Main.sessionId = String.valueOf(Main.currentLoggedInUser);
-
-    DatabaseConnection.getInstance().createStatement().execute("UPDATE user_table set session_id="
-        + Main.sessionId + " WHERE user_id=" + Main.currentLoggedInUser); // this will be replaced
-                                                                          // by hashcode.
-
-
-
-    Main.loginLoader();
-  }
-
 
   /**
    * This method checks if there is another user logged in when someone is trying to log in.
@@ -108,12 +85,9 @@ public class LoginScreenController implements ControlledScreen, Initializable {
     String username = usernameField.getText();
     String password = passwordField.getText();
     Security security = new Security(username, password);
-    System.out.println(username);
-    System.out.println(password);
 
     if (!(security.isSqlInjectionSafe(username) && security.isSqlInjectionSafe(password))) {
-      System.out.println("I see what you did there huh!");
-      displayError("I see what you did there huh!");
+      displayError("I see what you did there, huh!");
       return;
     }
 
@@ -124,11 +98,9 @@ public class LoginScreenController implements ControlledScreen, Initializable {
       ResultSet loginResult = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
           "SELECT user_id, session_id FROM user_table WHERE user_name='" + username
               + "' AND password='" + security.getHashPassword() + "'");
-      System.out.println(security.getHashPassword());
       while (loginResult.next()) {
         Main.currentLoggedInUser = loginResult.getInt(1);
         if (!loginResult.getString(2).equals("NULL")) {
-          System.out.println("Someone is already logged into this account.");
           displayError("Someone is already logged into this account.");
           return;
         }
@@ -136,7 +108,6 @@ public class LoginScreenController implements ControlledScreen, Initializable {
       System.out.println(Main.currentLoggedInUser);
 
       if (Main.currentLoggedInUser == 0) {
-        System.out.println("Username or Password incorrect.");
         displayError("Username or Password incorrect.");
         return;
       }

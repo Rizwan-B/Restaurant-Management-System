@@ -59,10 +59,8 @@ public class Mail {
           + ",\n\nThe admin at Oaxaca has created an account for you. Please find the necessary login details below: \n\n\nUsername: "
           + loginUsername + "\nPassword: " + loginPassword);
 
-      System.out.println("sending...");
       // Send message
       Transport.send(message);
-      System.out.println("Sent message successfully....");
     } catch (MessagingException mex) {
       mex.printStackTrace();
     }

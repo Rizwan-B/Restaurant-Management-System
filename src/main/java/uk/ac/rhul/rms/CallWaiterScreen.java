@@ -46,9 +46,6 @@ public class CallWaiterScreen implements ControlledScreen, Initializable {
   private Button callWaiterBtn;
 
   @FXML
-  private Button run;
-
-  @FXML
   private Text textConfirm;
 
   @FXML
@@ -70,11 +67,9 @@ public class CallWaiterScreen implements ControlledScreen, Initializable {
         alert.showAndWait();
       } else {
         int tableNumber = Integer.parseInt(tableNumberString);
-        System.out.println(tableNumber);
         DatabaseConnection.getInstance().createStatement()
             .execute("insert into waiter_call (table_no,waiter_id,served) values(" + tableNumber
                 + ", NULL, 0)");
-        System.out.println("done");
         // textConfirm.setText("A waiter has been called.");
         Alert alert = new Alert(Alert.AlertType.NONE,
             "A waiter will be with you as soon as possible.", ButtonType.OK);
@@ -95,26 +90,6 @@ public class CallWaiterScreen implements ControlledScreen, Initializable {
   void backBtnPressed(ActionEvent event) {
     this.screensController.loadScreen(Main.menuScreenID, Main.menuScreenFile);
     this.screensController.setScreen(Main.menuScreenID);
-  }
-
-  /**
-   * Below Method is for database to select call ID, Table no and Waiter ID.
-   *
-   * @param event Event caused.
-   * @throws SQLException SQL Exception.
-   */
-  @FXML
-  void justNothing(ActionEvent event) throws SQLException {
-    final ResultSet test = DatabaseController.executeQuery(DatabaseConnection.getInstance(),
-        "select * from waiter_call");
-    System.out.println("---------------------------------------");
-    System.out.println("call_id | table_no | waiter_id | served");
-    System.out.println("---------------------------------------");
-    while (test.next()) {
-      System.out.println(test.getString(1) + " | " + test.getString(2) + " | " + test.getString(3)
-          + " | " + test.getString(4) + " |");
-    }
-    System.out.println("---------------------------------------");
   }
 
   @Override

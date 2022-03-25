@@ -85,19 +85,16 @@ public class ChangeMenuScreenController implements ControlledScreen, Initializab
       ArrayList<MenuItem> nonVegStarter =
           DatabaseController.getMenuItems(DatabaseConnection.getInstance(), "Starters");
       for (MenuItem v : nonVegStarter) {
-        System.out.println(v.getName());
         this.starterListView.getItems().add(v.getName());
       }
       ArrayList<MenuItem> nonVegMain =
           DatabaseController.getMenuItems(DatabaseConnection.getInstance(), "Main");
       for (MenuItem v : nonVegMain) {
-        System.out.println(v.getName());
         this.mainListView.getItems().add(v.getName());
       }
       ArrayList<MenuItem> nonVegDessert =
           DatabaseController.getMenuItems(DatabaseConnection.getInstance(), "Dessert");
       for (MenuItem v : nonVegDessert) {
-        System.out.println(v.getName());
         this.dessertListView.getItems().add(v.getName());
       }
     } catch (Exception e) {

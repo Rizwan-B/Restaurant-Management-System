@@ -13,7 +13,6 @@
          <font>
             <Font name="Baskerville Old Face" size="20.0" />
          </font></Button>
-      <Button fx:id="run" layoutX="463.0" layoutY="419.0" mnemonicParsing="false" onAction="#justNothing" text="run" />
       <Button fx:id="backBtn" layoutX="12.0" layoutY="12.0" mnemonicParsing="false" onAction="#backBtnPressed" prefHeight="31.0" prefWidth="67.0" text="Back">
          <font>
             <Font name="Baskerville Old Face" size="15.0" />

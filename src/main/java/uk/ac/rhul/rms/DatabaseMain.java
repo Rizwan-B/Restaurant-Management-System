@@ -217,17 +217,6 @@ public class DatabaseMain {
             + "PRIMARY KEY (ItemID)"
             + ");");
         
-        dropTables(connect, "menu2;");
-        createsTable(connect, "menu2 (itemId int NOT NULL,"
-            + "item_name varchar(200) NOT NULL,"
-            + "item_calories varchar(100) NOT NULL,"
-            + "item_category varchar(100) NOT NULL,"
-            + "item_description varchar(1000) NOT NULL,"
-            + "item_image_location varchar(1000),"
-            + "item_price varchar(200) NOT NULL,"
-            + "PRIMARY KEY (itemId)"
-            + ");");
-        
         dropTables(connect, "ingredients;");
         createsTable(connect, " ingredients (ingredientId INT NOT NULL,"
             + "ingredient_name VARCHAR(200) NOT NULL,"
@@ -244,7 +233,7 @@ public class DatabaseMain {
         createsTable(connect, " dish_ingredients_link ("
             + "menuItemId INT,"
             + "ingredientId INT,"
-            + "FOREIGN KEY (menuItemId) REFERENCES menu2(itemId)"
+            + "FOREIGN KEY (menuItemId) REFERENCES menu(itemId)"
             + " ON UPDATE CASCADE ON DELETE CASCADE,"
             + "FOREIGN KEY (ingredientId) REFERENCES ingredients(ingredientId)"
             + " ON UPDATE CASCADE ON DELETE CASCADE,"
@@ -279,7 +268,7 @@ public class DatabaseMain {
         dropTables(connect, "waiter_call;");
 
         createsTable(connect, "waiter_call (call_id INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + "table_no int NOT NULL UNIQUE,"
+                + "table_no int NOT NULL,"
                 + "waiter_id int,"
                 + "served number(1) NOT NULL" // 1 yes 0 no.
                 + ");");

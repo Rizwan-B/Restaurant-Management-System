@@ -92,15 +92,13 @@ public class TrackOrderScreenController implements ControlledScreen, Initializab
     try {
       ArrayList<SeatNumber> st = DatabaseController.getSeatNumber(this.connection);
       for (SeatNumber v : st) {
-        System.out.println(v.getTableNumber());
         this.table_no.getItems().add(v.getTableNumber());
       }
       for (SeatNumber v : st) {
-        System.out.println(v.getSeatNumber());
         this.seat_no.getItems().add(v.getSeatNumber());
       }
     } catch (Exception e) {
-      System.out.println("oops");
+      System.out.println(e.toString());
     }
   }
 

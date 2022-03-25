@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.LoginScreenController" stylesheets="@buttonsCSS.css">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" stylesheets="@buttonsCSS.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.rms.LoginScreenController">
    <children>
       <TextField fx:id="usernameField" layoutX="385.0" layoutY="200.0" prefHeight="39.0" prefWidth="194.0" promptText="Username">
          <font>
@@ -31,32 +31,5 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="790.0" layoutY="37.0" text="Bypass:">
-         <font>
-            <Font size="32.0" />
-         </font>
-      </Label>
-      <Label layoutX="796.0" layoutY="123.0" text="Waiters:">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Label>
-      <Button fx:id="b2" layoutX="796.0" layoutY="174.0" mnemonicParsing="false" onAction="#bypass" text="Ahmed" />
-      <Button fx:id="b3" layoutX="796.0" layoutY="207.0" mnemonicParsing="false" onAction="#bypass" text="Rizwan" />
-      <Button fx:id="b4" layoutX="796.0" layoutY="239.0" mnemonicParsing="false" onAction="#bypass" text="Virginia" />
-      <Label layoutX="796.0" layoutY="290.0" prefHeight="27.0" prefWidth="113.0" text="Kitchen Staff:">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Button fx:id="b5" layoutX="797.0" layoutY="326.0" mnemonicParsing="false" onAction="#bypass" text="Mo" />
-      <Button fx:id="b6" layoutX="797.0" layoutY="363.0" mnemonicParsing="false" onAction="#bypass" text="Lucas" />
-      <Button fx:id="b7" layoutX="797.0" layoutY="401.0" mnemonicParsing="false" onAction="#bypass" text="Muqdas" />
-      <Label layoutX="793.0" layoutY="439.0" prefHeight="27.0" prefWidth="113.0" text="Admin:">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Button fx:id="b1" layoutX="797.0" layoutY="473.0" mnemonicParsing="false" onAction="#bypass" text="Admin" />
    </children>
 </Pane>

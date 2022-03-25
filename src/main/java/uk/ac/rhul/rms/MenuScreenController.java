@@ -476,7 +476,6 @@ public class MenuScreenController implements ControlledScreen, Initializable {
       mainList.getSelectionModel().clearSelection();
       dessertList.getSelectionModel().clearSelection();
 
-      System.out.println(item);
 
 
       Parent root = FXMLLoader.load(getClass().getResource(Main.nutrientsScreenFile));

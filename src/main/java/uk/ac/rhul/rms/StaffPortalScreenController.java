@@ -96,7 +96,6 @@ public class StaffPortalScreenController implements ControlledScreen, Initializa
       DatabaseController.confirmOrder(connection, confirmedOrder);
 
       this.claimedOrderList.getItems().add(order.toString());
-      System.out.println(order.getOrderId());
       DatabaseConnection.getInstance().createStatement()
           .execute("UPDATE orders_table SET status = 1 WHERE order_id= " + order.getOrderId());
     } catch (IndexOutOfBoundsException e) {
