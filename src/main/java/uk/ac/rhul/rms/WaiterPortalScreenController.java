@@ -259,7 +259,7 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
               + " WHERE table_no=" + callId);
       makeWaiterBusy();
     } catch (SQLException | NumberFormatException e) {
-      System.out.println(e.toString());
+      System.out.println(e.toString()); // test commit data
     }
   }
 
