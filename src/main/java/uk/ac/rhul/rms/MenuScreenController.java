@@ -114,6 +114,8 @@ public class MenuScreenController implements ControlledScreen, Initializable {
   private Pane pane;
 
   int count = 0;
+                              //    dairy, nut, shellfish, wheat, non-vegan, non-veg
+  private String[] allergenArray = {"'NOPE'", "'NOPE'", "'NOPE'", "'NOPE'", "'NOPE'", "'NOPE'"};
 
 
   /**
@@ -180,14 +182,13 @@ public class MenuScreenController implements ControlledScreen, Initializable {
    * This filters the menu to show the Non-Vegetarian menu.
    */
   public void nonVegMenu() {
-    String[] allergensArray = {""};
     try {
       ArrayList<MenuItem> nonVegStarterNV =
-          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Starters", Diet.NON_VEGETERIAN, allergensArray);
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Starters", Diet.NON_VEGETERIAN, this.allergenArray);
       ArrayList<MenuItem> nonVegStarterVE =
-          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Starters", Diet.VEGAN, allergensArray);
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Starters", Diet.VEGAN, this.allergenArray);
       ArrayList<MenuItem> nonVegStarterV =
-          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Starters", Diet.VEGETARIAN, allergensArray);
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Starters", Diet.VEGETARIAN, this.allergenArray);
 
       nonVegStarterNV.addAll(nonVegStarterVE);
       nonVegStarterNV.addAll(nonVegStarterV);
@@ -196,11 +197,11 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         this.starterList.getItems().add(v.getName() + " - £" + v.getprice());
       }
       ArrayList<MenuItem> nonVegMainNV =
-          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Main", Diet.NON_VEGETERIAN, allergensArray);
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Main", Diet.NON_VEGETERIAN, this.allergenArray);
       ArrayList<MenuItem> nonVegMainVE =
-          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Main", Diet.VEGAN, allergensArray);
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Main", Diet.VEGAN, this.allergenArray);
       ArrayList<MenuItem> nonVegMainV =
-          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Main", Diet.VEGETARIAN, allergensArray);
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Main", Diet.VEGETARIAN, this.allergenArray);
 
       nonVegMainNV.addAll(nonVegMainVE);
       nonVegMainNV.addAll(nonVegMainV);
@@ -208,11 +209,11 @@ public class MenuScreenController implements ControlledScreen, Initializable {
         this.mainList.getItems().add(v.getName() + " - £" + v.getprice());
       }
       ArrayList<MenuItem> nonVegDessertNV =
-          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Dessert", Diet.NON_VEGETERIAN, allergensArray);
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Dessert", Diet.NON_VEGETERIAN, this.allergenArray);
       ArrayList<MenuItem> nonVegDessertVE =
-          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Dessert", Diet.VEGAN, allergensArray);
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Dessert", Diet.VEGAN, this.allergenArray);
       ArrayList<MenuItem> nonVegDessertV =
-          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Dessert", Diet.VEGETARIAN, allergensArray);
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Dessert", Diet.VEGETARIAN, this.allergenArray);
 
       nonVegDessertNV.addAll(nonVegDessertVE);
       nonVegDessertNV.addAll(nonVegDessertV);
@@ -228,22 +229,21 @@ public class MenuScreenController implements ControlledScreen, Initializable {
    * This filters the menu to show the suitable for vegetarian menu.
    */
   public void vegetarianMenu() {
-    String[] allergensArray = {""};
     try {
       ArrayList<MenuItem> vegStarters = DatabaseController
-          .getMenuItemsFiltered(DatabaseConnection.getInstance(), "Starters", Diet.VEGETARIAN, allergensArray);
+          .getMenuItemsFiltered(DatabaseConnection.getInstance(), "Starters", Diet.VEGETARIAN, this.allergenArray);
       this.starterList.getItems().clear();
       for (MenuItem v : vegStarters) {
         this.starterList.getItems().add(v.getName() + " - £" + v.getprice());
       }
       ArrayList<MenuItem> vegMain =
-          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Main", Diet.VEGETARIAN, allergensArray);
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Main", Diet.VEGETARIAN, this.allergenArray);
       this.mainList.getItems().clear();
       for (MenuItem v : vegMain) {
         this.mainList.getItems().add(v.getName() + " - £" + v.getprice());
       }
       ArrayList<MenuItem> vegDessert = DatabaseController
-          .getMenuItemsFiltered(DatabaseConnection.getInstance(), "Dessert", Diet.VEGETARIAN, allergensArray);
+          .getMenuItemsFiltered(DatabaseConnection.getInstance(), "Dessert", Diet.VEGETARIAN, this.allergenArray);
       this.dessertList.getItems().clear();
       for (MenuItem v : vegDessert) {
         this.dessertList.getItems().add(v.getName() + " - £" + v.getprice());
@@ -259,20 +259,19 @@ public class MenuScreenController implements ControlledScreen, Initializable {
    * This filters the menu to show only vegan options.
    */
   public void veganMenu() {
-    String[] allergensArray = {""};
     try {
       ArrayList<MenuItem> veganStarter =
-          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Starters", Diet.VEGAN, allergensArray);
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Starters", Diet.VEGAN, this.allergenArray);
       for (MenuItem v : veganStarter) {
         this.starterList.getItems().add(v.getName() + " - £" + v.getprice());
       }
       ArrayList<MenuItem> veganMain =
-          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Main", Diet.VEGAN, allergensArray);
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Main", Diet.VEGAN, this.allergenArray);
       for (MenuItem v : veganMain) {
         this.mainList.getItems().add(v.getName() + " - £" + v.getprice());
       }
       ArrayList<MenuItem> veganDessert =
-          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Dessert", Diet.VEGAN, allergensArray);
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Dessert", Diet.VEGAN, this.allergenArray);
       for (MenuItem v : veganDessert) {
         this.dessertList.getItems().add(v.getName() + " - £" + v.getprice());
       }
@@ -286,29 +285,91 @@ public class MenuScreenController implements ControlledScreen, Initializable {
   @FXML
   void dairyFilter(ActionEvent event) {
     if (dairy.isSelected()) {
-
+      allergenArray[0] = "'dairy'";
+    } else {
+      allergenArray[0] = "'NOPE'";
     }
+
+    this.starterList.getItems().clear();
+    this.mainList.getItems().clear();
+    this.dessertList.getItems().clear();
+    String s = filterBox.getSelectionModel().getSelectedItem();
+    if (s.equals("Vegan")) {
+      veganMenu();
+    } else if (s.equals("Vegetarian")) {
+      vegetarianMenu();
+      veganMenu(); // Vegetarian menu includes vegan options.
+    } else { // Non-Vegetarian menu includes vegetarian and vegan options.
+      nonVegMenu();
+    }
+
   }
 
   @FXML
   void peanutFilter(ActionEvent event) {
     if (peanut.isSelected()) {
+      allergenArray[1] = "'nut'";
+    } else {
+      allergenArray[1] = "'NOPE'";
+    }
 
+    this.starterList.getItems().clear();
+    this.mainList.getItems().clear();
+    this.dessertList.getItems().clear();
+    String s = filterBox.getSelectionModel().getSelectedItem();
+    if (s.equals("Vegan")) {
+      veganMenu();
+    } else if (s.equals("Vegetarian")) {
+      vegetarianMenu();
+      veganMenu(); // Vegetarian menu includes vegan options.
+    } else { // Non-Vegetarian menu includes vegetarian and vegan options.
+      nonVegMenu();
     }
   }
 
   @FXML
   void shellfishFilter(ActionEvent event) {
     if (shellfish.isSelected()) {
+      allergenArray[2] = "'shellfish'";
+    } else {
+      allergenArray[2] = "'NOPE'";
+    }
 
+    this.starterList.getItems().clear();
+    this.mainList.getItems().clear();
+    this.dessertList.getItems().clear();
+    String s = filterBox.getSelectionModel().getSelectedItem();
+    if (s.equals("Vegan")) {
+      veganMenu();
+    } else if (s.equals("Vegetarian")) {
+      vegetarianMenu();
+      veganMenu(); // Vegetarian menu includes vegan options.
+    } else { // Non-Vegetarian menu includes vegetarian and vegan options.
+      nonVegMenu();
     }
   }
 
   @FXML
   void wheatFilter(ActionEvent event) {
     if (wheat.isSelected()) {
-
+      allergenArray[3] = "'wheat'";
+    } else {
+      allergenArray[3] = "'NOPE'";
     }
+
+    this.starterList.getItems().clear();
+    this.mainList.getItems().clear();
+    this.dessertList.getItems().clear();
+    String s = filterBox.getSelectionModel().getSelectedItem();
+    if (s.equals("Vegan")) {
+      veganMenu();
+    } else if (s.equals("Vegetarian")) {
+      vegetarianMenu();
+      veganMenu(); // Vegetarian menu includes vegan options.
+    } else { // Non-Vegetarian menu includes vegetarian and vegan options.
+      nonVegMenu();
+    }
+
   }
 
   /**

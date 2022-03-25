@@ -183,7 +183,7 @@ public class DatabaseController {
         + " AS menu_allergens"
         + " FROM menu"
         + " JOIN dish_ingredients_link"
-        + " ON menu_allergens.itemId = dish_ingredients_link.menuItemId"
+        + " ON itemId = dish_ingredients_link.menuItemId"
         + " JOIN ingredients"
         + " ON dish_ingredients_link.ingredientId = ingredients.ingredientId"
         + " JOIN allergy_ingredient_link"
