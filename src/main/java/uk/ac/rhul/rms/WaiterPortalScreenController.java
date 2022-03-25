@@ -255,8 +255,13 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
   void acceptCall(ActionEvent event) {
     try {
       ObservableList selectedItem = this.waiterCalls.getSelectionModel().getSelectedIndices();
-      int callId = Integer.parseInt(this.waiterCalls.getItems()
-          .get(ManageOrderScreenController.convertToInt(selectedItem.toString())));
+      String idString = this.waiterCalls.getItems()
+              .get(ManageOrderScreenController.convertToInt(selectedItem.toString()));
+      if (idString.substring(0, 2) == "Kit") {
+        idString = idString.split(". ")[1];
+      }
+
+      int callId = Integer.parseInt(idString);
 
       DatabaseConnection.getInstance().createStatement()
           .execute("UPDATE waiter_call set served=1, waiter_id=" + Main.currentLoggedInUser
