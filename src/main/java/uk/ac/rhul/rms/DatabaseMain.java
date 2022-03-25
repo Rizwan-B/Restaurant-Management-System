@@ -160,6 +160,32 @@ public class DatabaseMain {
                 + query8.getString(3) + ", " + query8.getString(4) + ", " +  query8.getString(5));
       }
 
+      System.out.println("\n\nAllergies");
+      ResultSet query9 = db.executeQuery(connect, "SELECT * FROM allergies");
+      while (query9.next()) {
+        System.out.println(query9.getString(1) + ", " + query9.getString(2));
+      }
+
+      System.out.println("\n\nAllergies Ingredient Link");
+      ResultSet query10 = db.executeQuery(connect, "SELECT * FROM ingredients");
+      while (query10.next()) {
+        System.out.println(query10.getString(1) + ", " + query10.getString(2));
+      }
+
+      System.out.println("\n\nDish Ingredient Link");
+      ResultSet query11 = db.executeQuery(connect, "SELECT * FROM dish_ingredients_link");
+      while (query11.next()) {
+        System.out.println(query11.getString(1) + ", " + query11.getString(2));
+      }
+
+      System.out.println("\n\nIngredients");
+      ResultSet query12 = db.executeQuery(connect, "SELECT * FROM allergy_ingredient_link");
+      while (query12.next()) {
+        System.out.println(query12.getString(1) + ", " + query12.getString(2));
+      }
+
+
+
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -295,6 +321,7 @@ public class DatabaseMain {
         insertFromFile(connect, "ingredients");
         insertFromFile(connect, "allergies");
         insertFromFile(connect, "allergy_ingredient_link");
+        insertFromFile(connect, "dish_ingredients_link");
 
         queries(connect, db);
       }

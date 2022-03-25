@@ -167,16 +167,18 @@ public class DatabaseController {
    * @author Tomas Duarte
    * @author Mohamed Javid
    */
-  public static ArrayList<MenuItem> getMenuItemsFiltered(Connection connection, String categoryType, String[] allergensArray) throws SQLException {
+  public static ArrayList<MenuItem> getMenuItemsFiltered(Connection connection, String categoryType, Diet dietType, String[] allergensArray) throws SQLException {
     String allergens = Arrays.toString(allergensArray);
     int length = allergens.length();
     String allergensFormatted = allergens.substring(1,length-1);
     String query = ("SELECT menu.itemId, menu.item_name, menu.calories,"
         + " menu.category, menu.diet_type, menu.item_description, menu.item_image_location, menu.item_price"
         + " FROM menu"
-        + " WHERE menu.item_category ='" + categoryType + "'"
+        + " WHERE menu.diet_type='" + dietType.toString() + "'"
+        + " AND "
+        + " menu.category ='" + categoryType + "'"
         + " EXCEPT"
-        + " SELECT menu.itemId, menu.item_name, menu.calories, menu.category,"
+        + " SELECT menu.itemId, menu.item_name, menu.calories, menu.category, menu.diet_type,"
         + " menu.item_description, menu.item_image_location, menu.item_price"
         + " AS menu_allergens"
         + " FROM menu"
@@ -188,13 +190,13 @@ public class DatabaseController {
         + " ON ingredients.ingredientId = allergy_ingredient_link.ingredientId"
         + " JOIN allergies"
         + " ON allergy_ingredient_link.allergyId = allergies.allergyId"
-        + " WHERE menu_allergens.allergy_name in (" + allergensFormatted + ");");
+        + " WHERE allergies.allergy_name in (" + allergensFormatted + ");");
     ResultSet result = executeQuery(connection, query);
     ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
     int itemId;
     String itemName;
     int itemCalories;
-    Diet dietType;
+    Diet dietTypeResult;
     String itemCategory;
     String itemDescription;
     String itemImageLocation;
@@ -205,11 +207,11 @@ public class DatabaseController {
       itemName = result.getString("item_name");
       itemCalories = result.getInt("calories");
       itemCategory = result.getString("category");
-      dietType = Diet.toDiet(result.getString("diet_type"));
+      dietTypeResult = Diet.toDiet(result.getString("diet_type"));
       itemDescription = result.getString("item_description");
       itemImageLocation = result.getString("item_image_location");
       itemPrice = result.getInt("item_price");
-      menuItem = new MenuItem(itemId, itemName, itemCalories, itemCategory, dietType, itemDescription,
+      menuItem = new MenuItem(itemId, itemName, itemCalories, itemCategory, dietTypeResult, itemDescription,
           itemImageLocation, itemPrice);
       menuItems.add(menuItem);
     }

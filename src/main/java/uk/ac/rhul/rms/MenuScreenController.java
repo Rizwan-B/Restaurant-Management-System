@@ -26,6 +26,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import uk.ac.rhul.screenmanager.ControlledScreen;
 import uk.ac.rhul.screenmanager.ScreensController;
+
+import javax.xml.crypto.Data;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Collections;
@@ -178,24 +180,47 @@ public class MenuScreenController implements ControlledScreen, Initializable {
    * This filters the menu to show the Non-Vegetarian menu.
    */
   public void nonVegMenu() {
+    String[] allergensArray = {""};
     try {
-      ArrayList<MenuItem> nonVegStarter =
-          DatabaseController.getMenuItems(DatabaseConnection.getInstance(), "Starters");
-      for (MenuItem v : nonVegStarter) {
+      ArrayList<MenuItem> nonVegStarterNV =
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Starters", Diet.NON_VEGETERIAN, allergensArray);
+      ArrayList<MenuItem> nonVegStarterVE =
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Starters", Diet.VEGAN, allergensArray);
+      ArrayList<MenuItem> nonVegStarterV =
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Starters", Diet.VEGETARIAN, allergensArray);
+
+      nonVegStarterNV.addAll(nonVegStarterVE);
+      nonVegStarterNV.addAll(nonVegStarterV);
+
+      for (MenuItem v : nonVegStarterNV) {
         this.starterList.getItems().add(v.getName() + " - £" + v.getprice());
       }
-      ArrayList<MenuItem> nonVegMain =
-          DatabaseController.getMenuItems(DatabaseConnection.getInstance(), "Main");
-      for (MenuItem v : nonVegMain) {
+      ArrayList<MenuItem> nonVegMainNV =
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Main", Diet.NON_VEGETERIAN, allergensArray);
+      ArrayList<MenuItem> nonVegMainVE =
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Main", Diet.VEGAN, allergensArray);
+      ArrayList<MenuItem> nonVegMainV =
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Main", Diet.VEGETARIAN, allergensArray);
+
+      nonVegMainNV.addAll(nonVegMainVE);
+      nonVegMainNV.addAll(nonVegMainV);
+      for (MenuItem v : nonVegMainNV) {
         this.mainList.getItems().add(v.getName() + " - £" + v.getprice());
       }
-      ArrayList<MenuItem> nonVegDessert =
-          DatabaseController.getMenuItems(DatabaseConnection.getInstance(), "Dessert");
-      for (MenuItem v : nonVegDessert) {
+      ArrayList<MenuItem> nonVegDessertNV =
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Dessert", Diet.NON_VEGETERIAN, allergensArray);
+      ArrayList<MenuItem> nonVegDessertVE =
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Dessert", Diet.VEGAN, allergensArray);
+      ArrayList<MenuItem> nonVegDessertV =
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Dessert", Diet.VEGETARIAN, allergensArray);
+
+      nonVegDessertNV.addAll(nonVegDessertVE);
+      nonVegDessertNV.addAll(nonVegDessertV);
+      for (MenuItem v : nonVegDessertNV) {
         this.dessertList.getItems().add(v.getName() + " - £" + v.getprice());
       }
     } catch (Exception e) {
-      System.out.println("oops");
+      System.out.println(e.toString());
     }
   }
 
@@ -203,47 +228,51 @@ public class MenuScreenController implements ControlledScreen, Initializable {
    * This filters the menu to show the suitable for vegetarian menu.
    */
   public void vegetarianMenu() {
+    String[] allergensArray = {""};
     try {
       ArrayList<MenuItem> vegStarters = DatabaseController
-          .getDietType(DatabaseConnection.getInstance(), Diet.VEGETARIAN, "Starters");
+          .getMenuItemsFiltered(DatabaseConnection.getInstance(), "Starters", Diet.VEGETARIAN, allergensArray);
       this.starterList.getItems().clear();
       for (MenuItem v : vegStarters) {
         this.starterList.getItems().add(v.getName() + " - £" + v.getprice());
       }
       ArrayList<MenuItem> vegMain =
-          DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGETARIAN, "Main");
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Main", Diet.VEGETARIAN, allergensArray);
       this.mainList.getItems().clear();
       for (MenuItem v : vegMain) {
         this.mainList.getItems().add(v.getName() + " - £" + v.getprice());
       }
       ArrayList<MenuItem> vegDessert = DatabaseController
-          .getDietType(DatabaseConnection.getInstance(), Diet.VEGETARIAN, "Dessert");
+          .getMenuItemsFiltered(DatabaseConnection.getInstance(), "Dessert", Diet.VEGETARIAN, allergensArray);
       this.dessertList.getItems().clear();
       for (MenuItem v : vegDessert) {
         this.dessertList.getItems().add(v.getName() + " - £" + v.getprice());
       }
     } catch (Exception e) {
-      System.out.println("oops");
+      System.out.println(e.toString());
     }
   }
+
+
 
   /**
    * This filters the menu to show only vegan options.
    */
   public void veganMenu() {
+    String[] allergensArray = {""};
     try {
       ArrayList<MenuItem> veganStarter =
-          DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGAN, "Starters");
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Starters", Diet.VEGAN, allergensArray);
       for (MenuItem v : veganStarter) {
         this.starterList.getItems().add(v.getName() + " - £" + v.getprice());
       }
       ArrayList<MenuItem> veganMain =
-          DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGAN, "Main");
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Main", Diet.VEGAN, allergensArray);
       for (MenuItem v : veganMain) {
         this.mainList.getItems().add(v.getName() + " - £" + v.getprice());
       }
       ArrayList<MenuItem> veganDessert =
-          DatabaseController.getDietType(DatabaseConnection.getInstance(), Diet.VEGAN, "Dessert");
+          DatabaseController.getMenuItemsFiltered(DatabaseConnection.getInstance(), "Dessert", Diet.VEGAN, allergensArray);
       for (MenuItem v : veganDessert) {
         this.dessertList.getItems().add(v.getName() + " - £" + v.getprice());
       }
