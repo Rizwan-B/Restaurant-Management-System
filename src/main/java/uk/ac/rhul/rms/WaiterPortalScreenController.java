@@ -258,7 +258,9 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
       String idString = this.waiterCalls.getItems()
               .get(ManageOrderScreenController.convertToInt(selectedItem.toString()));
       if (idString.charAt(0) == 'K') {
-        idString = idString.split(". ")[1];
+        idString = idString.split("\\.")[1];
+        idString = idString.trim();
+        System.out.println(idString);
       }
 
       int callId = Integer.parseInt(idString);
