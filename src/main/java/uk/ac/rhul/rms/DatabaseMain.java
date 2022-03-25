@@ -292,6 +292,9 @@ public class DatabaseMain {
         insertFromFile(connect, "user_table");
         insertFromFile(connect, "seat_no");
         insertFromFile(connect, "orders_table");
+        insertFromFile(connect, "ingredients");
+        insertFromFile(connect, "allergies");
+        insertFromFile(connect, "allergy_ingredient_link");
 
         queries(connect, db);
       }
