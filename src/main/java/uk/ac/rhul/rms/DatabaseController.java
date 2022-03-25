@@ -523,7 +523,8 @@ public class DatabaseController {
       throws SQLException, InvalidMenuIdException {
     ArrayList<ConfirmedOrder> workingOn = new ArrayList<>();
     ResultSet result = executeQuery(connection,
-        "SELECT * FROM confirmed_orders WHERE user_id = " + String.valueOf(userId) + " AND status = 0");
+        "SELECT * FROM confirmed_orders, orders_table WHERE user_id = "
+                + String.valueOf(userId) + " AND status = 0");
 
     while (result.next()) {
       workingOn.add(new ConfirmedOrder(getOrder(connection, result.getInt("order_id")), userId));

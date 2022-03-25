@@ -186,7 +186,11 @@ public class WaiterPortalScreenController implements ControlledScreen, Initializ
         if (initialRecords.getInt(1) > this.lastMaxCallId) {
           this.lastMaxCallId = initialRecords.getInt(1);
         }
-        addToList(initialRecords.getString(2));
+        String tableNo = initialRecords.getString(2);
+        if (tableNo == "-1") {
+          tableNo = "Kitchen";
+        }
+        addToList(tableNo);
         this.newRecordLength++;
       }
       this.notificationCheck();
